@@ -1,4 +1,4 @@
-name: Create Sound File for Score
+name: Create Sound File for Music Score
 description: Template for creating a new sound effect file for the game.
 title: "Create Sound File for Score for..."
 labels: [music, audio]
