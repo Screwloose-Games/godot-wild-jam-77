@@ -35,6 +35,8 @@ body:
       value: |
         ## Acceptance Criteria:
 
+        - [ ] The sound effect peak level is normalized to -1 dBFS.
+        - [ ] The sound effect LUFS level is normalized to -16 LUFS.
         - [ ] The sound effect is saved in `.wav` file format.
         - [ ] The sound effect has a sample rate of 41,000 Hz.
         - [ ] The sound effect is 16-bit.
