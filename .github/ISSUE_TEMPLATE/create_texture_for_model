@@ -1,0 +1,33 @@
+name: Create Texture for 3D Model
+description: Template for creating a Texture for a 3D model.
+title: "Create texture for {{3D model name}}"
+labels: [art, texture]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Provide a description of the texture to be created.
+      placeholder: "Enter the texture description... Grungy, dirty, bright...Character description..."
+    validations:
+      required: true
+
+  - type: input
+    id: file_path
+    attributes:
+      label: Save File Path
+      description: Provide the full filepath where the texture should be saved.
+      placeholder: "Enter the full file path... model_directory/textures/model_name_texture.png"
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria:
+
+        - [ ] The model is saved in `.png` file format.
+        - [ ] The model is saved to the specified filepath: `{{file_path}}`.
+        - [ ] The model is opened in Godot to generate the `.import` file.
+        - [ ] The file has been imported in godot (Godot opened) and has the accompanying `.import` file.
+        - [ ] A pull request (PR) is created with the changes.
