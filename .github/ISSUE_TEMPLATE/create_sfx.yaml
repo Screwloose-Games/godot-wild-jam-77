@@ -41,4 +41,5 @@ body:
         - [ ] The sound effect has a sample rate of 41,000 Hz.
         - [ ] The sound effect is 16-bit.
         - [ ] The sound effect is located at the specified filepath: `{{file_path}}`.
+        - [ ] The file has been imported in godot (Godot opened) and has the accompanying `.import` file.
         - [ ] A pull request (PR) is created with the changes.
