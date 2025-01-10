@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://homwe1sqri4x"]
+
+[ext_resource type="FontFile" uid="uid://dqmy686m68iev" path="res://examples/themes/flat_ui_4/kenvector_future.ttf" id="1_ixs8r"]
+
+[resource]
+base_font = ExtResource("1_ixs8r")
