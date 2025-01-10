@@ -13,7 +13,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const { context } = github; // Extract context from github
 
             const projectId = "PVT_kwDOCqVkQ84AvYfY";
             const issueId = context.payload.issue.node_id;
