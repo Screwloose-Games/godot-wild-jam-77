@@ -36,9 +36,8 @@ body:
         ## Acceptance Criteria:
 
         - [ ] The peak level is normalized to -1 dBFS.
-        - [ ] The LUFS level is normalized to -16 LUFS.
-        - [ ] The file is saved in `.wav` file format.
-        - [ ] The file has a sample rate of 41,000 Hz.
+        - [ ] The file is saved in `.ogg` file format.
+        - [ ] The file has a sample rate of 44,100 Hz.
         - [ ] The file is located at the specified filepath: `{{file_path}}`-loop.
         - [ ] The filename ends in `-loop`
         - [ ] The file has been imported in godot (Godot opened) and has the accompanying `.import` file.
