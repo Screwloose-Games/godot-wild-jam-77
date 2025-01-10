@@ -1,0 +1,42 @@
+name: Create Sound Effect File
+description: Template for creating a new sound effect file for the game.
+title: "Create sound effect for {{sound effect name}}"
+labels: [sfx, audio]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Provide a description of the sound effect to be created.
+      placeholder: "Enter the sound effect description..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Provide the context where this sound effect will be used.
+      placeholder: "Enter the context for the sound effect..."
+    validations:
+      required: true
+
+  - type: input
+    id: file_path
+    attributes:
+      label: Save File Path
+      description: Provide the full filepath where the sound effect file should be saved.
+      placeholder: "Enter the full file path..."
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria:
+
+        - [ ] The sound effect is saved in `.wav` file format.
+        - [ ] The sound effect has a sample rate of 41,000 Hz.
+        - [ ] The sound effect is 16-bit.
+        - [ ] The sound effect is located at the specified filepath: `{{file_path}}`.
+        - [ ] A pull request (PR) is created with the changes.
