@@ -13,8 +13,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const github = require('@actions/github');
-
             const projectId = "PVT_kwDOCqVkQ84AvYfY";
             const issueId = github.context.payload.issue.node_id;
 
