@@ -1,0 +1,44 @@
+name: Create Ambient Sound File
+description: Template for creating a new sound effect file for the game.
+title: "Create sound effect for {{sound effect name}}"
+labels: [audio-ambient, audio]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Provide a description of the ambient audio to be created.
+      placeholder: "Enter the ambient audio description..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Provide the context where this ambient audio will be used.
+      placeholder: "Enter the context for the ambient audio..."
+    validations:
+      required: true
+
+  - type: input
+    id: file_path
+    attributes:
+      label: Save File Path
+      description: Provide the full filepath where the ambient audio file should be saved.
+      placeholder: "Enter the full file path..."
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria:
+
+        - [ ] The peak level is normalized to -1 dBFS.
+        - [ ] The LUFS level is normalized to -16 LUFS.
+        - [ ] The file is saved in `.wav` file format.
+        - [ ] The file has a sample rate of 41,000 Hz.
+        - [ ] The file is located at the specified filepath: `{{file_path}}`-loop.
+        - [ ] The filename ends in `-loop`
+        - [ ] A pull request (PR) is created with the changes.
