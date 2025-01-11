@@ -47,11 +47,11 @@ body:
         - [ ] A pull request (PR) is created with the changes.
     
   - type: textarea
+    validations:
+      required: true
     attributes:
       id: subtasks
       label: Subtasks
-      validations:
-        required: true
       value: |
         - [ ] Poly count optimized.
         - [ ] Model normals correct.
