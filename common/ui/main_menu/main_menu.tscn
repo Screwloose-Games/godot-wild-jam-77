@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=4 uid="uid://daabskcdhrpea"]
 
 [ext_resource type="Script" path="res://common/ui/viewport_container.gd" id="2_d26fo"]
-[ext_resource type="PackedScene" uid="uid://ruwllv6ttnh6" path="res://game/levels/level_01.tscn" id="3_ui554"]
+[ext_resource type="PackedScene" uid="uid://ruwllv6ttnh6" path="res://game/levels/level_01/level_01.tscn" id="3_ui554"]
 [ext_resource type="PackedScene" path="res://common/ui/scene_transitions/fade_transition.tscn" id="4_cec7w"]
 [ext_resource type="PackedScene" uid="uid://bvuixmv4n68a6" path="res://common/ui/options_menu/options_menu.tscn" id="6_ntl50"]
 
@@ -714,6 +714,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -798,8 +799,8 @@ text = "Exit"
 [node name="Settings Menu" type="AspectRatioContainer" parent="."]
 layout_mode = 0
 offset_left = 1152.0
-offset_right = 2304.0
-offset_bottom = 648.0
+offset_right = 3072.0
+offset_bottom = 1080.0
 script = ExtResource("2_d26fo")
 
 [node name="Audio Control" type="Control" parent="Settings Menu"]

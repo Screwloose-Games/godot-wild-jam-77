@@ -1,14 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://qopd3mnhek6b"]
+[gd_scene load_steps=5 format=3 uid="uid://qopd3mnhek6b"]
 
 [ext_resource type="PackedScene" uid="uid://b8b6q7g4bsaw5" path="res://common/ui/pause_menu/pause_menu.tscn" id="1_8veya"]
 
-[node name="BaseLevel" type="Node2D"]
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_oxuxd"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[sub_resource type="Sky" id="Sky_d6cgn"]
+sky_material = SubResource("PhysicalSkyMaterial_oxuxd")
 
-[node name="ModulateCanvasLayer" type="CanvasLayer" parent="."]
-layer = 10
+[sub_resource type="Environment" id="Environment_yixvo"]
+background_mode = 2
+sky = SubResource("Sky_d6cgn")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="ModulateCanvasLayer"]
+[node name="BaseLevel" type="Node3D"]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_8veya")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yixvo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.533054, 0.846082, 0, -0.846082, -0.533054, 0, 10.6144, 0)
