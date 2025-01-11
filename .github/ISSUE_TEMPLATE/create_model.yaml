@@ -30,6 +30,7 @@ body:
       label: Save File Path
       description: Provide the full filepath where the model should be saved.
       placeholder: "Enter the full file path..."
+      value: "raw_assets/models/{{object_name}}.fbx"
     validations:
       required: true
 
