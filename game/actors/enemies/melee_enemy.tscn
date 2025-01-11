@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7py3soys3rdd"]
+
+[ext_resource type="Script" path="res://game/actors/enemies/melee_enemy_controller.gd" id="1_803n0"]
+[ext_resource type="Script" path="res://game/actors/enemies/base_entity.gd" id="1_pdpkq"]
+[ext_resource type="Script" path="res://common/components/detect_entities.gd" id="3_owdlv"]
+[ext_resource type="Script" path="res://game/actors/enemies/toggle_ai_processing.gd" id="4_7y7uy"]
+[ext_resource type="Script" path="res://common/components/entity_blackboard.gd" id="5_gcr7y"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nrn85"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4dusp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_h42bl"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8nwun"]
+radius = 1.0
+
+[node name="MeleeEnemy" type="CharacterBody3D"]
+script = ExtResource("1_pdpkq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_nrn85")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_4dusp")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.4821, -0.378365)
+mesh = SubResource("BoxMesh_h42bl")
+
+[node name="MeleeEnemyController" type="Node" parent="."]
+script = ExtResource("1_803n0")
+
+[node name="DetectEntities" type="Node" parent="MeleeEnemyController"]
+script = ExtResource("3_owdlv")
+
+[node name="ChaseTarget" type="Node" parent="MeleeEnemyController"]
+
+[node name="MeleeSlashes" type="Node" parent="MeleeEnemyController"]
+
+[node name="ToggleAiProcessing" type="Node" parent="MeleeEnemyController"]
+script = ExtResource("4_7y7uy")
+
+[node name="EntityBlackboard" type="Node" parent="MeleeEnemyController"]
+script = ExtResource("5_gcr7y")
+
+[node name="RescanEntitiesTimer" type="Timer" parent="MeleeEnemyController"]
+wait_time = 5.0
+
+[node name="DetectionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+shape = SubResource("SphereShape3D_8nwun")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
