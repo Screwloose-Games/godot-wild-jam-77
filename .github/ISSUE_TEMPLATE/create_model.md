@@ -1,4 +1,4 @@
----
+
 name: Create 3D Model for Game Object
 about: Use this template for creating new 3d models.
 description: Template for creating a new 3D model for a game object.
@@ -12,8 +12,18 @@ body:
       label: Description
       description: Provide a description of the game object model to be created.
       placeholder: "Enter the model description..."
+      value: "This hamster is a cheerfull, cartoonish... Huge cheeks and wide eyes..."
     validations:
       required: true
+    
+  - type: textarea
+    id: reference-images
+    attributes:
+      label: Reference Images
+      description: Provide reference images.
+      placeholder: "Upload reference images..."
+    validations:
+      required: false
 
   - type: input
     id: file_path
@@ -29,17 +39,24 @@ body:
       value: |
         ## Acceptance Criteria:
 
-        - [ ] The model is saved in `.gltf` file format.
-        - [ ] The model is saved to the specified filepath: `{{file_path}}`.
-        - [ ] The model is opened in Godot to generate the `.import` file.
-        - [ ] The file has been imported in godot (Godot opened) and has the accompanying `.import` file.
+        - [ ] Poly count optimized.
+        - [ ] Model normals correct.
+        - [ ] The model contains UV mapping.
+        - [ ] UV islands created as needed.
+        - [ ] The model is saved in `.fbx` file format.
+        - [ ] The model is saved to the specified filepath: `raw_assets/models/{{file_path}}`.
         - [ ] A pull request (PR) is created with the changes.
----
-
-## Acceptance Criteria:
-
-- [ ] The model is saved in `.gltf` file format.
-- [ ] The model is saved to the specified filepath: `{{file_path}}`.
-- [ ] The model is opened in Godot to generate the `.import` file.
-- [ ] The file has been imported in godot (Godot opened) and has the accompanying `.import` file.
-- [ ] A pull request (PR) is created with the changes.
+    
+  - type: textarea
+    attributes:
+      id: subtasks
+      label: Subtasks
+      required: true
+      value: |
+        - [ ] Poly count optimized.
+        - [ ] Model normals correct.
+        - [ ] The model contains UV mapping.
+        - [ ] UV islands created as needed.
+        - [ ] The model is saved in `.fbx` file format.
+        - [ ] The model is saved to the specified filepath: `raw_assets/models/{{file_path}}`.
+        - [ ] A pull request (PR) is created with the changes.
