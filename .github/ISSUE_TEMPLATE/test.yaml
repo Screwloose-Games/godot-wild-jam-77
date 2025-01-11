@@ -1,4 +1,3 @@
----
 name: Game Jam Task
 about: Template for game jam-related tasks
 title: "[Game Jam Task] "
@@ -27,6 +26,21 @@ body:
       label: Task Description
       description: Provide a detailed description of the task.
       placeholder: Describe what needs to be done.
+  - type: textarea
+    id: suuubtasks
+    attributes:
+      label: Task Description
+      description: Provide a detailed description of the task.
+      placeholder: Describe what needs to be done.
+      value: |
+        ## Acceptance Criteria:
+
+        - [ ] The model is saved in `.gltf` file format.
+        - [ ] The model is saved to the specified filepath: `{{file_path}}`.
+        - [ ] The model is opened in Godot to generate the `.import` file.
+        - [ ] The file has been imported in godot (Godot opened) and has the accompanying `.import` file.
+        - [ ] A pull request (PR) is created with the changes.
+      render: "text"
   - type: dropdown
     id: task-priority
     attributes:
@@ -41,7 +55,3 @@ body:
     attributes:
       label: Due Date
       description: Select the due date for this task.
----
-
-### Additional Prepopulated Content
-Include any other context or notes here.
