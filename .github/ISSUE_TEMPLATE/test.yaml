@@ -1,8 +1,7 @@
 name: Game Jam Task
-about: Template for game jam-related tasks
 title: "[Game Jam Task] "
 labels: game-jam
-assignees: 
+assignees: []
 body:
   - type: markdown
     attributes:
@@ -50,8 +49,3 @@ body:
         - Low
         - Medium
         - High
-  - type: date
-    id: due-date
-    attributes:
-      label: Due Date
-      description: Select the due date for this task.
