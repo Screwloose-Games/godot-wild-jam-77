@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Godot Wild Jam 77"
+run/main_scene="res://common/ui/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.3")
 boot_splash/image="res://splash_screen.png"
 config/icon="res://icon.svg"
@@ -18,14 +19,19 @@ config/icon="res://icon.svg"
 [autoload]
 
 Components="*res://addons/Component/Components.gd"
+SceneTransitionManager="*res://globals/scene_transition_manager.gd"
+SceneManager="*res://globals/scene_manager.gd"
+GameSettings="*res://globals/game_settings.tscn"
+ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/screwloose-editor-settings/plugin.cfg")
+enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/screwloose-editor-settings/plugin.cfg")
 
 [gui]
 
-theme/custom="res://assets/themes/global_theme.tres"
+theme/custom="res://common/themes/global_theme.tres"
 
 [input]
 

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dn0xlfbj008m2"
+path="res://.godot/imported/nine_patch_rect.aseprite-d16a8fc04bed41ffc5c6cc8a18a6f29f.res"
+
+[deps]
+
+source_file="res://ui/components/nine_patch_rect/nine_patch_rect.aseprite"
+dest_files=["res://.godot/imported/nine_patch_rect.aseprite-d16a8fc04bed41ffc5c6cc8a18a6f29f.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://qopd3mnhek6b"]
+
+[ext_resource type="PackedScene" uid="uid://b8b6q7g4bsaw5" path="res://common/ui/pause_menu/pause_menu.tscn" id="1_8veya"]
+
+[node name="BaseLevel" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="ModulateCanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ModulateCanvasLayer"]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_8veya")]

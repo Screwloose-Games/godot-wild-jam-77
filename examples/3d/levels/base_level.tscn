@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsxeegtlfwyfa"]
+
+[ext_resource type="PackedScene" uid="uid://b8b6q7g4bsaw5" path="res://common/ui/pause_menu/pause_menu.tscn" id="1_k1x68"]
+
+[node name="BaseLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_k1x68")]

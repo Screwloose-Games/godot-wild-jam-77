@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceekgc2frgsqr"]
+
+[ext_resource type="Script" path="res://game/actors/player_controller/player_controller.gd" id="1_4xbmf"]
+[ext_resource type="Script" path="res://common/components/templates/HealthComponent.gd" id="2_d4d2y"]
+
+[node name="PlayerController" type="CharacterBody3D"]
+script = ExtResource("1_4xbmf")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_d4d2y")
+health = 100.0
+global_signals = true
