@@ -61,3 +61,8 @@ body:
         - [ ] The model is saved in `.fbx` file format.
         - [ ] The model is saved to the specified filepath: `raw_assets/models/{{file_path}}`.
         - [ ] A pull request (PR) is created with the changes.
+        
+        ## Blocking
+        - Animation tasks
+        - Animation tasks
+        - Implementation tasks
