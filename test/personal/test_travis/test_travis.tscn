@@ -1,0 +1,172 @@
+[gd_scene load_steps=16 format=3 uid="uid://b3a2xah1xdf3e"]
+
+[ext_resource type="Shader" path="res://common/art/shaders/black_hole.gdshader" id="1_ds48b"]
+[ext_resource type="Material" uid="uid://ipm1muq3hbrf" path="res://common/art/materials/cyclic_slash.material" id="2_nedle"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nslve"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_q1r81"]
+sky_material = SubResource("ProceduralSkyMaterial_nslve")
+
+[sub_resource type="Environment" id="Environment_ykcr1"]
+background_mode = 2
+sky = SubResource("Sky_q1r81")
+tonemap_mode = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f313p"]
+render_priority = 0
+shader = ExtResource("1_ds48b")
+shader_parameter/scale = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_lnklg"]
+material = SubResource("ShaderMaterial_f313p")
+flip_faces = true
+radius = 10.0
+height = 20.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_wcnsf"]
+
+[sub_resource type="Animation" id="Animation_iquft"]
+resource_name = "blackhole"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 20.0, -10.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2ssmf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h670o"]
+_data = {
+"RESET": SubResource("Animation_2ssmf"),
+"blackhole": SubResource("Animation_iquft")
+}
+
+[sub_resource type="QuadMesh" id="QuadMesh_jkfvc"]
+material = ExtResource("2_nedle")
+
+[sub_resource type="SphereMesh" id="SphereMesh_2i5b8"]
+material = ExtResource("2_nedle")
+
+[sub_resource type="TorusMesh" id="TorusMesh_vv664"]
+material = ExtResource("2_nedle")
+
+[sub_resource type="BoxMesh" id="BoxMesh_86wqr"]
+material = ExtResource("2_nedle")
+
+[node name="TestTravis" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ykcr1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_lnklg")
+
+[node name="TestCubes" type="Node3D" parent="."]
+
+[node name="TestcubeMesh" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5599, -7.38813, -9.53674e-07)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh2" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5599, 2.18779, -9.53674e-07)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh3" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91915, 2.18779, -9.53674e-07)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh4" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91915, 2.18779, -7.65563)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh5" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.08687, 2.18779, 5.1053)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh6" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.08687, -1.67457, 5.1053)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh7" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72342, -2.99271, -2.79237)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh8" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29187, -1.21232, -2.79237)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh9" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.259, -0.539425, -2.57688)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h670o")
+}
+autoplay = "blackhole"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.538806, -0.141186, 0.830514, 0, 0.985856, 0.167594, -0.84243, -0.0903008, 0.531186, 19.78, 0.491423, 1.79891)
+
+[node name="CyclicSlashes" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9415, 0, 0)
+
+[node name="quad" type="MeshInstance3D" parent="CyclicSlashes"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.248061, 0, 0)
+mesh = SubResource("QuadMesh_jkfvc")
+skeleton = NodePath("../..")
+
+[node name="quad2" type="MeshInstance3D" parent="CyclicSlashes"]
+transform = Transform3D(5, 0, 0, 0, 4.33013, 2.5, 0, -2.5, 4.33013, 3.50932, 0, -1.33375)
+mesh = SubResource("QuadMesh_jkfvc")
+skeleton = NodePath("../..")
+
+[node name="sphere" type="MeshInstance3D" parent="CyclicSlashes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.358, 0, 0)
+mesh = SubResource("SphereMesh_2i5b8")
+skeleton = NodePath("../..")
+
+[node name="torus" type="MeshInstance3D" parent="CyclicSlashes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75088, 0, 0)
+mesh = SubResource("TorusMesh_vv664")
+
+[node name="box" type="MeshInstance3D" parent="CyclicSlashes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2623, 0, 0)
+mesh = SubResource("BoxMesh_86wqr")
