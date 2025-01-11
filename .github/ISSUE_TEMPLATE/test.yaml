@@ -40,7 +40,7 @@ body:
         - [ ] The model is opened in Godot to generate the `.import` file.
         - [ ] The file has been imported in godot (Godot opened) and has the accompanying `.import` file.
         - [ ] A pull request (PR) is created with the changes.
-      render: "text"
+      render: "markdown"
   - type: dropdown
     id: task-priority
     attributes:
