@@ -1,3 +1,4 @@
+---
 name: Create 3D Model for Game Object
 description: Template for creating a new 3D model for a game object.
 title: "Create 3D model for {{game object name}}"
