@@ -1,0 +1,178 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5aosaghr57bx"]
+
+[ext_resource type="PackedScene" uid="uid://b5j7a34pxotom" path="res://test/personal/test_travis/pr_test_skull.tscn" id="1_4jns6"]
+
+[sub_resource type="Animation" id="Animation_lcx3g"]
+resource_name = "skulls_float"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("test_skull:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.44355e-14, 2.34547, 0.805372), Vector3(-0.625556, 2.34547, 0.349937), Vector3(0.345777, 2.71992, -0.072665), Vector3(0.845455, 1.86232, 0.459713), Vector3(-0.0748949, 1.48887, 0.99467), Vector3(-3.44355e-14, 2.34547, 0.805372)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("test_skull:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 8.47033e-22), Vector3(-0.421974, -1.03432, -0.238896), Vector3(-0.53406, -0.181175, -0.302353), Vector3(0.302163, 1.32144, -0.416043), Vector3(0.277862, 0.0219658, -0.209635), Vector3(0, 0, 8.47033e-22)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("test_skull2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.280308, 1.58231, 0.930545), Vector3(0.643548, 2.10791, 0.617727), Vector3(0.514466, 1.39705, 0.695931), Vector3(-0.31436, 1.41342, 0.774136), Vector3(-0.0170262, 1.86963, 0.924407), Vector3(0.280308, 1.58231, 0.930545)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("test_skull2:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 4.23517e-21), Vector3(-6.02621e-09, 0.647168, 1.79687e-08), Vector3(0.548197, 0.407513, -0.036032), Vector3(0.437534, -0.597314, 0.0857945), Vector3(0.218767, 0.0676355, 0.0428972), Vector3(0, 0, 4.23517e-21)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("test_skull3:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3.03333, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.376901, 1.95783, 0.844352), Vector3(-0.250426, 2.36944, 0.714505), Vector3(0.111091, 1.78049, 0.937254), Vector3(-0.504236, 1.97432, 0.823384), Vector3(0.0427696, 2.28919, 0.75637), Vector3(-0.376901, 1.95783, 0.844352)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("test_skull3:rotation")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3.03333, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-6.66134e-16, -2.84217e-14, 8.8818e-16), Vector3(-0.344311, -0.278545, 0.0962335), Vector3(0.0226607, 0.109503, 0.103702), Vector3(0.0148554, -0.337931, 0.0679823), Vector3(-0.463216, 0.229732, -0.071122), Vector3(-6.66134e-16, -2.84217e-14, 8.8818e-16)]
+}
+
+[sub_resource type="Animation" id="Animation_qyq1w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("test_skull:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.44355e-14, 2.34547, 0.805372)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("test_skull:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 8.47033e-22)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("test_skull2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.280308, 1.58231, 0.930545)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("test_skull2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 4.23517e-21)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("test_skull3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.376901, 1.95783, 0.844352)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("test_skull3:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-6.66134e-16, -2.84217e-14, 8.8818e-16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qacpk"]
+_data = {
+"RESET": SubResource("Animation_qyq1w"),
+"skulls_float": SubResource("Animation_lcx3g")
+}
+
+[node name="Skulls" type="Node3D"]
+
+[node name="test_skull" parent="." instance=ExtResource("1_4jns6")]
+transform = Transform3D(0.552223, 0.234487, 0.80004, -0.383951, 0.923336, -0.00560566, -0.740022, -0.30408, 0.599919, 0.780784, 2.20715, 0.215013)
+
+[node name="test_skull2" parent="." instance=ExtResource("1_4jns6")]
+transform = Transform3D(0.946566, -0.190344, -0.26035, 0.0387507, 0.868537, -0.494106, 0.320174, 0.457615, 0.829504, -0.051113, 1.34261, 0.739214)
+
+[node name="test_skull3" parent="." instance=ExtResource("1_4jns6")]
+transform = Transform3D(0.975197, -0.105276, -0.194696, 0.0923792, 0.992954, -0.0742007, 0.201137, 0.0543744, 0.978051, -0.299791, 1.84726, 0.882444)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qacpk")
+}
+autoplay = "skulls_float"

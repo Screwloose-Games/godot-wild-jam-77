@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://521gfvkksopw"]
+
+[ext_resource type="PackedScene" uid="uid://b665bww3dqi4q" path="res://test/personal/test_travis/test_slime2.glb" id="1_qngd6"]
+[ext_resource type="Shader" path="res://assets/art/shaders/jelly_wobble.gdshader" id="2_uan0g"]
+[ext_resource type="Texture2D" uid="uid://cw2jqa2ut6x6h" path="res://test/personal/test_travis/test_slime2_aap-64-gradient.png" id="3_v0x4q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qh0xm"]
+render_priority = 0
+shader = ExtResource("2_uan0g")
+shader_parameter/wave_strength = Vector2(0.5, 0.25)
+shader_parameter/wave_frequ = Vector2(12, 12)
+shader_parameter/time_factor = Vector2(1, 2)
+shader_parameter/MY_TEXTURE = ExtResource("3_v0x4q")
+
+[node name="test_slime2" instance=ExtResource("1_qngd6")]
+
+[node name="SlimyJello" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_qh0xm")

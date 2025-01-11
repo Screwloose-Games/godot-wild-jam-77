@@ -1,0 +1,189 @@
+[gd_scene load_steps=25 format=3 uid="uid://fvnumww4dab5"]
+
+[ext_resource type="Shader" path="res://assets/art/shaders/stylized_depthfade_water.gdshader" id="1_7yg0u"]
+[ext_resource type="Shader" path="res://assets/art/shaders/n64_skybox.gdshader" id="2_2wq6e"]
+[ext_resource type="Shader" path="res://assets/art/shaders/flexible_toon_shader.gdshader" id="2_22gil"]
+[ext_resource type="Texture2D" uid="uid://cy33bqljvedb2" path="res://icon.svg" id="3_ajqt2"]
+[ext_resource type="Shader" path="res://assets/art/shaders/edge_detect_3d.gdshader" id="5_s4bbn"]
+[ext_resource type="PackedScene" uid="uid://bd8oj127mxari" path="res://test/personal/test_travis/pr_test_slime.tscn" id="6_5fsv5"]
+[ext_resource type="PackedScene" uid="uid://bgvpvqbu7dv67" path="res://test/personal/test_travis/pr_test_furball.tscn" id="7_db67q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8qhmj"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_bottom_color = Color(0.384314, 0.894118, 1, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_5kxj3"]
+sky_material = SubResource("ProceduralSkyMaterial_8qhmj")
+
+[sub_resource type="Environment" id="Environment_gl6ub"]
+background_mode = 2
+sky = SubResource("Sky_5kxj3")
+tonemap_mode = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c62jt"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tkq4y"]
+noise = SubResource("FastNoiseLite_c62jt")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b374x"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qdqjh"]
+noise = SubResource("FastNoiseLite_b374x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxk32"]
+render_priority = 0
+shader = ExtResource("1_7yg0u")
+shader_parameter/speed = 0.01
+shader_parameter/color = Color(0.036646, 0.345657, 0.401027, 1)
+shader_parameter/deep_water = Color(0.0664225, 0.158282, 1, 1)
+shader_parameter/beer_law_factor = 2.0
+shader_parameter/_distance = 0.0
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/edge_scale = -4.0
+shader_parameter/near = 0.1
+shader_parameter/far = 100.0
+shader_parameter/wave_strength = Vector2(0.5, 0.25)
+shader_parameter/wave_frequ = Vector2(12, 12)
+shader_parameter/time_factor = Vector2(1, 2)
+shader_parameter/noise1 = SubResource("NoiseTexture2D_tkq4y")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_qdqjh")
+
+[sub_resource type="QuadMesh" id="QuadMesh_dlpb4"]
+material = SubResource("ShaderMaterial_jxk32")
+size = Vector2(1000, 1000)
+subdivide_width = 100
+subdivide_depth = 100
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1swl6"]
+render_priority = 0
+shader = ExtResource("2_2wq6e")
+shader_parameter/lock_aspect = false
+shader_parameter/aspect_ratio = 1.33333
+shader_parameter/fov = Vector2(180, 90)
+shader_parameter/tiling = Vector2i(1, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/sky_texture = ExtResource("3_ajqt2")
+
+[sub_resource type="BoxMesh" id="BoxMesh_osmcm"]
+material = SubResource("ShaderMaterial_1swl6")
+flip_faces = true
+size = Vector3(5000, 5000, 5000)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x8fux"]
+render_priority = 0
+shader = ExtResource("2_22gil")
+shader_parameter/albedo = Color(1, 1, 0.494118, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = false
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 0.044
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="BoxMesh" id="BoxMesh_xh3pn"]
+material = SubResource("ShaderMaterial_x8fux")
+size = Vector3(100, 100, 200)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_js7kg"]
+render_priority = 0
+shader = ExtResource("2_22gil")
+shader_parameter/albedo = Color(1, 0.619608, 0.72549, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = false
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="SphereMesh" id="SphereMesh_y7k14"]
+material = SubResource("ShaderMaterial_js7kg")
+radius = 5.0
+height = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rhrao"]
+render_priority = 0
+shader = ExtResource("5_s4bbn")
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/threshold = 0.0
+shader_parameter/blend = 0.01
+shader_parameter/enable_depth_pass = true
+shader_parameter/threshold_depth = 0.0
+shader_parameter/blend_depth = 0.01
+shader_parameter/distance_fade_length = 50.0
+shader_parameter/distance_fade_blend = 20.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_bc8hu"]
+material = SubResource("ShaderMaterial_rhrao")
+flip_faces = true
+size = Vector2(10, 10)
+
+[node name="TestTravis" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gl6ub")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StylizedWater" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_dlpb4")
+
+[node name="N64Skybox" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_osmcm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.907, -0.421131, 0, 0.365644, 0.787496, 0.496141, -0.20894, -0.45, 0.868242, -114.155, -22.502, -17.459)
+mesh = SubResource("BoxMesh_xh3pn")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.933241, -0.0912554, -0.347469, -0.0323224, 0.984606, -0.171773, 0.357796, -0.149075, -0.921824, 217, -48.2187, 138.287)
+mesh = SubResource("BoxMesh_xh3pn")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.2275, -0.668892, 0.707691, 0.317584, 0.636046, 0.703268, -0.920535, 0.384745, 0.0677287, -40.7722, -58.502, 163.437)
+mesh = SubResource("BoxMesh_xh3pn")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.21685, 0.772886, -0.596342, 0.974091, 0.131133, -0.184259, -0.064211, -0.620848, -0.781297, 62.8182, -30.3831, -220.39)
+mesh = SubResource("BoxMesh_xh3pn")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0179459, 0.783505, -0.621127, 0.999499, 0.0302538, 0.00928397, 0.0260655, -0.620649, -0.783655, 0.657036, -50.7612, 24.4631)
+mesh = SubResource("BoxMesh_xh3pn")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.839646, -0.203863, 0.503423, 0, 0.926885, 0.375346, -0.543134, -0.315157, 0.778255, 5.20927, 2.97949, 2.59167)
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.7248, 0)
+mesh = SubResource("SphereMesh_y7k14")
+
+[node name="EdgeDetect3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.4125, 0, 0.910957, 0, 1, 0, -0.910957, 0, -0.4125, -20, 29.164, 0)
+visible = false
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_bc8hu")
+
+[node name="test_slime" parent="." instance=ExtResource("6_5fsv5")]
+
+[node name="test_furball" parent="." instance=ExtResource("7_db67q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66505, 0, -1.62853)

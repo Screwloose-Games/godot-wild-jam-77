@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5j7a34pxotom"]
+
+[ext_resource type="PackedScene" uid="uid://se8daydej123" path="res://test/personal/test_travis/test_skull.glb" id="1_orsib"]
+
+[node name="test_skull" instance=ExtResource("1_orsib")]
