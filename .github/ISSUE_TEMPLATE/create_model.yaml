@@ -50,7 +50,8 @@ body:
     attributes:
       id: subtasks
       label: Subtasks
-      required: true
+      validations:
+        required: true
       value: |
         - [ ] Poly count optimized.
         - [ ] Model normals correct.
