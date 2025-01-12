@@ -1,4 +1,5 @@
 extends Actor3D
+class_name PlayerController
 
 @export var jump_velocity = 4.5
 @export var mouse_sensitivity: float = 0.05
@@ -13,17 +14,18 @@ var input_direction: Vector3 = Vector3.FORWARD
 
 @onready var _camera: Camera3D = %Camera3D
 
-@onready var _player_direction: Node3D = %PlayerDirection
 @onready var _player_pcam = %PlayerPhantomCamera3D
 
 @onready var dash_ability: DashAbility = %DashAbility
+@onready var health_component: HealthComponent = %HealthComponent
+
 
 
 func _ready():
     if _player_pcam.get_follow_mode() == _player_pcam.FollowMode.THIRD_PERSON:
         Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func get_input_direction():
+func get_global_input_direction():
     var input_dir := Input.get_vector("left", "right", "forward", "back")
     var cam_dir: Vector3 = -_camera.global_transform.basis.z
     var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -33,11 +35,15 @@ func get_input_direction():
         var move_dir: Vector3 = Vector3.ZERO
         move_dir.x = direction.x
         move_dir.z = direction.z
-        input_direction = move_dir
+        return move_dir.rotated(Vector3.UP, _camera.rotation.y).normalized()
+    return Vector3.ZERO
 
 func _physics_process(delta: float) -> void:
+    if dash_ability.is_dashing:
+        return
     if Input.is_action_just_pressed("dash"):
-        dash_ability.dash()
+        if get_global_input_direction():
+            dash_ability.dash(get_global_input_direction())
     
     if velocity.length() > 0.2:
         var look_direction: Vector2 = Vector2(velocity.z, velocity.x)
@@ -97,3 +103,13 @@ func _set_pcam_rotation(pcam: PhantomCamera3D, event: InputEvent) -> void:
 
         # Change the SpringArm3D node's rotation and rotate around its target
         pcam.set_third_person_rotation_degrees(pcam_rotation_degrees)
+
+func die():
+    died.emit()
+    get_tree().reload_current_scene()
+
+func _on_hurt_box_component_3d_hurt(hit_box: Variant, amount: Variant) -> void:
+    health_component.damage(amount)
+
+func _on_health_component_died() -> void:
+    die()

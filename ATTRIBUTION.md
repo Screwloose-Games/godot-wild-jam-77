@@ -1,6 +1,71 @@
 # Attribution
 ## Collaborators
+### Production Team
+Name: Jonny
+<br>
+Role: Production Manager
 
+Name: Sarah
+<br>
+Role: Game Design, Gameplay Director
+
+Name: Bryan B (UnagiLogic)
+<br>
+Role: Production Manager, Organization
+
+---
+### Art Team
+Name: Dillan
+<br>
+Role: 2D & 3D Artist
+
+Name: Sean
+<br>
+Role: 3D Artist
+
+Name: Trav
+<br>
+Role: 3D Artist
+
+Name: Alex
+<br>
+Role: 3D Artist
+
+Name: Daniel
+<br>
+Role: Lighting Artist
+
+---
+### Audio Team
+Name: Olemonade
+<br>
+Role: Environmental Sound
+
+Name: Matt
+<br>
+Role: Composition
+
+Name: McKinley
+<br>
+Role: Flex Designer
+
+---
+### Programming Team
+Name: Jonny
+<br>
+Role: Programming
+
+Name: Loopy
+<br>
+Role: Programming
+
+---
+### Flex Team
+Name: Chris
+<br>
+Role: Techincal Sound Designer
+
+---
 ## Sourced  
 #### Godot Engine Logo
 Author: Andrea Calabró  

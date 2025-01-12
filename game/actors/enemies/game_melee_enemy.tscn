@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://crco2b1srkhyo"]
+
+[ext_resource type="PackedScene" uid="uid://bxbkpou8fdoqo" path="res://game/actors/enemies/enemy.tscn" id="1_mur3f"]
+[ext_resource type="BehaviorTree" uid="uid://m60n8oplxst6" path="res://game/actors/behavior/melee_behavior_tree.tres" id="2_fnc4b"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_syuwp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uaspe"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mtyox"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_shc20"]
+var/speed/name = &"speed"
+var/speed/type = 3
+var/speed/value = 10.0
+var/speed/hint = 1
+var/speed/hint_string = "10,1000,10"
+
+[node name="MeleeEnemy" instance=ExtResource("1_mur3f")]
+collision_layer = 8
+collision_mask = 15
+
+[node name="Visual" type="Node3D" parent="." index="0"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_syuwp")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Visual" index="1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.4821, -0.378365)
+mesh = SubResource("BoxMesh_uaspe")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_mtyox")
+
+[node name="BTPlayer" type="BTPlayer" parent="." index="2"]
+behavior_tree = ExtResource("2_fnc4b")
+blackboard_plan = SubResource("BlackboardPlan_shc20")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="3"]
+unique_name_in_owner = true
+debug_enabled = true

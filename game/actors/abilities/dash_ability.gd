@@ -1,8 +1,8 @@
 extends Node
 class_name DashAbility
 
-@export var distance: float = 30.0
-@export var duration: float = 0.5
+@export var distance: float = 10.0
+@export var duration: float = 0.25
 
 @onready var actor: Actor3D = owner
 
@@ -13,6 +13,8 @@ var is_dashing: bool = false
 var _dash_timer: Timer
 var _original_velocity: Vector3
 var dash_speed: float = distance / duration
+var dash_direction: Vector3 = Vector3.ZERO
+var dash_velocity: Vector3 = Vector3.ZERO
 
 func _ready():
     # Ensure a Timer exists to track dash duration
@@ -23,24 +25,24 @@ func _ready():
     add_child(_dash_timer)
 
 
-func set_velocity():
+func set_velocity(direction: Vector3):
     # Calculate dash velocity
-    var direction = actor.input_direction  # Assuming forward direction is along X-axis
-    var dash_velocity = direction * dash_speed
+    dash_velocity = direction * dash_speed
     actor.velocity = dash_velocity
     actor.move_and_slide()
 
-func dash():
+func _physics_process(delta: float) -> void:
     if is_dashing:
-        set_velocity()
+        set_velocity(dash_direction)
+
+func dash(direction: Vector3):
+    if is_dashing:
         return  # Prevent dashing again if already dashing
-
-    
-
+    dash_direction = direction
     # Store original velocity and set dash velocity
     _original_velocity = actor.velocity
     
-    set_velocity()
+    set_velocity(direction)
 
     # Emit signal and start dash timer
     emit_signal("started_dashing")

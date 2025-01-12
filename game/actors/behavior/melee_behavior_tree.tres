@@ -1,0 +1,66 @@
+[gd_resource type="BehaviorTree" load_steps=15 format=3 uid="uid://m60n8oplxst6"]
+
+[ext_resource type="Script" path="res://demo/ai/tasks/get_first_in_group.gd" id="1_vkrpx"]
+[ext_resource type="Script" path="res://game/actors/behavior/pursue_3d.gd" id="2_8nea3"]
+[ext_resource type="Script" path="res://game/actors/behavior/face_target_3d.gd" id="3_atqrs"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_106k3"]
+var/speed/name = &"speed"
+var/speed/type = 3
+var/speed/value = 400.0
+var/speed/hint = 1
+var/speed/hint_string = "10,1000,10"
+var/target/name = &"target"
+var/target/type = 9
+var/target/value = Vector3(0, 0, 0)
+var/target/hint = 0
+var/target/hint_string = ""
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_844e6"]
+min_duration = 0.7
+max_duration = 1.5
+
+[sub_resource type="BTSequence" id="BTSequence_3mlft"]
+custom_name = "Pause before action"
+children = [SubResource("BTRandomWait_844e6")]
+
+[sub_resource type="BTAction" id="BTAction_r711s"]
+script = ExtResource("1_vkrpx")
+group = &"Player"
+output_var = &"target"
+
+[sub_resource type="BTAction" id="BTAction_s5whw"]
+script = ExtResource("2_8nea3")
+target_var = &"target"
+speed_var = &"speed"
+approach_distance = 5.0
+
+[sub_resource type="BTTimeLimit" id="BTTimeLimit_ktjly"]
+time_limit = 2.0
+children = [SubResource("BTAction_s5whw")]
+
+[sub_resource type="BTSequence" id="BTSequence_m62pu"]
+custom_name = "Pursue player"
+children = [SubResource("BTAction_r711s"), SubResource("BTTimeLimit_ktjly")]
+
+[sub_resource type="BTAction" id="BTAction_t10t1"]
+script = ExtResource("3_atqrs")
+target_var = &"target"
+
+[sub_resource type="BTWait" id="BTWait_fo3np"]
+duration = 0.1
+
+[sub_resource type="BTSequence" id="BTSequence_sqea3"]
+custom_name = "Melee attack"
+children = [SubResource("BTAction_t10t1"), SubResource("BTWait_fo3np")]
+
+[sub_resource type="BTSequence" id="BTSequence_kc1u3"]
+children = [SubResource("BTSequence_3mlft"), SubResource("BTSequence_m62pu"), SubResource("BTSequence_sqea3")]
+
+[resource]
+description = "Welcome to the [b]LimboAI[/b] demo project! This demo project consists of three parts:
+- If you're new to behavior trees, you can access the [b]Tutorial[/b] by clicking the \"Begin Tutorial\" button on the toolbar.
+- To experience the demo game, just click the \"Switch to Game\" button.
+- On this screen, you can inspect the AI behavior tree in action for each agent in the game."
+blackboard_plan = SubResource("BlackboardPlan_106k3")
+root_task = SubResource("BTSequence_kc1u3")
