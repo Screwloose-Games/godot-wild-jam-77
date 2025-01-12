@@ -12,6 +12,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Altar" parent="." instance=ExtResource("1_4r4mg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.76442, 4.76837e-07, -3.61183)
+altar_power = "test_power"
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_v6ary")

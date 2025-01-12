@@ -9,7 +9,7 @@ radius = 1.06451
 
 [node name="Altar" type="Node3D" node_paths=PackedStringArray("assigned_enemies")]
 script = ExtResource("1_5n8dj")
-assigned_enemies = [NodePath(""), NodePath("")]
+assigned_enemies = [null, null]
 
 [node name="InteractableArea3D" type="Area3D" parent="."]
 collision_layer = 16
