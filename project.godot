@@ -36,6 +36,7 @@ SceneManager="*res://globals/scene_manager.gd"
 GameSettings="*res://globals/game_settings.tscn"
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+CheckpointMgr="*res://game/checkpoint_mgr.gd"
 
 [display]
 
