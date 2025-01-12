@@ -6,7 +6,7 @@ extends Node
 const SAVE_PATH: String = "user://checkpoint_mgr.save"
 
 # Track completed altars by their names (altar_power)
-var completed_altars: Array[String]
+var completed_altars: Array
 
 # The latest altar we are fighting at
 # If you die at an altar during the altar's challenge, you want to respawn there to try again
@@ -37,21 +37,54 @@ func altar_completed(completed_altar_power: String):
 
 ## Saves Checkpoint variables to user's local storage
 func save_game():
+    var save_dict: Dictionary = {
+        "completed_altars" : completed_altars,
+        "latest_altar" : latest_altar,
+    }
+    var json_string: String = JSON.stringify(save_dict)
+    
     var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-    file.store_var(completed_altars, false)
-    file.store_var(latest_altar, false)
+    file.store_line(json_string)
     file.close()
-    print("Saved: ", completed_altars, ", ", latest_altar)
+    print("Saved: ", save_dict)
     pass
 
 
 ## Loads Checkpoint variables from user's local storage
 func load_game():
-    if FileAccess.file_exists(SAVE_PATH):
-        var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
-        completed_altars = file.get_var()
-        latest_altar = file.get_var()
-        print("Loaded: ", completed_altars, ", ", latest_altar)
-    else:
+    if not FileAccess.file_exists(SAVE_PATH):
         print("Failed to load game: No data to load")
+        return
+    
+    var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+    while file.get_position() < file.get_length():
+        var json_string: String = file.get_line()
+        var json = JSON.new()
+        var parse_result: Error = json.parse(json_string)
+        if parse_result != OK:
+            print("Error loading game: ", parse_result)
+            continue
+        var node_data = json.data
+        if node_data is Dictionary:
+            if node_data.has("completed_altars"):
+                completed_altars = node_data.get("completed_altars")
+            if node_data.has("latest_altar"):
+                latest_altar = node_data.get("latest_altar")
+            pass
+        print("Loaded data: ", node_data)
+        
     pass
+
+
+func delete_save_data():
+    var empty_array: Array
+    var save_dict: Dictionary = {
+        "completed_altars" : empty_array,
+        "latest_altar" : "",
+    }
+    var json_string: String = JSON.stringify(save_dict)
+    
+    var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+    file.store_line(json_string)
+    file.close()
+    print("Deleted save data.")
