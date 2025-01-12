@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://yibvym8uhvwr"]
+
+[ext_resource type="PackedScene" uid="uid://r3yrg0rjgqki" path="res://game/levels/GreyBoxes/lvl_greybox_terrain.tscn" id="1_ijwfh"]
+[ext_resource type="PackedScene" uid="uid://dqp08x75b1dnb" path="res://game/levels/GreyBoxes/lvl_greybox_blockingvolumes.tscn" id="2_epcq1"]
+
+[node name="LvlGreyboxEnvironmentTemplate" type="Node3D"]
+
+[node name="LvlGreyboxTerrain" parent="." instance=ExtResource("1_ijwfh")]
+
+[node name="BlockingVolumes_Scene" parent="." instance=ExtResource("2_epcq1")]

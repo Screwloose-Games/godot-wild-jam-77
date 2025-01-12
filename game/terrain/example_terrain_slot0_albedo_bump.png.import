@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp1lgj526f6lu"
-path.s3tc="res://.godot/imported/splash_screen.png-c4325b211491e80389593ab522aa4a51.s3tc.ctex"
+uid="uid://bg2kij1twgb2e"
+path.s3tc="res://.godot/imported/example_terrain_slot0_albedo_bump.png-3e637b47f9871a9ed188838de87c5efe.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://splash_screen.png"
-dest_files=["res://.godot/imported/splash_screen.png-c4325b211491e80389593ab522aa4a51.s3tc.ctex"]
+source_file="res://game/terrain/example_terrain_slot0_albedo_bump.png"
+dest_files=["res://.godot/imported/example_terrain_slot0_albedo_bump.png-3e637b47f9871a9ed188838de87c5efe.s3tc.ctex"]
 
 [params]
 
@@ -24,9 +24,9 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=1
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

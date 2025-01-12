@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://3pg62i5buy4t"]
+
+[ext_resource type="PackedScene" uid="uid://64bbsx4vgwj6" path="res://game/levels/GreyBoxes/lvl_greybox_exterior.tscn" id="1_0eljy"]
+
+[node name="LvlGreyboxLake" type="Node3D"]
+
+[node name="LvlGreyboxExterior" parent="." instance=ExtResource("1_0eljy")]
+visible = false
+
+[node name="CSG_Starting_Tunnel" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 391.964, 0, 0)
+radius = 12.4275
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 6.575
