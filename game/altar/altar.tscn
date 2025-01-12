@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbkvroagayyyc"]
+
+[ext_resource type="Script" path="res://game/altar/altar.gd" id="1_b6ai1"]
+
+[node name="Altar" type="StaticBody3D"]
+script = ExtResource("1_b6ai1")
