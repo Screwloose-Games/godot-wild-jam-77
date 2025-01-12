@@ -8,8 +8,10 @@ signal back_pressed
 @onready var sfx_slider = %SFXSlider
 @onready var music_slider = %MusicSlider
 @onready var back_button = %BackButton
+@onready var delete_save_data_button: Button = %DeleteSaveDataButton
 
 var previous_ui: Node
+var delete_save_data_pressed_once: bool = false
 
 func _ready():
     back_button.pressed.connect(on_back_pressed)
@@ -17,6 +19,7 @@ func _ready():
     master_slider.value_changed.connect(on_audio_slider_changed.bind("Master"))
     sfx_slider.value_changed.connect(on_audio_slider_changed.bind("SFX"))
     music_slider.value_changed.connect(on_audio_slider_changed.bind("Music"))
+    delete_save_data_button.pressed.connect(try_delete_save_data)
     
     update_display()
 
@@ -60,3 +63,14 @@ func on_audio_slider_changed(value: float, bus_name: String):
 
 func on_back_pressed():
     back_pressed.emit()
+    delete_save_data_pressed_once = false
+    delete_save_data_button.text = "Delete save data."
+
+
+func try_delete_save_data():
+    if not delete_save_data_pressed_once:
+        delete_save_data_pressed_once = true
+        delete_save_data_button.text = "Delete data for real? You mean it?"
+    else:
+        CheckpointMgr.delete_save_data()
+        delete_save_data_button.text = "Save data deleted"

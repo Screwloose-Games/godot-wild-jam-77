@@ -1,0 +1,228 @@
+[gd_scene load_steps=24 format=3 uid="uid://bvjmr48xurpu1"]
+
+[ext_resource type="Shader" path="res://common/art/shaders/black_hole.gdshader" id="1_tmclc"]
+[ext_resource type="Material" uid="uid://ipm1muq3hbrf" path="res://common/art/materials/cyclic_slash.material" id="2_2k4yw"]
+[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="3_ebsap"]
+[ext_resource type="Script" path="res://test/personal/test_travis/activate_area.gd" id="4_42und"]
+[ext_resource type="PackedScene" uid="uid://cbkvroagayyyc" path="res://game/altar/game_altar.tscn" id="5_yox7k"]
+[ext_resource type="Script" path="res://test/personal/test_travis/altar_connections.gd" id="6_hp83p"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nslve"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_q1r81"]
+sky_material = SubResource("ProceduralSkyMaterial_nslve")
+
+[sub_resource type="Environment" id="Environment_ykcr1"]
+background_mode = 2
+sky = SubResource("Sky_q1r81")
+tonemap_mode = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f313p"]
+render_priority = 0
+shader = ExtResource("1_tmclc")
+shader_parameter/scale = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_lnklg"]
+material = SubResource("ShaderMaterial_f313p")
+flip_faces = true
+radius = 10.0
+height = 20.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_wcnsf"]
+
+[sub_resource type="Animation" id="Animation_2ssmf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_iquft"]
+resource_name = "blackhole"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 20.0, -10.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h670o"]
+_data = {
+"RESET": SubResource("Animation_2ssmf"),
+"blackhole": SubResource("Animation_iquft")
+}
+
+[sub_resource type="QuadMesh" id="QuadMesh_jkfvc"]
+material = ExtResource("2_2k4yw")
+
+[sub_resource type="SphereMesh" id="SphereMesh_2i5b8"]
+material = ExtResource("2_2k4yw")
+
+[sub_resource type="TorusMesh" id="TorusMesh_vv664"]
+material = ExtResource("2_2k4yw")
+
+[sub_resource type="BoxMesh" id="BoxMesh_86wqr"]
+material = ExtResource("2_2k4yw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bxjv7"]
+albedo_color = Color(0.177316, 0.147025, 2.40654e-08, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ikjxw"]
+material = SubResource("StandardMaterial3D_bxjv7")
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_apl3n"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ffr1c"]
+
+[node name="TestTravis" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ykcr1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_lnklg")
+
+[node name="TestCubes" type="Node3D" parent="."]
+
+[node name="TestcubeMesh" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5599, -7.38813, -9.53674e-07)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh2" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5599, 2.18779, -9.53674e-07)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh3" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91915, 2.18779, -9.53674e-07)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh4" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91915, 2.18779, -7.65563)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh5" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.08687, 2.18779, 5.1053)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh6" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.08687, -1.67457, 5.1053)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh7" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72342, -2.99271, -2.79237)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh8" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29187, -1.21232, -2.79237)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="TestcubeMesh9" type="MeshInstance3D" parent="TestCubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.259, -0.539425, -2.57688)
+mesh = SubResource("BoxMesh_wcnsf")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h670o")
+}
+autoplay = "blackhole"
+
+[node name="CyclicSlashes" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9415, 0, 0)
+
+[node name="quad" type="MeshInstance3D" parent="CyclicSlashes"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.248061, 0, 0)
+mesh = SubResource("QuadMesh_jkfvc")
+skeleton = NodePath("../..")
+
+[node name="quad2" type="MeshInstance3D" parent="CyclicSlashes"]
+transform = Transform3D(5, 0, 0, 0, 4.33013, 2.5, 0, -2.5, 4.33013, 3.50932, 0, -1.33375)
+mesh = SubResource("QuadMesh_jkfvc")
+skeleton = NodePath("../..")
+
+[node name="sphere" type="MeshInstance3D" parent="CyclicSlashes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.358, 0, 0)
+mesh = SubResource("SphereMesh_2i5b8")
+skeleton = NodePath("../..")
+
+[node name="torus" type="MeshInstance3D" parent="CyclicSlashes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75088, 0, 0)
+mesh = SubResource("TorusMesh_vv664")
+
+[node name="box" type="MeshInstance3D" parent="CyclicSlashes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2623, 0, 0)
+mesh = SubResource("BoxMesh_86wqr")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_ikjxw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_apl3n")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("3_ebsap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4514, 9.53674e-07, 15.3828)
+
+[node name="ActivateAltar" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2736, 9.53674e-07, 8.71839)
+script = ExtResource("4_42und")
+
+[node name="Label3D" type="Label3D" parent="ActivateAltar"]
+billboard = 1
+text = "Activate Altar"
+font_size = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ActivateAltar"]
+shape = SubResource("BoxShape3D_ffr1c")
+
+[node name="FinishAltar" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2736, 9.53674e-07, 2.87215)
+script = ExtResource("4_42und")
+
+[node name="Label3D" type="Label3D" parent="FinishAltar"]
+billboard = 1
+text = "Purify Altar"
+font_size = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FinishAltar"]
+shape = SubResource("BoxShape3D_ffr1c")
+
+[node name="Altar" parent="." instance=ExtResource("5_yox7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2203, 0, 4.96753)
+altar_power = "test_altar"
+
+[node name="AltarConnections" type="Node" parent="Altar"]
+script = ExtResource("6_hp83p")

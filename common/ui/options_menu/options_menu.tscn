@@ -99,5 +99,10 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Back"
 
+[node name="DeleteSaveDataButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Delete Save Data"
+
 [node name="OptionsMenu" type="CanvasLayer" parent="."]
 visible = false

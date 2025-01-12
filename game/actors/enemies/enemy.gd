@@ -29,6 +29,8 @@ func update_facing() -> void:
 
 ## Face specified direction.
 func face_dir(dir: Vector3) -> void:
+    face_direction(dir)
+    return
     if dir.length() > 0.01:  # Ensure the direction is significant enough to update
         var target_rotation = dir.normalized().angle_to(Vector3.FORWARD)
         # Align character's rotation in the direction of movement
