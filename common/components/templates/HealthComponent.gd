@@ -35,7 +35,12 @@ class_name HealthComponent
         revivable = b
         revivable_changed.emit(revivable)
 
+var is_alive := true
+
+signal died
 signal health_changed(health)
+signal healed(amount)
+signal damaged(amount)
 signal max_health_changed(max_health)
 signal invincible_changed(invincible)
 signal healable_changed(healable)
@@ -43,3 +48,18 @@ signal revivable_changed(revivable)
 
 func set_health_to_max():
     health = max_health
+
+func die():
+    is_alive = false
+    died.emit()
+    
+func damage(amount: float):
+    health -= amount
+    damaged.emit(amount)
+    if is_alive and health <= 0:
+        die()
+    
+
+func heal(amount: float):
+    health += amount
+    healed.emit(amount)

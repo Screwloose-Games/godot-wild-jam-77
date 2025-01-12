@@ -16,6 +16,8 @@ var input_direction: Vector3 = Vector3.FORWARD
 @onready var _player_pcam = %PlayerPhantomCamera3D
 
 @onready var dash_ability: DashAbility = %DashAbility
+@onready var health_component: HealthComponent = %HealthComponent
+
 
 
 func _ready():
@@ -100,3 +102,13 @@ func _set_pcam_rotation(pcam: PhantomCamera3D, event: InputEvent) -> void:
 
         # Change the SpringArm3D node's rotation and rotate around its target
         pcam.set_third_person_rotation_degrees(pcam_rotation_degrees)
+
+func die():
+    died.emit()
+    get_tree().reload_current_scene()
+
+func _on_hurt_box_component_3d_hurt(hit_box: Variant, amount: Variant) -> void:
+    health_component.damage(amount)
+
+func _on_health_component_died() -> void:
+    die()
