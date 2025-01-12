@@ -25,7 +25,7 @@ body:
     attributes:
       label: Save File Path
       description: Provide the full filepath where the texture should be saved.
-      placeholder: "Enter the full file path... model_directory/textures/t_model_name_texture.png"
+      placeholder: "Enter the full file path... model_directory/textures/tex_model_name_texture.png"
     validations:
       required: true
 
@@ -35,7 +35,7 @@ body:
         ## Acceptance Criteria:
 
         - [ ] The texture is saved in `.png` file format.
-        - [ ] The texture file name contains the prefix "t_", is all lowercase, and is underscore separated, i.e. "t_model_name_texture.png"
+        - [ ] The texture file name contains the prefix "tex_", is all lowercase, and is underscore separated, i.e. "tex_model_name_texture.png"
         - [ ] The texture is saved to the specified filepath: `{{file_path}}`.
         - [ ] The texture is opened in Godot to generate the `.import` file.
         - [ ] The texture has been imported in godot (Godot opened) and has the accompanying `.import` file.
@@ -49,7 +49,7 @@ body:
       label: Subtasks
       value: |
         - [ ] The texture is saved in `.png` file format.
-        - [ ] The texture file name contains the prefix "t_", is all lowercase, and is underscore separated, i.e. "t_model_name_texture.png"
+        - [ ] The texture file name contains the prefix "tex_", is all lowercase, and is underscore separated, i.e. "tex_model_name_texture.png"
         - [ ] The texture is saved to the specified filepath: `{{file_path}}`.
         - [ ] The texture is opened in Godot to generate the `.import` file.
         - [ ] The texture has been imported in godot (Godot opened) and has the accompanying `.import` file.

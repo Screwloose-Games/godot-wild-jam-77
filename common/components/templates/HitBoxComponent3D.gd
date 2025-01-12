@@ -36,11 +36,17 @@ func activate() -> void:
     if not area_entered.is_connected(_on_area_entered):
         area_entered.connect(_on_area_entered)
     monitoring = true
+    if is_one_shot:
+        var overlapping = get_overlapping_areas()
+        for area in overlapping:
+            if area is HurtBoxComponent3D:
+                apply_hit(area)
+                
 
 func deactivate() -> void:
     if area_entered.is_connected(_on_area_entered):
         area_entered.disconnect(_on_area_entered)
-    monitoring = false
+    set_deferred("monitoring", false)
 
 func one_shot() -> void:
     if not is_one_shot:
