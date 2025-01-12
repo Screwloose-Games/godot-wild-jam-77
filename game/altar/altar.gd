@@ -14,6 +14,11 @@ var is_purified: bool = false
 
 var spawned_enemies: Array[Node] = []
 
+
+func _ready():
+    pass
+
+
 # Activate the altar
 func activate(player: PlayerController):
     if is_active or is_purified:
@@ -55,3 +60,9 @@ func grant_power(player: PlayerController):
 
 func _on_interactable_area_3d_interacted(player: PlayerController) -> void:
     activate(player)
+
+
+## Call this function after the player purifies the altar and kills all the baddies
+func purify_altar():
+    purified.emit()
+    CheckpointMgr.altar_completed(altar_power)
