@@ -1,4 +1,5 @@
 extends Actor3D
+class_name PlayerController
 
 @export var jump_velocity = 4.5
 @export var mouse_sensitivity: float = 0.05

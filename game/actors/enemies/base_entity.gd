@@ -5,15 +5,8 @@ extends Actor3D
 
 signal entity_activated
 
-enum Factions {
-    FACTION_ENEMY,
-    FACTION_PLAYER
-}
-
-@export var max_health: int = 100
 @export var damage_amount: int = 25
 @export var movement_speed: float = 5
-@export var faction: Factions = Factions.FACTION_ENEMY
 
 # Delay between when the spawner starts and when this entity should be spawned/activated
 @export var delay_after_spawning_secs: int = 2
