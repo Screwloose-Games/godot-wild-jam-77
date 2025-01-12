@@ -1,8 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cfuurqxwkqaqg"]
-
-[ext_resource type="Shader" path="res://examples/shaders/grayscale.gdshader" id="1_n3qxb"]
-
-[resource]
-shader = ExtResource("1_n3qxb")
-shader_parameter/weighted = true
-shader_parameter/blue_intensity = 0.1

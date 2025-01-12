@@ -1,1 +1,0 @@
-extends Actor3D

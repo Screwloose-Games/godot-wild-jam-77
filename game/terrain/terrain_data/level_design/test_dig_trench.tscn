@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxn55biid4qch"]
+
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_ykjfe"]
+[ext_resource type="Resource" path="res://game/terrain/terrain_data/level_design/terrain_data/data.hterrain" id="2_bwyqn"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_etx0e"]
+
+[sub_resource type="Resource" id="Resource_jv7tk"]
+script = ExtResource("3_etx0e")
+mode = 0
+textures = [[], []]
+
+[node name="TestDigTrench" type="Node3D"]
+
+[node name="HTerrain" type="Node3D" parent="."]
+script = ExtResource("1_ykjfe")
+ambient_wind = 0.335
+map_scale = Vector3(1, 0.2, 1)
+_terrain_data = ExtResource("2_bwyqn")
+chunk_size = 16
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_jv7tk")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
