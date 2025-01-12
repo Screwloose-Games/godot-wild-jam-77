@@ -799,8 +799,8 @@ text = "Exit"
 [node name="Settings Menu" type="AspectRatioContainer" parent="."]
 layout_mode = 0
 offset_left = 1152.0
-offset_right = 3072.0
-offset_bottom = 1080.0
+offset_right = 2304.0
+offset_bottom = 648.0
 script = ExtResource("2_d26fo")
 
 [node name="Audio Control" type="Control" parent="Settings Menu"]

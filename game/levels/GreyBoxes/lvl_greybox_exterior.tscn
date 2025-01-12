@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://64bbsx4vgwj6"]
+
+[node name="LvlGreyboxExterior" type="Node3D"]
+
+[node name="CSGTorus_Wall" type="CSGTorus3D" parent="."]
+transform = Transform3D(-0.173648, 0, 0.984808, 0, 77.68, 0, -0.984808, 0, -0.173648, 0.199596, 82.6604, 0.0177231)
+use_collision = true
+inner_radius = 400.0
+outer_radius = 402.775
+sides = 16
+ring_sides = 4
+smooth_faces = false
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGTorus_Wall"]
+transform = Transform3D(800, 0, 3.05176e-05, 0, 0.8, 0, -3.05176e-05, 0, 800, 0, -1.86875, 0)
+sides = 16
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.575695, -0.744475, -0.33813, -0.0082594, -0.418805, 0.908039, -0.817623, -0.519961, -0.247253, 0, 24.3778, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.386821, -0.81417, 0.43301, -0.426454, 0.258396, 0.866815, -0.817623, -0.519961, -0.247253, 0, 24.3778, 0)
