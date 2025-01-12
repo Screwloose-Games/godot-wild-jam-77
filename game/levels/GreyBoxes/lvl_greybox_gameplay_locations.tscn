@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dehujejnxwt3k"]
+
+[node name="lvl_Greybox_GameplayLocations" type="Node3D"]
+
+[node name="GateLocation" type="CSGTorus3D" parent="."]
+transform = Transform3D(-7.03264e-07, 16.0888, 0, -16.0888, -7.03264e-07, 0, 0, 0, 16.0888, 110.073, 17.7548, -154.943)
+inner_radius = 0.785
+
+[node name="GateLocation2" type="CSGTorus3D" parent="."]
+transform = Transform3D(3.81997e-07, -8.73908, 18.5917, -20.5432, -8.97972e-07, 2.93133e-14, 8.12669e-07, -18.5917, -8.73908, -320.751, 14.4861, -5.81395)
+inner_radius = 0.785
+
+[node name="GateLocation3" type="CSGTorus3D" parent="."]
+transform = Transform3D(-8.48469e-07, 19.4107, 17.1104, -25.8755, -1.13106e-06, -9.00556e-14, 7.47921e-07, -17.1104, 19.4107, -80.3064, 7.92496, 200.996)
+inner_radius = 0.785
+
+[node name="AlterLocation1" type="CSGSphere3D" parent="."]
+transform = Transform3D(15.7775, 0, 0, 0, 15.7775, 0, 0, 0, 15.7775, 146.751, 5.36776, 38.3443)
+radius = 0.502018
+
+[node name="AlterLocation2" type="CSGSphere3D" parent="."]
+transform = Transform3D(15.7775, 0, 0, 0, 15.7775, 0, 0, 0, 15.7775, 109.99, 86.3135, -279.855)
+radius = 0.502018
+
+[node name="AlterLocation3" type="CSGSphere3D" parent="."]
+transform = Transform3D(15.7775, 0, 0, 0, 15.7775, 0, 0, 0, 15.7775, -309.288, 0.873215, 169.347)
+radius = 0.502018
+
+[node name="SmallAlterLocation1" type="CSGSphere3D" parent="."]
+transform = Transform3D(7.9517, 0, 0, 0, 15.7775, 0, 0, 0, 8.16448, 157.863, 5.36774, 298.457)
+radius = 0.502018
+
+[node name="SmallAlterLocation2" type="CSGSphere3D" parent="."]
+transform = Transform3D(7.9517, 0, 0, 0, 15.7775, 0, 0, 0, 8.16448, 23.0408, 2.77704, -119.925)
+radius = 0.502018
+
+[node name="SmallAlterLocation3" type="CSGSphere3D" parent="."]
+transform = Transform3D(7.9517, 0, 0, 0, 15.7775, 0, 0, 0, 8.16448, -367.778, 37.94, -65.9416)
+radius = 0.502018
+
+[node name="SmallAlterLocation4" type="CSGSphere3D" parent="."]
+transform = Transform3D(7.9517, 0, 0, 0, 15.7775, 0, 0, 0, 8.16448, -128.752, 87.309, -275.454)
+radius = 0.502018
+
+[node name="SmallAlterLocation5" type="CSGSphere3D" parent="."]
+transform = Transform3D(7.9517, 0, 0, 0, 15.7775, 0, 0, 0, 8.16448, -127.167, 1.50707, 53.1882)
+radius = 0.502018
+
+[node name="SmallAlterLocation6" type="CSGSphere3D" parent="."]
+transform = Transform3D(7.9517, 0, 0, 0, 15.7775, 0, 0, 0, 8.16448, -105.829, 1.50707, 337.878)
+radius = 0.502018
