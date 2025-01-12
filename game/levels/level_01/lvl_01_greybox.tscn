@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cy5lpl5j8n011"]
 
-[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://local_only/examples (2)/3d/actors/player_character/player_character.tscn" id="2_6y4ts"]
+[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="2_6y4ts"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_qr7pd"]
 
