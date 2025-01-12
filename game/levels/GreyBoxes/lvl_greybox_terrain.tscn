@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://r3yrg0rjgqki"]
+[gd_scene load_steps=11 format=3 uid="uid://r3yrg0rjgqki"]
 
 [ext_resource type="PackedScene" uid="uid://64bbsx4vgwj6" path="res://game/levels/GreyBoxes/lvl_greybox_exterior.tscn" id="1_0o1u8"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="2_7dkrw"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://ylm5wqjw4y16" path="res://game/terrain/terrain_data/level_design/autum_leaves/Transparent_Autumn_Leaves.png" id="6_kg6an"]
 [ext_resource type="PackedScene" uid="uid://3pg62i5buy4t" path="res://game/levels/GreyBoxes/lvl_greybox_lake.tscn" id="7_nj5s5"]
 [ext_resource type="Texture2D" uid="uid://cp1lgj526f6lu" path="res://splash_screen.png" id="7_ot6ji"]
-[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="8_jpyx8"]
 
 [sub_resource type="Resource" id="Resource_67thv"]
 script = ExtResource("4_c82ep")
@@ -47,6 +46,3 @@ shader_params/u_tile_reduction = null
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 transform = Transform3D(232.602, 0, 0, 0, 1, 0, 0, 0, 173.302, 155.26, -3.22186, 0)
 mesh = SubResource("PlaneMesh_61rtp")
-
-[node name="PlayerCharacter" parent="." instance=ExtResource("8_jpyx8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.834, 52.85, -207.667)
