@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqp08x75b1dnb"]
+
+[ext_resource type="PackedScene" uid="uid://r3yrg0rjgqki" path="res://game/levels/GreyBoxes/lvl_greybox_terrain.tscn" id="1_kassj"]
+
+[node name="BlockingVolumes_Scene" type="Node3D"]
+
+[node name="MiddleWall_BlockingVolume" type="CSGBox3D" parent="."]
+transform = Transform3D(0.987122, 0, 0.159967, 0, 1, 0, -0.159967, 0, 0.987122, -55.1932, 37.4877, -31.0506)
+use_collision = true
+size = Vector3(50, 50, 293.105)
+
+[node name="MiddleWall_BlockingVolume2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.987122, 0, 0.159967, 0, 1, 0, -0.159967, 0, 0.987122, 13.1534, 37.4877, 331.156)
+use_collision = true
+size = Vector3(50, 50, 168.203)
+
+[node name="MiddleWall_BlockingVolume3" type="CSGBox3D" parent="."]
+transform = Transform3D(0.987122, 0, 0.159967, 0, 1, 0, -0.159967, 0, 0.987122, 5.1205, 37.4877, 177.225)
+use_collision = true
+size = Vector3(18.939, 50, 168.203)
+
+[node name="CliffPathway_BV_1" type="CSGBox3D" parent="."]
+transform = Transform3D(0.355025, 0, 0.934857, 0, 1, 0, -0.934857, 0, 0.355025, 35.0978, 16.0557, -159.859)
+use_collision = true
+size = Vector3(16.9233, 50, 110.797)
+
+[node name="CliffPathway_BV_2" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.149208, 0, 0.988806, 0, 1, 0, -0.988806, 0, -0.149208, -90.2831, 16.0557, -168.838)
+use_collision = true
+size = Vector3(17.5422, 50, 162.518)
+
+[node name="CliffPathway_BV_3" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.623621, 0, 0.781727, 0, 1, 0, -0.781727, 0, -0.623621, -231.954, 16.0557, -106.21)
+use_collision = true
+size = Vector3(17.5422, 50, 169.924)
+
+[node name="CliffPathway_BV_4" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.389414, 0, 0.921063, 0, 1, 0, -0.921063, 0, -0.389414, -50.5586, 32.4144, -219.979)
+use_collision = true
+size = Vector3(10.5607, 82.7173, 71.8894)
+
+[node name="BrambleEntrance_BV_1" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.993399, 0, -0.114712, 0, 1, 0, 0.114712, 0, -0.993399, -364.325, 27.7879, 14.3422)
+use_collision = true
+size = Vector3(63.244, 73.4644, 94.6385)
+
+[node name="BrambleEntrance_BV_2" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.993399, 0, -0.114712, 0, 1, 0, 0.114712, 0, -0.993399, -261.716, 19.0583, -21.3582)
+use_collision = true
+size = Vector3(63.244, 73.4644, 59.2175)
+
+[node name="CliffEdge_BV_1" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.626672, 0, 0.779283, 0, 1, 0, -0.779283, 0, -0.626672, -228.714, 53.4618, -158.834)
+use_collision = true
+size = Vector3(17.5422, 124.812, 177.666)
+
+[node name="CliffEdge_BV_2" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.470735, 0, 0.882275, 0, 1, 0, -0.882275, 0, -0.470735, -109.182, 53.2567, -239.81)
+use_collision = true
+size = Vector3(17.5422, 124.402, 116.843)
+
+[node name="CliffEdge_BV_3" type="CSGBox3D" parent="."]
+transform = Transform3D(0.336241, 0, 0.941776, 0, 1, 0, -0.941776, 0, 0.336241, 35.69, 53.2567, -201.888)
+use_collision = true
+size = Vector3(17.5422, 124.402, 163.375)
+
+[node name="CliffEdge_BV_4" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.441992, 0, 0.89702, 0, 1, 0, -0.89702, 0, -0.441992, 132.421, 53.2567, -201.264)
+use_collision = true
+size = Vector3(17.5422, 124.402, 84.7963)
+
+[node name="CliffEdge_BV_5" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.91072, 0, 0.413025, 0, 1, 0, -0.413025, 0, -0.91072, 186.266, 53.2567, -252.867)
+use_collision = true
+size = Vector3(17.5422, 124.402, 65.1755)
+
+[node name="CliffEdge_BV_6" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.988547, 0, -0.150916, 0, 1, 0, 0.150916, 0, -0.988547, 194.437, 53.2567, -321.315)
+use_collision = true
+size = Vector3(17.5422, 124.402, 72.6761)
+
+[node name="LvlGreyboxTerrain" parent="." instance=ExtResource("1_kassj")]
