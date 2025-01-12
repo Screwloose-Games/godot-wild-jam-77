@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_ua2eq"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_ye3g6"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_3hxja"]
-[ext_resource type="Script" path="res://local_only/examples (2)/3d/actors/abilities/dash_ability.gd" id="7_ufqhf"]
+[ext_resource type="Script" path="res://game/actors/abilities/dash_ability.gd" id="7_ufqhf"]
 [ext_resource type="PackedScene" uid="uid://b8b6q7g4bsaw5" path="res://common/ui/pause_menu/pause_menu.tscn" id="8_kybtq"]
 
 [sub_resource type="Resource" id="Resource_w1058"]
