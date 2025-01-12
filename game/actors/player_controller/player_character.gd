@@ -22,7 +22,19 @@ var input_direction: Vector3 = Vector3.FORWARD
 func _ready():
     if _player_pcam.get_follow_mode() == _player_pcam.FollowMode.THIRD_PERSON:
         Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-        
+
+func get_input_direction():
+    var input_dir := Input.get_vector("left", "right", "forward", "back")
+    var cam_dir: Vector3 = -_camera.global_transform.basis.z
+    var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+    #var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+    if direction:
+        var move_dir: Vector3 = Vector3.ZERO
+        move_dir.x = direction.x
+        move_dir.z = direction.z
+        input_direction = move_dir
+
 func _physics_process(delta: float) -> void:
     if Input.is_action_just_pressed("dash"):
         dash_ability.dash()
