@@ -64,18 +64,20 @@ func _physics_process(delta: float) -> void:
     var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
     #var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+    face_direction(-_camera.transform.basis.y)
     if direction:
         var move_dir: Vector3 = Vector3.ZERO
         move_dir.x = direction.x
         move_dir.z = direction.z
         input_direction = move_dir
 
-        move_dir = move_dir.rotated(Vector3.UP, _camera.rotation.y).normalized()
+        #move_dir = move_dir.rotated(Vector3.UP, _camera.rotation.y).normalized()
         velocity.x = move_dir.x * speed
         velocity.z = move_dir.z * speed
     else:
         velocity.x = move_toward(velocity.x, 0, speed)
         velocity.z = move_toward(velocity.z, 0, speed)
+    
 
     move_and_slide()
 

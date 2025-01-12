@@ -30,7 +30,8 @@ near = 0.05
 far = 4000.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3wcgw"]
-height = 1.8
+radius = 0.2
+height = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ki6gd"]
 
@@ -38,6 +39,8 @@ height = 1.8
 radius = 1.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_acpq1"]
+radius = 0.2
+height = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_jbj6e"]
 
@@ -46,7 +49,7 @@ collision_mask = 15
 script = ExtResource("1_lj3x0")
 
 [node name="CameraTarget" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46525, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.398186, 0.978477, 0)
 
 [node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
@@ -55,7 +58,7 @@ health = 100.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3.21524, 3.03107)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.398186, 1.72847, 1.29903)
 top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -65,7 +68,7 @@ script = ExtResource("3_30hor")
 
 [node name="PlayerPhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.866023, 0.499997, 0, -0.499999, 0.866021, 0, 3.21524, 3.03107)
+transform = Transform3D(1, 0, 0, 0, 0.866023, 0.499997, 0, -0.499999, 0.866021, 0.398186, 1.72847, 1.29903)
 script = ExtResource("4_ua2eq")
 priority = 10
 follow_mode = 6
@@ -74,11 +77,11 @@ tween_resource = SubResource("Resource_w1058")
 tween_on_load = false
 camera_3d_resource = SubResource("Resource_jke2e")
 follow_damping = true
-follow_distance = 3.5
-spring_length = 3.5
+follow_distance = 1.5
+spring_length = 1.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.926301, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.511742, 0)
 shape = SubResource("CapsuleShape3D_3wcgw")
 
 [node name="DashAbility" type="Node" parent="."]
@@ -109,12 +112,12 @@ shape = SubResource("CylinderShape3D_eemlp")
 [node name="Visual" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Visual"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509166, 0)
 mesh = SubResource("CapsuleMesh_acpq1")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Visual"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.4821, -0.378365)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.714106, -0.11625)
 mesh = SubResource("BoxMesh_jbj6e")
 skeleton = NodePath("../..")
 

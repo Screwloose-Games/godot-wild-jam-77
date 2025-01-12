@@ -53,7 +53,7 @@ Player=""
 
 [gui]
 
-theme/custom="res://local_only/examples (2)/themes/kenneyUI.tres"
+theme/custom="res://common/themes/global_theme.tres"
 
 [input]
 

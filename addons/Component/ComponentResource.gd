@@ -25,7 +25,8 @@ var components_singleton: Node = null:
 static func get_autoload(node_path: NodePath) -> Variant:
     
     if !Engine.get_main_loop().root.has_node(node_path):
-        push_error(node_path, ' Autoload FALSE, enable provided Components.gd autoload')
+        # push_error(node_path, ' Autoload FALSE, enable provided Components.gd autoload')
+        # TODO: fix so this error doesn't happen when you open the editor.
         return null
         
     return Engine.get_main_loop().root.get_node(node_path)

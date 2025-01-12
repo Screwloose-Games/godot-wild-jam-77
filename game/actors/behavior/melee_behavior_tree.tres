@@ -17,8 +17,8 @@ var/target/hint = 0
 var/target/hint_string = ""
 
 [sub_resource type="BTRandomWait" id="BTRandomWait_844e6"]
-min_duration = 0.7
-max_duration = 1.5
+min_duration = 0.1
+max_duration = 0.2
 
 [sub_resource type="BTSequence" id="BTSequence_3mlft"]
 custom_name = "Pause before action"
