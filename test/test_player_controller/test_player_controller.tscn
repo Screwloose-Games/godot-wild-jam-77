@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://blee6f7bxbi76"]
 
-[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://examples/3d/actors/player_character/player_character.tscn" id="1_bpflk"]
+[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://local_only/examples (2)/3d/actors/player_character/player_character.tscn" id="1_bpflk"]
 
 [node name="TestPlayerController" type="Node3D"]
 
