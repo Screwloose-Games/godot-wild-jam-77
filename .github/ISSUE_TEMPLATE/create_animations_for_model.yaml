@@ -11,9 +11,9 @@ body:
       description: Provide preciose names and descriptions of the animations to be created.
       placeholder: "Enter the texture description... Grungy, dirty, bright...Character description..."
       value: |
-      - [ ] Walk - Walking with a pep in their step.
-      - [ ] Run - Running, leaniung forward.
-      - [ ] Dodge and dip right - Dodging to the rightt with a quick dip and spin.
+        - [ ] Walk - Walking with a pep in their step.
+        - [ ] Run - Running, leaniung forward.
+        - [ ] Dodge and dip right - Dodging to the rightt with a quick dip and spin.
     validations:
       required: true
 
