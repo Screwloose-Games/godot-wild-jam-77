@@ -1,7 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3a2xah1xdf3e"]
+[gd_scene load_steps=24 format=3 uid="uid://bvjmr48xurpu1"]
 
-[ext_resource type="Shader" path="res://common/art/shaders/black_hole.gdshader" id="1_ds48b"]
-[ext_resource type="Material" uid="uid://ipm1muq3hbrf" path="res://common/art/materials/cyclic_slash.material" id="2_nedle"]
+[ext_resource type="Shader" path="res://common/art/shaders/black_hole.gdshader" id="1_tmclc"]
+[ext_resource type="Material" uid="uid://ipm1muq3hbrf" path="res://common/art/materials/cyclic_slash.material" id="2_2k4yw"]
+[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="3_ebsap"]
+[ext_resource type="Script" path="res://test/personal/test_travis/activate_area.gd" id="4_42und"]
+[ext_resource type="PackedScene" uid="uid://cbkvroagayyyc" path="res://game/altar/game_altar.tscn" id="5_yox7k"]
+[ext_resource type="Script" path="res://test/personal/test_travis/altar_connections.gd" id="6_hp83p"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nslve"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -17,7 +21,7 @@ tonemap_mode = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f313p"]
 render_priority = 0
-shader = ExtResource("1_ds48b")
+shader = ExtResource("1_tmclc")
 shader_parameter/scale = 0.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_lnklg"]
@@ -66,16 +70,28 @@ _data = {
 }
 
 [sub_resource type="QuadMesh" id="QuadMesh_jkfvc"]
-material = ExtResource("2_nedle")
+material = ExtResource("2_2k4yw")
 
 [sub_resource type="SphereMesh" id="SphereMesh_2i5b8"]
-material = ExtResource("2_nedle")
+material = ExtResource("2_2k4yw")
 
 [sub_resource type="TorusMesh" id="TorusMesh_vv664"]
-material = ExtResource("2_nedle")
+material = ExtResource("2_2k4yw")
 
 [sub_resource type="BoxMesh" id="BoxMesh_86wqr"]
-material = ExtResource("2_nedle")
+material = ExtResource("2_2k4yw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bxjv7"]
+albedo_color = Color(0.177316, 0.147025, 2.40654e-08, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ikjxw"]
+material = SubResource("StandardMaterial3D_bxjv7")
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_apl3n"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ffr1c"]
 
 [node name="TestTravis" type="Node3D"]
 
@@ -142,9 +158,6 @@ libraries = {
 }
 autoplay = "blackhole"
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.538806, -0.141186, 0.830514, 0, 0.985856, 0.167594, -0.84243, -0.0903008, 0.531186, 19.78, 0.491423, 1.79891)
-
 [node name="CyclicSlashes" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9415, 0, 0)
 
@@ -170,3 +183,46 @@ mesh = SubResource("TorusMesh_vv664")
 [node name="box" type="MeshInstance3D" parent="CyclicSlashes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2623, 0, 0)
 mesh = SubResource("BoxMesh_86wqr")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_ikjxw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_apl3n")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("3_ebsap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4514, 9.53674e-07, 15.3828)
+
+[node name="ActivateAltar" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2736, 9.53674e-07, 8.71839)
+script = ExtResource("4_42und")
+
+[node name="Label3D" type="Label3D" parent="ActivateAltar"]
+billboard = 1
+text = "Activate Altar"
+font_size = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ActivateAltar"]
+shape = SubResource("BoxShape3D_ffr1c")
+
+[node name="FinishAltar" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2736, 9.53674e-07, 2.87215)
+script = ExtResource("4_42und")
+
+[node name="Label3D" type="Label3D" parent="FinishAltar"]
+billboard = 1
+text = "Purify Altar"
+font_size = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FinishAltar"]
+shape = SubResource("BoxShape3D_ffr1c")
+
+[node name="Altar" parent="." instance=ExtResource("5_yox7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2203, 0, 4.96753)
+altar_power = "test_altar"
+
+[node name="AltarConnections" type="Node" parent="Altar"]
+script = ExtResource("6_hp83p")

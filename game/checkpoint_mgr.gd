@@ -28,7 +28,10 @@ func arrived_at_altar(altar_power: String):
 
 ## Call after a player completes the altar's challenge
 func altar_completed(completed_altar_power: String):
-    completed_altars.append(completed_altar_power)
+    # Add this altar only if not already in
+    if not completed_altars.has(completed_altar_power):
+        completed_altars.append(completed_altar_power)
+        
     latest_altar = completed_altar_power
     
     print("Saving game...")
