@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbkvroagayyyc"]
+[gd_scene load_steps=5 format=3 uid="uid://cbkvroagayyyc"]
 
 [ext_resource type="Script" path="res://game/altar/altar.gd" id="1_5n8dj"]
 [ext_resource type="Script" path="res://common/components/3d/interactable_area_3d.gd" id="2_gxdt4"]
@@ -7,9 +7,12 @@
 height = 1.27566
 radius = 1.06451
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_t5i7s"]
+radius = 6.499
+
 [node name="Altar" type="Node3D" node_paths=PackedStringArray("assigned_enemies")]
 script = ExtResource("1_5n8dj")
-assigned_enemies = [NodePath(""), NodePath("")]
+assigned_enemies = [null, null]
 
 [node name="InteractableArea3D" type="Area3D" parent="."]
 collision_layer = 16
@@ -26,4 +29,21 @@ collision_layer = 4
 collision_mask = 7
 size = Vector3(1, 0.166504, 1)
 
+[node name="enemydetect" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enemydetect"]
+shape = SubResource("SphereShape3D_t5i7s")
+
+[node name="border" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="border"]
+shape = SubResource("SphereShape3D_t5i7s")
+
 [connection signal="interacted" from="InteractableArea3D" to="." method="_on_interactable_area_3d_interacted"]
+[connection signal="area_shape_entered" from="enemydetect" to="." method="_on_enemydetect_area_shape_entered"]
+[connection signal="area_shape_exited" from="enemydetect" to="." method="_on_enemydetect_area_shape_exited"]
+[connection signal="area_shape_entered" from="border" to="." method="_on_border_area_shape_entered"]
