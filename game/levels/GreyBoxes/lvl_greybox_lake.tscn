@@ -1,20 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://3pg62i5buy4t"]
+[gd_scene load_steps=2 format=3 uid="uid://3pg62i5buy4t"]
 
 [ext_resource type="PackedScene" uid="uid://64bbsx4vgwj6" path="res://game/levels/GreyBoxes/lvl_greybox_exterior.tscn" id="1_0eljy"]
-[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://examples/3d/actors/player_character/player_character.tscn" id="2_ngqho"]
 
 [node name="LvlGreyboxLake" type="Node3D"]
 
 [node name="LvlGreyboxExterior" parent="." instance=ExtResource("1_0eljy")]
+visible = false
 
 [node name="CSG_Starting_Tunnel" type="CSGCylinder3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 391.964, 0, 0)
 radius = 12.4275
-
-[node name="PlayerCharacter" parent="." instance=ExtResource("2_ngqho")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 387.435, 0.149599, 1.49174)
-speed = 10.0
-jump_velocity = 6.5
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 351.587)
