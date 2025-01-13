@@ -5,26 +5,38 @@
 [ext_resource type="PackedScene" uid="uid://crco2b1srkhyo" path="res://game/actors/enemies/game_melee_enemy.tscn" id="4_sl8t0"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_v6ary"]
-vertices = PackedVector3Array(-15.6379, 0.10678, -26.1562, -15.6379, 0.10678, 5.3438, 3.61206, 0.10678, 5.3438, 3.61206, 0.10678, -26.1562)
+vertices = PackedVector3Array(-105.02, 0.538625, -137.963, -105.02, 0.538625, 41.5374, 119.23, 0.538625, 41.5374, 119.23, 0.538625, -137.963)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="TestAltar" type="Node3D"]
 
 [node name="Altar" parent="." node_paths=PackedStringArray("assigned_enemies") instance=ExtResource("1_4r4mg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.76442, 4.76837e-07, -3.61183)
-assigned_enemies = [NodePath("../MeleeEnemy"), null]
+assigned_enemies = [NodePath("../MeleeEnemy"), NodePath("../MeleeEnemy2"), NodePath("../MeleeEnemy3")]
+altar_power = "test_power"
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_v6ary")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.06824, -1.11563, -10.3915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1151, -0.683784, -48.2376)
 use_collision = true
-size = Vector3(20.1394, 1.55518, 32.5294)
+size = Vector3(225.271, 1.55518, 180.45)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_cw2n0")]
 
 [node name="MeleeEnemy" parent="." instance=ExtResource("4_sl8t0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.46675, -0.33804, 0.68258)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.36918, 0.129914, 9.61421)
+turning_speed = 2.0
+
+[node name="MeleeEnemy2" parent="." instance=ExtResource("4_sl8t0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40914, 0.129914, 9.61421)
+delay_after_spawning_secs = 5.0
+turning_speed = 2.0
+
+[node name="MeleeEnemy3" parent="." instance=ExtResource("4_sl8t0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2235, 0.129914, -22.4539)
+delay_after_spawning_secs = 10.0
+turning_speed = 2.0

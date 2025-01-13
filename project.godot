@@ -36,6 +36,7 @@ SceneManager="*res://globals/scene_manager.gd"
 GameSettings="*res://globals/game_settings.tscn"
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+CheckpointMgr="*res://game/checkpoint_mgr.gd"
 
 [display]
 
@@ -52,7 +53,7 @@ Player=""
 
 [gui]
 
-theme/custom="res://local_only/examples (2)/themes/kenneyUI.tres"
+theme/custom="res://common/themes/global_theme.tres"
 
 [input]
 

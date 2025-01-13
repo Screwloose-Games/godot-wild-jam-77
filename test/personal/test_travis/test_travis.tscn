@@ -1,7 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3a2xah1xdf3e"]
+[gd_scene load_steps=51 format=3 uid="uid://b3a2xah1xdf3e"]
 
 [ext_resource type="Shader" path="res://common/art/shaders/black_hole.gdshader" id="1_ds48b"]
 [ext_resource type="Material" uid="uid://ipm1muq3hbrf" path="res://common/art/materials/cyclic_slash.material" id="2_nedle"]
+[ext_resource type="Texture2D" uid="uid://e2mxlaqd8oti" path="res://common/art/textures/tex_dark_grass_64.png" id="3_083c2"]
+[ext_resource type="Texture2D" uid="uid://dr1fhinnxe2j2" path="res://common/art/textures/tex_ireland_grass_64.png" id="4_57iqa"]
+[ext_resource type="Texture2D" uid="uid://ckwnw2xo8hgyi" path="res://common/art/textures/tex_stone_wall2.png" id="5_hf035"]
+[ext_resource type="Texture2D" uid="uid://dcg45ddd2qwrq" path="res://common/art/textures/tex_stone_wall.png" id="6_4xku5"]
+[ext_resource type="Texture2D" uid="uid://brvj6q1al8y6o" path="res://common/art/textures/tex_seastack_64.png" id="7_vy8ly"]
+[ext_resource type="Shader" path="res://common/art/shaders/stylized_depthfade_water.gdshader" id="8_iwecs"]
+[ext_resource type="Shader" path="res://common/art/shaders/pixelated_stylized_depthfade_water.gdshader" id="9_a0hvh"]
+[ext_resource type="Texture2D" uid="uid://mximnxiwi46y" path="res://common/art/textures/tex_frothy_water.png" id="10_igvri"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nslve"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -28,6 +36,21 @@ height = 20.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_wcnsf"]
 
+[sub_resource type="Animation" id="Animation_2ssmf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_iquft"]
 resource_name = "blackhole"
 length = 15.0
@@ -42,21 +65,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 20.0, -10.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_2ssmf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h670o"]
@@ -76,6 +84,137 @@ material = ExtResource("2_nedle")
 
 [sub_resource type="BoxMesh" id="BoxMesh_86wqr"]
 material = ExtResource("2_nedle")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ptki"]
+albedo_texture = ExtResource("3_083c2")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_emnlu"]
+material = SubResource("StandardMaterial3D_6ptki")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68qp0"]
+albedo_texture = ExtResource("4_57iqa")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_f68rd"]
+material = SubResource("StandardMaterial3D_68qp0")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hogac"]
+load_path = "res://.godot/imported/tex_dirt_floor.png-be6f006fe86e83028df37bf5a688c441.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70b4t"]
+albedo_texture = SubResource("CompressedTexture2D_hogac")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_t8fvp"]
+material = SubResource("StandardMaterial3D_70b4t")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qb2lp"]
+albedo_texture = ExtResource("5_hf035")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_nolj0"]
+material = SubResource("StandardMaterial3D_qb2lp")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lo5gp"]
+albedo_texture = ExtResource("6_4xku5")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gsdan"]
+load_path = "res://.godot/imported/tex_stone_wall2.png-62099da9a621f073287f5aaa0a168764.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_on2nd"]
+albedo_texture = SubResource("CompressedTexture2D_gsdan")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_82pss"]
+material = SubResource("StandardMaterial3D_on2nd")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sx7k1"]
+albedo_texture = ExtResource("7_vy8ly")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_cjfjk"]
+material = SubResource("StandardMaterial3D_sx7k1")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1dvwg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rv5vh"]
+seamless = true
+noise = SubResource("FastNoiseLite_1dvwg")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ite7m"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a1idn"]
+seamless = true
+noise = SubResource("FastNoiseLite_ite7m")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h0jis"]
+render_priority = 0
+shader = ExtResource("8_iwecs")
+shader_parameter/speed = 0.01
+shader_parameter/color = Color(1.2514e-06, 0.26411, 0.227555, 1)
+shader_parameter/deep_water = Color(2.35841e-06, 0, 0.685646, 1)
+shader_parameter/beer_law_factor = 2.0
+shader_parameter/_distance = 0.0
+shader_parameter/edge_color = Color(4.33177e-06, 0.752467, 0.754283, 1)
+shader_parameter/edge_scale = -4.0
+shader_parameter/near = 0.1
+shader_parameter/far = 100.0
+shader_parameter/wave_strength = Vector2(0.5, 0.25)
+shader_parameter/wave_frequ = Vector2(12, 12)
+shader_parameter/time_factor = Vector2(1, 2)
+shader_parameter/noise1 = SubResource("NoiseTexture2D_rv5vh")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_a1idn")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qoktg"]
+material = SubResource("ShaderMaterial_h0jis")
+size = Vector2(100, 100)
+subdivide_width = 10
+subdivide_depth = 10
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dgaet"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_726yn"]
+seamless = true
+noise = SubResource("FastNoiseLite_dgaet")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kk6u4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_um4f1"]
+seamless = true
+noise = SubResource("FastNoiseLite_kk6u4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3xosp"]
+render_priority = 0
+shader = ExtResource("9_a0hvh")
+shader_parameter/speed = 0.01
+shader_parameter/color = Color(1.2514e-06, 0.26411, 0.227555, 1)
+shader_parameter/deep_water = Color(2.35841e-06, 0, 0.685646, 1)
+shader_parameter/beer_law_factor = 2.0
+shader_parameter/_distance = 0.0
+shader_parameter/edge_color = Color(4.33177e-06, 0.752467, 0.754283, 1)
+shader_parameter/edge_scale = -4.0
+shader_parameter/near = 0.1
+shader_parameter/far = 100.0
+shader_parameter/wave_strength = Vector2(0.5, 0.25)
+shader_parameter/wave_frequ = Vector2(12, 12)
+shader_parameter/time_factor = Vector2(1, 2)
+shader_parameter/uv_scale = 10.0
+shader_parameter/noise1 = SubResource("NoiseTexture2D_726yn")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_um4f1")
+shader_parameter/PIXELATED_IMAGE = ExtResource("10_igvri")
+
+[sub_resource type="QuadMesh" id="QuadMesh_hbko8"]
+material = SubResource("ShaderMaterial_3xosp")
+size = Vector2(100, 100)
+subdivide_width = 10
+subdivide_depth = 10
 
 [node name="TestTravis" type="Node3D"]
 
@@ -143,7 +282,7 @@ libraries = {
 autoplay = "blackhole"
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.538806, -0.141186, 0.830514, 0, 0.985856, 0.167594, -0.84243, -0.0903008, 0.531186, 19.78, 0.491423, 1.79891)
+transform = Transform3D(0.538806, -0.141186, 0.830515, 0, 0.985856, 0.167594, -0.84243, -0.0903006, 0.531185, 21.2607, 0.979563, 8.13509)
 
 [node name="CyclicSlashes" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9415, 0, 0)
@@ -170,3 +309,41 @@ mesh = SubResource("TorusMesh_vv664")
 [node name="box" type="MeshInstance3D" parent="CyclicSlashes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2623, 0, 0)
 mesh = SubResource("BoxMesh_86wqr")
+
+[node name="TexturesTest" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7751, -2, 6.82003)
+
+[node name="TextureTestCube" type="MeshInstance3D" parent="TexturesTest"]
+mesh = SubResource("BoxMesh_emnlu")
+
+[node name="TextureTestCube3" type="MeshInstance3D" parent="TexturesTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+mesh = SubResource("BoxMesh_f68rd")
+
+[node name="TextureTestCube2" type="MeshInstance3D" parent="TexturesTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+mesh = SubResource("BoxMesh_t8fvp")
+
+[node name="TextureTestCube5" type="MeshInstance3D" parent="TexturesTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+mesh = SubResource("BoxMesh_nolj0")
+
+[node name="TextureTestCube6" type="MeshInstance3D" parent="TexturesTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -20)
+material_override = SubResource("StandardMaterial3D_lo5gp")
+mesh = SubResource("BoxMesh_82pss")
+
+[node name="TextureTestCube4" type="MeshInstance3D" parent="TexturesTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
+mesh = SubResource("BoxMesh_cjfjk")
+
+[node name="WaterTest" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.6762, 0, 0)
+
+[node name="StylizedWater" type="MeshInstance3D" parent="WaterTest"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.98013, -1.78722, 51)
+mesh = SubResource("QuadMesh_qoktg")
+
+[node name="PixelatedStylizedWater" type="MeshInstance3D" parent="WaterTest"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.98013, -1.78722, -49)
+mesh = SubResource("QuadMesh_hbko8")

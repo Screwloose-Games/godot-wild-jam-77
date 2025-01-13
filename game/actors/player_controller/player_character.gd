@@ -1,3 +1,4 @@
+@tool
 extends Actor3D
 class_name PlayerController
 
@@ -10,6 +11,15 @@ class_name PlayerController
 @export var min_yaw: float = 0
 @export var max_yaw: float = 360
 
+@export_range(0, 10) var dash_distance: float = 5
+@export_range(0, 0.5) var dash_duration: float = 0.25
+@export_range(0, 6) var melee_attack_cooldown: float = 2:
+    set(val):
+        if not melee_ability: return
+        melee_ability.attack_cooldown = val
+    get:
+        return melee_ability.attack_cooldown
+
 var input_direction: Vector3 = Vector3.FORWARD
 
 @onready var _camera: Camera3D = %Camera3D
@@ -18,10 +28,13 @@ var input_direction: Vector3 = Vector3.FORWARD
 
 @onready var dash_ability: DashAbility = %DashAbility
 @onready var health_component: HealthComponent = %HealthComponent
+@onready var melee_ability: MeleeAbilty = %MeleeAbility
 
 
 
 func _ready():
+    if Engine.is_editor_hint():
+        return
     if _player_pcam.get_follow_mode() == _player_pcam.FollowMode.THIRD_PERSON:
         Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -35,12 +48,17 @@ func get_global_input_direction():
         var move_dir: Vector3 = Vector3.ZERO
         move_dir.x = direction.x
         move_dir.z = direction.z
-        return move_dir.rotated(Vector3.UP, _camera.rotation.y).normalized()
+        #return move_dir.rotated(Vector3.UP, _camera.rotation.y).normalized()
+        return move_dir
     return Vector3.ZERO
 
 func _physics_process(delta: float) -> void:
+    if Engine.is_editor_hint():
+        return
     if dash_ability.is_dashing:
         return
+    if Input.is_action_just_pressed("attack-melee"):
+        melee_ability.attack()
     if Input.is_action_just_pressed("dash"):
         if get_global_input_direction():
             dash_ability.dash(get_global_input_direction())
@@ -64,18 +82,20 @@ func _physics_process(delta: float) -> void:
     var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
     #var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+    face_direction(-_camera.transform.basis.y)
     if direction:
         var move_dir: Vector3 = Vector3.ZERO
         move_dir.x = direction.x
         move_dir.z = direction.z
         input_direction = move_dir
 
-        move_dir = move_dir.rotated(Vector3.UP, _camera.rotation.y).normalized()
+        #move_dir = move_dir.rotated(Vector3.UP, _camera.rotation.y).normalized()
         velocity.x = move_dir.x * speed
         velocity.z = move_dir.z * speed
     else:
         velocity.x = move_toward(velocity.x, 0, speed)
         velocity.z = move_toward(velocity.z, 0, speed)
+    
 
     move_and_slide()
 

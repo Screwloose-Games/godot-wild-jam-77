@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=38 format=3 uid="uid://cda2msbaq00je"]
+[gd_resource type="Theme" load_steps=37 format=3 uid="uid://cda2msbaq00je"]
 
 [ext_resource type="FontVariation" uid="uid://c5xg7tne3ho1m" path="res://common/fonts/button_font.tres" id="1_0algs"]
 [ext_resource type="Texture2D" uid="uid://b423m0smnpxmy" path="res://common/themes/global_theme_ui_pack_vector.svg" id="2_0eq3d"]
@@ -179,32 +179,8 @@ texture_margin_right = 1.0
 texture_margin_bottom = 1.0
 region_rect = Rect2(1051, 317, 4, 100)
 
-[sub_resource type="FontFile" id="31"]
-fallbacks = Array[Font]([ExtResource("5_s76a7")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/24/0/ascent = 0.0
-cache/0/24/0/descent = 0.0
-cache/0/24/0/underline_position = 0.0
-cache/0/24/0/underline_thickness = 0.0
-cache/0/24/0/scale = 1.0
-cache/0/32/0/ascent = 0.0
-cache/0/32/0/descent = 0.0
-cache/0/32/0/underline_position = 0.0
-cache/0/32/0/underline_thickness = 0.0
-cache/0/32/0/scale = 1.0
-cache/0/50/0/ascent = 0.0
-cache/0/50/0/descent = 0.0
-cache/0/50/0/underline_position = 0.0
-cache/0/50/0/underline_thickness = 0.0
-cache/0/50/0/scale = 1.0
-
 [resource]
-default_font = SubResource("31")
+default_font = ExtResource("5_s76a7")
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_disabled_color = Color(0.9, 0.9, 0.9, 0.2)
 Button/colors/font_hover_color = Color(0.34902, 0.34902, 0.34902, 1)
