@@ -1,8 +1,12 @@
 extends Node
 class_name DashAbility
 
-@export var distance: float = 10.0
-@export var duration: float = 0.25
+var distance: float:
+    get:
+        return owner.dash_distance
+var duration: float:
+    get:
+        return owner.dash_duration
 
 @onready var actor: Actor3D = owner
 
@@ -12,9 +16,9 @@ signal stopped_dashing
 var is_dashing: bool = false
 var _dash_timer: Timer
 var _original_velocity: Vector3
-var dash_speed: float = distance / duration
-var dash_direction: Vector3 = Vector3.ZERO
-var dash_velocity: Vector3 = Vector3.ZERO
+@onready var dash_speed: float = distance / duration
+@onready var dash_direction: Vector3 = Vector3.ZERO
+@onready var dash_velocity: Vector3 = Vector3.ZERO
 
 func _ready():
     # Ensure a Timer exists to track dash duration

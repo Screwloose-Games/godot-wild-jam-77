@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://crco2b1srkhyo" path="res://game/actors/enemies/game_melee_enemy.tscn" id="4_sl8t0"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_v6ary"]
-vertices = PackedVector3Array(-15.6379, 0.10678, -26.1562, -15.6379, 0.10678, 5.3438, 3.46206, 0.10678, 5.3438, 3.46206, 0.10678, -26.1562)
+vertices = PackedVector3Array(-105.02, 0.538625, -137.963, -105.02, 0.538625, 41.5374, 119.23, 0.538625, 41.5374, 119.23, 0.538625, -137.963)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="TestAltar" type="Node3D"]
@@ -18,13 +18,14 @@ altar_power = "test_power"
 navigation_mesh = SubResource("NavigationMesh_v6ary")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.068, -0.683784, -10.392)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1151, -0.683784, -48.2376)
 use_collision = true
-size = Vector3(20.1394, 1.55518, 32.5294)
+size = Vector3(225.271, 1.55518, 180.45)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_cw2n0")]
 
 [node name="MeleeEnemy" parent="." instance=ExtResource("4_sl8t0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.46675, 0.159983, 0.68258)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40914, 0.129914, 0.722636)
+turning_speed = 2.0

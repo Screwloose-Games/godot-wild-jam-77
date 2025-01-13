@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://q3qxvpxv1bdx"]
+
+[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="1_2gk7w"]
+[ext_resource type="PackedScene" uid="uid://crco2b1srkhyo" path="res://game/actors/enemies/game_melee_enemy.tscn" id="2_y07gp"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_1fwc1"]
+vertices = PackedVector3Array(-105.02, 0.538625, -137.963, -105.02, 0.538625, 41.5374, 119.23, 0.538625, 41.5374, 119.23, 0.538625, -137.963)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[node name="TestEnemy" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_1fwc1")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1151, -0.683784, -48.2376)
+use_collision = true
+size = Vector3(225.271, 1.55518, 180.45)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("1_2gk7w")]
+
+[node name="MeleeEnemy" parent="." instance=ExtResource("2_y07gp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40914, 0.129914, 0.722636)
+turning_speed = 2.0

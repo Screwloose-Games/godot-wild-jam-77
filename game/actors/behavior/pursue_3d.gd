@@ -22,7 +22,7 @@ const TOLERANCE := 2.0
 @export var target_var: StringName = &"target"
 
 ## Blackboard variable that stores desired speed.
-@export var speed_var: StringName = &"speed"
+#@export var speed_var: StringName = &"speed"
 
 ## Desired distance from target.
 @export var approach_distance: float = 100.0
@@ -48,6 +48,7 @@ func _enter() -> void:
         # For each step, we select a new waypoint.
         nav_agent.set_target_position(target.global_position)
 
+
 # Called each time this task is ticked (aka executed).
 func _tick(_delta: float) -> Status:
     if NavigationServer3D.map_get_iteration_id(nav_agent.get_navigation_map()) == 0:
@@ -55,8 +56,19 @@ func _tick(_delta: float) -> Status:
     var target: Node3D = blackboard.get_var(target_var, null)
     if not is_instance_valid(target):
         return FAILURE
+    nav_agent.set_target_position(target.global_position)
     
-    var speed: float = blackboard.get_var(speed_var, 200.0)
+    # Update facing direction
+    var dir: Vector3 = target.global_position.direction_to(agent.global_position)
+    agent.velocity = Vector3.ZERO
+    #(agent as Actor3D).face_dir_lerp(dir, _delta)
+    (agent as Actor3D).face_dir_lerp(dir, _delta)
+    
+    if not nav_agent.is_target_reachable():
+        return FAILURE
+    #if nav_agent.is_navigation_finished()
+    #var speed: float = blackboard.get_var(speed_var, 200.0)
+    var speed: float = agent.speed
     movement_delta = speed * _delta
     var next_path_position: Vector3 = nav_agent.get_next_path_position()
     var new_velocity: Vector3 = agent.global_position.direction_to(next_path_position) * movement_delta
@@ -66,8 +78,10 @@ func _tick(_delta: float) -> Status:
         _on_velocity_computed(new_velocity)
 
     var desired_pos: Vector3 = nav_agent.get_final_position()
-    if agent.global_position.distance_to(desired_pos) < TOLERANCE:
+    if nav_agent.is_target_reached():
         return SUCCESS
+    #if agent.global_position.distance_to(desired_pos) < TOLERANCE:
+        #return SUCCESS
 
     return RUNNING
 

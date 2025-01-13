@@ -10,6 +10,9 @@ class_name PlayerController
 @export var min_yaw: float = 0
 @export var max_yaw: float = 360
 
+@export_range(0, 10) var dash_distance: float = 5
+@export_range(0, 0.5) var dash_duration: float = 0.25
+
 var input_direction: Vector3 = Vector3.FORWARD
 
 @onready var _camera: Camera3D = %Camera3D
@@ -35,7 +38,8 @@ func get_global_input_direction():
         var move_dir: Vector3 = Vector3.ZERO
         move_dir.x = direction.x
         move_dir.z = direction.z
-        return move_dir.rotated(Vector3.UP, _camera.rotation.y).normalized()
+        #return move_dir.rotated(Vector3.UP, _camera.rotation.y).normalized()
+        return move_dir
     return Vector3.ZERO
 
 func _physics_process(delta: float) -> void:
