@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c37xc7ws27epc"]
+[gd_scene load_steps=23 format=3 uid="uid://c37xc7ws27epc"]
 
 [ext_resource type="Script" path="res://game/actors/player_controller/player_character.gd" id="1_lj3x0"]
 [ext_resource type="Script" path="res://common/components/templates/HealthComponent.gd" id="2_xiykj"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://common/components/templates/HurtBoxComponent3D.gd" id="9_8tiw1"]
 [ext_resource type="Script" path="res://common/components/3d/interact_area_3d.gd" id="10_x3jmh"]
 [ext_resource type="Script" path="res://game/actors/enemies/melee_ability.gd" id="11_mf26i"]
+[ext_resource type="PackedScene" uid="uid://rb8uo3mmtnus" path="res://game/actors/player_controller/sk_player_character.tscn" id="11_mqwq2"]
 [ext_resource type="Script" path="res://common/components/templates/HitBoxComponent3D.gd" id="12_b6occ"]
 
 [sub_resource type="Resource" id="Resource_w1058"]
@@ -124,13 +125,18 @@ shape = SubResource("CylinderShape3D_eemlp")
 
 [node name="Visual" type="Node3D" parent="."]
 
+[node name="sk_player_character" parent="Visual" instance=ExtResource("11_mqwq2")]
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 0, 0, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509166, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_acpq1")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Visual"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.714106, -0.11625)
+visible = false
 mesh = SubResource("BoxMesh_jbj6e")
 skeleton = NodePath("../..")
 
