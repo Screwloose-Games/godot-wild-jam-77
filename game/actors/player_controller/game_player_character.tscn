@@ -59,9 +59,9 @@ emission = Color(0.52549, 0, 0, 1)
 [node name="PlayerCharacter" type="CharacterBody3D" groups=["Player"]]
 collision_mask = 15
 script = ExtResource("1_lj3x0")
-melee_attack_cooldown = 1.0
 
 [node name="CameraTarget" type="Marker3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.398186, 0.978477, 0)
 
 [node name="HealthComponent" type="Node" parent="."]
@@ -139,7 +139,6 @@ unique_name_in_owner = true
 script = ExtResource("11_mf26i")
 hitting_color = Color(1, 0, 0, 1)
 default_color = Color(0, 0, 0, 0.478431)
-attack_cooldown = 1.0
 
 [node name="HitBoxComponent3D" type="Area3D" parent="MeleeAbility"]
 unique_name_in_owner = true
