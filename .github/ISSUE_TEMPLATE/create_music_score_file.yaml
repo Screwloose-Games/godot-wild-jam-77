@@ -27,6 +27,7 @@ body:
       label: Save File Path
       description: Provide the full filepath where the file should be saved.
       placeholder: "Enter the full file path..."
+      value: "res://common/audio/music/aud_{{underscore_separated_file_name}}-loop"
     validations:
       required: true
 
@@ -38,10 +39,11 @@ body:
         - [ ] The peak level is normalized to -1 dBFS.
         - [ ] The file is saved in `.ogg` file format.
         - [ ] The file has a sample rate of 44,100 Hz.
-        - [ ] The file is located at the specified filepath: `{{file_path}}`-loop.
+        - [ ] The file is located at the specified filepath: `res://common/audio/music/aud_{{file_name}}-loop`.
+        - [ ] The file name contains the prefix "aud_", is all lowercase, and is underscore separated, i.e. "aud_name-loop.ogg"
         - [ ] The filename ends in `-loop`
         - [ ] The file has been imported in godot (Godot opened) and has the accompanying `.import` file.
-        - [ ] A pull request (PR) is created with the changes.
+        - [ ] A pull request (PR) is created with the changes including the .ogg file and the .import file.
 
   - type: textarea
     validations:
@@ -53,10 +55,11 @@ body:
         - [ ] The peak level is normalized to -1 dBFS.
         - [ ] The file is saved in `.ogg` file format.
         - [ ] The file has a sample rate of 44,100 Hz.
-        - [ ] The file is located at the specified filepath: `{{file_path}}`-loop.
+        - [ ] The file is located at the specified filepath: `res://common/audio/music/aud_{{file_name}}-loop`.
         - [ ] The filename ends in `-loop`
+        - [ ] The file name contains the prefix "aud_", is all lowercase, and is underscore separated, i.e. "aud_name-loop.ogg"
         - [ ] The file has been imported in godot (Godot opened) and has the accompanying `.import` file.
-        - [ ] A pull request (PR) is created with the changes.
+        - [ ] A pull request (PR) is created with the changes including the .ogg file and the .import file.
         
         ## Blocking
         - Music Implementation tasks (Making the music play in-game)
