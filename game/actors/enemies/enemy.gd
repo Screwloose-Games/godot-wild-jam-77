@@ -8,9 +8,10 @@ signal activated
 
 # Delay between when the spawner starts and when this entity should be spawned/activated
 @export var delay_after_spawning_secs: int = 2
-@export_range(0, 6) var attack_cooldown: float = 2.0
+#@export_range(0, 6) var attack_cooldown: float = 2.0
 
 @onready var nav_agent: NavigationAgent3D = %NavigationAgent3D
+@onready var health_component: HealthComponent = %HealthComponent
 
 
 # On spawned by wave, activate this entity
@@ -33,3 +34,9 @@ func face_dir(dir: Vector3) -> void:
         # Align character's rotation in the direction of movement
         var y_rotation = Vector3.UP.rotated(Vector3(0, 1, 0), target_rotation)
         #root.rotation_degrees.y = y_rotation
+
+func _on_hurt_box_component_3d_hurt(hit_box: Variant, amount: Variant) -> void:
+    health_component.damage(amount)
+
+func _on_health_component_died() -> void:
+    die()

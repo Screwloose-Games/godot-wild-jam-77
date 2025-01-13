@@ -1,3 +1,4 @@
+@tool
 extends Actor3D
 class_name PlayerController
 
@@ -12,6 +13,12 @@ class_name PlayerController
 
 @export_range(0, 10) var dash_distance: float = 5
 @export_range(0, 0.5) var dash_duration: float = 0.25
+@export_range(0, 6) var melee_attack_cooldown: float = 2:
+    set(val):
+        if not melee_ability: return
+        melee_ability.attack_cooldown = val
+    get:
+        return melee_ability.attack_cooldown
 
 var input_direction: Vector3 = Vector3.FORWARD
 
@@ -21,10 +28,13 @@ var input_direction: Vector3 = Vector3.FORWARD
 
 @onready var dash_ability: DashAbility = %DashAbility
 @onready var health_component: HealthComponent = %HealthComponent
+@onready var melee_ability: MeleeAbilty = %MeleeAbility
 
 
 
 func _ready():
+    if Engine.is_editor_hint():
+        return
     if _player_pcam.get_follow_mode() == _player_pcam.FollowMode.THIRD_PERSON:
         Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -43,8 +53,12 @@ func get_global_input_direction():
     return Vector3.ZERO
 
 func _physics_process(delta: float) -> void:
+    if Engine.is_editor_hint():
+        return
     if dash_ability.is_dashing:
         return
+    if Input.is_action_just_pressed("attack-melee"):
+        melee_ability.attack()
     if Input.is_action_just_pressed("dash"):
         if get_global_input_direction():
             dash_ability.dash(get_global_input_direction())

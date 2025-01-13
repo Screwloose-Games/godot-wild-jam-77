@@ -54,6 +54,8 @@ func _tick(_delta: float) -> Status:
     if NavigationServer3D.map_get_iteration_id(nav_agent.get_navigation_map()) == 0:
         return FAILURE
     var target: Node3D = blackboard.get_var(target_var, null)
+    if nav_agent.is_navigation_finished():
+        return SUCCESS
     if not is_instance_valid(target):
         return FAILURE
     nav_agent.set_target_position(target.global_position)
@@ -78,8 +80,8 @@ func _tick(_delta: float) -> Status:
         _on_velocity_computed(new_velocity)
 
     var desired_pos: Vector3 = nav_agent.get_final_position()
-    if nav_agent.is_target_reached():
-        return SUCCESS
+    #if nav_agent.is_target_reached():
+        #return SUCCESS
     #if agent.global_position.distance_to(desired_pos) < TOLERANCE:
         #return SUCCESS
 

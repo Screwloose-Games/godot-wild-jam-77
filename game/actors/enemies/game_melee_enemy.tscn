@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://crco2b1srkhyo"]
+[gd_scene load_steps=12 format=3 uid="uid://crco2b1srkhyo"]
 
 [ext_resource type="PackedScene" uid="uid://bxbkpou8fdoqo" path="res://game/actors/enemies/enemy.tscn" id="1_mur3f"]
 [ext_resource type="BehaviorTree" uid="uid://m60n8oplxst6" path="res://game/actors/behavior/melee_behavior_tree.tres" id="2_fnc4b"]
@@ -16,6 +16,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_f8enx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bn64c"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mh05o"]
 
 [node name="MeleeEnemy" instance=ExtResource("1_mur3f")]
 collision_layer = 8
@@ -45,6 +47,7 @@ blackboard_plan = SubResource("BlackboardPlan_shc20")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="3"]
 unique_name_in_owner = true
+target_desired_distance = 2.0
 path_max_distance = 1.01
 debug_enabled = true
 
@@ -71,3 +74,11 @@ shape = SubResource("BoxShape3D_f8enx")
 [node name="Visual" type="CSGBox3D" parent="MeleeAbility" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.779865, -1.17424)
 material = SubResource("StandardMaterial3D_bn64c")
+
+[node name="HurtBoxComponent3D" parent="." index="6"]
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958669, 0)
+shape = SubResource("CapsuleShape3D_mh05o")

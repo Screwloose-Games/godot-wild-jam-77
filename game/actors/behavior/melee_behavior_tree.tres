@@ -37,7 +37,7 @@ output_var = &"target"
 [sub_resource type="BTAction" id="BTAction_s5whw"]
 script = ExtResource("2_8nea3")
 target_var = &"target"
-approach_distance = 5.0
+approach_distance = 8.0
 
 [sub_resource type="BTSequence" id="BTSequence_gyu4p"]
 children = [SubResource("BTAction_s5whw")]

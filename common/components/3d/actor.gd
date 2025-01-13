@@ -49,3 +49,7 @@ func face_dir_lerp(direction: Vector3, delta: float) -> void:
 
     # Apply the interpolated rotation
     rotation.y = new_rotation_y
+
+func die():
+    died.emit()
+    queue_free.call_deferred()
