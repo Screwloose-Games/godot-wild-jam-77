@@ -10,8 +10,9 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="TestAltar" type="Node3D"]
 
-[node name="Altar" parent="." instance=ExtResource("1_4r4mg")]
+[node name="Altar" parent="." node_paths=PackedStringArray("assigned_enemies") instance=ExtResource("1_4r4mg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.76442, 4.76837e-07, -3.61183)
+assigned_enemies = [NodePath("../MeleeEnemy"), NodePath("../MeleeEnemy2"), NodePath("../MeleeEnemy3")]
 altar_power = "test_power"
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -27,5 +28,15 @@ size = Vector3(225.271, 1.55518, 180.45)
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_cw2n0")]
 
 [node name="MeleeEnemy" parent="." instance=ExtResource("4_sl8t0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40914, 0.129914, 0.722636)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.36918, 0.129914, 9.61421)
+turning_speed = 2.0
+
+[node name="MeleeEnemy2" parent="." instance=ExtResource("4_sl8t0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40914, 0.129914, 9.61421)
+delay_after_spawning_secs = 5.0
+turning_speed = 2.0
+
+[node name="MeleeEnemy3" parent="." instance=ExtResource("4_sl8t0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2235, 0.129914, -22.4539)
+delay_after_spawning_secs = 10.0
 turning_speed = 2.0

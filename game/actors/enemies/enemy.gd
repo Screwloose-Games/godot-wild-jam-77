@@ -1,22 +1,54 @@
 class_name Enemy
 extends Actor3D
 
+signal queued_for_activation
 signal activated
+signal deactivated
 
 @export var damage_amount: int = 25
 @export_range(1, 5) var attack_range: float = 4
 
 # Delay between when the spawner starts and when this entity should be spawned/activated
-@export var delay_after_spawning_secs: int = 2
+@export_range(0, 120) var delay_after_spawning_secs: float = 0
 #@export_range(0, 6) var attack_cooldown: float = 2.0
 
 @onready var nav_agent: NavigationAgent3D = %NavigationAgent3D
 @onready var health_component: HealthComponent = %HealthComponent
 
+@export var is_active: bool = false
+    
+@export var trigger_active: bool = false:
+    set(val):
+        if val and not is_active:
+            _activate()
+        trigger_active = false
+
+func _ready():
+    if is_active:
+        _activate()
+    else:
+        _deactivate()
+        
 
 # On spawned by wave, activate this entity
 func activate():
+    if is_active:
+        return
+    queued_for_activation.emit()
+    await get_tree().create_timer(delay_after_spawning_secs).timeout
+    _activate()
+
+func _activate():
+    is_active = true
     activated.emit()
+    process_mode = PROCESS_MODE_INHERIT
+
+func _deactivate():
+    process_mode = PROCESS_MODE_DISABLED
+
+func deactivate():
+    activated.emit()
+    _deactivate()
 
 func move(p_velocity: Vector3) -> void:
     velocity = lerp(velocity, p_velocity, 0.2)

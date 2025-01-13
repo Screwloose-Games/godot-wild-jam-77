@@ -16,6 +16,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_f8enx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bn64c"]
+albedo_color = Color(0, 0, 0, 0.478431)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mh05o"]
 

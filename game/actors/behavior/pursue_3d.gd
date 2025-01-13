@@ -73,11 +73,11 @@ func _tick(_delta: float) -> Status:
     var speed: float = agent.speed
     movement_delta = speed * _delta
     var next_path_position: Vector3 = nav_agent.get_next_path_position()
-    var new_velocity: Vector3 = agent.global_position.direction_to(next_path_position) * movement_delta
+    var new_velocity: Vector3 = (agent as Actor3D).global_position.direction_to(next_path_position) * movement_delta
     if nav_agent.avoidance_enabled:
         nav_agent.set_velocity(new_velocity)
     else:
-        _on_velocity_computed(new_velocity)
+        _on_velocity_computed(new_velocity, _delta)
 
     var desired_pos: Vector3 = nav_agent.get_final_position()
     #if nav_agent.is_target_reached():
@@ -87,8 +87,15 @@ func _tick(_delta: float) -> Status:
 
     return RUNNING
 
-func _on_velocity_computed(safe_velocity: Vector3) -> void:
-    agent.global_position = agent.global_position.move_toward(agent.global_position + safe_velocity, movement_delta)
+func _on_velocity_computed(safe_velocity: Vector3, delta: float = 0.1) -> void:
+    var new_position: Vector3 = (agent as Actor3D).global_position.move_toward(agent.global_position + safe_velocity, movement_delta)
+    var diff = new_position - agent.global_position
+    var velocity = diff / delta
+    
+    agent.velocity = velocity
+    agent.move_and_slide()
+    #(agent as Actor3D).move_and_collide(diff)
+    
     print(agent.global_position)
 
 ## Get the closest flanking position to target.
