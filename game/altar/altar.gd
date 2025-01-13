@@ -14,11 +14,20 @@ var is_purified: bool = false
 
 var spawned_enemies: Array[Node] = []
 
+var purifiable_objects = []
+var purafication_progress = 1
 
 func _ready():
-    pass
+    $purafication_range.scale = Vector3(purafication_progress,purafication_progress,purafication_progress)
 
+func _process(delta: float) -> void:
+    var areas
 
+    $purafication_range.scale = Vector3(purafication_progress,purafication_progress,purafication_progress)
+    areas = $purafication_range.get_overlapping_areas()
+    if purifiable_objects.size() > 0:
+        for i in purifiable_objects:
+            i.progress = purafication_progress
 # Activate the altar
 func activate(player: PlayerController):
     if is_active or is_purified:
@@ -66,3 +75,16 @@ func _on_interactable_area_3d_interacted(player: PlayerController) -> void:
 func purify_altar():
     purified.emit()
     CheckpointMgr.altar_completed(altar_power)
+
+
+func _on_purafication_range_area_shape_entered(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
+   print("hello")
+   if area.is_in_group("Morphable"):
+     purifiable_objects.append(area.get_parent())
+
+
+func _on_purafication_range_area_entered(area: Area3D) -> void:
+   print("hello")
+
+   if area.is_in_group("Morphable"):
+     purifiable_objects.append(area.get_parent())

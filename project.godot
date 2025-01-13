@@ -50,6 +50,7 @@ enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://add
 
 Greybox=""
 Player=""
+Morphable=""
 
 [gui]
 

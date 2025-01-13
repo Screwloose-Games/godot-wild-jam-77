@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbkvroagayyyc"]
+[gd_scene load_steps=7 format=3 uid="uid://cbkvroagayyyc"]
 
 [ext_resource type="Script" path="res://game/altar/altar.gd" id="1_5n8dj"]
 [ext_resource type="Script" path="res://common/components/3d/interactable_area_3d.gd" id="2_gxdt4"]
@@ -11,6 +11,9 @@ radius = 1.06451
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5eipw"]
 emission_enabled = true
 emission = Color(0.241156, 0.241156, 0.241156, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yh3x2"]
+radius = 2.5
 
 [node name="Altar" type="Node3D" node_paths=PackedStringArray("assigned_enemies")]
 script = ExtResource("1_5n8dj")
@@ -38,5 +41,13 @@ material = SubResource("StandardMaterial3D_5eipw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 text = "Use"
 script = ExtResource("3_s8mb3")
+
+[node name="purafication_range" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="purafication_range"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.910078, 0, 0)
+shape = SubResource("SphereShape3D_yh3x2")
 
 [connection signal="interacted" from="InteractableArea3D" to="." method="_on_interactable_area_3d_interacted"]
