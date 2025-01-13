@@ -15,10 +15,11 @@ class_name PlayerController
 @export_range(0, 0.5) var dash_duration: float = 0.25
 @export_range(0, 6) var melee_attack_cooldown: float = 2:
     set(val):
+        melee_attack_cooldown = val
         if not melee_ability: return
         melee_ability.attack_cooldown = val
     get:
-        return melee_ability.attack_cooldown
+        return melee_attack_cooldown
 
 var input_direction: Vector3 = Vector3.FORWARD
 
@@ -27,16 +28,17 @@ var input_direction: Vector3 = Vector3.FORWARD
 @onready var _player_pcam = %PlayerPhantomCamera3D
 
 @onready var dash_ability: DashAbility = %DashAbility
-@onready var health_component: HealthComponent = %HealthComponent
 @onready var melee_ability: MeleeAbilty = %MeleeAbility
 
-
-
 func _ready():
+    _init_child_values()
     if Engine.is_editor_hint():
         return
     if _player_pcam.get_follow_mode() == _player_pcam.FollowMode.THIRD_PERSON:
         Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _init_child_values():
+    melee_ability.attack_cooldown = melee_attack_cooldown
 
 func get_global_input_direction():
     var input_dir := Input.get_vector("left", "right", "forward", "back")
@@ -81,8 +83,7 @@ func _physics_process(delta: float) -> void:
     var cam_dir: Vector3 = -_camera.global_transform.basis.z
     var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-    #var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-    face_direction(-_camera.transform.basis.y)
+    face_direction(_camera.global_transform.basis.z)
     if direction:
         var move_dir: Vector3 = Vector3.ZERO
         move_dir.x = direction.x
