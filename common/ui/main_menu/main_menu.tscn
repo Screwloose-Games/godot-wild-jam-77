@@ -1,7 +1,5 @@
-[gd_scene load_steps=34 format=4 uid="uid://daabskcdhrpea"]
+[gd_scene load_steps=32 format=4 uid="uid://daabskcdhrpea"]
 
-[ext_resource type="Script" path="res://globals/Music/music_initialiser.gd" id="1_t2fy2"]
-[ext_resource type="AudioStream" uid="uid://c4c8h2dmqvvc7" path="res://common/audio/music/aud_title_screen_music-loop.ogg" id="2_2fo2y"]
 [ext_resource type="Script" path="res://common/ui/viewport_container.gd" id="2_d26fo"]
 [ext_resource type="PackedScene" uid="uid://ruwllv6ttnh6" path="res://game/levels/level_01/lvl_01.tscn" id="3_ui554"]
 [ext_resource type="PackedScene" path="res://common/ui/scene_transitions/fade_transition.tscn" id="4_cec7w"]
@@ -44,7 +42,6 @@ func _exit_tree():
     exit_button.pressed.disconnect(_on_exit_pressed)
 
 func _on_start_button_pressed():
-    SoundManager.music.stop(2.0)
     SceneTransitionManager.change_scene_with_transition(
         start_scene_path,
         transition_path
@@ -715,10 +712,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="music_initialiser" type="Node" parent="."]
-script = ExtResource("1_t2fy2")
-title_music = ExtResource("2_2fo2y")
 
 [node name="Background" type="TextureRect" parent="."]
 visible = false
