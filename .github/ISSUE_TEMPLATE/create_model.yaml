@@ -65,7 +65,7 @@ body:
   - type: markdown
     attributes:
       value: |
-      [Pull Request Guide]("https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request")
+      [Pull Request Guide]("https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request"):
 
         ## Blocking
         - Animation tasks
