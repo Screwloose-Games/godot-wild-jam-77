@@ -26,6 +26,7 @@ size = Vector3(225.271, 1.55518, 180.45)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_cw2n0")]
+melee_attack_cooldown = 0.252
 
 [node name="MeleeEnemy" parent="." instance=ExtResource("4_sl8t0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.36918, 0.129914, 9.61421)

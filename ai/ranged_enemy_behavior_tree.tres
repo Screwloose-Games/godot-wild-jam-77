@@ -1,0 +1,78 @@
+[gd_resource type="BehaviorTree" load_steps=16 format=3 uid="uid://r3tx27cwxvor"]
+
+[ext_resource type="Script" path="res://demo/ai/tasks/get_first_in_group.gd" id="1_a5io8"]
+[ext_resource type="Script" path="res://game/actors/behavior/face_target_3d.gd" id="3_tvd0j"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_cwo5x"]
+var/speed/name = &"speed"
+var/speed/type = 3
+var/speed/value = 10.0
+var/speed/hint = 1
+var/speed/hint_string = "10,1000,10"
+var/target/name = &"target"
+var/target/type = 9
+var/target/value = Vector3(0, 0, 0)
+var/target/hint = 0
+var/target/hint_string = ""
+var/can_attack/name = &"can_attack"
+var/can_attack/type = 3
+var/can_attack/value = 0.0
+var/can_attack/hint = 0
+var/can_attack/hint_string = ""
+
+[sub_resource type="BTAction" id="BTAction_ev83e"]
+script = ExtResource("1_a5io8")
+group = &"Player"
+output_var = &"target"
+
+[sub_resource type="BTAction" id="BTAction_avvfh"]
+script = ExtResource("3_tvd0j")
+target_var = &"target"
+
+[sub_resource type="BTSequence" id="BTSequence_knadx"]
+children = [SubResource("BTAction_ev83e"), SubResource("BTAction_avvfh")]
+
+[sub_resource type="BTSequence" id="BTSequence_00jai"]
+custom_name = "Line Up Attack"
+children = [SubResource("BTSequence_knadx")]
+
+[sub_resource type="BBNode" id="BBNode_y4f25"]
+saved_value = NodePath("MeleeAbility")
+resource_name = "MeleeAbility"
+
+[sub_resource type="BTEvaluateExpression" id="BTEvaluateExpression_oigrh"]
+node = SubResource("BBNode_y4f25")
+expression_string = "can_attack"
+result_var = &"can_attack"
+
+[sub_resource type="BBVariant" id="BBVariant_r35kn"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_llyna"]
+variable = &"can_attack"
+value = SubResource("BBVariant_r35kn")
+
+[sub_resource type="BBNode" id="BBNode_kou7n"]
+saved_value = NodePath("RangedAbility")
+resource_name = "RangedAbility"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_sshfi"]
+node = SubResource("BBNode_kou7n")
+method = &"attack"
+
+[sub_resource type="BTSequence" id="BTSequence_6e4jy"]
+custom_name = "Melee attack"
+children = [SubResource("BTEvaluateExpression_oigrh"), SubResource("BTCheckVar_llyna"), SubResource("BTCallMethod_sshfi")]
+
+[sub_resource type="BTSequence" id="BTSequence_7b3bt"]
+children = [SubResource("BTSequence_00jai"), SubResource("BTSequence_6e4jy")]
+
+[resource]
+description = "Welcome to the [b]LimboAI[/b] demo project! This demo project consists of three parts:
+- If you're new to behavior trees, you can access the [b]Tutorial[/b] by clicking the \"Begin Tutorial\" button on the toolbar.
+- To experience the demo game, just click the \"Switch to Game\" button.
+- On this screen, you can inspect the AI behavior tree in action for each agent in the game."
+blackboard_plan = SubResource("BlackboardPlan_cwo5x")
+root_task = SubResource("BTSequence_7b3bt")

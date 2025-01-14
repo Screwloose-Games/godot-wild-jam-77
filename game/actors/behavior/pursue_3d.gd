@@ -54,18 +54,16 @@ func _tick(_delta: float) -> Status:
     if NavigationServer3D.map_get_iteration_id(nav_agent.get_navigation_map()) == 0:
         return FAILURE
     var target: Node3D = blackboard.get_var(target_var, null)
+    var dir: Vector3 = target.global_position.direction_to(agent.global_position)
+    agent.velocity = Vector3.ZERO
+    #(agent as Actor3D).face_dir_lerp(dir, _delta)
+    (agent as Actor3D).face_dir_lerp(dir, _delta)
     if nav_agent.is_navigation_finished():
         return SUCCESS
     if not is_instance_valid(target):
         return FAILURE
     nav_agent.set_target_position(target.global_position)
-    
-    # Update facing direction
-    var dir: Vector3 = target.global_position.direction_to(agent.global_position)
-    agent.velocity = Vector3.ZERO
-    #(agent as Actor3D).face_dir_lerp(dir, _delta)
-    (agent as Actor3D).face_dir_lerp(dir, _delta)
-    
+        
     if not nav_agent.is_target_reachable():
         return FAILURE
     #if nav_agent.is_navigation_finished()
