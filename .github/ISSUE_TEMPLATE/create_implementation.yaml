@@ -1,8 +1,7 @@
 name: Implementation
 description: Template for Acceptance criteria for deliverables
-title: "Implimentation Acceptance Criteria"
-labels:
-  - implementation
+title: "Implementation Acceptance Criteria"
+labels: implementation
 body:
   - type: textarea
     id: description
@@ -18,48 +17,48 @@ body:
     attributes:
       value: |
         ## Acceptance Criteria:
-
+        
         ### Game Object (game_)
-        - [ ] 
+        - [ ] a
         - [ ] Configure Import Settings
-        - [ ] 
-        - [ ] 
-
+        - [ ] a
+        - [ ] a
+        
         ### Level (lvl_)
-        - [ ] 
+        - [ ] a
         - [ ] Configure Import Settings
-        - [ ] 
-        - [ ] 
-
+        - [ ] a
+        - [ ] a
+        
         ### Material (mat_)
-        - [ ] 
+        - [ ] a
         - [ ] Configure Import Settings
-        - [ ] 
-        - [ ] 
-
+        - [ ] a
+        - [ ] a
+        
         ### Skeletal Mesh (sk_)
-        - [ ] 
+        - [ ] a
         - [ ] Configure Import Settings
-        - [ ] 
-        - [ ] 
-
+        - [ ] a
+        - [ ] a
+        
         ### Sound (aud_)
-        - [ ] 
+        - [ ] a
         - [ ] Configure Import Settings
-        - [ ] 
-        - [ ] 
+        - [ ] a
+        - [ ] a
         
         ### Static Mesh (sm_)
         - [ ] Locate file .../model_name/models/sm_model_name.gltf in Godot
         - [ ] Configure Import Settings
         - [ ] The static mesh is saved in `.tscn` file format.
         - [ ] Inherit New Scene. Right Click > New Inherited Scene > Save As (Same place typically) > sm_model_name.tscn
-
+        
         ### Texture (tex_)
-        - [ ] 
+        - [ ] a
         - [ ] Configure Import Settings
-        - [ ] 
-        - [ ] 
+        - [ ] a
+        - [ ] a
 
 - type: textarea
     validations:
@@ -69,36 +68,36 @@ body:
       label: Subtasks
       value: |
         ## Acceptance Criteria:
-
+        
         ### Game Object (game_)
-        - [ ] 
+        - [ ] a
         - [ ] Configure Import Settings
-        - [ ] 
-        - [ ] 
-
+        - [ ] a
+        - [ ] a
+        
         ### Level (lvl_)
-        - [ ] 
+        - [ ] a
         - [ ] Configure Import Settings
-        - [ ] 
-        - [ ] 
-
+        - [ ] a
+        - [ ] a
+        
         ### Material (mat_)
-        - [ ] 
+        - [ ] a
         - [ ] Configure Import Settings
-        - [ ] 
-        - [ ] 
-
+        - [ ] a
+        - [ ] a
+        
         ### Skeletal Mesh (sk_)
-        - [ ] 
+        - [ ] a
         - [ ] Configure Import Settings
-        - [ ] 
-        - [ ] 
-
+        - [ ] a
+        - [ ] a
+        
         ### Sound (aud_)
-        - [ ] 
+        - [ ] a
         - [ ] Configure Import Settings
-        - [ ] 
-        - [ ] 
+        - [ ] a
+        - [ ] a
         
         ### Static Mesh (sm_)
         - [ ] Locate file .../model_name/models/sm_model_name.gltf in Godot
@@ -107,7 +106,7 @@ body:
         - [ ] Inherit New Scene. Right Click > New Inherited Scene > Save As (Same place typically) > sm_model_name.tscn
 
         ### Texture (tex_)
-        - [ ] 
+        - [ ] a
         - [ ] Configure Import Settings
-        - [ ] 
-        - [ ] 
+        - [ ] a
+        - [ ] a
