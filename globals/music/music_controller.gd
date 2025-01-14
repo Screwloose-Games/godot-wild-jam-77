@@ -15,7 +15,13 @@ var track_before_pause: AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-  pass # Replace with function body
+  GlobalSignalBus.title_screen_started.connect(_on_start_title)
+  GlobalSignalBus.level_started.connect(_on_start_level)
+  GlobalSignalBus.altar_activated.connect(_on_altar_begin)
+  GlobalSignalBus.game_paused.connect(_on_start_pause)
+  GlobalSignalBus.game_unpaused.connect(_on_stop_pause)
+  
+  _on_start_title()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
