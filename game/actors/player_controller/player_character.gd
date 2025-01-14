@@ -130,6 +130,7 @@ func die():
     get_tree().reload_current_scene()
 
 func _on_hurt_box_component_3d_hurt(hit_box: Variant, amount: Variant) -> void:
+    print("Player hurt")
     health_component.damage(amount)
 
 func _on_health_component_died() -> void:
