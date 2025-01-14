@@ -38,6 +38,7 @@ ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 CheckpointMgr="*res://game/checkpoint_mgr.gd"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
+MusicController="*res://globals/music/music_controller.tscn"
 
 [display]
 
