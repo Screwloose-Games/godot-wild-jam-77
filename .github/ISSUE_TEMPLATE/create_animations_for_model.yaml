@@ -56,6 +56,8 @@ body:
         - [ ] The animations file name contains the prefix "anim_", is all lowercase, and is underscore separated, i.e. "anim_model_name.fbx"
         - [ ] The animations fbx is saved to the specified filepath: `raw_assets/animations/{{file_path}}`.
         - [ ] A pull request (PR) is created with the changes.
+
+        [Pull Request Guide: Github]("https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request")
         
         ## Blocking
         - Implementation tasks
