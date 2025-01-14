@@ -39,6 +39,7 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 CheckpointMgr="*res://game/checkpoint_mgr.gd"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
 GlobalSignalBus="*res://globals/global_signal_bus.gd"
+MusicController="*res://globals/music/music_controller.tscn"
 
 [display]
 

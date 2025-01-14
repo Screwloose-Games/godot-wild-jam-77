@@ -1,6 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://qopd3mnhek6b"]
-
-[ext_resource type="PackedScene" uid="uid://b8b6q7g4bsaw5" path="res://common/ui/pause_menu/pause_menu.tscn" id="1_8veya"]
+[gd_scene load_steps=4 format=3 uid="uid://qopd3mnhek6b"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_oxuxd"]
 
@@ -12,8 +10,6 @@ background_mode = 2
 sky = SubResource("Sky_d6cgn")
 
 [node name="BaseLevel" type="Node3D"]
-
-[node name="PauseMenu" parent="." instance=ExtResource("1_8veya")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yixvo")
