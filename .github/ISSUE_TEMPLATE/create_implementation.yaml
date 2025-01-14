@@ -1,7 +1,9 @@
 name: Implementation
-description: Template for Acceptance criteria for deliverables
+description: Template for Acceptance criteria for deliverables.
 title: "Implementation Acceptance Criteria"
-labels: implementation
+labels:
+  - implementation
+
 body:
   - type: textarea
     id: description
@@ -10,6 +12,15 @@ body:
       description: Provide a description of what your implementing.
       placeholder: "Enter the implementation description..."
       value: "This is where info is"
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Provide the context for implementation.
+      placeholder: "Enter the context for implementation..."
     validations:
       required: true
 
