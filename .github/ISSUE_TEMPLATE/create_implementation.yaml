@@ -3,7 +3,6 @@ description: Template for Acceptance criteria for deliverables.
 title: "Implementation Acceptance Criteria"
 labels:
   - implementation
-
 body:
   - type: textarea
     id: description
@@ -71,7 +70,7 @@ body:
         - [ ] a
         - [ ] a
 
-- type: textarea
+  - type: textarea
     validations:
       required: true
     attributes:
