@@ -2,7 +2,9 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
+
 uid="uid://c4c8h2dmqvvc7"
+
 path="res://.godot/imported/aud_title_screen_music-loop.ogg-94e0d5df977d8e28a73bd9fd821a440b.oggvorbisstr"
 
 [deps]
