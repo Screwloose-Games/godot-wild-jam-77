@@ -1,6 +1,6 @@
 name: Create Animations for 3D Model
 description: Template for creating animations for a 3D model.
-title: "Create animations for {{3D model name}}"
+title: "Create animations for {3D model name}"
 labels: [art, animation]
 
 body:
@@ -38,11 +38,11 @@ body:
       value: |
         ## Acceptance Criteria:
 
-        - [ ] The animations are embedded in fbx file.
-        - [ ] is saved in `.fbx` file format.
-        - [ ] The animations file name contains the prefix "anim_", is all lowercase, and is underscore separated, i.e. "anim_model_name.fbx"
-        - [ ] The animations fbx is saved to the specified filepath: `raw_assets/animations/{{file_path}}`.
+        - [ ] The animations file name contains the prefix "anim_", is all lowercase, and is underscore separated, i.e. "anim_{model_name}.blend"
         - [ ] When adding animations, looping animations should be tagges as "-loop"
+        - [ ] The model is saved in `.blend` file format.
+        - [ ] The model is saved to the specified filepath: `game/{game_object_directory}/anim_{model_name}.blend`.
+        - [ ] The model is exported as gltf to the specified filepath: `game/{game_object_directory}/anim_{model_name}.gltf`.        
         - [ ] A pull request (PR) is created with the changes.
   
   - type: textarea
@@ -52,11 +52,11 @@ body:
       id: subtasks
       label: Subtasks
       value: |
-        - [ ] The animations are embedded in fbx file.
-        - [ ] is saved in `.fbx` file format.
-        - [ ] The animations file name contains the prefix "anim_", is all lowercase, and is underscore separated, i.e. "anim_model_name.fbx"
-        - [ ] The animations fbx is saved to the specified filepath: `raw_assets/animations/{{file_path}}`.
+        - [ ] The animations file name contains the prefix "anim_", is all lowercase, and is underscore separated, i.e. "anim_{model_name}.blend"
         - [ ] When adding animations, looping animations should be tagges as "-loop"
+        - [ ] The model is saved in `.blend` file format.
+        - [ ] The model is saved to the specified filepath: `game/{game_object_directory}/anim_{model_name}.blend`.
+        - [ ] The model is exported as gltf to the specified filepath: `game/{game_object_directory}/anim_{model_name}.gltf`.        
         - [ ] A pull request (PR) is created with the changes.
 
         [Pull Request Guide: Github]("https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request")
