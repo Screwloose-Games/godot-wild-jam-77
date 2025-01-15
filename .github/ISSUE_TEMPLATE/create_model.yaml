@@ -1,7 +1,7 @@
 
 name: Create 3D Model for Game Object
 description: Template for creating a new 3D model for a game object.
-title: "Create 3D model for {{game object name}}"
+title: "Create 3D model for {game object name}"
 labels:
   - 3d model
 body:
@@ -40,7 +40,7 @@ body:
       label: Save File Path
       description: Provide the full filepath where the model should be saved.
       placeholder: "Enter the full file path..."
-      value: "game/{{game_object_directory}}/models/{{object_name}}.blend"
+      value: "game/{game_object_directory}/models/{object_name}.blend"
     validations:
       required: true
 
@@ -59,8 +59,9 @@ body:
         - [ ] Model is the correct __dimentions__ as defined above.
         - [ ] Ensure no mesh has a child mesh (breaks collision shape generation)
         - [ ] The model is saved in `.blend` file format.
-        - [ ] The model is saved to the specified filepath: `game/{{game_object_directory}}/models/sk_{{model_name}}.blend`.
-        - [ ] The model is exported as gltf to the specified filepath: `game/{{game_object_directory}}/models/sk_{{model_name}}.gltf`.
+        - [ ] The model is prefixed with sk_ for skeletal mesh and sm_ for static mesh.
+        - [ ] The model is saved to the specified filepath: `game/{game_object_directory}/models/sk_{model_name}.blend`.
+        - [ ] The model is exported as gltf to the specified filepath: `game/{game_object_directory}/models/sk_{model_name}.gltf`.
         - [ ] A pull request (PR) is created with the changes.
     
   - type: textarea
@@ -80,6 +81,7 @@ body:
         - [ ] Model is the correct __dimentions__ as defined above.
         - [ ] Ensure no mesh has a child mesh (breaks collision shape generation)
         - [ ] The model is saved in `.blend` file format.
+        - [ ] The model is prefixed with sk_ for skeletal mesh and sm_ for static mesh.
         - [ ] The model is saved to the specified filepath: `game/{{game_object_directory}}/models/sk_{{model_name}}.blend`.
         - [ ] The model is exported as gltf to the specified filepath: `game/{{game_object_directory}}/models/sk_{{model_name}}.gltf`.
         - [ ] A pull request (PR) is created with the changes.
