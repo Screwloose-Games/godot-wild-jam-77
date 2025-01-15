@@ -49,6 +49,10 @@ gdscript/warnings/unused_signal=0
 
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="Godot Wild Jam 77"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/screwloose-editor-settings/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")

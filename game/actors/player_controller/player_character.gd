@@ -34,6 +34,7 @@ var jumps_remaining := jumps_allowed
 
 @onready var dash_ability: DashAbility = %DashAbility
 @onready var melee_ability: MeleeAbilty = %MeleeAbility
+@onready var beam_ability: BeamAbility = %BeamAbility
 @onready var animation_tree: AnimationTree = %AnimationTree
 
 
@@ -85,6 +86,10 @@ func _physics_process(delta: float) -> void:
         return
     if Input.is_action_just_pressed("attack-melee"):
         melee_ability.attack()
+    if Input.is_action_just_pressed("attack-ranged"):
+        beam_ability.attack()
+    if Input.is_action_just_released("attack-ranged"):
+        beam_ability.stopAttack()
     if Input.is_action_just_pressed("dash"):
         if get_global_input_direction():
             dash_ability.dash(get_global_input_direction())
