@@ -4,8 +4,8 @@ extends Node3D
 class_name BeamAbility
 
 @export var max_beam_range: float
-@export var beam_start_delay: float
-@export var beam_stop_delay: float
+@export_range(0, 10) var beam_start_delay: float
+@export_range(0, 10) var beam_stop_delay: float
 
 @onready var visual: CSGBox3D = $BeamVisual
 @onready var collisionShape: CollisionShape3D = %BeamCollisionShape3D

@@ -24,6 +24,22 @@ class_name PlayerController
         melee_ability.attack_cooldown = val
     get:
         return melee_attack_cooldown
+        
+@export_range(0, 10) var beam_attack_start_delay: float = 1:
+    set(val):
+        beam_attack_start_delay = val
+        if not beam_ability: return
+        beam_ability.beam_attack_start_delay = val
+    get:
+        return beam_attack_start_delay
+        
+@export_range(0, 10) var beam_attack_stop_delay: float = 1:
+    set(val):
+        beam_attack_stop_delay = val
+        if not beam_ability: return
+        beam_ability.beam_attack_stop_delay = val
+    get:
+        return beam_attack_stop_delay
 
 var input_direction: Vector3 = Vector3.FORWARD
 var jumps_remaining := jumps_allowed
@@ -47,6 +63,8 @@ func _ready():
 
 func _init_child_values():
     melee_ability.attack_cooldown = melee_attack_cooldown
+    beam_ability.beam_start_delay = beam_attack_start_delay
+    beam_ability.beam_stop_delay = beam_attack_stop_delay
 
 func get_global_input_direction():
     var input_dir := Input.get_vector("left", "right", "forward", "back")
