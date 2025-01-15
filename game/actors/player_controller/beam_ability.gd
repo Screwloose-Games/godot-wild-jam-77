@@ -3,7 +3,7 @@ extends Node3D
 
 class_name BeamAbility
 
-@export var max_beam_range: float
+var max_beam_range: float
 @export_range(0, 10) var beam_start_delay: float
 @export_range(0, 10) var beam_stop_delay: float
 
@@ -13,12 +13,12 @@ class_name BeamAbility
 
 var isHoldingBeamAttack: bool
 
-func _ready():
+func init_beam_size():
     visual.size.z = max_beam_range
     visual.position.z = -(max_beam_range / 2)
     collisionShape.shape.size = Vector3(1, 1, max_beam_range)
     collisionShape.position.z = -(max_beam_range / 2)
-
+    
 func attack():
     if isHoldingBeamAttack:
         return

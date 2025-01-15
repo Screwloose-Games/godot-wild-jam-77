@@ -17,6 +17,7 @@ class_name PlayerController
 @export_range(0, 10) var dash_distance: float = 5
 @export_range(0, 0.5) var dash_duration: float = 0.25
 @export_range(1, 2) var jumps_allowed: int = 2
+@export_range(1, 200) var max_beam_range: float = 100
 @export_range(0, 10) var beam_speed_slowdown: float = 3
 @export_range(0, 6) var melee_attack_cooldown: float = 2:
     set(val):
@@ -66,6 +67,8 @@ func _init_child_values():
     melee_ability.attack_cooldown = melee_attack_cooldown
     beam_ability.beam_start_delay = beam_attack_start_delay
     beam_ability.beam_stop_delay = beam_attack_stop_delay
+    beam_ability.max_beam_range = max_beam_range
+    beam_ability.init_beam_size()
 
 func get_global_input_direction():
     var input_dir := Input.get_vector("left", "right", "forward", "back")
