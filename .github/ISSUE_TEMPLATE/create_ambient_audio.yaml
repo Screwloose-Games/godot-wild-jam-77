@@ -35,6 +35,7 @@ body:
       value: |
         ## Acceptance Criteria:
 
+        - [ ] The filename contains the prefix: `aud_`.
         - [ ] The peak level is normalized to -1 dBFS.
         - [ ] The file is saved in `.ogg` file format.
         - [ ] The file has a sample rate of 44,100 Hz.
@@ -50,6 +51,7 @@ body:
       id: subtasks
       label: Subtasks
       value: |
+        - [ ] The filename contains the prefix: `aud_`.
         - [ ] The peak level is normalized to -1 dBFS.
         - [ ] The file is saved in `.ogg` file format.
         - [ ] The file has a sample rate of 44,100 Hz.
