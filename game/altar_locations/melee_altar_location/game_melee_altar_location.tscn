@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cbkvroagayyyc" path="res://game/altar/game_altar.tscn" id="1_1ufvv"]
 [ext_resource type="Script" path="res://game/altar_locations/melee_altar_location/altar_enemy_group.gd" id="2_ss6ho"]
-[ext_resource type="PackedScene" uid="uid://crco2b1srkhyo" path="res://game/actors/enemies/game_melee_enemy.tscn" id="2_t0d8b"]
+[ext_resource type="PackedScene" uid="uid://crco2b1srkhyo" path="res://game/actors/enemies/melee_enemy/game_melee_enemy.tscn" id="2_t0d8b"]
 
 [node name="MeleeAltarLocation" type="Node3D"]
 

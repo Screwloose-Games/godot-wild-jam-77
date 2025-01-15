@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b8b6q7g4bsaw5" path="res://common/ui/pause_menu/pause_menu.tscn" id="8_kybtq"]
 [ext_resource type="Script" path="res://common/components/templates/HurtBoxComponent3D.gd" id="9_8tiw1"]
 [ext_resource type="Script" path="res://common/components/3d/interact_area_3d.gd" id="10_x3jmh"]
-[ext_resource type="Script" path="res://game/actors/enemies/melee_ability.gd" id="11_mf26i"]
+[ext_resource type="Script" path="res://game/actors/enemies/melee_enemy/melee_ability.gd" id="11_mf26i"]
 [ext_resource type="Script" path="res://common/components/templates/HitBoxComponent3D.gd" id="12_b6occ"]
 [ext_resource type="PackedScene" uid="uid://saby4by3jsmh" path="res://game/actors/player_controller/sk_player_character_gltf.tscn" id="13_jocpb"]
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://bygv60003uc5w"]
 
-[ext_resource type="PackedScene" uid="uid://bxbkpou8fdoqo" path="res://game/actors/enemies/enemy.tscn" id="1_kjv5t"]
-[ext_resource type="Script" path="res://game/actors/enemies/ranged_enemy.gd" id="2_0rhu4"]
-[ext_resource type="BehaviorTree" uid="uid://r3tx27cwxvor" path="res://ai/ranged_enemy_behavior_tree.tres" id="2_cfso8"]
-[ext_resource type="Script" path="res://game/actors/abilities/ranged_ability.gd" id="3_br6ng"]
-[ext_resource type="Script" path="res://common/components/templates/HitBoxComponent3D.gd" id="4_rnikt"]
+[ext_resource type="PackedScene" uid="uid://bxbkpou8fdoqo" path="res://game/actors/enemies/enemy.tscn" id="1_sp3te"]
+[ext_resource type="Script" path="res://game/actors/enemies/ranged_enemy/ranged_enemy.gd" id="2_jelv1"]
+[ext_resource type="BehaviorTree" uid="uid://r3tx27cwxvor" path="res://ai/ranged_enemy_behavior_tree.tres" id="3_t65xn"]
+[ext_resource type="Script" path="res://game/actors/abilities/ranged_ability.gd" id="4_c63db"]
+[ext_resource type="Script" path="res://common/components/templates/HitBoxComponent3D.gd" id="5_ppqif"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_syuwp"]
 
@@ -31,10 +31,10 @@ emission = Color(0, 0, 1, 1)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g07x1"]
 height = 0.2
 
-[node name="RangedEnemy" instance=ExtResource("1_kjv5t")]
+[node name="RangedEnemy" instance=ExtResource("1_sp3te")]
 collision_layer = 8
 collision_mask = 15
-script = ExtResource("2_0rhu4")
+script = ExtResource("2_jelv1")
 telegraph_duration = 0.0
 telegraph_starting_radius = 0.0
 telegraph_to_beam_delay = 0.0
@@ -61,7 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_mtyox")
 
 [node name="BTPlayer" type="BTPlayer" parent="." index="2"]
-behavior_tree = ExtResource("2_cfso8")
+behavior_tree = ExtResource("3_t65xn")
 blackboard_plan = SubResource("BlackboardPlan_shc20")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="3"]
@@ -80,7 +80,7 @@ shape = SubResource("CapsuleShape3D_mh05o")
 
 [node name="RangedAbility" type="Node3D" parent="." index="6"]
 unique_name_in_owner = true
-script = ExtResource("3_br6ng")
+script = ExtResource("4_c63db")
 hitting_color = Color(0, 0, 1, 1)
 
 [node name="BeamRay" type="RayCast3D" parent="RangedAbility" index="0"]
@@ -120,7 +120,7 @@ visible = false
 [node name="HitBoxComponent3D" type="Area3D" parent="RangedAbility" index="2" node_paths=PackedStringArray("sender")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-script = ExtResource("4_rnikt")
+script = ExtResource("5_ppqif")
 sender = NodePath("../..")
 amount = 10.0
 active = true
