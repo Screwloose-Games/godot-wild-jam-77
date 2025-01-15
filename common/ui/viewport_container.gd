@@ -7,3 +7,4 @@ func _ready() -> void:
     var viewport_height = ProjectSettings.get_setting("display/window/size/viewport_height")
     
     size = Vector2(viewport_width, viewport_height)
+    set_anchors_preset(Control.PRESET_FULL_RECT)

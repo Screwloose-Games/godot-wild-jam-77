@@ -10,5 +10,11 @@ class_name RangedEnemy
 @export var beam_duration: float
 @export var beam_radius: float
 
+@onready var ranged_ability: RangedAbilty = %RangedAbility
+
+var is_executing_attack_sequence: bool:
+    get:
+        return ranged_ability.is_executing_attack_sequence
+
 func attack(target: Node3D):
     pass

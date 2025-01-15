@@ -23,7 +23,7 @@ resources_spreadsheet_view/resource_cell_label_mode=1
 [application]
 
 config/name="Godot Wild Jam 77"
-run/main_scene="res://common/ui/main_menu/main_menu.tscn"
+run/main_scene="res://test/test_web/test_web_render.tscn"
 config/features=PackedStringArray("4.3")
 boot_splash/image="res://splash_screen.png"
 config/icon="res://icon.svg"
@@ -39,7 +39,7 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 CheckpointMgr="*res://game/checkpoint_mgr.gd"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
 GlobalSignalBus="*res://globals/global_signal_bus.gd"
-MusicController="*res://globals/music/music_controller.tscn"
+MusicController="res://globals/music/music_controller.tscn"
 
 [display]
 

@@ -1,5 +1,4 @@
 ## Tracks and handles health for anything that has health
-class_name Health
 extends Node
 
 signal health_max_updated(max_health: int)

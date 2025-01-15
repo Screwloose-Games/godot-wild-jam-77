@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bygv60003uc5w"]
+[gd_scene load_steps=14 format=3 uid="uid://bygv60003uc5w"]
 
 [ext_resource type="PackedScene" uid="uid://bxbkpou8fdoqo" path="res://game/actors/enemies/enemy.tscn" id="1_kjv5t"]
 [ext_resource type="Script" path="res://game/actors/enemies/ranged_enemy.gd" id="2_0rhu4"]
@@ -18,15 +18,18 @@
 
 [sub_resource type="Curve3D" id="Curve3D_x2m00"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.551956, -1.28522, -2.22809, 0, 0, 0, 0, 0, 0, -1.4621, -2.54723, -25.5444),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.516856, -5.29899),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njpa4"]
-albedo_color = Color(0, 0, 1, 1)
+albedo_color = Color(0, 0, 0, 1)
 emission_enabled = true
 emission = Color(0, 0, 1, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g07x1"]
+height = 0.2
 
 [node name="RangedEnemy" instance=ExtResource("1_kjv5t")]
 collision_layer = 8
@@ -39,7 +42,7 @@ beam_duration = 0.0
 beam_radius = 0.0
 is_active = true
 speed = 5
-turning_speed = 100.0
+turning_speed = 4.0
 
 [node name="Visual" type="Node3D" parent="." index="0"]
 
@@ -76,12 +79,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958669, 0)
 shape = SubResource("CapsuleShape3D_mh05o")
 
 [node name="RangedAbility" type="Node3D" parent="." index="6"]
+unique_name_in_owner = true
 script = ExtResource("3_br6ng")
 hitting_color = Color(0, 0, 1, 1)
 
 [node name="BeamRay" type="RayCast3D" parent="RangedAbility" index="0"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.806714, -0.607803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 target_position = Vector3(0, 0, -5)
 collision_mask = 258
 collide_with_areas = true
@@ -90,18 +94,41 @@ debug_shape_thickness = 5
 [node name="BeamStart" type="Marker3D" parent="RangedAbility" index="1"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 
-[node name="Path3D" type="Path3D" parent="RangedAbility" index="2"]
+[node name="Path3D" type="Path3D" parent="RangedAbility/BeamStart" index="0"]
+unique_name_in_owner = true
 curve = SubResource("Curve3D_x2m00")
 
-[node name="TelegraphShape" type="CSGCylinder3D" parent="RangedAbility" index="3"]
+[node name="PathFollow3D" type="PathFollow3D" parent="RangedAbility/BeamStart/Path3D" index="0"]
 unique_name_in_owner = true
-transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 1.07001, -0.937405)
+transform = Transform3D(0.999999, 0, 0, 0, 0.995275, 0.0970777, 0, -0.0970777, 0.995275, 0, -0.228285, -2.34046)
+progress = 2.35164
+
+[node name="TelegraphShape" type="CSGCylinder3D" parent="RangedAbility/BeamStart/Path3D/PathFollow3D" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1.91069e-15, 4.37115e-08, -1, 1, -4.37115e-08, 0, -4.37115e-08, -1, -4.37114e-08, 0, 0, 0)
+collision_layer = 0
+collision_mask = 256
+radius = 0.1
 material = SubResource("StandardMaterial3D_njpa4")
 
-[node name="HitBoxComponent3D" type="Area3D" parent="RangedAbility" index="4"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="RangedAbility/BeamStart/Path3D/PathFollow3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+
+[node name="HitBoxComponent3D" type="Area3D" parent="RangedAbility" index="2" node_paths=PackedStringArray("sender")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("4_rnikt")
+sender = NodePath("../..")
+amount = 10.0
 active = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RangedAbility/HitBoxComponent3D" index="0"]
+shape = SubResource("CylinderShape3D_g07x1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RangedAbility" index="3"]
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78052, 1.45874, -8.95744)

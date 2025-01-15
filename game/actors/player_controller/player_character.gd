@@ -24,7 +24,7 @@ class_name PlayerController
 var input_direction: Vector3 = Vector3.FORWARD
 
 @onready var _camera: Camera3D = %Camera3D
-
+@onready var center_mass: Marker3D = %CenterMass
 @onready var _player_pcam = %PlayerPhantomCamera3D
 
 @onready var dash_ability: DashAbility = %DashAbility
@@ -53,6 +53,10 @@ func get_global_input_direction():
         #return move_dir.rotated(Vector3.UP, _camera.rotation.y).normalized()
         return move_dir
     return Vector3.ZERO
+
+func gauge_movement_speed():
+    pass
+    # parameters/movement_speed/blend_position
 
 func _physics_process(delta: float) -> void:
     if Engine.is_editor_hint():

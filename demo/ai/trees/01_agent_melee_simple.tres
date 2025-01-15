@@ -45,7 +45,6 @@ output_var = &"target"
 [sub_resource type="BTAction" id="BTAction_a4jqi"]
 script = ExtResource("2_xu6ub")
 target_var = &"target"
-speed_var = &"speed"
 approach_distance = 100.0
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_xek5v"]

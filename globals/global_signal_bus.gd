@@ -20,7 +20,7 @@ signal player_landed(surface) # Needs SurfaceType enum
 signal enemy_died(enemy: Enemy)
 signal enemy_activated(enemy: Enemy)
 signal enemy_queued_for_activation(enemy: Enemy)
-signal enemy_hurt(enemy: Enemy, damage: int)
+signal enemy_hurt(enemy: Enemy, damage: float)
 signal enemy_targeted_player(enemy: Enemy)
 
 # Signals for altar-specific events

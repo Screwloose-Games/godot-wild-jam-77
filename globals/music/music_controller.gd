@@ -42,7 +42,7 @@ func _on_stop_title() -> void:
 func _on_start_pause() -> void:
   previous_state = current_state
   set_music_state(MUSIC_STATE.Pause)
-  elapsed_music_time = track_before_pause.get_playback_position()
+  #elapsed_music_time = track_before_pause.get_playback_position()
   SoundManager.music.play(pause_music, 0.0, 1.0, 0.25, "")
   
 ## Resume from previous song time
