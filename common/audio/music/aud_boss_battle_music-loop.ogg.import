@@ -2,7 +2,9 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://dgk6u1cefmihp"
+
+uid="uid://chne7pek6nskc"
+
 path="res://.godot/imported/aud_boss_battle_music-loop.ogg-6c583587302229265e3b88bce978d5bf.oggvorbisstr"
 
 [deps]

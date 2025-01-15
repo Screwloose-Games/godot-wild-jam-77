@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://saby4by3jsmh"]
+
+[ext_resource type="PackedScene" uid="uid://cjtyf10m3bacj" path="res://game/actors/player_controller/sk_player_character.gltf" id="1_kkxl6"]
+[ext_resource type="Material" uid="uid://clj2pirqht041" path="res://game/actors/player_controller/mat_player_character.tres" id="2_ulnru"]
+
+[node name="sk_player_character" instance=ExtResource("1_kkxl6")]
+
+[node name="MainCharacterRig" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_ulnru")

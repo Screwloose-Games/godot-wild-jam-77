@@ -2,7 +2,9 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://cffgeaqw60chk"
+
+uid="uid://4mrqow7pdo5p"
+
 path="res://.godot/imported/aud_altar_corruption_removal_2.ogg-6971c5abfbeef939485f242231cee490.oggvorbisstr"
 
 [deps]

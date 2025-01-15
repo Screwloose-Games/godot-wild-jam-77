@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdj5r6qpugutf"]
+
+[ext_resource type="PackedScene" uid="uid://yibvym8uhvwr" path="res://game/levels/Environments/lvl_greybox_environment_template.tscn" id="1_ce58m"]
+
+[node name="LvlGreyboxEnvironmentTemplate" instance=ExtResource("1_ce58m")]

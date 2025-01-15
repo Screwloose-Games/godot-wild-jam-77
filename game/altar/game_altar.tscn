@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbkvroagayyyc"]
+[gd_scene load_steps=7 format=3 uid="uid://cbkvroagayyyc"]
 
 [ext_resource type="Script" path="res://game/altar/altar.gd" id="1_5n8dj"]
 [ext_resource type="Script" path="res://common/components/3d/interactable_area_3d.gd" id="2_gxdt4"]
 [ext_resource type="Script" path="res://game/altar/altar_label_3d.gd" id="3_s8mb3"]
+[ext_resource type="PackedScene" uid="uid://bceduv3fwkw8v" path="res://game/altar/sm_altar.tscn" id="4_cml51"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8mytx"]
 height = 1.27566
@@ -12,9 +13,8 @@ radius = 1.06451
 emission_enabled = true
 emission = Color(0.241156, 0.241156, 0.241156, 1)
 
-[node name="Altar" type="Node3D" node_paths=PackedStringArray("assigned_enemies")]
+[node name="Altar" type="Node3D"]
 script = ExtResource("1_5n8dj")
-assigned_enemies = [null, null]
 
 [node name="InteractableArea3D" type="Area3D" parent="."]
 unique_name_in_owner = true
@@ -28,6 +28,7 @@ shape = SubResource("CylinderShape3D_8mytx")
 
 [node name="Mesh" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.083252, 0)
+visible = false
 use_collision = true
 collision_layer = 4
 collision_mask = 7
@@ -35,8 +36,10 @@ size = Vector3(1, 0.166504, 1)
 material = SubResource("StandardMaterial3D_5eipw")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80184, 0.199039)
 text = "Use"
 script = ExtResource("3_s8mb3")
+
+[node name="sm_altar" parent="." instance=ExtResource("4_cml51")]
 
 [connection signal="interacted" from="InteractableArea3D" to="." method="_on_interactable_area_3d_interacted"]

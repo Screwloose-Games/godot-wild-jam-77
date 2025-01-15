@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cbkvroagayyyc" path="res://game/altar/game_altar.tscn" id="1_4r4mg"]
 [ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="2_cw2n0"]
-[ext_resource type="PackedScene" uid="uid://crco2b1srkhyo" path="res://game/actors/enemies/game_melee_enemy.tscn" id="4_sl8t0"]
+[ext_resource type="PackedScene" uid="uid://crco2b1srkhyo" path="res://game/actors/enemies/melee_enemy/game_melee_enemy.tscn" id="4_sl8t0"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_v6ary"]
 vertices = PackedVector3Array(-105.02, 0.538625, -137.963, -105.02, 0.538625, 41.5374, 119.23, 0.538625, 41.5374, 119.23, 0.538625, -137.963)
@@ -26,17 +26,15 @@ size = Vector3(225.271, 1.55518, 180.45)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_cw2n0")]
+melee_attack_cooldown = 0.252
 
 [node name="MeleeEnemy" parent="." instance=ExtResource("4_sl8t0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.36918, 0.129914, 9.61421)
-turning_speed = 2.0
 
 [node name="MeleeEnemy2" parent="." instance=ExtResource("4_sl8t0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40914, 0.129914, 9.61421)
 delay_after_spawning_secs = 5.0
-turning_speed = 2.0
 
 [node name="MeleeEnemy3" parent="." instance=ExtResource("4_sl8t0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2235, 0.129914, -22.4539)
 delay_after_spawning_secs = 10.0
-turning_speed = 2.0

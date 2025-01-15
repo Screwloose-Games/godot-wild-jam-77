@@ -1,0 +1,135 @@
+[gd_scene load_steps=14 format=3 uid="uid://bygv60003uc5w"]
+
+[ext_resource type="PackedScene" uid="uid://bxbkpou8fdoqo" path="res://game/actors/enemies/enemy.tscn" id="1_sp3te"]
+[ext_resource type="Script" path="res://game/actors/enemies/ranged_enemy/ranged_enemy.gd" id="2_jelv1"]
+[ext_resource type="BehaviorTree" uid="uid://r3tx27cwxvor" path="res://ai/ranged_enemy_behavior_tree.tres" id="3_t65xn"]
+[ext_resource type="Script" path="res://game/actors/abilities/ranged_ability.gd" id="4_c63db"]
+[ext_resource type="Script" path="res://common/components/templates/HitBoxComponent3D.gd" id="5_ppqif"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_syuwp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uaspe"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mtyox"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_shc20"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mh05o"]
+
+[sub_resource type="Curve3D" id="Curve3D_x2m00"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.516856, -5.29899),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njpa4"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g07x1"]
+height = 0.2
+
+[node name="RangedEnemy" instance=ExtResource("1_sp3te")]
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("2_jelv1")
+telegraph_duration = 0.0
+telegraph_starting_radius = 0.0
+telegraph_to_beam_delay = 0.0
+beam_duration = 0.0
+beam_radius = 0.0
+is_active = true
+speed = 5
+turning_speed = 4.0
+
+[node name="Visual" type="Node3D" parent="." index="0"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_syuwp")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Visual" index="1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.4821, -0.378365)
+mesh = SubResource("BoxMesh_uaspe")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_mtyox")
+
+[node name="BTPlayer" type="BTPlayer" parent="." index="2"]
+behavior_tree = ExtResource("3_t65xn")
+blackboard_plan = SubResource("BlackboardPlan_shc20")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="3"]
+unique_name_in_owner = true
+target_desired_distance = 2.0
+path_max_distance = 1.01
+debug_enabled = true
+
+[node name="HurtBoxComponent3D" parent="." index="5"]
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958669, 0)
+shape = SubResource("CapsuleShape3D_mh05o")
+
+[node name="RangedAbility" type="Node3D" parent="." index="6"]
+unique_name_in_owner = true
+script = ExtResource("4_c63db")
+hitting_color = Color(0, 0, 1, 1)
+
+[node name="BeamRay" type="RayCast3D" parent="RangedAbility" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(0, 0, -5)
+collision_mask = 258
+collide_with_areas = true
+debug_shape_thickness = 5
+
+[node name="BeamStart" type="Marker3D" parent="RangedAbility" index="1"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+
+[node name="Path3D" type="Path3D" parent="RangedAbility/BeamStart" index="0"]
+unique_name_in_owner = true
+curve = SubResource("Curve3D_x2m00")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="RangedAbility/BeamStart/Path3D" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(0.999999, 0, 0, 0, 0.995275, 0.0970777, 0, -0.0970777, 0.995275, 0, -0.228285, -2.34046)
+progress = 2.35164
+
+[node name="TelegraphShape" type="CSGCylinder3D" parent="RangedAbility/BeamStart/Path3D/PathFollow3D" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1.91069e-15, 4.37115e-08, -1, 1, -4.37115e-08, 0, -4.37115e-08, -1, -4.37114e-08, 0, 0, 0)
+collision_layer = 0
+collision_mask = 256
+radius = 0.1
+material = SubResource("StandardMaterial3D_njpa4")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="RangedAbility/BeamStart/Path3D/PathFollow3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+
+[node name="HitBoxComponent3D" type="Area3D" parent="RangedAbility" index="2" node_paths=PackedStringArray("sender")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("5_ppqif")
+sender = NodePath("../..")
+amount = 10.0
+active = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RangedAbility/HitBoxComponent3D" index="0"]
+shape = SubResource("CylinderShape3D_g07x1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RangedAbility" index="3"]
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78052, 1.45874, -8.95744)
+size = Vector3(15.2944, 4.91748, 2)

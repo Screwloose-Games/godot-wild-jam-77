@@ -1,0 +1,116 @@
+[gd_resource type="BehaviorTree" load_steps=23 format=3 uid="uid://r3tx27cwxvor"]
+
+[ext_resource type="Script" path="res://demo/ai/tasks/get_first_in_group.gd" id="1_a5io8"]
+[ext_resource type="Script" path="res://game/actors/behavior/face_target_3d.gd" id="3_tvd0j"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_cwo5x"]
+var/speed/name = &"speed"
+var/speed/type = 3
+var/speed/value = 10.0
+var/speed/hint = 1
+var/speed/hint_string = "10,1000,10"
+var/target/name = &"target"
+var/target/type = 9
+var/target/value = Vector3(0, 0, 0)
+var/target/hint = 0
+var/target/hint_string = ""
+var/can_attack/name = &"can_attack"
+var/can_attack/type = 3
+var/can_attack/value = 0.0
+var/can_attack/hint = 0
+var/can_attack/hint_string = ""
+var/is_executing_attack_sequence/name = &"is_executing_attack_sequence"
+var/is_executing_attack_sequence/type = 3
+var/is_executing_attack_sequence/value = 0.0
+var/is_executing_attack_sequence/hint = 0
+var/is_executing_attack_sequence/hint_string = ""
+var/should_attack/name = &"should_attack"
+var/should_attack/type = 3
+var/should_attack/value = 0.0
+var/should_attack/hint = 0
+var/should_attack/hint_string = ""
+
+[sub_resource type="BBNode" id="BBNode_ip5dx"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTEvaluateExpression" id="BTEvaluateExpression_m7p24"]
+node = SubResource("BBNode_ip5dx")
+expression_string = "is_executing_attack_sequence"
+result_var = &"is_executing_attack_sequence"
+
+[sub_resource type="BBVariant" id="BBVariant_qv44c"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_33odn"]
+variable = &"is_executing_attack_sequence"
+value = SubResource("BBVariant_qv44c")
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_jy6r1"]
+text = "After seq"
+
+[sub_resource type="BBNode" id="BBNode_aq4cv"]
+saved_value = NodePath("RangedAbility")
+resource_name = "RangedAbility"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_hr60x"]
+node = SubResource("BBNode_aq4cv")
+method = &"should_attack"
+result_var = &"should_attack"
+
+[sub_resource type="BBVariant" id="BBVariant_r35kn"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_llyna"]
+variable = &"should_attack"
+value = SubResource("BBVariant_r35kn")
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_2p53s"]
+text = "SHould attack"
+
+[sub_resource type="BBNode" id="BBNode_kou7n"]
+saved_value = NodePath("RangedAbility")
+resource_name = "RangedAbility"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_sshfi"]
+node = SubResource("BBNode_kou7n")
+method = &"telegraph"
+
+[sub_resource type="BTSequence" id="BTSequence_6e4jy"]
+custom_name = "Ranged attack"
+children = [SubResource("BTCallMethod_hr60x"), SubResource("BTCheckVar_llyna"), SubResource("BTConsolePrint_2p53s"), SubResource("BTCallMethod_sshfi")]
+
+[sub_resource type="BTAction" id="BTAction_ev83e"]
+script = ExtResource("1_a5io8")
+group = &"Player"
+output_var = &"target"
+
+[sub_resource type="BTAction" id="BTAction_avvfh"]
+script = ExtResource("3_tvd0j")
+target_var = &"target"
+
+[sub_resource type="BTTimeLimit" id="BTTimeLimit_2eitn"]
+time_limit = 1.0
+children = [SubResource("BTAction_avvfh")]
+
+[sub_resource type="BTSequence" id="BTSequence_knadx"]
+children = [SubResource("BTAction_ev83e"), SubResource("BTTimeLimit_2eitn")]
+
+[sub_resource type="BTSelector" id="BTSelector_xybc7"]
+custom_name = "Line Up Attack"
+children = [SubResource("BTSequence_6e4jy"), SubResource("BTSequence_knadx")]
+
+[sub_resource type="BTSequence" id="BTSequence_7b3bt"]
+children = [SubResource("BTEvaluateExpression_m7p24"), SubResource("BTCheckVar_33odn"), SubResource("BTConsolePrint_jy6r1"), SubResource("BTSelector_xybc7")]
+
+[resource]
+description = "Welcome to the [b]LimboAI[/b] demo project! This demo project consists of three parts:
+- If you're new to behavior trees, you can access the [b]Tutorial[/b] by clicking the \"Begin Tutorial\" button on the toolbar.
+- To experience the demo game, just click the \"Switch to Game\" button.
+- On this screen, you can inspect the AI behavior tree in action for each agent in the game."
+blackboard_plan = SubResource("BlackboardPlan_cwo5x")
+root_task = SubResource("BTSequence_7b3bt")

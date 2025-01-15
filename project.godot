@@ -23,7 +23,7 @@ resources_spreadsheet_view/resource_cell_label_mode=1
 [application]
 
 config/name="Godot Wild Jam 77"
-run/main_scene="res://common/ui/main_menu/main_menu.tscn"
+run/main_scene="res://test/test_web/test_web_render.tscn"
 config/features=PackedStringArray("4.3")
 boot_splash/image="res://splash_screen.png"
 config/icon="res://icon.svg"
@@ -37,6 +37,13 @@ GameSettings="*res://globals/game_settings.tscn"
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 CheckpointMgr="*res://game/checkpoint_mgr.gd"
+SoundManager="*res://addons/sound_manager/sound_manager.gd"
+GlobalSignalBus="*res://globals/global_signal_bus.gd"
+MusicController="*res://globals/music/music_controller.tscn"
+
+[debug]
+
+gdscript/warnings/unused_signal=0
 
 [display]
 
@@ -44,7 +51,11 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/screwloose-editor-settings/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
+enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/screwloose-editor-settings/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [global_group]
 
@@ -110,6 +121,12 @@ interact={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":2,"pressure":0.0,"pressed":true,"script":null)
+]
+}
+attack-ranged={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(270, 22),"global_position":Vector2(279, 68),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":4,"axis_value":1.0,"script":null)
 ]
 }
 

@@ -22,6 +22,16 @@ body:
       required: true
 
   - type: input
+    id: duration
+    attributes:
+      label: Sound duration
+      description: Provide the approximate duration the sound should be
+      placeholder: "Enter how long the sound should be.."
+      value: "Example: Approximately 5 seconds / 2 bars"
+    validations:
+      required: true
+
+  - type: input
     id: file_path
     attributes:
       label: Save File Path
@@ -45,6 +55,8 @@ body:
         - [ ] The file has been imported in godot (Godot opened) and has the accompanying `.import` file.
         - [ ] A pull request (PR) is created with the changes including the .ogg file and the .import file.
 
+        [Pull Request Guide: Github]("https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request")
+
   - type: textarea
     validations:
       required: true
@@ -60,6 +72,8 @@ body:
         - [ ] The file name contains the prefix "aud_", is all lowercase, and is underscore separated, i.e. "aud_name-loop.ogg"
         - [ ] The file has been imported in godot (Godot opened) and has the accompanying `.import` file.
         - [ ] A pull request (PR) is created with the changes including the .ogg file and the .import file.
+
+        [Pull Request Guide: Github]("https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request")
         
         ## Blocking
         - Music Implementation tasks (Making the music play in-game)

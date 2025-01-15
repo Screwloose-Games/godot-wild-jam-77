@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjydkdh825wo0"]
+
+[ext_resource type="PackedScene" uid="uid://cbkvroagayyyc" path="res://game/altar/game_altar.tscn" id="1_1ufvv"]
+[ext_resource type="Script" path="res://game/altar_locations/melee_altar_location/altar_enemy_group.gd" id="2_ss6ho"]
+[ext_resource type="PackedScene" uid="uid://crco2b1srkhyo" path="res://game/actors/enemies/melee_enemy/game_melee_enemy.tscn" id="2_t0d8b"]
+
+[node name="MeleeAltarLocation" type="Node3D"]
+
+[node name="Altar" parent="." instance=ExtResource("1_1ufvv")]
+
+[node name="Enemies" type="Node3D" parent="." node_paths=PackedStringArray("altar")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.395007, 0)
+script = ExtResource("2_ss6ho")
+altar = NodePath("../Altar")
+
+[node name="MeleeEnemy" parent="Enemies" instance=ExtResource("2_t0d8b")]
+transform = Transform3D(0.631245, 0, -0.775584, 0, 1, 0, 0.775584, 0, 0.631245, -14.9012, 0, 6.63766)
+
+[node name="MeleeEnemy2" parent="Enemies" instance=ExtResource("2_t0d8b")]
+transform = Transform3D(0.976878, 0, -0.213798, 0, 1, 0, 0.213798, 0, 0.976878, -9.29076, 1.90735e-06, 17.0242)
+delay_after_spawning_secs = 20.0
+
+[node name="MeleeEnemy3" parent="Enemies" instance=ExtResource("2_t0d8b")]
+transform = Transform3D(-0.244258, 0, 0.96971, 0, 1, 0, -0.96971, 0, -0.244258, 16.2996, 0, -6.27647)
+delay_after_spawning_secs = 40.0
+
+[node name="MeleeEnemy4" parent="Enemies" instance=ExtResource("2_t0d8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0781, 0, 13.4732)
+delay_after_spawning_secs = 60.0
+
+[node name="MeleeEnemy5" parent="Enemies" instance=ExtResource("2_t0d8b")]
+transform = Transform3D(-0.870115, 0, -0.492849, 0, 1, 0, 0.492849, 0, -0.870115, -5.22614, 0, -15.3807)
+delay_after_spawning_secs = 80.0
+
+[node name="MeleeEnemy6" parent="Enemies" instance=ExtResource("2_t0d8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11855, 0, 15.5691)
+delay_after_spawning_secs = 100.0

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://clj2pirqht041"]
+
+[ext_resource type="Texture2D" uid="uid://lko5srwjlvki" path="res://game/actors/player_controller/tex_player_character.png" id="1_iietk"]
+
+[resource]
+cull_mode = 2
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_iietk")

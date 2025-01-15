@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://o4y0yrynvfsr"]
+
+[ext_resource type="PackedScene" uid="uid://cjydkdh825wo0" path="res://game/altar_locations/melee_altar_location/game_melee_altar_location.tscn" id="1_607v6"]
+[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="2_87s17"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_dryx6"]
+vertices = PackedVector3Array(-56.751, 1, -135.512, -56.751, 1, -36.2624, 72.249, 1, -36.2624, 72.249, 1, -135.512)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gucdp"]
+albedo_color = Color(0.318953, 0.448759, 0.139036, 1)
+
+[node name="TestMeleeAltarLocation" type="Node3D"]
+
+[node name="MeleeAltarLocation" parent="." instance=ExtResource("1_607v6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -82.8121)
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_87s17")]
+transform = Transform3D(0.93495, 0, 0.35478, 0, 1, 0, -0.35478, 0, 0.93495, 1.63922, 0.930598, -79.9638)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_dryx6")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.71174, 0, -85.8679)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(129.926, 1, 100.289)
+material = SubResource("StandardMaterial3D_gucdp")

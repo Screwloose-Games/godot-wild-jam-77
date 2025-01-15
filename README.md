@@ -39,4 +39,3 @@
 
 # Softwear For Recording Screen
 [Bandicam](https://www.bandicam.com/)
-

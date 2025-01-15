@@ -1,6 +1,6 @@
 @tool
 extends Node3D
-class_name MeleeAbilty
+class_name EnemyMeleeAbilty
 
 @export var hitting_color: Color
 @export var default_color: Color
@@ -33,12 +33,17 @@ func attack():
     if not can_attack:
         return
     can_attack = false
+    _start_attack()
+    #_handle_attack_animation()
+    await get_tree().create_timer(0.1).timeout
+    _end_attack()
+
+func _start_attack():
     visual.material.albedo_color = hitting_color
     visual.material.emission = hitting_color
     hit_box_component_3d.activate()
     start_cooldown()
-    await get_tree().create_timer(0.1).timeout
     
+func _end_attack():
     visual.material.albedo_color = default_color
     visual.material.emission = default_color
-    

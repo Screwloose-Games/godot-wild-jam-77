@@ -18,6 +18,8 @@ var spawned_enemies: Array[Node] = []
 func _ready():
     pass
 
+func assign_enemy(enemy: Enemy):
+    assigned_enemies.append(enemy)
 
 # Activate the altar
 func activate(player: PlayerController):
@@ -39,7 +41,8 @@ func activate(player: PlayerController):
 ## Spawn enemies associated with the altar
 func spawn_enemies():
     for enemy in assigned_enemies:
-        enemy.activate()
+        if enemy is Enemy:
+            enemy.activate()
 
 ## Reset enemies
 func reset_enemies():

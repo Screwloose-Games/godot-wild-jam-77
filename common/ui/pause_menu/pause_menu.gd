@@ -25,10 +25,16 @@ func pause():
     get_tree().paused = should_pause
     visible = should_pause
     Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+    
+    if should_pause:
+        GlobalSignalBus.game_paused.emit()
+    else:
+        GlobalSignalBus.game_unpaused.emit()
 
 func on_continue_pressed():
     get_tree().paused = false
     visible = false
+    GlobalSignalBus.game_unpaused.emit()
     #queue_free()
 
 

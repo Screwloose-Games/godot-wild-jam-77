@@ -8,6 +8,8 @@ signal died
 @export var max_health: int = 100
 @export_range(0.5, 5) var turning_speed: float = 1
 
+@onready var health_component: HealthComponent = %HealthComponent
+
 var last_direction := Vector3.MODEL_FRONT
 
 enum Factions {

@@ -94,7 +94,6 @@ blend = 0.1
 [sub_resource type="BTAction" id="BTAction_a4jqi"]
 script = ExtResource("5_r1ou0")
 target_var = &"target"
-speed_var = &"speed"
 approach_distance = 100.0
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_xek5v"]
