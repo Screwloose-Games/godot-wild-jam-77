@@ -53,12 +53,7 @@
 				1
 			],
 			"mesh":2,
-			"name":"monolith",
-			"translation":[
-				2.2762041091918945,
-				-0.12517213821411133,
-				-0.29326367378234863
-			]
+			"name":"monolith"
 		}
 	],
 	"materials":[
@@ -300,7 +295,7 @@
 	"buffers":[
 		{
 			"byteLength":35916,
-			"uri":"altar.bin"
+			"uri":"sm_altar.bin"
 		}
 	]
 }

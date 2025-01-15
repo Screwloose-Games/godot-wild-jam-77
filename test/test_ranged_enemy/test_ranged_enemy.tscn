@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dpgxryx14hepa"]
 
 [ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="1_vwcdx"]
-[ext_resource type="PackedScene" uid="uid://bygv60003uc5w" path="res://game/actors/enemies/game_ranged_enemy.tscn" id="2_6nvmc"]
-[ext_resource type="PackedScene" uid="uid://crco2b1srkhyo" path="res://game/actors/enemies/game_melee_enemy.tscn" id="2_ppc7c"]
+[ext_resource type="PackedScene" uid="uid://bygv60003uc5w" path="res://game/actors/enemies/ranged_enemy/game_ranged_enemy.tscn" id="2_6nvmc"]
+[ext_resource type="PackedScene" uid="uid://crco2b1srkhyo" path="res://game/actors/enemies/melee_enemy/game_melee_enemy.tscn" id="2_ppc7c"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cwy24"]
 vertices = PackedVector3Array(-105.02, 0.538625, -137.963, -105.02, 0.538625, 41.5374, 119.23, 0.538625, 41.5374, 119.23, 0.538625, -137.963)

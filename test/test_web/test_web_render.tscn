@@ -1,10 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdj5r6qpugutf"]
+[gd_scene load_steps=2 format=3 uid="uid://cdj5r6qpugutf"]
 
 [ext_resource type="PackedScene" uid="uid://yibvym8uhvwr" path="res://game/levels/Environments/lvl_greybox_environment_template.tscn" id="1_ce58m"]
-[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="2_qrukh"]
 
 [node name="LvlGreyboxEnvironmentTemplate" instance=ExtResource("1_ce58m")]
-
-[node name="PlayerCharacter" parent="." index="3" instance=ExtResource("2_qrukh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.276971, 0)
-airborn_movement_factor = null

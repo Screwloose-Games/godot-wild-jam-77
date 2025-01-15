@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ujorxe4bspi6"]
 
-[ext_resource type="Script" path="res://game/actors/enemies/melee_enemy_controller.gd" id="1_803n0"]
+[ext_resource type="Script" path="res://game/actors/enemies/melee_enemy/melee_enemy_controller.gd" id="1_803n0"]
 [ext_resource type="Script" path="res://game/actors/enemies/base_entity.gd" id="1_pdpkq"]
 [ext_resource type="Script" path="res://common/components/detect_entities.gd" id="3_owdlv"]
 [ext_resource type="Script" path="res://game/actors/enemies/toggle_ai_processing.gd" id="4_7y7uy"]

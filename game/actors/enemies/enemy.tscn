@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://common/components/templates/HurtBoxComponent3D.gd" id="3_yiv1k"]
 
 [node name="Enemy" type="CharacterBody3D"]
+disable_mode = 1
 script = ExtResource("1_iuqop")
 
 [node name="HealthComponent" type="Node" parent="."]

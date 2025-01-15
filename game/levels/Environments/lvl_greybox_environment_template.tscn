@@ -15,4 +15,3 @@
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("4_v8pv0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 329.999, 13.7052, 28.9009)
-jumps_allowed = 2

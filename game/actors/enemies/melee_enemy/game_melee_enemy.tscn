@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://crco2b1srkhyo"]
 
-[ext_resource type="PackedScene" uid="uid://bxbkpou8fdoqo" path="res://game/actors/enemies/enemy.tscn" id="1_mur3f"]
-[ext_resource type="BehaviorTree" uid="uid://m60n8oplxst6" path="res://game/actors/behavior/melee_behavior_tree.tres" id="2_fnc4b"]
-[ext_resource type="Script" path="res://game/actors/enemies/enemy_melee_ability.gd" id="3_0ckcu"]
-[ext_resource type="Script" path="res://common/components/templates/HitBoxComponent3D.gd" id="3_fywcd"]
+[ext_resource type="PackedScene" uid="uid://bxbkpou8fdoqo" path="res://game/actors/enemies/enemy.tscn" id="1_0mf37"]
+[ext_resource type="BehaviorTree" uid="uid://m60n8oplxst6" path="res://game/actors/behavior/melee_behavior_tree.tres" id="2_kc48n"]
+[ext_resource type="Script" path="res://game/actors/enemies/melee_enemy/enemy_melee_ability.gd" id="3_uffac"]
+[ext_resource type="Script" path="res://common/components/templates/HitBoxComponent3D.gd" id="4_1xqfq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_syuwp"]
 
@@ -20,7 +20,7 @@ albedo_color = Color(0, 0, 0, 0.478431)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mh05o"]
 
-[node name="MeleeEnemy" instance=ExtResource("1_mur3f")]
+[node name="MeleeEnemy" instance=ExtResource("1_0mf37")]
 collision_layer = 8
 collision_mask = 15
 speed = 5
@@ -45,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_mtyox")
 
 [node name="BTPlayer" type="BTPlayer" parent="." index="3"]
-behavior_tree = ExtResource("2_fnc4b")
+behavior_tree = ExtResource("2_kc48n")
 blackboard_plan = SubResource("BlackboardPlan_shc20")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="4"]
@@ -54,7 +54,7 @@ path_max_distance = 1.01
 debug_enabled = true
 
 [node name="MeleeAbility" type="Node3D" parent="." index="5"]
-script = ExtResource("3_0ckcu")
+script = ExtResource("3_uffac")
 hitting_color = Color(1, 0, 0, 1)
 default_color = Color(0, 0, 0, 0.478431)
 
@@ -63,7 +63,7 @@ unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 256
 monitoring = false
-script = ExtResource("3_fywcd")
+script = ExtResource("4_1xqfq")
 sender = NodePath("../..")
 amount = 20.0
 deactivate_on_hit = true
