@@ -23,14 +23,24 @@ body:
       placeholder: "Upload reference images..."
     validations:
       required: false
-
+  
+  - type: input
+    id: dimentions
+    attributes:
+      label: Dimentions
+      description: What are the approximate dimentions of the object?
+      placeholder: "Enter the approximate dimentions in meters..."
+      value: "1.8 meters tall x .3 meters deep, .5 meters wide"
+    validations:
+      required: true
+  
   - type: input
     id: file_path
     attributes:
       label: Save File Path
       description: Provide the full filepath where the model should be saved.
       placeholder: "Enter the full file path..."
-      value: "raw_assets/models/{{object_name}}.fbx"
+      value: "game/{{game_object_directory}}/models/{{object_name}}.blend"
     validations:
       required: true
 
@@ -43,8 +53,14 @@ body:
         - [ ] Model normals correct.
         - [ ] The model contains UV mapping.
         - [ ] UV islands created as needed.
-        - [ ] The model is saved in `.fbx` file format.
-        - [ ] The model is saved to the specified filepath: `raw_assets/models/{{file_path}}`.
+        - [ ] Set the pivot point of the model to the correct location (often bottom center)
+        - [ ] Align the pivot point of the model to the world origin.
+        - [ ] Model facing direction __Positive-Y direction__
+        - [ ] Model is the correct __dimentions__ as defined above.
+        - [ ] Ensure no mesh has a child mesh (breaks collision shape generation)
+        - [ ] The model is saved in `.blend` file format.
+        - [ ] The model is saved to the specified filepath: `game/{{game_object_directory}}/models/sk_{{model_name}}.blend`.
+        - [ ] The model is exported as gltf to the specified filepath: `game/{{game_object_directory}}/models/sk_{{model_name}}.gltf`.
         - [ ] A pull request (PR) is created with the changes.
     
   - type: textarea
@@ -58,8 +74,14 @@ body:
         - [ ] Model normals correct.
         - [ ] The model contains UV mapping.
         - [ ] UV islands created as needed.
-        - [ ] The model is saved in `.fbx` file format.
-        - [ ] The model is saved to the specified filepath: `raw_assets/models/{{file_path}}`.
+        - [ ] Set the pivot point of the model to the correct location (often bottom center)
+        - [ ] Align the pivot point of the model to the world origin.
+        - [ ] Model facing direction __Positive-Y direction__
+        - [ ] Model is the correct __dimentions__ as defined above.
+        - [ ] Ensure no mesh has a child mesh (breaks collision shape generation)
+        - [ ] The model is saved in `.blend` file format.
+        - [ ] The model is saved to the specified filepath: `game/{{game_object_directory}}/models/sk_{{model_name}}.blend`.
+        - [ ] The model is exported as gltf to the specified filepath: `game/{{game_object_directory}}/models/sk_{{model_name}}.gltf`.
         - [ ] A pull request (PR) is created with the changes.
         
         [Pull Request Guide: Github](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
