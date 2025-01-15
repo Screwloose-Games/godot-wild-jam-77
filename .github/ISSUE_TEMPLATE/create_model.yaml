@@ -40,7 +40,8 @@ body:
       label: Save File Path
       description: Provide the full filepath where the model should be saved.
       placeholder: "Enter the full file path..."
-      value: "game/{game_object_directory}/models/{object_name}.blend"
+      value: "game/{game_object_directory}/{object_name}.blend"
+      value: "game/{game_object_directory}/{object_name}.gltf"
     validations:
       required: true
 
@@ -60,8 +61,8 @@ body:
         - [ ] Ensure no mesh has a child mesh (breaks collision shape generation)
         - [ ] The model is saved in `.blend` file format.
         - [ ] The model is prefixed with sk_ for skeletal mesh and sm_ for static mesh.
-        - [ ] The model is saved to the specified filepath: `game/{game_object_directory}/models/sk_{model_name}.blend`.
-        - [ ] The model is exported as gltf to the specified filepath: `game/{game_object_directory}/models/sk_{model_name}.gltf`.
+        - [ ] The model is saved to the specified filepath: `game/{game_object_directory}/sk_{model_name}.blend`.
+        - [ ] The model is exported as gltf to the specified filepath: `game/{game_object_directory}/sk_{model_name}.gltf`.
         - [ ] A pull request (PR) is created with the changes.
     
   - type: textarea
@@ -82,11 +83,11 @@ body:
         - [ ] Ensure no mesh has a child mesh (breaks collision shape generation)
         - [ ] The model is saved in `.blend` file format.
         - [ ] The model is prefixed with sk_ for skeletal mesh and sm_ for static mesh.
-        - [ ] The model is saved to the specified filepath: `game/{{game_object_directory}}/models/sk_{{model_name}}.blend`.
-        - [ ] The model is exported as gltf to the specified filepath: `game/{{game_object_directory}}/models/sk_{{model_name}}.gltf`.
+        - [ ] The model is saved to the specified filepath: `game/{game_object_directory}/sk_{model_name}.blend`.
+        - [ ] The model is exported as gltf to the specified filepath: `game/{game_object_directory}/sk_{model_name}.gltf`.
         - [ ] A pull request (PR) is created with the changes.
         
         [Pull Request Guide: Github](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 
-        ## Blocking
-        - Animation tasks
+        ## Implementation Criteria
+        - Go to [Implementation Mega Thread](https://github.com/Screwloose-Games/godot-wild-jam-77/issues/120) and add your new issue # as a comment
