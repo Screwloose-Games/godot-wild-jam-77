@@ -10,7 +10,6 @@ body:
       label: Description
       description: Provide a description of what your implementing.
       placeholder: "Enter the implementation description..."
-      value: "This is where info is"
     validations:
       required: true
 
@@ -26,49 +25,16 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Acceptance Criteria:
-        
-        ### Game Object (game_)
-        - [ ] a
-        - [ ] Configure Import Settings
-        - [ ] a
-        - [ ] a
-        
-        ### Level (lvl_)
-        - [ ] a
-        - [ ] Configure Import Settings
-        - [ ] a
-        - [ ] a
-        
-        ### Material (mat_)
-        - [ ] a
-        - [ ] Configure Import Settings
-        - [ ] a
-        - [ ] a
-        
-        ### Skeletal Mesh (sk_)
-        - [ ] a
-        - [ ] Configure Import Settings
-        - [ ] a
-        - [ ] a
-        
-        ### Sound (aud_)
-        - [ ] a
-        - [ ] Configure Import Settings
-        - [ ] a
-        - [ ] a
-        
-        ### Static Mesh (sm_)
-        - [ ] Locate file .../model_name/models/sm_model_name.gltf in Godot
-        - [ ] Configure Import Settings
-        - [ ] The static mesh is saved in `.tscn` file format.
-        - [ ] Inherit New Scene. Right Click > New Inherited Scene > Save As (Same place typically) > sm_model_name.tscn
-        
-        ### Texture (tex_)
-        - [ ] a
-        - [ ] Configure Import Settings
-        - [ ] a
-        - [ ] a
+        ## Acceptance Criteria Guidelines:
+        - [ ] Delete any filetype not needed for implementation in Subtasks.
+        - [ ] Verify that the file is in the correct spot.
+
+        ## File Path Standards
+        - {folder_name}: Enter your own folder name if no other folder matches.
+        - {model_name}: Enter the name of the model.
+        - {file_name}: Enter the name of the file.
+        - {Same Directory}: Same directory.
+        - [Under Construction]: Developing SOP.
 
   - type: textarea
     validations:
@@ -80,43 +46,53 @@ body:
         ## Acceptance Criteria:
         
         ### Game Object (game_)
-        - [ ] a
-        - [ ] Configure Import Settings
-        - [ ] a
-        - [ ] a
+        - [ ] Add game_ as a prefix to the {file_name}
+        - [ ] Import File Location: game/{folder_name}/game_{model_name}.tscn
+        - [ ] Connect the asset to the scene: [Under Construction]
         
         ### Level (lvl_)
-        - [ ] a
-        - [ ] Configure Import Settings
-        - [ ] a
-        - [ ] a
+        - [ ] Add lvl_ as a prefix to the {file_name}
+        - [ ] Import File Location: game/levels/{folder_name}/lvl_{file_name}.tscn
+        - [ ] Connect the asset to the scene: [Under Construction]
         
         ### Material (mat_)
-        - [ ] a
-        - [ ] Configure Import Settings
-        - [ ] a
-        - [ ] a
+        - [ ] Add mat_ as a prefix to the {file_name}
+        - [ ] Import File Location: common/art/materials/mat_{file_name}.material
+        - [ ] Connect the asset to the scene: [Under Construction]
         
         ### Skeletal Mesh (sk_)
-        - [ ] a
-        - [ ] Configure Import Settings
-        - [ ] a
-        - [ ] a
+        - [ ] Add sk_ as a prefix to the {file_name}
+        - [ ] Add animations (if needed)
+        - [ ] Add textures (if needed)
+        - [ ] GitHub Pull Request Created > Assign Reviewer.
+        - [ ] Import File Location: game/{folder_name}/sk_{file_name}.blend
+        - [ ] Import File Location: game/{folder_name}/sk_{file_name}.gltf
+        #### Configure Import Settings
+        - [ ] Physics Turned On > Physics > Shape Type > Simple Convex (Normally will work) 
+        - [ ] Locate and right click on the .gltf file > New Inherited Scene
+        - [ ] Save As > {Same Directory} > sk_{file_name}.tscn
         
         ### Sound (aud_)
-        - [ ] a
-        - [ ] Configure Import Settings
-        - [ ] a
-        - [ ] a
+        - [ ] Add aud_ as a prefix to the {file_name}
+        - [ ] .ogg for music & ambient files, .wav for SFX files.
+        - [ ] Import File Location: common/audio/{folder_name}/aud_{file_name}.ogg
+        - [ ] Import as loop: add -loop to the end of the {file_name}: common/audio/{folder_name}/aud_{file_name}-loop.ogg
+        - [ ] Connect the asset to the scene: [Under Construction]        
         
         ### Static Mesh (sm_)
-        - [ ] Locate file .../model_name/models/sm_model_name.gltf in Godot
-        - [ ] Configure Import Settings
-        - [ ] The static mesh is saved in `.tscn` file format.
-        - [ ] Inherit New Scene. Right Click > New Inherited Scene > Save As (Same place typically) > sm_model_name.tscn
+        - [ ] Add sm_ as a prefix to the {file_name}
+        - [ ] Add animations (if needed)
+        - [ ] Add textures (if needed)
+        - [ ] GitHub Pull Request Created > Assign Reviewer.
+        - [ ] Import File Location: game/{folder_name}/sm_{file_name}.blend
+        - [ ] Import File Location: game/{folder_name}/sm_{file_name}.gltf
+        #### Configure Import Settings
+        - [ ] Physics Turned On > Physics > Shape Type > Simple Convex (Normally will work) 
+        - [ ] Locate and right click on the .gltf file > New Inherited Scene
+        - [ ] Save As > {Same Directory} > sm_{file_name}.tscn
 
         ### Texture (tex_)
-        - [ ] a
-        - [ ] Configure Import Settings
-        - [ ] a
-        - [ ] a
+        - [ ] Add tex_ as a prefix to the {file_name}
+        - [ ] GitHub Pull Request Created > Assign Reviewer.
+        - [ ] Import File Location: game/{model_name}/tex_{model_name}.blend
+        - [ ] Connect the asset to the scene: [Under Construction]  
