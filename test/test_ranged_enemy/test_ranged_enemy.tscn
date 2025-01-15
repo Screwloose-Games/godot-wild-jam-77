@@ -21,6 +21,7 @@ size = Vector3(225.271, 1.55518, 180.45)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_vwcdx")]
+jumps_allowed = 2
 melee_attack_cooldown = 0.252
 
 [node name="RangedEnemy" parent="." instance=ExtResource("2_6nvmc")]

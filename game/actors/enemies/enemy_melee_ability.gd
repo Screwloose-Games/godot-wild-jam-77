@@ -1,6 +1,6 @@
 @tool
 extends Node3D
-class_name MeleeAbilty
+class_name EnemyMeleeAbilty
 
 @export var hitting_color: Color
 @export var default_color: Color
@@ -35,7 +35,7 @@ func attack():
         return
     can_attack = false
     _start_attack()
-    _handle_attack_animation()
+    #_handle_attack_animation()
     await get_tree().create_timer(0.1).timeout
     _end_attack()
 
