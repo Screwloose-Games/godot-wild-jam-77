@@ -26,7 +26,6 @@ size = Vector3(225.271, 1.55518, 180.45)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_cw2n0")]
-airborn_movement_factor = 0.5
 melee_attack_cooldown = 0.252
 
 [node name="MeleeEnemy" parent="." instance=ExtResource("4_sl8t0")]
