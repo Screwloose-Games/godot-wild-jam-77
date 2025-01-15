@@ -26,7 +26,7 @@ signal enemy_targeted_player(enemy: Enemy)
 # Signals for altar-specific events
 signal altar_activated
 signal altar_failed
-signal altar_succeeded
+signal altar_succeeded(wave_number: int, final_wave: bool)
 
 # Signals for menu-related events
 signal main_menu_started
