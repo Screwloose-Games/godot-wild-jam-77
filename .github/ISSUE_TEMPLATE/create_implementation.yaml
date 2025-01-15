@@ -1,6 +1,6 @@
 name: Implementation
-description: Template for Acceptance criteria for deliverables.
-title: "Implementation Acceptance Criteria"
+description: Template for implementation acceptance criteria for deliverables.
+title: "Implementation {file_name}"
 labels:
   - implementation
 body:
@@ -16,9 +16,9 @@ body:
   - type: textarea
     id: context
     attributes:
-      label: Context
-      description: Provide the context for implementation.
-      placeholder: "Enter the context for implementation..."
+      label: File Location
+      description: Provide the .gltf Location of what your implementing.
+      placeholder: "game/{folder_name}/sk_{file_name}.gltf"
     validations:
       required: true
 
@@ -27,14 +27,21 @@ body:
       value: |
         ## Acceptance Criteria Guidelines:
         - [ ] Delete any filetype not needed for implementation in Subtasks.
+        - [ ] Provide .gltf Location: game/{folder_name}/{prefix}_{file_name}.gltf
         - [ ] Verify that the file is in the correct spot.
 
         ## File Path Standards
+        - {prefix}: sk_ || sm_
         - {folder_name}: Enter your own folder name if no other folder matches.
         - {model_name}: Enter the name of the model.
         - {file_name}: Enter the name of the file.
         - {Same Directory}: Same directory.
         - [Under Construction]: Developing SOP.
+
+        ## Texture Reminders
+        - Albedo (Reason: Base color for the material)
+        - Roughness (Reason: Affects the way reflection happens)
+        - Normal Map (Reason: Finer shapes)
 
   - type: textarea
     validations:
@@ -45,54 +52,38 @@ body:
       value: |
         ## Acceptance Criteria:
         
-        ### Game Object (game_)
-        - [ ] Add game_ as a prefix to the {file_name}
-        - [ ] Import File Location: game/{folder_name}/game_{model_name}.tscn
-        - [ ] Connect the asset to the scene: [Under Construction]
-        
-        ### Level (lvl_)
-        - [ ] Add lvl_ as a prefix to the {file_name}
-        - [ ] Import File Location: game/levels/{folder_name}/lvl_{file_name}.tscn
-        - [ ] Connect the asset to the scene: [Under Construction]
-        
-        ### Material (mat_)
-        - [ ] Add mat_ as a prefix to the {file_name}
-        - [ ] Import File Location: common/art/materials/mat_{file_name}.material
-        - [ ] Connect the asset to the scene: [Under Construction]
-        
         ### Skeletal Mesh (sk_)
-        - [ ] Add sk_ as a prefix to the {file_name}
-        - [ ] Add animations (if needed)
-        - [ ] Add textures (if needed)
-        - [ ] GitHub Pull Request Created > Assign Reviewer.
-        - [ ] Import File Location: game/{folder_name}/sk_{file_name}.blend
-        - [ ] Import File Location: game/{folder_name}/sk_{file_name}.gltf
-        #### Configure Import Settings
-        - [ ] Physics Turned On > Physics > Shape Type > Simple Convex (Normally will work) 
-        - [ ] Locate and right click on the .gltf file > New Inherited Scene
-        - [ ] Save As > {Same Directory} > sk_{file_name}.tscn
-        
-        ### Sound (aud_)
-        - [ ] Add aud_ as a prefix to the {file_name}
-        - [ ] .ogg for music & ambient files, .wav for SFX files.
-        - [ ] Import File Location: common/audio/{folder_name}/aud_{file_name}.ogg
-        - [ ] Import as loop: add -loop to the end of the {file_name}: common/audio/{folder_name}/aud_{file_name}-loop.ogg
-        - [ ] Connect the asset to the scene: [Under Construction]        
+        - [ ] .gltf Location: game/{folder_name}/sk_{file_name}.gltf
+        #### Configure Inherited Scene
+        - [ ] Open location in Godot > Right click gltf file > New Inherited Scene
+        - [ ] Under Scene > Click on a MeshInstance3D. (Repeat for each MeshInstance3D)
+        - [ ] Under Inspector > Click Surface Material Override dropdown.
+        - [ ] Click <empty> > New StandardMaterial3D > Click on material to bring up property settings.
+        - [ ] Fill out Albedo || (Sometimes Roughness or/and Normal Map)
+        - [ ] Under FileSystem > find related tex_ file in {Same Directory}.
+        - [ ] Drag to Texture property of Albedo.
+        - [ ] Right click on the Inherited Scene > Save Scene As... in {Same Directory} as .gltf file.
+        - [ ] File will save as tscn: sk_{file_name}.tscn
+        - [ ] GitHub Pull Request Created > Assign Reviewer.   
         
         ### Static Mesh (sm_)
-        - [ ] Add sm_ as a prefix to the {file_name}
-        - [ ] Add animations (if needed)
-        - [ ] Add textures (if needed)
+        - [ ] .gltf Location: game/{folder_name}/sm_{file_name}.gltf
+        #### Configure Advanced Import Settings
+        - [ ] Under FileSystem > Double click the .gltf file to open Advanced Import Settings for Scene.
+        - [ ] Under Scene > Click on a MeshInstance3D. (Repeat for each MeshInstance3D)
+        - [ ] Under Generate > Turn Physics On > Physics > Shape Type > Simple Convex (Normally will work) 
+        - [ ] Click Reimport
+        #### Configure Inherited Scene
+        - [ ] Open location in Godot > Right click gltf file > New Inherited Scene
+        - [ ] Under Scene > Click on a MeshInstance3D. (Repeat for each MeshInstance3D)
+        - [ ] Under Inspector > Click Surface Material Override dropdown.
+        - [ ] Click <empty> > New StandardMaterial3D > Click on material to bring up property settings.
+        - [ ] Fill out Albedo || (Sometimes Roughness or/and Normal Map)
+        - [ ] Under FileSystem > find related tex_ file in {Same Directory}.
+        - [ ] Drag to Texture property of Albedo.
+        - [ ] Right click on the Inherited Scene > Save Scene As... in {Same Directory} as .gltf file.
+        - [ ] File will save as tscn: sk_{file_name}.tscn
         - [ ] GitHub Pull Request Created > Assign Reviewer.
-        - [ ] Import File Location: game/{folder_name}/sm_{file_name}.blend
-        - [ ] Import File Location: game/{folder_name}/sm_{file_name}.gltf
-        #### Configure Import Settings
-        - [ ] Physics Turned On > Physics > Shape Type > Simple Convex (Normally will work) 
-        - [ ] Locate and right click on the .gltf file > New Inherited Scene
-        - [ ] Save As > {Same Directory} > sm_{file_name}.tscn
 
-        ### Texture (tex_)
-        - [ ] Add tex_ as a prefix to the {file_name}
-        - [ ] GitHub Pull Request Created > Assign Reviewer.
-        - [ ] Import File Location: game/{model_name}/tex_{model_name}.blend
-        - [ ] Connect the asset to the scene: [Under Construction]  
+        ### Sound (aud_)
+        - [ ] FIND CHRIS!
