@@ -23,10 +23,15 @@ signal deactivated
         trigger_active = false
 
 func _ready():
+    
     if is_active:
         _activate()
     else:
         _deactivate()
+
+func _physics_process(delta: float) -> void:
+    if not is_on_floor():
+        velocity += get_gravity()
 
 # On spawned by wave, activate this entity
 func activate():

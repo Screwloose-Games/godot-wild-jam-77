@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bceduv3fwkw8v"]
+
+[ext_resource type="PackedScene" uid="uid://dobvd4avsd0ib" path="res://game/altar/sm_altar.gltf" id="1_5tm0i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vtu0m"]
+size = Vector3(1.76993, 3.82474, 0.413086)
+
+[node name="sm_altar" instance=ExtResource("1_5tm0i")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 6
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0114899, 1.96809, -0.256544)
+shape = SubResource("BoxShape3D_vtu0m")
