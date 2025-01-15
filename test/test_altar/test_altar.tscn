@@ -30,14 +30,11 @@ melee_attack_cooldown = 0.252
 
 [node name="MeleeEnemy" parent="." instance=ExtResource("4_sl8t0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.36918, 0.129914, 9.61421)
-turning_speed = 2.0
 
 [node name="MeleeEnemy2" parent="." instance=ExtResource("4_sl8t0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40914, 0.129914, 9.61421)
 delay_after_spawning_secs = 5.0
-turning_speed = 2.0
 
 [node name="MeleeEnemy3" parent="." instance=ExtResource("4_sl8t0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2235, 0.129914, -22.4539)
 delay_after_spawning_secs = 10.0
-turning_speed = 2.0
