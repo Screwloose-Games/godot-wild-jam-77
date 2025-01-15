@@ -17,6 +17,7 @@ class_name PlayerController
 @export_range(0, 10) var dash_distance: float = 5
 @export_range(0, 0.5) var dash_duration: float = 0.25
 @export_range(1, 2) var jumps_allowed: int = 2
+@export_range(0, 10) var beam_speed_slowdown: float = 3
 @export_range(0, 6) var melee_attack_cooldown: float = 2:
     set(val):
         melee_attack_cooldown = val
@@ -141,8 +142,11 @@ func _physics_process(delta: float) -> void:
         input_direction = move_dir
 
         #move_dir = move_dir.rotated(Vector3.UP, _camera.rotation.y).normalized()
-        velocity.x = move_dir.x * speed
-        velocity.z = move_dir.z * speed
+        var beam_speed_penalty: float = 0
+        if beam_ability.isHoldingBeamAttack:
+            beam_speed_penalty = beam_speed_slowdown
+        velocity.x = move_dir.x * (speed - beam_speed_penalty)
+        velocity.z = move_dir.z * (speed - beam_speed_penalty)
     else:
         velocity.x = move_toward(velocity.x, 0, speed)
         velocity.z = move_toward(velocity.z, 0, speed)

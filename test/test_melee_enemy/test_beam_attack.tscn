@@ -25,4 +25,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.195)
 is_active = true
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_n613x")]
+beam_speed_slowdown = 5.0
 melee_attack_cooldown = 0.252
