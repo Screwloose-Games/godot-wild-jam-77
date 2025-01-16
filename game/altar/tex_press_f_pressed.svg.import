@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgwf6cd5ypjo4"
-path="res://.godot/imported/title.svg-f7dc9da0f22e110b1e22372a3f0f2aba.ctex"
+uid="uid://b1ourxg6q4opt"
+path="res://.godot/imported/tex_press_f_pressed.svg-d8349a58979465545bb565407acced64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://common/ui/main_menu/title.svg"
-dest_files=["res://.godot/imported/title.svg-f7dc9da0f22e110b1e22372a3f0f2aba.ctex"]
+source_file="res://game/altar/tex_press_f_pressed.svg"
+dest_files=["res://.godot/imported/tex_press_f_pressed.svg-d8349a58979465545bb565407acced64.ctex"]
 
 [params]
 
