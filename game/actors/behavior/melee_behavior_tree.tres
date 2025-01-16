@@ -57,8 +57,8 @@ output_var = &"target"
 text = "Persuing player"
 
 [sub_resource type="BBNode" id="BBNode_h7nvt"]
-saved_value = NodePath("Visual/sm_melee_enemy/AnimationPlayer")
-resource_name = "Visual/sm_melee_enemy/AnimationPlayer"
+saved_value = NodePath("Visual/sk_melee_enemy/AnimationPlayer")
+resource_name = "Visual/sk_melee_enemy/AnimationPlayer"
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_vssep"]
 animation_player = SubResource("BBNode_h7nvt")

@@ -24,9 +24,6 @@ signal deactivated
 
 @export var attack_rotation_tolerance_degrees: float = 10
 
-@onready var melee_ability: EnemyMeleeAbilty = %MeleeAbility
-
-
 func _ready():
     
     if is_active:

@@ -21,12 +21,13 @@ size = Vector3(225.271, 1.55518, 180.45)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_vwcdx")]
-beam_speed_slowdown = 3.0
 melee_attack_cooldown = 0.252
+hasMeleeAbility = false
+hasRangedAbility = false
+hasShieldAbility = false
 
 [node name="RangedEnemy" parent="." instance=ExtResource("2_6nvmc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0605, 0, 5.29899)
-attack_rotation_tolerance_degrees = null
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0605, 0.0931644, 5.29899)
 
 [node name="MeleeEnemy" parent="." instance=ExtResource("2_ppc7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.28176, 0.0938058, 5.47688)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://crco2b1srkhyo"]
+[gd_scene load_steps=31 format=3 uid="uid://crco2b1srkhyo"]
 
 [ext_resource type="PackedScene" uid="uid://bxbkpou8fdoqo" path="res://game/actors/enemies/enemy.tscn" id="1_0mf37"]
 [ext_resource type="BehaviorTree" uid="uid://m60n8oplxst6" path="res://game/actors/behavior/melee_behavior_tree.tres" id="2_kc48n"]
 [ext_resource type="PackedScene" uid="uid://bqrjmk2kfp344" path="res://game/actors/enemies/melee_enemy/sk_melee_enemy_glb.tscn" id="2_x3bpp"]
+[ext_resource type="Script" path="res://game/actors/enemies/melee_enemy/melee_enemy.gd" id="2_y6jdy"]
 [ext_resource type="Script" path="res://game/actors/enemies/melee_enemy/enemy_melee_ability.gd" id="3_uffac"]
 [ext_resource type="Script" path="res://common/components/templates/HitBoxComponent3D.gd" id="4_1xqfq"]
 
@@ -109,6 +110,7 @@ albedo_color = Color(0, 0, 0, 0.478431)
 [node name="MeleeEnemy" instance=ExtResource("1_0mf37")]
 collision_layer = 8
 collision_mask = 15
+script = ExtResource("2_y6jdy")
 speed = 5
 turning_speed = 2.0
 
@@ -145,7 +147,15 @@ bones/28/rotation = Quaternion(-1.66106e-07, 0.993899, -0.110295, 3.39253e-06)
 bones/30/rotation = Quaternion(0.972721, -0.0677785, 0.00400212, 0.221821)
 bones/31/rotation = Quaternion(0.14879, 0.00105481, -0.0678884, 0.986535)
 bones/33/rotation = Quaternion(1.66106e-07, 0.993899, -0.110295, -3.39253e-06)
-bones/34/rotation = Quaternion(-0.697682, 0.697682, -0.115064, -0.115066)
+
+[node name="Cube_017" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D" index="0"]
+transform = Transform3D(1, -1.9007e-13, -1.36424e-12, 1.4122e-13, 1, -8.82894e-07, 1.16529e-12, 8.82894e-07, 1, 1.00187e-12, 1.90735e-06, -1.37091e-06)
+
+[node name="Cube_013" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D" index="1"]
+transform = Transform3D(1, -3.37508e-14, -7.10543e-13, 2.93099e-14, 1, -3.31551e-07, 7.38964e-13, 3.31551e-07, 1, 4.88498e-14, 1.43051e-06, -2.99886e-07)
+
+[node name="Cube_018" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D" index="2"]
+transform = Transform3D(1.03054, -1.49214e-13, -7.38964e-13, 3.19744e-14, 1.01942, -0.15101, 7.95808e-13, 0.15101, 1.01942, 1.7053e-13, 1.64392, -0.255608)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
