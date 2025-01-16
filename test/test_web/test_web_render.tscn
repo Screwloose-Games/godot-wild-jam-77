@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://yibvym8uhvwr" path="res://game/levels/Environments/lvl_greybox_environment_template.tscn" id="1_ce58m"]
 
 [node name="LvlGreyboxEnvironmentTemplate" instance=ExtResource("1_ce58m")]
+
+[node name="PlayerCharacter" parent="." index="3"]
+beam_speed_slowdown = 3.0
