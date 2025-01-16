@@ -8,6 +8,8 @@ signal purified
 @export var assigned_enemies: Array[Enemy] = []
 @export var altar_power: String = ""
 
+@export var altar_ability: AbilityType
+enum AbilityType { Melee, Ranged, Shield }
 
 var is_active: bool = false
 var is_purified: bool = false
@@ -49,21 +51,20 @@ func reset_enemies():
     for enemy in spawned_enemies:
         enemy.reset()
 
-func reset():
+func reset(player: PlayerController):
     reset_enemies()
-    remove_power()
+    remove_power(player)
 
 ## Removes the power from the player
-func remove_power():
-    pass
+func remove_power(player: PlayerController):
+    player.setAbility(altar_ability, false)
 
 ## Grant power to the player
 func grant_power(player: PlayerController):
-    pass
+    player.setAbility(altar_ability, true)
 
 func _on_interactable_area_3d_interacted(player: PlayerController) -> void:
     activate(player)
-
 
 ## Call this function after the player purifies the altar and kills all the baddies
 func purify_altar():

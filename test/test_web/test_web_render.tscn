@@ -5,4 +5,6 @@
 [node name="LvlGreyboxEnvironmentTemplate" instance=ExtResource("1_ce58m")]
 
 [node name="PlayerCharacter" parent="." index="3"]
-beam_speed_slowdown = 3.0
+hasMeleeAbility = true
+hasRangedAbility = true
+hasShieldAbility = false

@@ -42,6 +42,10 @@ class_name PlayerController
         beam_ability.beam_attack_stop_delay = val
     get:
         return beam_attack_stop_delay
+        
+@export var hasMeleeAbility: bool
+@export var hasRangedAbility: bool
+@export var hasShieldAbility: bool
 
 var input_direction: Vector3 = Vector3.FORWARD
 var jumps_remaining := jumps_allowed
@@ -106,11 +110,11 @@ func _physics_process(delta: float) -> void:
         return
     if dash_ability.is_dashing:
         return
-    if Input.is_action_just_pressed("attack-melee"):
+    if Input.is_action_just_pressed("attack-melee") and hasMeleeAbility:
         melee_ability.attack()
-    if Input.is_action_just_pressed("attack-ranged"):
+    if Input.is_action_just_pressed("attack-ranged") and hasRangedAbility:
         beam_ability.attack()
-    if Input.is_action_just_released("attack-ranged"):
+    if Input.is_action_just_released("attack-ranged") and hasRangedAbility:
         beam_ability.stopAttack()
     if Input.is_action_just_pressed("dash"):
         if get_global_input_direction():
@@ -181,6 +185,15 @@ func _set_pcam_rotation(pcam: PhantomCamera3D, event: InputEvent) -> void:
 
         # Change the SpringArm3D node's rotation and rotate around its target
         pcam.set_third_person_rotation_degrees(pcam_rotation_degrees)
+
+func setAbility(abilityType: Altar.AbilityType, toSet: bool):
+    match abilityType:
+        Altar.AbilityType.Melee:
+            hasMeleeAbility = toSet
+        Altar.AbilityType.Ranged:
+            hasRangedAbility = toSet
+        Altar.AbilityType.Shield:
+            hasShieldAbility = toSet
 
 func die():
     died.emit()
