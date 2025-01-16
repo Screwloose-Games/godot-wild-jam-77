@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu3f7t65dnpi1"]
+
+[ext_resource type="PackedScene" uid="uid://l5omnhqfn3qd" path="res://game/levels/Environments/sm_crater_walls.gltf" id="1_imkw0"]
+
+[node name="sm_crater_walls" instance=ExtResource("1_imkw0")]
