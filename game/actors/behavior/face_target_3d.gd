@@ -20,8 +20,6 @@ extends BTAction
 func _generate_name() -> String:
     return "FaceTarget " + LimboUtility.decorate_var(target_var)
 
-var rotation_tolerance = 0.1
-
 # Called each time this task is ticked (aka executed).
 func _tick(_delta: float) -> Status:
     var target: Node3D = blackboard.get_var(target_var)
@@ -31,7 +29,7 @@ func _tick(_delta: float) -> Status:
     #agent.velocity = Vector3.ZERO
     (agent as Actor3D).face_dir_lerp(dir, _delta)
     var rotation_to_dir = agent.rotation_to_direction(dir)
-    if agent.rotation_to_direction(dir) < rotation_tolerance:
+    if agent.rotation_to_direction(dir) < agent.attack_rotation_tolerance_degrees:
         return SUCCESS
     return RUNNING
 

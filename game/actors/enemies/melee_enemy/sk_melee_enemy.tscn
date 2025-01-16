@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsw64lne8kqjg"]
+
+[ext_resource type="PackedScene" uid="uid://xkrvoq6gha8w" path="res://game/actors/enemies/melee_enemy/sk_melee_enemy.glb" id="1_fa1mf"]
+
+[node name="sk_melee_enemy" instance=ExtResource("1_fa1mf")]
+
+[node name="Skeleton3D" parent="MeleeEnemyRig" index="0"]
+bones/0/position = Vector3(2.58299e-09, 1.06587, -0.0913907)
+bones/0/rotation = Quaternion(0.125841, 0, 0, 0.99205)
+bones/1/rotation = Quaternion(-0.0647026, 2.37919e-07, -1.54263e-08, 0.997905)
+bones/2/rotation = Quaternion(-0.0772799, -1.18853e-07, -2.76374e-08, 0.997009)
+bones/3/rotation = Quaternion(0.238896, 1.15758e-07, 8.54358e-08, 0.971045)
+bones/4/rotation = Quaternion(-0.116958, -7.08776e-14, -5.57699e-08, 0.993137)
+bones/6/rotation = Quaternion(0.346923, 1.11806e-07, 1.2407e-07, 0.937893)
+bones/7/rotation = Quaternion(-0.684061, -5.69504e-13, -3.26186e-07, 0.729425)
+bones/9/rotation = Quaternion(0.735619, 0.4204, 0.263833, -0.461)
+bones/10/rotation = Quaternion(0.185862, 0.682011, -0.185603, 0.682545)
+bones/11/rotation = Quaternion(-0.00581394, 0.0162544, -0.00237748, 0.999848)
+bones/12/rotation = Quaternion(-0.00117775, 0.0240741, 0.127613, 0.991531)
+bones/13/rotation = Quaternion(0.144767, 0.664381, -0.133397, 0.721003)
+bones/15/rotation = Quaternion(0.00571172, -0.00186957, -0.197344, 0.980316)
+bones/16/rotation = Quaternion(0.735619, -0.4204, -0.263832, -0.461001)
+bones/17/rotation = Quaternion(0.185862, -0.682011, 0.185603, 0.682545)
+bones/18/rotation = Quaternion(-0.00581393, -0.0162544, 0.00237747, 0.999848)
+bones/19/rotation = Quaternion(-0.00117776, -0.0240741, -0.127613, 0.991531)
+bones/20/rotation = Quaternion(0.144767, -0.664381, 0.133397, 0.721003)
+bones/21/rotation = Quaternion(-0.436156, 0.899749, 0.00423517, -0.0141929)
+bones/22/rotation = Quaternion(0.00571172, 0.00186948, 0.197344, 0.980316)
+bones/25/position = Vector3(0.177641, 0.209199, 0.0361262)
+bones/25/rotation = Quaternion(0.972721, 0.0677785, -0.00400212, 0.221821)
+bones/26/rotation = Quaternion(0.14879, -0.00105481, 0.0678884, 0.986535)
+bones/28/rotation = Quaternion(-1.66106e-07, 0.993899, -0.110295, 3.39253e-06)
+bones/30/position = Vector3(-0.177641, 0.209199, 0.0361262)
+bones/30/rotation = Quaternion(0.972721, -0.0677785, 0.00400212, 0.221821)
+bones/31/rotation = Quaternion(0.14879, 0.00105481, -0.0678884, 0.986535)
+bones/33/rotation = Quaternion(1.66106e-07, 0.993899, -0.110295, -3.39253e-06)
+bones/34/rotation = Quaternion(-0.697682, 0.697682, -0.115064, -0.115066)
+
+[node name="Cube_017" parent="MeleeEnemyRig/Skeleton3D" index="0"]
+transform = Transform3D(1, -9.54792e-15, 2.84217e-14, -1.57208e-13, 1, -7.77654e-08, -8.52651e-14, 7.77654e-08, 1, 3.10862e-14, 2.38419e-07, 0)
+
+[node name="Cube_013" parent="MeleeEnemyRig/Skeleton3D" index="1"]
+transform = Transform3D(1, 4.44089e-15, 5.68434e-14, -1.68754e-14, 1, -2.23517e-08, -5.68434e-14, 2.23517e-08, 1, -2.88658e-15, 3.57628e-07, 2.6077e-08)
+
+[node name="Cube_018" parent="MeleeEnemyRig/Skeleton3D" index="2"]
+transform = Transform3D(1.03054, 7.10543e-15, 2.84217e-14, -1.5099e-14, 1.01942, -0.15101, -2.84217e-14, 0.15101, 1.01942, -1.26565e-14, 1.64392, -0.255609)

@@ -22,6 +22,11 @@ signal deactivated
             _activate()
         trigger_active = false
 
+@export var attack_rotation_tolerance_degrees: float = 10
+
+@onready var melee_ability: EnemyMeleeAbilty = %MeleeAbility
+
+
 func _ready():
     
     if is_active:
@@ -32,6 +37,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
     if not is_on_floor():
         velocity += get_gravity()
+    move_and_slide()
 
 # On spawned by wave, activate this entity
 func activate():
