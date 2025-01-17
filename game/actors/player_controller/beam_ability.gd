@@ -22,7 +22,6 @@ func _process(delta):
             set_beam_size(raycast.get_collider().global_position.distance_to(global_position))
         else:
             set_beam_size(max_beam_range)
-            print("AJ RESET BEAM!")
     elif !raycast.is_colliding() and is_holding_beam_attack:
         set_beam_size(max_beam_range)
             
@@ -33,8 +32,8 @@ func init_beam_size():
 func set_beam_size(size: float):
     visual.size.z = size
     visual.position.z = -(size / 2)
-    collisionShape.shape.size = Vector3(1, 1, size)
-    collisionShape.position.z = -(size / 2)
+    collision_shape.shape.size = Vector3(1, 1, size)
+    collision_shape.position.z = -(size / 2)
     raycast.target_position = Vector3(0, 0, -max_beam_range)
 
 func attack():
