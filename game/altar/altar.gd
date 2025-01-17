@@ -26,6 +26,7 @@ var scan_to_purify_timer: Timer = Timer.new()
 
 
 func _ready():
+    GlobalSignalBus.player_died.connect(_on_death)
     add_child(scan_to_purify_timer)
     scan_to_purify_timer.one_shot = false
     scan_to_purify_timer.wait_time = 0.5
@@ -127,3 +128,7 @@ func apply_purification():
             if area.purification_progress < 1:
                 area.purification_progress += 0.1
                 area.purification_progress = clampf(area.purification_progress, 0.0, 1.0)
+
+func _on_death():
+    if is_active:
+        GlobalSignalBus.altar_failed.emit()

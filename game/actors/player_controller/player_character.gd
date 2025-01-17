@@ -203,6 +203,7 @@ func setAbility(abilityType: Altar.AbilityType, toSet: bool):
 
 func die():
     died.emit()
+    GlobalSignalBus.player_died.emit()
     get_tree().reload_current_scene.call_deferred()
 
 func _on_hurt_box_component_3d_hurt(hit_box: Variant, amount: Variant) -> void:
