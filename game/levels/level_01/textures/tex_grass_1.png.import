@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnsgkqwu0vixg"
-path.s3tc="res://.godot/imported/tex_grass_1.png-b6b1ed6aa18f598a993682d60c793ffa.s3tc.ctex"
+uid="uid://cqkibvwuoqsql"
+path.s3tc="res://.godot/imported/tex_grass_1.png-74861af0bff5d3a026d91e3962de4c74.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://game/terrain/grass/tex_grass_1.png"
-dest_files=["res://.godot/imported/tex_grass_1.png-b6b1ed6aa18f598a993682d60c793ffa.s3tc.ctex"]
+source_file="res://game/levels/level_01/textures/tex_grass_1.png"
+dest_files=["res://.godot/imported/tex_grass_1.png-74861af0bff5d3a026d91e3962de4c74.s3tc.ctex"]
 
 [params]
 

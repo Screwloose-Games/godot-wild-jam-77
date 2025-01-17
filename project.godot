@@ -55,7 +55,7 @@ project/assembly_name="Godot Wild Jam 77"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/screwloose-editor-settings/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
+enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://addons/screwloose-editor-settings/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
 
 [filesystem]
 
@@ -142,6 +142,7 @@ attack-ranged={
 3d_physics/layer_3="Props"
 3d_physics/layer_4="Enemy"
 3d_physics/layer_5="Interact"
+3d_physics/layer_8="Terrain Detection"
 3d_physics/layer_9="Player Hurt"
 3d_physics/layer_10="Enemy Hurt"
 
