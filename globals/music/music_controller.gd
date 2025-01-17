@@ -48,7 +48,7 @@ func set_music_state(new_state: MUSIC_STATE) -> void:
 
 func _on_start_title() -> void:
     set_music_state(MUSIC_STATE.Title)
-    SoundManager.music.play(title_music, 0.0, 1.0, 2.0, "")
+    SoundManager.music.play(title_music, 0.0, 0.8, 2.0, "")
   
 func _on_stop_title() -> void:
     SoundManager.music.stop(2.0)
@@ -66,7 +66,7 @@ func _on_start_pause() -> void:
     
     if track_before_pause:
         elapsed_music_time = track_before_pause.get_playback_position()
-    SoundManager.music.play(pause_music, 0.0, 1.0, 0.25, "")
+    SoundManager.music.play(pause_music, 0.0, 0.8, 0.25, "")
   
 ## Resume from previous song time
 func _on_stop_pause() -> void:
@@ -85,28 +85,28 @@ func _on_stop_pause() -> void:
     
     if track_before_pause:
         var previous_stream = track_before_pause.stream
-        track_before_pause = SoundManager.music.play(previous_stream, elapsed_music_time, 1.0, 0.25, "")
+        track_before_pause = SoundManager.music.play(previous_stream, elapsed_music_time, 0.8, 0.25, "")
     else:
         SoundManager.music.stop(0.25)
   
 func _on_start_level() -> void:
     if (current_state != MUSIC_STATE.Level):
         set_music_state(MUSIC_STATE.Level)
-        track_before_pause = SoundManager.music.play(level_music, 0.0, 1.0, 1.5, "")
+        track_before_pause = SoundManager.music.play(level_music, 0.0, 0.8, 1.5, "")
     
 func _on_altar_begin() -> void:
     if (current_state != MUSIC_STATE.AltarFight):
         set_music_state(MUSIC_STATE.AltarFight)
-        track_before_pause = SoundManager.music.play(battle_music, 0.0, 1.0, 0.5, "")
+        track_before_pause = SoundManager.music.play(battle_music, 0.0, 0.8, 0.5, "")
         
 func _on_altar_success(wave_number: int, final_wave: bool) -> void:
     is_final_wave = final_wave
     if (current_state != MUSIC_STATE.AltarCorruption):
         set_music_state(MUSIC_STATE.AltarCorruption)
         if wave_number > 1:
-            track_before_pause = SoundManager.music.play(altar_success_music[2], 0.0, 1.0, 0.1, "")
+            track_before_pause = SoundManager.music.play(altar_success_music[2], 0.0, 0.8, 0.1, "")
         else:
-            track_before_pause = SoundManager.music.play(altar_success_music[wave_number], 0.0, 1.0, 0.1, "")
+            track_before_pause = SoundManager.music.play(altar_success_music[wave_number], 0.0, 0.8, 0.1, "")
         
 func stop_altar_music() -> void:
     should_resume_corruption_timer = false
