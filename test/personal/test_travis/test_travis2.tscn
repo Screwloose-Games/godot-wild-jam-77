@@ -1,13 +1,16 @@
-[gd_scene load_steps=28 format=3 uid="uid://bvjmr48xurpu1"]
+[gd_scene load_steps=30 format=3 uid="uid://bvjmr48xurpu1"]
 
 [ext_resource type="Shader" path="res://common/art/shaders/black_hole.gdshader" id="1_tmclc"]
 [ext_resource type="Material" uid="uid://ipm1muq3hbrf" path="res://common/art/materials/cyclic_slash.material" id="2_2k4yw"]
 [ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="3_ebsap"]
-[ext_resource type="Script" path="res://test/personal/test_travis/activate_area.gd" id="4_42und"]
 [ext_resource type="PackedScene" uid="uid://cbkvroagayyyc" path="res://game/altar/game_altar.tscn" id="5_yox7k"]
 [ext_resource type="Script" path="res://game/altar_locations/melee_altar_location/altar_enemy_group.gd" id="7_77g3v"]
 [ext_resource type="PackedScene" uid="uid://mx2hsdwfupuf" path="res://game/fleshballs/game_fleshsac_1.tscn" id="7_dhrpq"]
+[ext_resource type="PackedScene" uid="uid://dcdoollytt5be" path="res://game/fleshballs/game_fleshsac_2.tscn" id="7_oeumf"]
+[ext_resource type="PackedScene" uid="uid://br11gnmivkoqf" path="res://game/fleshballs/game_fleshsac_3.tscn" id="8_b6vpg"]
 [ext_resource type="PackedScene" uid="uid://crco2b1srkhyo" path="res://game/actors/enemies/melee_enemy/game_melee_enemy.tscn" id="8_qi36d"]
+[ext_resource type="PackedScene" uid="uid://dudrlswb1lxve" path="res://game/fleshballs/game_fleshsac_4.tscn" id="9_ytvpv"]
+[ext_resource type="PackedScene" uid="uid://dwddf0vpe0isd" path="res://game/fleshballs/game_fleshsac_5.tscn" id="10_64exq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nslve"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -93,53 +96,9 @@ size = Vector3(50, 1, 50)
 [sub_resource type="BoxShape3D" id="BoxShape3D_apl3n"]
 size = Vector3(50, 1, 50)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ffr1c"]
-
 [sub_resource type="Animation" id="Animation_j8n6v"]
 resource_name = "kill_enemies_test"
 length = 20.0
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../AltarEnemies/MeleeEnemy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.966667),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_health_component_died"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../AltarEnemies/MeleeEnemy2")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(6.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_health_component_died"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../AltarEnemies/MeleeEnemy3")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(12.4667),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_health_component_died"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oo7ci"]
 _data = {
@@ -156,9 +115,11 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, 26)
 mesh = SubResource("SphereMesh_lnklg")
 
 [node name="TestCubes" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, 26)
 
 [node name="TestcubeMesh" type="MeshInstance3D" parent="TestCubes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5599, -7.38813, -9.53674e-07)
@@ -212,7 +173,7 @@ libraries = {
 autoplay = "blackhole"
 
 [node name="CyclicSlashes" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9415, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0585, 0, 26)
 
 [node name="quad" type="MeshInstance3D" parent="CyclicSlashes"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.248061, 0, 0)
@@ -261,32 +222,9 @@ hasMeleeAbility = false
 hasRangedAbility = false
 hasShieldAbility = false
 
-[node name="ActivateAltar" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2736, 9.53674e-07, 8.71839)
-script = ExtResource("4_42und")
-
-[node name="Label3D" type="Label3D" parent="ActivateAltar"]
-billboard = 1
-text = "Activate Altar"
-font_size = 64
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ActivateAltar"]
-shape = SubResource("BoxShape3D_ffr1c")
-
-[node name="FinishAltar" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2736, 9.53674e-07, 2.87215)
-script = ExtResource("4_42und")
-
-[node name="Label3D" type="Label3D" parent="FinishAltar"]
-billboard = 1
-text = "Purify Altar"
-font_size = 64
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FinishAltar"]
-shape = SubResource("BoxShape3D_ffr1c")
-
 [node name="Altar" parent="." instance=ExtResource("5_yox7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3306, 0, -13.8597)
+assigned_enemies = Array[PackedScene]([ExtResource("8_qi36d"), ExtResource("8_qi36d"), ExtResource("8_qi36d")])
 altar_power = "test_altar"
 
 [node name="FleshballPufication" type="Node3D" parent="."]
@@ -315,15 +253,43 @@ libraries = {
 }
 autoplay = "kill_enemies_test"
 
+[node name="sm_fleshsac_22" parent="FleshballPufication" instance=ExtResource("7_oeumf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.8598, -21.3266)
+
+[node name="sm_fleshsac_23" parent="FleshballPufication" instance=ExtResource("7_oeumf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.61552, 22.8598, -31.9078)
+
+[node name="sm_fleshsac_24" parent="FleshballPufication" instance=ExtResource("7_oeumf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0959, 22.8598, -33.896)
+
+[node name="sm_fleshsac_25" parent="FleshballPufication" instance=ExtResource("7_oeumf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29252, 37.229, -55.6624)
+
+[node name="sm_fleshsac_32" parent="FleshballPufication" instance=ExtResource("8_b6vpg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1, 0, -22.5493)
+
+[node name="sm_fleshsac_33" parent="FleshballPufication" instance=ExtResource("8_b6vpg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2234, 0, -9.88452)
+
+[node name="sm_fleshsac_34" parent="FleshballPufication" instance=ExtResource("8_b6vpg")]
+transform = Transform3D(0.530911, 0, -0.847428, 0, 1, 0, 0.847428, 0, 0.530911, -21.3553, 0, -4.29507)
+
+[node name="sm_fleshsac_42" parent="FleshballPufication" instance=ExtResource("9_ytvpv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7335, 3.8147e-06, -20.0853)
+
+[node name="sm_fleshsac_43" parent="FleshballPufication" instance=ExtResource("9_ytvpv")]
+transform = Transform3D(0.667508, 0, 0.744603, 0, 1, 0, -0.744603, 0, 0.667508, 16.7869, 0, -24.166)
+
+[node name="sm_fleshsac_52" parent="FleshballPufication" instance=ExtResource("10_64exq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3328, -0.634873, -10.981)
+
+[node name="sm_fleshsac_53" parent="FleshballPufication" instance=ExtResource("10_64exq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3577, -0.634873, -6.19434)
+
+[node name="sm_fleshsac_54" parent="FleshballPufication" instance=ExtResource("10_64exq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.903, -0.634872, -15.3442)
+
 [node name="AltarEnemies" type="Node3D" parent="." node_paths=PackedStringArray("altar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.0095, 0, -18.2335)
 script = ExtResource("7_77g3v")
 altar = NodePath("../Altar")
-
-[node name="MeleeEnemy" parent="AltarEnemies" instance=ExtResource("8_qi36d")]
-
-[node name="MeleeEnemy2" parent="AltarEnemies" instance=ExtResource("8_qi36d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.22284, 0, 1.25741)
-
-[node name="MeleeEnemy3" parent="AltarEnemies" instance=ExtResource("8_qi36d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4337, 0, -2.52882)
