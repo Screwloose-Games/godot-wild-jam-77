@@ -1,5 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://h8dobq8t3rmg"]
+[gd_scene load_steps=7 format=3 uid="uid://h8dobq8t3rmg"]
 
-[ext_resource type="PackedScene" uid="uid://jvxon4jurr2t" path="res://game/levels/level_01/sm_meda_terrain.gltf" id="1_x5wp5"]
+[ext_resource type="PackedScene" uid="uid://qopd3mnhek6b" path="res://game/levels/base_level.tscn" id="1_kloys"]
+[ext_resource type="Script" path="res://game/levels/level_01/lvl_01.gd" id="2_ciyba"]
+[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="3_pd3yw"]
+[ext_resource type="PackedScene" uid="uid://lr7e0228li7o" path="res://game/levels/level_01/lvl_01_environment.tscn" id="4_uiobc"]
+[ext_resource type="PackedScene" uid="uid://bdtqhi2bvjnt6" path="res://game/levels/level_01/lvl_01_lighting.tscn" id="5_65x7d"]
+[ext_resource type="PackedScene" uid="uid://cjydkdh825wo0" path="res://game/altar_locations/melee_altar_location/game_melee_altar_location.tscn" id="6_8qeu0"]
 
-[node name="meda_terrain" instance=ExtResource("1_x5wp5")]
+[node name="Level01" instance=ExtResource("1_kloys")]
+script = ExtResource("2_ciyba")
+
+[node name="PlayerCharacter" parent="." index="0" instance=ExtResource("3_pd3yw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.486093, 1.87798, -5.42548)
+dash_distance = 2.5
+dash_duration = 0.5
+speed = 4
+
+[node name="Level01Environment" parent="." index="1" instance=ExtResource("4_uiobc")]
+
+[node name="Level01Lighting" parent="." index="2" instance=ExtResource("5_65x7d")]
+
+[node name="MeleeAltarLocation" parent="." index="3" instance=ExtResource("6_8qeu0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.490673, 0)
