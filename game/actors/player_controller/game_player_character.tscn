@@ -53,7 +53,8 @@ node_connections = [&"output", 0, &"staff_attack_01", &"staff_attack_01", 0, &"m
 [sub_resource type="Sky" id="Sky_wx8tt"]
 sky_material = SubResource("PhysicalSkyMaterial_kxiip")
 
-[sub_resource type="Environment" id="Environment_ulg8u"]
+[sub_resource type="Environment" id="Environment_24erp"]
+
 background_mode = 2
 sky = SubResource("Sky_wx8tt")
 
@@ -99,6 +100,7 @@ emission_enabled = true
 emission = Color(0.52549, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c412l"]
+size = Vector3(1, 1, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhqva"]
 
@@ -138,7 +140,8 @@ health = 100.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.398186, 1.72847, 1.29903)
 top_level = true
-environment = SubResource("Environment_ulg8u")
+
+environment = SubResource("Environment_24erp")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
@@ -246,6 +249,12 @@ visible = false
 size = Vector3(0.515, 0.435, 1)
 material = SubResource("StandardMaterial3D_x6sr8")
 
+[node name="RayCast3D" type="RayCast3D" parent="BeamAbility"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0162068, 0.633975, -0.358631)
+target_position = Vector3(0, 0, -100)
+collision_mask = 65278
+
 [node name="Visual" type="Node3D" parent="."]
 
 [node name="Model" parent="Visual" instance=ExtResource("13_jocpb")]
@@ -307,7 +316,7 @@ bones/23/scale = Vector3(0.999999, 1, 1)
 bones/24/position = Vector3(1.19212e-06, 3.70389, -9.53667e-07)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Visual/Model/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.145181, -0.306086, -0.940868, 0.590665, 0.789706, -0.165768, 0.793749, -0.531672, 0.295444, 39.672, 111.579, -190.365)
+transform = Transform3D(0.145179, -0.306088, -0.940868, 0.590666, 0.789705, -0.165769, 0.793749, -0.531672, 0.295445, 39.6719, 111.579, -190.365)
 bone_name = "mixamorig_LeftHand"
 bone_idx = 10
 
