@@ -1,9 +1,13 @@
-[gd_scene load_steps=32 format=4 uid="uid://daabskcdhrpea"]
+[gd_scene load_steps=36 format=4 uid="uid://daabskcdhrpea"]
 
 [ext_resource type="Script" path="res://common/ui/viewport_container.gd" id="2_d26fo"]
 [ext_resource type="PackedScene" uid="uid://ruwllv6ttnh6" path="res://game/levels/level_01/lvl_01.tscn" id="3_ui554"]
+[ext_resource type="AudioStream" uid="uid://paarswvb3wbx" path="res://common/audio/sfx/ui/aud_ui_navigate.wav" id="4_84s81"]
 [ext_resource type="PackedScene" path="res://common/ui/scene_transitions/fade_transition.tscn" id="4_cec7w"]
+[ext_resource type="AudioStream" uid="uid://dglvkkhro2oqb" path="res://common/audio/sfx/ui/aud_ui_open.wav" id="5_ctl25"]
+[ext_resource type="AudioStream" uid="uid://6wopc146wm1w" path="res://common/audio/sfx/ui/aud_ui_close.wav" id="6_mqj1f"]
 [ext_resource type="PackedScene" uid="uid://bvuixmv4n68a6" path="res://common/ui/options_menu/options_menu.tscn" id="6_ntl50"]
+[ext_resource type="Script" path="res://common/ui/main_menu/SFX/main_menu_audio.gd" id="7_oty5u"]
 
 [sub_resource type="Gradient" id="Gradient_hijim"]
 offsets = PackedFloat32Array(0.284768, 0.878587)
@@ -59,11 +63,9 @@ func _on_credits_pressed():
 func _on_exit_pressed():
     get_tree().quit()
 
-
 func _on_settings_pressed():
     #return
     current_menu = Menu.SETTINGS_MENU
-
 
 func _on_return_main_menu_button_pressed():
     current_menu = Menu.MAIN_MENU
@@ -722,6 +724,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Audio Control" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 1404.0
+offset_right = 2052.0
+offset_bottom = 648.0
+script = ExtResource("7_oty5u")
+navigate_sound = ExtResource("4_84s81")
+open_sound = ExtResource("5_ctl25")
+close_sound = ExtResource("6_mqj1f")
+
 [node name="Background" type="TextureRect" parent="."]
 visible = false
 layout_mode = 1
@@ -811,10 +824,6 @@ anchor_bottom = 1.0
 offset_left = 1152.0
 offset_right = 1152.0
 script = ExtResource("2_d26fo")
-
-[node name="Audio Control" type="Control" parent="Settings Menu"]
-visible = false
-layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Settings Menu"]
 visible = false
@@ -917,3 +926,18 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_11wmy")
 advance_expression_base_node = NodePath("../Main Menu/Menu Control")
 anim_player = NodePath("../AnimationPlayer")
+
+[connection signal="mouse_entered" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StartButton" to="Audio Control" method="_on_hover"]
+[connection signal="pressed" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StartButton" to="Audio Control" method="_on_open"]
+[connection signal="mouse_entered" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SettingsButton" to="Audio Control" method="_on_hover"]
+[connection signal="pressed" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SettingsButton" to="Audio Control" method="_on_open"]
+[connection signal="mouse_entered" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CreditsButton" to="Audio Control" method="_on_hover"]
+[connection signal="pressed" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CreditsButton" to="Audio Control" method="_on_open"]
+[connection signal="mouse_entered" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ExitButton" to="Audio Control" method="_on_hover"]
+[connection signal="pressed" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ExitButton" to="Audio Control" method="_on_close"]
+[connection signal="mouse_entered" from="Settings Menu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider" to="Audio Control" method="_on_hover"]
+[connection signal="value_changed" from="Settings Menu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider" to="Audio Control" method="_on_slider_hover"]
+[connection signal="mouse_entered" from="Settings Menu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider2" to="Audio Control" method="_on_hover"]
+[connection signal="value_changed" from="Settings Menu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider2" to="Audio Control" method="_on_slider_hover"]
+[connection signal="mouse_entered" from="Settings Menu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider3" to="Audio Control" method="_on_hover"]
+[connection signal="value_changed" from="Settings Menu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider3" to="Audio Control" method="_on_slider_hover"]
