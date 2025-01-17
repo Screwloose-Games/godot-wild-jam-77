@@ -133,7 +133,7 @@
 			"source":0
 		},
 		{
-			"sampler":1,
+			"sampler":0,
 			"source":1
 		},
 		{
@@ -340,16 +340,12 @@
 		{
 			"magFilter":9728,
 			"minFilter":9984
-		},
-		{
-			"magFilter":9729,
-			"minFilter":9987
 		}
 	],
 	"buffers":[
 		{
 			"byteLength":14512,
-			"uri":"meda_terrain.bin"
+			"uri":"sm_meda_terrain.bin"
 		}
 	]
 }
