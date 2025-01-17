@@ -52,7 +52,7 @@ node_connections = [&"output", 0, &"staff_attack_01", &"staff_attack_01", 0, &"m
 [sub_resource type="Sky" id="Sky_wx8tt"]
 sky_material = SubResource("PhysicalSkyMaterial_kxiip")
 
-[sub_resource type="Environment" id="Environment_173vj"]
+[sub_resource type="Environment" id="Environment_jpkch"]
 background_mode = 2
 sky = SubResource("Sky_wx8tt")
 
@@ -139,7 +139,7 @@ health = 100.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.398186, 1.72847, 1.29903)
 top_level = true
-environment = SubResource("Environment_173vj")
+environment = SubResource("Environment_jpkch")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
