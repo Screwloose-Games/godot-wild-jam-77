@@ -24,6 +24,7 @@ var enemies_alive: int
 var purity_ratio: float = 0
 var scan_to_purify_timer: Timer = Timer.new()
 
+@onready var altar_sfx: Node3D = $AltarSFX
 
 func _ready():
     GlobalSignalBus.player_died.connect(_on_death)
@@ -53,6 +54,7 @@ func activate(player: PlayerController):
         return
     is_active = true
     GlobalSignalBus.altar_activated.emit()
+    altar_sfx.start_hum()
     activated.emit()
 
     # Save that player has reached this checkpoint
@@ -132,3 +134,4 @@ func apply_purification():
 func _on_death():
     if is_active:
         GlobalSignalBus.altar_failed.emit()
+        altar_sfx.stop_hum()
