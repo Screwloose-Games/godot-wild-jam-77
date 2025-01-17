@@ -37,7 +37,6 @@ _subresources={
 "generate/physics": true
 },
 "PATH:MyLowPolyTerrain2": {
-"generate/navmesh": 1,
 "generate/physics": true,
 "physics/layer": 2,
 "physics/mask": 0
