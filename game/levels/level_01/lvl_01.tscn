@@ -11,16 +11,14 @@
 script = ExtResource("2_i6dyw")
 
 [node name="PlayerCharacter" parent="." index="0" instance=ExtResource("2_s2628")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.27895, -0.515154, 5.31761)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.486093, 1.87801, -5.42548)
+dash_distance = 2.5
+dash_duration = 0.5
+speed = 4
 
 [node name="Level01Environment" parent="." index="1" instance=ExtResource("4_e757c")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="Level01Lighting" parent="." index="2" instance=ExtResource("5_m27if")]
 
 [node name="MeleeAltarLocation" parent="." index="3" instance=ExtResource("6_45gun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.490673, 0)
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7556, 0)
-radius = 14.0
