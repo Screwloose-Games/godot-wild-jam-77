@@ -72,7 +72,7 @@ func _init_child_values():
     beam_ability.beam_start_delay = beam_attack_start_delay
     beam_ability.beam_stop_delay = beam_attack_stop_delay
     beam_ability.max_beam_range = max_beam_range
-    beam_ability.init_beam_size()
+    beam_ability.set_beam_size(max_beam_range)
 
 func get_global_input_direction():
     var input_dir := Input.get_vector("left", "right", "forward", "back")

@@ -107,7 +107,7 @@ albedo_color = Color(0, 0, 0, 0.478431)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mh05o"]
 
-[node name="MeleeEnemy" instance=ExtResource("1_0mf37")]
+[node name="MeleeEnemy" groups=["Enemy"] instance=ExtResource("1_0mf37")]
 collision_layer = 8
 collision_mask = 15
 script = ExtResource("2_y6jdy")
@@ -157,7 +157,7 @@ transform = Transform3D(1, -3.37508e-14, -7.10543e-13, 2.93099e-14, 1, -3.31551e
 [node name="Cube_018" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D" index="2"]
 transform = Transform3D(1.03054, -1.49214e-13, -7.38964e-13, 3.19744e-14, 1.01942, -0.15101, 7.95808e-13, 0.15101, 1.01942, 1.7053e-13, 1.64392, -0.255608)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_mtyox")
 
@@ -197,11 +197,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.779865, -1.17424)
 visible = false
 material = SubResource("StandardMaterial3D_bn64c")
 
-[node name="HurtBoxComponent3D" parent="." index="7"]
+[node name="HurtBoxComponent3D" parent="." index="7" groups=["Enemy"]]
 collision_layer = 512
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent3D" index="0" groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958669, 0)
 shape = SubResource("CapsuleShape3D_mh05o")
 
