@@ -43,6 +43,7 @@ func _physics_process(delta: float):
 
 ## Used for assigning already spawned enemies to altar
 func assign_enemy(enemy: Enemy):
+    print("Altar: Assigning enemy to altar: ", enemy)
     assigned_enemies.append(enemy)
     enemy.died.connect(on_enemy_died)
     total_spawned_enemies += 1
@@ -66,22 +67,25 @@ func activate(player: PlayerController):
     # Spawn enemies
     spawn_enemies()
     
+    enemies_alive = total_spawned_enemies
     print("Altar: Altar activated")
+    print("Altar: Enemies alive: ", enemies_alive, " / total enemies: ", total_spawned_enemies)
+    
 
 
 ## Spawn enemies associated with the altar
 func spawn_enemies():
-    for enemy in assigned_enemies:
-        if enemy is Enemy:
-            enemy.activate()
-            enemy.died.connect(on_enemy_died)
-            total_spawned_enemies += 1
-    enemies_alive = total_spawned_enemies
-    print("Altar: Enemies alive: ", enemies_alive, " / total enemies: ", total_spawned_enemies)
-    
-    await get_tree().create_timer(5).timeout
-    
-    purity_ratio = 1
+    #for enemy in assigned_enemies:
+        ##var enemy: Node3D = load(enemy_scene.resource_path).instantiate()
+        ##get_tree().root.add_child(enemy)
+        ##enemy.global_position = global_position + Vector3.UP * 3
+        #if enemy is Enemy:
+            #enemy.activate()
+            #enemy.died.connect(on_enemy_died)
+            #total_spawned_enemies += 1
+    #enemies_alive = total_spawned_enemies
+    #print("Altar: Enemies alive: ", enemies_alive, " / total enemies: ", total_spawned_enemies)
+    pass
         
 
 ## Reset enemies
