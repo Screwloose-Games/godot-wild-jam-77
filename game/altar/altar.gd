@@ -24,8 +24,10 @@ var enemies_alive: int
 var purity_ratio: float = 0
 var scan_to_purify_timer: Timer = Timer.new()
 
+@onready var altar_sfx: Node3D = $AltarSFX
 
 func _ready():
+    GlobalSignalBus.player_died.connect(_on_death)
     add_child(scan_to_purify_timer)
     scan_to_purify_timer.one_shot = false
     scan_to_purify_timer.wait_time = 0.5
@@ -51,6 +53,8 @@ func activate(player: PlayerController):
     if is_active or is_purified:
         return
     is_active = true
+    GlobalSignalBus.altar_activated.emit()
+    altar_sfx.start_hum()
     activated.emit()
 
     # Save that player has reached this checkpoint
@@ -110,6 +114,7 @@ func _on_interactable_area_3d_interacted(player: PlayerController) -> void:
 ## Call this function after the player purifies the altar and kills all the baddies
 func purify_altar():
     purified.emit()
+    GlobalSignalBus.altar_succeeded.emit()
     CheckpointMgr.altar_completed(altar_power)
 
 
@@ -125,3 +130,8 @@ func apply_purification():
             if area.purification_progress < 1:
                 area.purification_progress += 0.1
                 area.purification_progress = clampf(area.purification_progress, 0.0, 1.0)
+
+func _on_death():
+    if is_active:
+        GlobalSignalBus.altar_failed.emit()
+        altar_sfx.stop_hum()

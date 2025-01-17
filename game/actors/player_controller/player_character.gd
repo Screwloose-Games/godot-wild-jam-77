@@ -59,6 +59,8 @@ var jumps_remaining := jumps_allowed
 @onready var beam_ability: BeamAbility = %BeamAbility
 @onready var animation_tree: AnimationTree = %AnimationTree
 
+@onready var player_sfx: Node3D = $player_sfx
+var was_on_ground: bool = true
 
 func _ready():
     _init_child_values()
@@ -127,9 +129,14 @@ func _physics_process(delta: float) -> void:
     var input_dir := Input.get_vector("left", "right", "forward", "back")
     # Add the gravity.
     if not is_on_floor():
+        was_on_ground = false
         input_dir = input_dir * airborn_movement_factor
         velocity += get_gravity() * delta
     else:
+        if not was_on_ground:
+            player_sfx.land_footstep()
+            was_on_ground = true
+            
         jumps_remaining = jumps_allowed
 
     # Handle jump.
@@ -157,7 +164,6 @@ func _physics_process(delta: float) -> void:
     else:
         velocity.x = move_toward(velocity.x, 0, speed)
         velocity.z = move_toward(velocity.z, 0, speed)
-    
 
     move_and_slide()
 
@@ -197,6 +203,7 @@ func setAbility(abilityType: Altar.AbilityType, toSet: bool):
 
 func die():
     died.emit()
+    GlobalSignalBus.player_died.emit()
     get_tree().reload_current_scene.call_deferred()
 
 func _on_hurt_box_component_3d_hurt(hit_box: Variant, amount: Variant) -> void:
