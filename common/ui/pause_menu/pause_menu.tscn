@@ -1,11 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8b6q7g4bsaw5"]
+[gd_scene load_steps=7 format=3 uid="uid://b8b6q7g4bsaw5"]
 
 [ext_resource type="Script" path="res://common/ui/pause_menu/pause_menu.gd" id="1_5rnul"]
 [ext_resource type="Texture2D" uid="uid://d1saoawy2e1te" path="res://common/images/square.png" id="2_28rqb"]
+[ext_resource type="Script" path="res://common/ui/main_menu/SFX/main_menu_audio.gd" id="2_b5b27"]
+[ext_resource type="AudioStream" uid="uid://paarswvb3wbx" path="res://common/audio/sfx/ui/aud_ui_navigate.wav" id="3_sjwpg"]
+[ext_resource type="AudioStream" uid="uid://dglvkkhro2oqb" path="res://common/audio/sfx/ui/aud_ui_open.wav" id="4_tj48m"]
+[ext_resource type="AudioStream" uid="uid://6wopc146wm1w" path="res://common/audio/sfx/ui/aud_ui_close.wav" id="5_dfou8"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_5rnul")
+
+[node name="Audio Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2_b5b27")
+navigate_sound = ExtResource("3_sjwpg")
+open_sound = ExtResource("4_tj48m")
+close_sound = ExtResource("5_dfou8")
 
 [node name="PauseMenuBody" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -69,3 +81,9 @@ text = "Options"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Main Menu"
+
+[connection signal="mouse_entered" from="PauseMenuBody/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ContinueButton" to="Audio Control" method="_on_hover"]
+[connection signal="mouse_entered" from="PauseMenuBody/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/OptionsButton" to="Audio Control" method="_on_hover"]
+[connection signal="pressed" from="PauseMenuBody/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/OptionsButton" to="Audio Control" method="_on_open"]
+[connection signal="mouse_entered" from="PauseMenuBody/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainMenuButton" to="Audio Control" method="_on_hover"]
+[connection signal="pressed" from="PauseMenuBody/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainMenuButton" to="Audio Control" method="_on_close"]
