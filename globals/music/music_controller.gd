@@ -61,6 +61,9 @@ func _on_start_pause() -> void:
     if previous_state == MUSIC_STATE.AltarCorruption:
         should_resume_corruption_timer = false
     
+    ##Music filter
+    AudioServer.set_bus_effect_enabled(2, 0, true)
+    
     if track_before_pause:
         elapsed_music_time = track_before_pause.get_playback_position()
     SoundManager.music.play(pause_music, 0.0, 1.0, 0.25, "")
@@ -76,6 +79,9 @@ func _on_stop_pause() -> void:
             corruption_music_timer = 0.0 
         else:
             should_resume_corruption_timer = true
+    
+    ##Music filter
+    AudioServer.set_bus_effect_enabled(2, 0, false)
     
     if track_before_pause:
         var previous_stream = track_before_pause.stream
