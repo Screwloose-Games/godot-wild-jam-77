@@ -7,4 +7,3 @@
 [node name="PlayerCharacter" parent="." index="3"]
 hasMeleeAbility = true
 hasRangedAbility = true
-hasShieldAbility = false

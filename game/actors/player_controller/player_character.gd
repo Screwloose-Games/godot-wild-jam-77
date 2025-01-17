@@ -150,7 +150,7 @@ func _physics_process(delta: float) -> void:
 
         #move_dir = move_dir.rotated(Vector3.UP, _camera.rotation.y).normalized()
         var beam_speed_penalty: float = 0
-        if beam_ability.isHoldingBeamAttack:
+        if beam_ability.is_holding_beam_attack:
             beam_speed_penalty = beam_speed_slowdown
         velocity.x = move_dir.x * (speed - beam_speed_penalty)
         velocity.z = move_dir.z * (speed - beam_speed_penalty)
