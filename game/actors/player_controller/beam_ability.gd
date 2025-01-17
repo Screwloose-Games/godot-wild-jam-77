@@ -8,14 +8,14 @@ var max_beam_range: float
 @export_range(0, 10) var beam_stop_delay: float
 
 @onready var visual: CSGBox3D = $BeamVisual
-@onready var collisionShape: CollisionShape3D = %BeamCollisionShape3D
+@onready var collision_shape: CollisionShape3D = %BeamCollisionShape3D
 @onready var hit_box_component_3d: HitBoxComponent3D = %BeamHitBox3D
 @onready var raycast: RayCast3D = %RayCast3D
 
-var isHoldingBeamAttack: bool
+var is_holding_beam_attack: bool
     
 func _process(delta):
-    if raycast.is_colliding() and isHoldingBeamAttack:
+    if raycast.is_colliding() and is_holding_beam_attack:
         if !raycast.get_collider().is_in_group("Enemy"):
             #hit something thats not an enemy, reshape hit box to end
             # here.
@@ -23,7 +23,7 @@ func _process(delta):
         else:
             set_beam_size(max_beam_range)
             print("AJ RESET BEAM!")
-    elif !raycast.is_colliding() and isHoldingBeamAttack:
+    elif !raycast.is_colliding() and is_holding_beam_attack:
         set_beam_size(max_beam_range)
             
 func init_beam_size():
@@ -38,18 +38,18 @@ func set_beam_size(size: float):
     raycast.target_position = Vector3(0, 0, -max_beam_range)
 
 func attack():
-    if isHoldingBeamAttack:
+    if is_holding_beam_attack:
         return
     
     await get_tree().create_timer(beam_start_delay).timeout
     raycast.enabled = true
-    isHoldingBeamAttack = true
+    is_holding_beam_attack = true
     visual.visible = true
     hit_box_component_3d.activate()
     
 func stopAttack():
     await get_tree().create_timer(beam_stop_delay).timeout
     raycast.enabled = false
-    isHoldingBeamAttack = false
+    is_holding_beam_attack = false
     visual.visible = false
     hit_box_component_3d.deactivate()
