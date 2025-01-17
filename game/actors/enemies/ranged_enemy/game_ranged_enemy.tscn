@@ -31,7 +31,7 @@ emission = Color(0, 0, 1, 1)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g07x1"]
 height = 0.2
 
-[node name="RangedEnemy" instance=ExtResource("1_sp3te")]
+[node name="RangedEnemy" groups=["Enemy"] instance=ExtResource("1_sp3te")]
 collision_layer = 8
 collision_mask = 15
 script = ExtResource("2_jelv1")
@@ -56,7 +56,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.4821, -0.378365)
 mesh = SubResource("BoxMesh_uaspe")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_mtyox")
 
@@ -70,11 +70,11 @@ target_desired_distance = 2.0
 path_max_distance = 1.01
 debug_enabled = true
 
-[node name="HurtBoxComponent3D" parent="." index="5"]
+[node name="HurtBoxComponent3D" parent="." index="5" groups=["Enemy"]]
 collision_layer = 512
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent3D" index="0" groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958669, 0)
 shape = SubResource("CapsuleShape3D_mh05o")
 

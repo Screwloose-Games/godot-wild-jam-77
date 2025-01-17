@@ -1,9 +1,96 @@
-[gd_scene load_steps=12 format=3 uid="uid://crco2b1srkhyo"]
+[gd_scene load_steps=31 format=3 uid="uid://crco2b1srkhyo"]
 
 [ext_resource type="PackedScene" uid="uid://bxbkpou8fdoqo" path="res://game/actors/enemies/enemy.tscn" id="1_0mf37"]
 [ext_resource type="BehaviorTree" uid="uid://m60n8oplxst6" path="res://game/actors/behavior/melee_behavior_tree.tres" id="2_kc48n"]
+[ext_resource type="PackedScene" uid="uid://bqrjmk2kfp344" path="res://game/actors/enemies/melee_enemy/sk_melee_enemy_glb.tscn" id="2_x3bpp"]
+[ext_resource type="Script" path="res://game/actors/enemies/melee_enemy/melee_enemy.gd" id="2_y6jdy"]
 [ext_resource type="Script" path="res://game/actors/enemies/melee_enemy/enemy_melee_ability.gd" id="3_uffac"]
 [ext_resource type="Script" path="res://common/components/templates/HitBoxComponent3D.gd" id="4_1xqfq"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_223sa"]
+filter_enabled = true
+filters = ["", "MeleeEnemyRig/Skeleton3D:f_index.01.L", "MeleeEnemyRig/Skeleton3D:f_index.01.R", "MeleeEnemyRig/Skeleton3D:forearm.L", "MeleeEnemyRig/Skeleton3D:forearm.R", "MeleeEnemyRig/Skeleton3D:hand.L", "MeleeEnemyRig/Skeleton3D:hand.R", "MeleeEnemyRig/Skeleton3D:shoulder.L", "MeleeEnemyRig/Skeleton3D:shoulder.R", "MeleeEnemyRig/Skeleton3D:spine.001", "MeleeEnemyRig/Skeleton3D:spine.002", "MeleeEnemyRig/Skeleton3D:spine.003", "MeleeEnemyRig/Skeleton3D:spine.004", "MeleeEnemyRig/Skeleton3D:spine.005", "MeleeEnemyRig/Skeleton3D:spine.006", "MeleeEnemyRig/Skeleton3D:spine.007", "MeleeEnemyRig/Skeleton3D:thumb.01.R", "MeleeEnemyRig/Skeleton3D:thumb.02.L", "MeleeEnemyRig/Skeleton3D:thumb.02.R", "MeleeEnemyRig/Skeleton3D:upper_arm.L", "MeleeEnemyRig/Skeleton3D:upper_arm.R"]
+fadein_time = 0.2
+fadeout_time = 0.2
+break_loop_at_end = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f1fjm"]
+animation = &"MeleeEnemyIdle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eg2vp"]
+animation = &"MeleeEnemyRun"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ggdb5"]
+animation = &"MeleeEnemyIdle"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_51sgs"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_f1fjm")
+blend_point_0/pos = 0.5
+blend_point_1/node = SubResource("AnimationNodeAnimation_eg2vp")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_ggdb5")
+blend_point_2/pos = 0.0
+min_space = 0.0
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3dlvm"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kowxe"]
+animation = &"MeleeEnemyRun"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mxbkt"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ddet0"]
+states/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_51sgs")
+states/BlendSpace1D/position = Vector2(292, -112)
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_3dlvm")
+states/BlendTree/position = Vector2(572, -87)
+states/MeleeEnemyRun/node = SubResource("AnimationNodeAnimation_kowxe")
+states/MeleeEnemyRun/position = Vector2(454, 75)
+states/Start/position = Vector2(58, 54)
+transitions = ["Start", "BlendSpace1D", SubResource("AnimationNodeStateMachineTransition_mxbkt")]
+graph_offset = Vector2(-58, -187)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x4avn"]
+animation = &"MeleeEnemySlash1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1pcod"]
+animation = &"MeleeEnemySlash2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_80vw5"]
+advance_mode = 2
+advance_expression = "melee_ability.attack_type == melee_ability.AttackType.SLASHRL"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yoeiw"]
+advance_mode = 2
+advance_expression = "melee_ability.attack_type == melee_ability.AttackType.SLASH_RL"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m5jme"]
+advance_mode = 2
+advance_expression = "melee_ability.attack_type == melee_ability.AttackType.SLASH_RL"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pt5a5"]
+advance_mode = 2
+advance_expression = "melee_ability.attack_type == melee_ability.AttackType.SLASH_RL"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_61nb2"]
+states/MeleeEnemySlash1/node = SubResource("AnimationNodeAnimation_x4avn")
+states/MeleeEnemySlash1/position = Vector2(191, -61)
+states/MeleeEnemySlash2/node = SubResource("AnimationNodeAnimation_1pcod")
+states/MeleeEnemySlash2/position = Vector2(545, 56)
+states/Start/position = Vector2(102, 113)
+transitions = ["Start", "MeleeEnemySlash1", SubResource("AnimationNodeStateMachineTransition_80vw5"), "Start", "MeleeEnemySlash2", SubResource("AnimationNodeStateMachineTransition_yoeiw"), "MeleeEnemySlash2", "MeleeEnemySlash1", SubResource("AnimationNodeStateMachineTransition_m5jme"), "MeleeEnemySlash1", "MeleeEnemySlash2", SubResource("AnimationNodeStateMachineTransition_pt5a5")]
+graph_offset = Vector2(-51, -124)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_k80vy"]
+nodes/attack/node = SubResource("AnimationNodeOneShot_223sa")
+nodes/attack/position = Vector2(-320, 320)
+nodes/bottom_state/node = SubResource("AnimationNodeStateMachine_ddet0")
+nodes/bottom_state/position = Vector2(-840, 160)
+nodes/output/position = Vector2(260, 260)
+nodes/top_state/node = SubResource("AnimationNodeStateMachine_61nb2")
+nodes/top_state/position = Vector2(-840, 560)
+node_connections = [&"attack", 0, &"bottom_state", &"attack", 1, &"top_state"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_syuwp"]
 
@@ -20,27 +107,99 @@ albedo_color = Color(0, 0, 0, 0.478431)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mh05o"]
 
-[node name="MeleeEnemy" instance=ExtResource("1_0mf37")]
+[node name="MeleeEnemy" groups=["Enemy"] instance=ExtResource("1_0mf37")]
 collision_layer = 8
 collision_mask = 15
+script = ExtResource("2_y6jdy")
 speed = 5
 turning_speed = 2.0
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="0"]
+root_node = NodePath("../Visual/sk_melee_enemy")
+tree_root = SubResource("AnimationNodeBlendTree_k80vy")
+anim_player = NodePath("../Visual/sk_melee_enemy/AnimationPlayer")
+parameters/attack/active = false
+parameters/attack/internal_active = false
+parameters/attack/request = 0
+parameters/bottom_state/BlendSpace1D/blend_position = 0.242682
 
 [node name="Visual" type="Node3D" parent="." index="1"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Visual" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_syuwp")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Visual" index="1"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.4821, -0.378365)
+visible = false
 mesh = SubResource("BoxMesh_uaspe")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+[node name="sk_melee_enemy" parent="Visual" index="2" instance=ExtResource("2_x3bpp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Visual/sk_melee_enemy/MeleeEnemyRig" index="0"]
+bones/0/position = Vector3(2.58299e-09, 1.06587, -0.0913907)
+bones/0/rotation = Quaternion(0.125841, 0, 0, 0.99205)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(-0.0647026, 2.37919e-07, -1.54263e-08, 0.997905)
+bones/2/rotation = Quaternion(-0.0772799, -1.18853e-07, -2.76374e-08, 0.997009)
+bones/3/rotation = Quaternion(0.238896, 1.15758e-07, 8.54358e-08, 0.971045)
+bones/4/rotation = Quaternion(-0.116958, -6.50615e-14, -5.57699e-08, 0.993137)
+bones/6/rotation = Quaternion(0.346923, 1.11806e-07, 1.2407e-07, 0.937893)
+bones/7/rotation = Quaternion(-0.684061, -5.45504e-13, -3.26186e-07, 0.729425)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.00357137, -2.38417e-07, 8.51471e-10, 0.999994)
+bones/9/rotation = Quaternion(0.735619, 0.4204, 0.263833, -0.461)
+bones/10/rotation = Quaternion(0.185862, 0.682011, -0.185603, 0.682545)
+bones/11/rotation = Quaternion(-0.00581394, 0.0162544, -0.00237748, 0.999848)
+bones/12/rotation = Quaternion(-0.00117775, 0.0240741, 0.127613, 0.991531)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(0.144767, 0.664381, -0.133397, 0.721003)
+bones/14/rotation = Quaternion(0.436156, 0.899749, 0.00423516, 0.0141928)
+bones/15/rotation = Quaternion(0.00571171, -0.00186957, -0.197345, 0.980316)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(0.735619, -0.4204, -0.263832, -0.461001)
+bones/17/rotation = Quaternion(0.185862, -0.682011, 0.185603, 0.682545)
+bones/18/rotation = Quaternion(-0.00581393, -0.0162544, 0.00237747, 0.999848)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(-0.00117776, -0.0240741, -0.127613, 0.991531)
+bones/20/rotation = Quaternion(0.144767, -0.664381, 0.133397, 0.721003)
+bones/21/rotation = Quaternion(-0.436156, 0.899749, 0.00423517, -0.0141929)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(0.00571172, 0.00186948, 0.197344, 0.980316)
+bones/22/scale = Vector3(1, 1, 1)
+bones/23/rotation = Quaternion(0.0159288, -1.19194e-07, 1.89886e-09, 0.999873)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(0.0893422, -1.18733e-07, 1.06504e-08, 0.996001)
+bones/25/position = Vector3(0.177641, 0.209199, 0.0361262)
+bones/25/rotation = Quaternion(0.972721, 0.0677785, -0.00400212, 0.221821)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(0.14879, -0.00105481, 0.0678883, 0.986535)
+bones/26/scale = Vector3(1, 1, 1)
+bones/27/rotation = Quaternion(-0.623808, 6.50159e-07, -6.71197e-07, 0.781577)
+bones/28/rotation = Quaternion(-1.66106e-07, 0.993899, -0.110295, 3.39253e-06)
+bones/30/position = Vector3(-0.177641, 0.209199, 0.0361262)
+bones/30/rotation = Quaternion(0.972721, -0.0677785, 0.00400212, 0.221821)
+bones/30/scale = Vector3(1, 1, 1)
+bones/31/rotation = Quaternion(0.14879, 0.00105481, -0.0678883, 0.986535)
+bones/31/scale = Vector3(1, 1, 1)
+bones/32/rotation = Quaternion(-0.623808, -6.50159e-07, 6.71197e-07, 0.781577)
+bones/33/rotation = Quaternion(1.66106e-07, 0.993899, -0.110295, -3.39253e-06)
+bones/34/rotation = Quaternion(-0.697682, 0.697682, -0.115064, -0.115066)
+
+[node name="Cube_017" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D" index="0"]
+transform = Transform3D(1, -1.08802e-14, -1.42109e-13, -4.35207e-14, 1, -1.76951e-08, -8.52651e-14, 6.89179e-08, 1, 8.41549e-14, 4.76837e-07, 1.78814e-07)
+
+[node name="Cube_013" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D" index="1"]
+transform = Transform3D(1, 1.86517e-14, 2.84217e-14, -2.75335e-14, 1, -8.19564e-08, -1.42109e-14, 8.19564e-08, 1, -2.4647e-14, 3.57628e-07, -6.33299e-08)
+
+[node name="Cube_018" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D" index="2"]
+transform = Transform3D(1.03054, 1.77636e-14, 0, -2.84217e-14, 1.01942, -0.15101, 0, 0.15101, 1.01942, -4.21885e-15, 1.64392, -0.255609)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_mtyox")
 
@@ -54,6 +213,7 @@ path_max_distance = 1.01
 debug_enabled = true
 
 [node name="MeleeAbility" type="Node3D" parent="." index="5"]
+unique_name_in_owner = true
 script = ExtResource("3_uffac")
 hitting_color = Color(1, 0, 0, 1)
 default_color = Color(0, 0, 0, 0.478431)
@@ -76,12 +236,15 @@ shape = SubResource("BoxShape3D_f8enx")
 
 [node name="Visual" type="CSGBox3D" parent="MeleeAbility" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.779865, -1.17424)
+visible = false
 material = SubResource("StandardMaterial3D_bn64c")
 
-[node name="HurtBoxComponent3D" parent="." index="7"]
+[node name="HurtBoxComponent3D" parent="." index="7" groups=["Enemy"]]
 collision_layer = 512
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent3D" index="0" groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958669, 0)
 shape = SubResource("CapsuleShape3D_mh05o")
+
+[editable path="Visual/sk_melee_enemy"]

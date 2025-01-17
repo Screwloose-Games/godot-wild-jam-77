@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxp66elq3n42f"]
+
+[ext_resource type="PackedScene" uid="uid://dvyo53uq3m5kb" path="res://game/actors/enemies/ranged_enemy/sk_ranged_enemy.glb" id="1_l5vyl"]
+
+[node name="sk_ranged_enemy" instance=ExtResource("1_l5vyl")]
+
+[node name="PlantLoverHat" parent="PlantLoverRig/Skeleton3D" index="0"]
+transform = Transform3D(1, 1.4512e-14, -5.68925e-14, -2.46756e-15, 1, -4.09782e-08, -4.25609e-14, 4.84288e-08, 1, -8.88178e-15, 2.38419e-07, 3.11993e-08)
+
+[node name="PlantLoverHead" parent="PlantLoverRig/Skeleton3D" index="1"]
+transform = Transform3D(1, 1.4512e-14, -5.68925e-14, -2.46756e-15, 1, -4.09782e-08, -4.25609e-14, 4.84288e-08, 1, -8.88178e-15, 2.38419e-07, 3.11993e-08)

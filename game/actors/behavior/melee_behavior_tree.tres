@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=30 format=3 uid="uid://m60n8oplxst6"]
+[gd_resource type="BehaviorTree" load_steps=37 format=3 uid="uid://m60n8oplxst6"]
 
 [ext_resource type="Script" path="res://demo/ai/tasks/get_first_in_group.gd" id="1_vkrpx"]
 [ext_resource type="Script" path="res://game/actors/behavior/pursue_3d.gd" id="2_8nea3"]
@@ -56,6 +56,14 @@ output_var = &"target"
 [sub_resource type="BTConsolePrint" id="BTConsolePrint_mpewo"]
 text = "Persuing player"
 
+[sub_resource type="BBNode" id="BBNode_h7nvt"]
+saved_value = NodePath("Visual/sk_melee_enemy/AnimationPlayer")
+resource_name = "Visual/sk_melee_enemy/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_vssep"]
+animation_player = SubResource("BBNode_h7nvt")
+animation_name = &"MeleeEnemyRun"
+
 [sub_resource type="BTAction" id="BTAction_s5whw"]
 script = ExtResource("2_8nea3")
 target_var = &"target"
@@ -63,7 +71,7 @@ approach_distance = 4.0
 
 [sub_resource type="BTSequence" id="BTSequence_20y1p"]
 custom_name = "Pursue player"
-children = [SubResource("BTConsolePrint_mpewo"), SubResource("BTAction_s5whw")]
+children = [SubResource("BTConsolePrint_mpewo"), SubResource("BTPlayAnimation_vssep"), SubResource("BTAction_s5whw")]
 
 [sub_resource type="BTAction" id="BTAction_bbnuv"]
 script = ExtResource("1_vkrpx")
@@ -79,6 +87,9 @@ text = "FACING TARGET"
 [sub_resource type="BTAction" id="BTAction_t10t1"]
 script = ExtResource("3_atqrs")
 target_var = &"target"
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_nvpmv"]
+text = "Try attacking"
 
 [sub_resource type="BBNode" id="BBNode_mvgsf"]
 saved_value = NodePath("MeleeAbility")
@@ -98,6 +109,9 @@ resource_name = "true"
 variable = &"can_attack"
 value = SubResource("BBVariant_nk5vb")
 
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_4cegu"]
+text = "Attacking"
+
 [sub_resource type="BBNode" id="BBNode_itoe7"]
 saved_value = NodePath("MeleeAbility")
 resource_name = "MeleeAbility"
@@ -105,6 +119,18 @@ resource_name = "MeleeAbility"
 [sub_resource type="BTCallMethod" id="BTCallMethod_p3sam"]
 node = SubResource("BBNode_itoe7")
 method = &"attack"
+
+[sub_resource type="BBNode" id="BBNode_nwiav"]
+saved_value = NodePath("Visual/sk_melee_enemy/AnimationPlayer")
+resource_name = "Visual/sk_melee_enemy/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_esgpv"]
+await_completion = 2.0
+animation_player = SubResource("BBNode_nwiav")
+animation_name = &"MeleeEnemySlash1"
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_71wc3"]
+text = "WAITING"
 
 [sub_resource type="BBVariant" id="BBVariant_l13q2"]
 type = 3
@@ -119,20 +145,20 @@ value = SubResource("BBVariant_l13q2")
 
 [sub_resource type="BTSequence" id="BTSequence_x1xko"]
 custom_name = "Melee attack"
-children = [SubResource("BTEvaluateExpression_20ndx"), SubResource("BTCheckVar_l3tcm"), SubResource("BTCallMethod_p3sam"), SubResource("BTCheckVar_ghlch")]
+children = [SubResource("BTConsolePrint_nvpmv"), SubResource("BTEvaluateExpression_20ndx"), SubResource("BTCheckVar_l3tcm"), SubResource("BTConsolePrint_4cegu"), SubResource("BTCallMethod_p3sam"), SubResource("BTPlayAnimation_esgpv"), SubResource("BTConsolePrint_71wc3"), SubResource("BTCheckVar_ghlch")]
 
-[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_xoekj"]
+[sub_resource type="BTSequence" id="BTSequence_gqmuv"]
 children = [SubResource("BTConsolePrint_u3gps"), SubResource("BTAction_t10t1"), SubResource("BTSequence_x1xko")]
 
 [sub_resource type="BTSequence" id="BTSequence_vrsk3"]
 custom_name = "Line Up Attack"
-children = [SubResource("BTAction_bbnuv"), SubResource("BTConsolePrint_oudnc"), SubResource("BTDynamicSequence_xoekj")]
+children = [SubResource("BTAction_bbnuv"), SubResource("BTConsolePrint_oudnc"), SubResource("BTSequence_gqmuv")]
 
-[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_e37u3"]
+[sub_resource type="BTSequence" id="BTSequence_hoy6o"]
 children = [SubResource("BTSequence_20y1p"), SubResource("BTSequence_vrsk3")]
 
 [sub_resource type="BTSequence" id="BTSequence_kc1u3"]
-children = [SubResource("BTSequence_3mlft"), SubResource("BTAction_y6062"), SubResource("BTDynamicSequence_e37u3")]
+children = [SubResource("BTSequence_3mlft"), SubResource("BTAction_y6062"), SubResource("BTSequence_hoy6o")]
 
 [resource]
 description = "Welcome to the [b]LimboAI[/b] demo project! This demo project consists of three parts:

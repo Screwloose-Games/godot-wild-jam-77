@@ -36,7 +36,8 @@ func face_direction(direction: Vector3):
 func rotation_to_direction(direction: Vector3):
     direction.y = 0  # Ignore the Y-axis to only rotate around Y
     direction = direction.normalized()
-    return atan2(direction.x, direction.z)
+    var rotation = atan2(direction.x, direction.z)
+    return rotation
 
 func face_dir_lerp(direction: Vector3, delta: float) -> void:
     # Calculate the direction to the target

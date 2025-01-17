@@ -15,6 +15,14 @@ var can_attack: bool = true
 
 @onready var hit_box_component_3d: HitBoxComponent3D = %HitBoxComponent3D
 
+enum AttackType {
+    NONE,
+    SLASHLR,
+    SLASHRL
+}
+
+var attack_type: AttackType = AttackType.NONE
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     visual.material.albedo_color = default_color

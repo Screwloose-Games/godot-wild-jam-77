@@ -1,10 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://ruwllv6ttnh6"]
+[gd_scene load_steps=7 format=3 uid="uid://ruwllv6ttnh6"]
 
 [ext_resource type="PackedScene" uid="uid://qopd3mnhek6b" path="res://game/levels/base_level.tscn" id="1_41ni7"]
 [ext_resource type="Script" path="res://game/levels/level_01/lvl_01.gd" id="2_i6dyw"]
 [ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="2_s2628"]
+[ext_resource type="PackedScene" uid="uid://lr7e0228li7o" path="res://game/levels/level_01/lvl_01_environment.tscn" id="4_e757c"]
+[ext_resource type="PackedScene" uid="uid://bdtqhi2bvjnt6" path="res://game/levels/level_01/lvl_01_lighting.tscn" id="5_m27if"]
+[ext_resource type="PackedScene" uid="uid://cjydkdh825wo0" path="res://game/altar_locations/melee_altar_location/game_melee_altar_location.tscn" id="6_45gun"]
 
 [node name="Level01" instance=ExtResource("1_41ni7")]
 script = ExtResource("2_i6dyw")
 
-[node name="PlayerCharacter" parent="." index="2" instance=ExtResource("2_s2628")]
+[node name="PlayerCharacter" parent="." index="0" instance=ExtResource("2_s2628")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.486093, 1.87801, -5.42548)
+dash_duration = 0.5
+
+[node name="Level01Environment" parent="." index="1" instance=ExtResource("4_e757c")]
+
+[node name="Level01Lighting" parent="." index="2" instance=ExtResource("5_m27if")]
+
+[node name="MeleeAltarLocation" parent="." index="3" instance=ExtResource("6_45gun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.490673, 0)
