@@ -30,7 +30,7 @@ func _ready() -> void:
     GlobalSignalBus.game_paused.connect(_on_start_pause)
     GlobalSignalBus.game_unpaused.connect(_on_stop_pause)
   
-    if get_tree().current_scene.name == "main_menu":
+    if get_tree().current_scene.name == "MainMenu":
         _on_start_title()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
