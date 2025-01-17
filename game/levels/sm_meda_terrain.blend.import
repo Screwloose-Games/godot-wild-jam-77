@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://q2njfjrqpqof"
-path="res://.godot/imported/meda_terrain.blend-543c10aca9333779e99379d4670e4815.scn"
+path="res://.godot/imported/sm_meda_terrain.blend-e917bcdcaae0e24ad812956f43ffd468.scn"
 
 [deps]
 
-source_file="res://game/levels/meda_terrain.blend"
-dest_files=["res://.godot/imported/meda_terrain.blend-543c10aca9333779e99379d4670e4815.scn"]
+source_file="res://game/levels/sm_meda_terrain.blend"
+dest_files=["res://.godot/imported/sm_meda_terrain.blend-e917bcdcaae0e24ad812956f43ffd468.scn"]
 
 [params]
 
