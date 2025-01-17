@@ -6,7 +6,8 @@
 
 [node name="MeleeAltarLocation" type="Node3D"]
 
-[node name="Altar" parent="." instance=ExtResource("1_1ufvv")]
+[node name="Altar" parent="." node_paths=PackedStringArray("assigned_enemies") instance=ExtResource("1_1ufvv")]
+assigned_enemies = [NodePath("../Enemies/MeleeEnemy"), NodePath("../Enemies/MeleeEnemy2"), NodePath("../Enemies/MeleeEnemy3"), NodePath("../Enemies/MeleeEnemy4"), NodePath("../Enemies/MeleeEnemy5"), NodePath("../Enemies/MeleeEnemy6")]
 
 [node name="Enemies" type="Node3D" parent="." node_paths=PackedStringArray("altar")]
 unique_name_in_owner = true
