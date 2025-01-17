@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bvjmr48xurpu1"]
+[gd_scene load_steps=33 format=3 uid="uid://bvjmr48xurpu1"]
 
 [ext_resource type="Shader" path="res://common/art/shaders/black_hole.gdshader" id="1_tmclc"]
 [ext_resource type="Material" uid="uid://ipm1muq3hbrf" path="res://common/art/materials/cyclic_slash.material" id="2_2k4yw"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://crco2b1srkhyo" path="res://game/actors/enemies/melee_enemy/game_melee_enemy.tscn" id="8_qi36d"]
 [ext_resource type="PackedScene" uid="uid://dudrlswb1lxve" path="res://game/fleshballs/game_fleshsac_4.tscn" id="9_ytvpv"]
 [ext_resource type="PackedScene" uid="uid://dwddf0vpe0isd" path="res://game/fleshballs/game_fleshsac_5.tscn" id="10_64exq"]
+[ext_resource type="PackedScene" uid="uid://bygv60003uc5w" path="res://game/actors/enemies/ranged_enemy/game_ranged_enemy.tscn" id="12_qfdpd"]
+[ext_resource type="PackedScene" uid="uid://saby4by3jsmh" path="res://game/actors/player_controller/sk_player_character_gltf.tscn" id="13_83tks"]
+[ext_resource type="PackedScene" uid="uid://dg5v3158sj5e3" path="res://game/actors/enemies/shield_enemy/sk_shield_enemy.tscn" id="14_2uhke"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nslve"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -218,9 +221,8 @@ shape = SubResource("BoxShape3D_apl3n")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_ebsap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4514, 9.53674e-07, 15.3828)
-hasMeleeAbility = false
-hasRangedAbility = false
-hasShieldAbility = false
+dash_distance = 5.0
+speed = 10
 
 [node name="Altar" parent="." instance=ExtResource("5_yox7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3306, 0, -13.8597)
@@ -294,3 +296,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.903, -0.634872, -15.3442)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.0095, 0, -18.2335)
 script = ExtResource("7_77g3v")
 altar = NodePath("../Altar")
+
+[node name="RangedEnemy" parent="AltarEnemies" instance=ExtResource("12_qfdpd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0574188, -0.43315, 6.72306)
+
+[node name="MeleeEnemy" parent="AltarEnemies" instance=ExtResource("8_qi36d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28321, -0.413093, 6.88956)
+
+[node name="sk_player_character" parent="." instance=ExtResource("13_83tks")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.0452, 0.0197874, -11.38)
+
+[node name="sk_shield_enemy" parent="." instance=ExtResource("14_2uhke")]
+transform = Transform3D(-0.723678, 0, 0.690138, 0, 1, 0, -0.690138, 0, -0.723678, 38.6596, -0.476397, -11.6898)

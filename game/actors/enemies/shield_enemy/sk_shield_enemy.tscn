@@ -1,0 +1,320 @@
+[gd_scene load_steps=9 format=3 uid="uid://dg5v3158sj5e3"]
+
+[ext_resource type="PackedScene" uid="uid://b1rybch4s0m48" path="res://game/actors/enemies/shield_enemy/sk_shield_enemy.glb" id="1_81t7e"]
+[ext_resource type="Shader" path="res://common/art/shaders/jelly_wobble.gdshader" id="2_4fpgq"]
+[ext_resource type="PackedScene" uid="uid://cewftrhcxs6a8" path="res://game/actors/enemies/shield_enemy/sm_lowpoly_skull.tscn" id="2_cyyiv"]
+[ext_resource type="Texture2D" uid="uid://bftdo46u1pdip" path="res://game/actors/enemies/melee_enemy/sk_melee_enemy_gwj77_shield_enemy_texture_test.png" id="3_8qmsb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7v6ml"]
+render_priority = 0
+shader = ExtResource("2_4fpgq")
+shader_parameter/wave_strength = Vector2(0.05, 0.025)
+shader_parameter/wave_frequ = Vector2(12, 12)
+shader_parameter/time_factor = Vector2(6, 12)
+shader_parameter/MY_TEXTURE = ExtResource("3_8qmsb")
+
+[sub_resource type="Animation" id="Animation_q3awh"]
+resource_name = "orbit_skulls"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkullsOrbiting/sm_lowpoly_skull:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.180707, -0.856736, -0.15451), Vector3(0.203641, 1.80013, 0.0309537), Vector3(0.513669, 0.467204, 0.205329), Vector3(0.466155, -0.254489, -0.195947), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkullsOrbiting/sm_lowpoly_skull:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.651811, 0.315479), Vector3(-0.200552, 1.04314, -0.00951821), Vector3(0.310594, 0.556235, 0.0717311), Vector3(0.207063, 1.08403, 0.15298), Vector3(-0.232907, 0.511733, 0.23423), Vector3(0, 0.651811, 0.315479)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkullsOrbiting/sm_lowpoly_skull4:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.80251, 0), Vector3(0, -0.104859, 0), Vector3(-0.201025, 0.199277, -0.0403037), Vector3(0.119412, 0.0893723, 0.0744498), Vector3(0.129325, 0.0289883, -0.344661), Vector3(0, -1.80251, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkullsOrbiting/sm_lowpoly_skull4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.29273, 0.552841, -0.199975), Vector3(0.193042, 1.0513, -0.0292656), Vector3(0.0663375, 0.531874, 0.28407), Vector3(-0.316438, 0.965373, -0.203046), Vector3(0.263833, 1.09756, -0.282568), Vector3(-0.29273, 0.552841, -0.199975)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkullsOrbiting/sm_lowpoly_skull5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.96667, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.264634, 0.632839, -0.199975), Vector3(0.0686123, 0.632839, 0.379208), Vector3(-0.0477977, 0.955221, 0.234412), Vector3(0.0528746, 1.05841, -0.332483), Vector3(0.16049, 0.571204, -0.420829), Vector3(0.264634, 0.632839, -0.199975)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SkullsOrbiting/sm_lowpoly_skull5:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.96667, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2.11747, 0), Vector3(0, 0.00232131, 0), Vector3(0, -0.196031, 0), Vector3(0, -0.650658, 0), Vector3(0, 1.9762, 0), Vector3(0, 2.11747, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SkullsOrbiting/sm_lowpoly_skull2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.96667, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.222641, 0.816996, 0.204424), Vector3(0.133222, 1.0174, 0.204424), Vector3(-0.157451, 0.459675, 0.204424), Vector3(-0.223359, 1.00255, 0.204424), Vector3(0.0274289, 0.787994, 0.309531), Vector3(-0.222641, 0.816996, 0.204424)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SkullsOrbiting/sm_lowpoly_skull2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.96667, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.242671, 0), Vector3(-0.31832, 0.650955, -0.234026), Vector3(0.261163, -0.616473, 0.490969), Vector3(-0.533727, 0.0956882, -0.838426), Vector3(-0.275253, -0.109392, 0.462246), Vector3(0, -0.242671, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SkullsOrbiting/sm_lowpoly_skull3:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.262671, 0.816996, 0.186588), Vector3(-0.179518, 0.50074, 0.186588), Vector3(-0.296975, 0.772229, 0.186588), Vector3(0.244555, 0.474565, 0.186588), Vector3(0.384179, 0.8303, 0.186588), Vector3(0.262671, 0.816996, 0.186588)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SkullsOrbiting/sm_lowpoly_skull3:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.478953, 0), Vector3(0.317997, -0.531314, -0.181721), Vector3(0.244056, -0.110053, 0.430889), Vector3(0.398436, 0.478823, -0.450257), Vector3(0.185845, 0.110235, -0.0802753), Vector3(0, 0.478953, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_goal4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkullsOrbiting/sm_lowpoly_skull:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkullsOrbiting/sm_lowpoly_skull:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.651811, 0.315479)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkullsOrbiting/sm_lowpoly_skull4:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.80251, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkullsOrbiting/sm_lowpoly_skull4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.29273, 0.552841, -0.199975)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkullsOrbiting/sm_lowpoly_skull5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.264634, 0.632839, -0.199975)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SkullsOrbiting/sm_lowpoly_skull5:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.11747, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SkullsOrbiting/sm_lowpoly_skull2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.222641, 0.816996, 0.204424)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SkullsOrbiting/sm_lowpoly_skull2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.242671, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SkullsOrbiting/sm_lowpoly_skull3:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.262671, 0.816996, 0.186588)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SkullsOrbiting/sm_lowpoly_skull3:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.478953, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i4355"]
+_data = {
+"RESET": SubResource("Animation_goal4"),
+"orbit_skulls": SubResource("Animation_q3awh")
+}
+
+[node name="sk_shield_enemy" instance=ExtResource("1_81t7e")]
+
+[node name="Skeleton3D" parent="FurballRig" index="0"]
+bones/0/rotation = Quaternion(0.125841, 1.18262e-07, 1.50014e-08, 0.99205)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(0.961624, 0.0541777, 0.00177224, 0.268964)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.399414, 0.00643354, 0.0578766, 0.914919)
+bones/3/rotation = Quaternion(-0.812216, 0.0014432, -0.00377496, 0.583343)
+bones/4/rotation = Quaternion(9.00319e-08, 0.994749, -0.102345, 7.86602e-07)
+bones/5/rotation = Quaternion(0.703394, 0.703394, -0.0723685, 0.0723696)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.961624, -0.0541778, -0.00177209, 0.268964)
+bones/6/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.812216, -0.0014432, 0.00377496, 0.583342)
+bones/9/rotation = Quaternion(-8.96835e-08, 0.994749, -0.102345, -7.86601e-07)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.703394, -0.703394, 0.0723683, 0.0723695)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(-0.125841, -1.18262e-07, -1.50014e-08, 0.99205)
+bones/11/scale = Vector3(1, 1, 1)
+
+[node name="FurballBody" parent="FurballRig/Skeleton3D" index="0"]
+transform = Transform3D(1, 4.26326e-14, -2.84217e-14, -1.77636e-14, 1, 1.49012e-08, -9.9476e-14, 1.49012e-08, 1, -7.10543e-15, 3.57628e-07, 2.98023e-08)
+
+[node name="FurballBody" parent="FurballRig/Skeleton3D/FurballBody" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_7v6ml")
+
+[node name="SkullsOrbiting" type="Node3D" parent="." index="2"]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="SkullsOrbiting" index="0"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_i4355")
+}
+autoplay = "orbit_skulls"
+
+[node name="sm_lowpoly_skull" parent="SkullsOrbiting" index="1" instance=ExtResource("2_cyyiv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.651811, 0.315479)
+
+[node name="sm_lowpoly_skull4" parent="SkullsOrbiting" index="2" instance=ExtResource("2_cyyiv")]
+transform = Transform3D(-0.229642, 0, -0.973275, 0, 1, 0, 0.973275, 0, -0.229642, -0.29273, 0.552841, -0.199975)
+
+[node name="sm_lowpoly_skull5" parent="SkullsOrbiting" index="3" instance=ExtResource("2_cyyiv")]
+transform = Transform3D(-0.519847, 0, 0.854259, 0, 1, 0, -0.854259, 0, -0.519847, 0.264634, 0.632839, -0.199975)
+
+[node name="sm_lowpoly_skull2" parent="SkullsOrbiting" index="4" instance=ExtResource("2_cyyiv")]
+transform = Transform3D(0.970699, 0, -0.240296, 0, 1, 0, 0.240296, 0, 0.9707, -0.222641, 0.816996, 0.204424)
+
+[node name="sm_lowpoly_skull3" parent="SkullsOrbiting" index="5" instance=ExtResource("2_cyyiv")]
+transform = Transform3D(0.887478, 0, 0.46085, 0, 1, 0, -0.46085, 0, 0.887478, 0.262671, 0.816996, 0.186588)

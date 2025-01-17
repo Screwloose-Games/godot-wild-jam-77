@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cewftrhcxs6a8"]
+
+[ext_resource type="PackedScene" uid="uid://bw4312upvjver" path="res://game/actors/enemies/shield_enemy/sm_lowpoly_skull.glb" id="1_u03lq"]
+
+[node name="sm_lowpoly_skull" instance=ExtResource("1_u03lq")]

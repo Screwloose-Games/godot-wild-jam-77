@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bygv60003uc5w"]
+[gd_scene load_steps=15 format=3 uid="uid://bygv60003uc5w"]
 
 [ext_resource type="PackedScene" uid="uid://bxbkpou8fdoqo" path="res://game/actors/enemies/enemy.tscn" id="1_sp3te"]
 [ext_resource type="Script" path="res://game/actors/enemies/ranged_enemy/ranged_enemy.gd" id="2_jelv1"]
+[ext_resource type="PackedScene" uid="uid://dxp66elq3n42f" path="res://game/actors/enemies/ranged_enemy/sk_ranged_enemy.tscn" id="3_h5lxi"]
 [ext_resource type="BehaviorTree" uid="uid://r3tx27cwxvor" path="res://ai/ranged_enemy_behavior_tree.tres" id="3_t65xn"]
 [ext_resource type="Script" path="res://game/actors/abilities/ranged_ability.gd" id="4_c63db"]
 [ext_resource type="Script" path="res://common/components/templates/HitBoxComponent3D.gd" id="5_ppqif"]
@@ -48,13 +49,18 @@ turning_speed = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Visual" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_syuwp")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Visual" index="1"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.4821, -0.378365)
+visible = false
 mesh = SubResource("BoxMesh_uaspe")
 skeleton = NodePath("../..")
+
+[node name="sk_ranged_enemy" parent="Visual" index="2" instance=ExtResource("3_h5lxi")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
