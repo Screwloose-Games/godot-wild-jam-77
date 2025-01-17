@@ -57,10 +57,6 @@ project/assembly_name="Godot Wild Jam 77"
 
 enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/screwloose-editor-settings/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
 
-[filesystem]
-
-import/blender/enabled=false
-
 [global_group]
 
 Greybox=""
