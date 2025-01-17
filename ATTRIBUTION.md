@@ -72,6 +72,28 @@ Author: Andrea Calabró
 Source: [godotengine.org : press](https://godotengine.org/press/)  
 License: [CC BY 4.0 International](https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt) 
 
+#### Sounds sourced form freesounds.org
+Bramble Ambience
+https://freesound.org/people/dobroide/sounds/18964/
+https://freesound.org/people/dobroide/sounds/18963/
+
+Lake Ambience
+https://freesound.org/people/sithjawa/sounds/86625/
+https://freesound.org/people/klankbeeld/sounds/490582/
+https://freesound.org/people/Owl/sounds/156526/
+
+Cliff Ambience
+https://freesound.org/people/Philip_Goddard/sounds/689562/
+https://freesound.org/people/felix.blume/sounds/670330/
+https://freesound.org/people/kordoz/sounds/106802/
+
+Boss Ambience
+https://freesound.org/people/felix.blume/sounds/152706/
+https://freesound.org/people/ecfike/sounds/137966/
+https://freesound.org/people/cyanidecup45/sounds/732076/
+https://freesound.org/people/nicotep/sounds/761356/
+https://freesound.org/people/stormpetrel/sounds/179587/
+
 ## Tools
 #### Godot
 Author: [Juan Linietsky, Ariel Manzur, and contributors](https://godotengine.org/contact)  
@@ -87,3 +109,4 @@ License: [MIT License](https://github.com/microsoft/vscode/blob/main/LICENSE.txt
 Author: [Linus Torvalds](https://github.com/torvalds)  
 Source: [git-scm.com](https://git-scm.com/downloads)  
 License: [GNU General Public License version 2](https://opensource.org/licenses/GPL-2.0)
+
