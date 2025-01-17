@@ -20,6 +20,9 @@ size = Vector3(20.1394, 1.55518, 32.5294)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_bpflk")]
+hasMeleeAbility = false
+hasRangedAbility = false
+hasShieldAbility = false
 
 [node name="TestDamage" type="CSGTorus3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 0)

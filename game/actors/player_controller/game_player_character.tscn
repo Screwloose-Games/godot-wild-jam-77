@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c37xc7ws27epc"]
+[gd_scene load_steps=37 format=3 uid="uid://c37xc7ws27epc"]
 
 [ext_resource type="Script" path="res://game/actors/player_controller/player_character.gd" id="1_lj3x0"]
 [ext_resource type="Script" path="res://common/components/templates/HealthComponent.gd" id="2_xiykj"]
@@ -15,15 +15,16 @@
 [ext_resource type="Script" path="res://game/actors/player_controller/beam_ability.gd" id="13_8kmm6"]
 [ext_resource type="PackedScene" uid="uid://saby4by3jsmh" path="res://game/actors/player_controller/sk_player_character_gltf.tscn" id="13_jocpb"]
 [ext_resource type="PackedScene" uid="uid://0xkxfha6amht" path="res://game/actors/player_controller/sm_gem_staff.fbx" id="15_3kbqo"]
+[ext_resource type="Script" path="res://game/actors/player_controller/terrain_detector.gd" id="16_qbskk"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3pcoc"]
 animation = &"Mellee Staff"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_phy7c"]
-animation = &"Run"
+animation = &"Run Forward"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aq0ow"]
-animation = &"Idle"
+animation = &"Idle (Basic)"
 
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_ymxey"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_phy7c")
@@ -37,6 +38,7 @@ filter_enabled = true
 filters = ["Armature/Skeleton3D:mixamorig_Head", "Armature/Skeleton3D:mixamorig_HeadTop_End", "Armature/Skeleton3D:mixamorig_LeftArm", "Armature/Skeleton3D:mixamorig_LeftForeArm", "Armature/Skeleton3D:mixamorig_LeftHand", "Armature/Skeleton3D:mixamorig_LeftShoulder", "Armature/Skeleton3D:mixamorig_Neck", "Armature/Skeleton3D:mixamorig_RightArm", "Armature/Skeleton3D:mixamorig_RightForeArm", "Armature/Skeleton3D:mixamorig_RightHand", "Armature/Skeleton3D:mixamorig_RightShoulder", "Armature/Skeleton3D:mixamorig_Spine", "Armature/Skeleton3D:mixamorig_Spine1", "Armature/Skeleton3D:mixamorig_Spine2"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jauuu"]
+graph_offset = Vector2(-479.861, -139.114)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_3pcoc")
 nodes/Animation/position = Vector2(-320, 180)
 nodes/movement_speed/node = SubResource("AnimationNodeBlendSpace1D_ymxey")
@@ -51,7 +53,7 @@ node_connections = [&"output", 0, &"staff_attack_01", &"staff_attack_01", 0, &"m
 [sub_resource type="Sky" id="Sky_wx8tt"]
 sky_material = SubResource("PhysicalSkyMaterial_kxiip")
 
-[sub_resource type="Environment" id="Environment_l7lrn"]
+[sub_resource type="Environment" id="Environment_ulg8u"]
 background_mode = 2
 sky = SubResource("Sky_wx8tt")
 
@@ -100,13 +102,13 @@ emission = Color(0.52549, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhqva"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_w5cff"]
+radius = 0.178431
+
 [node name="PlayerCharacter" type="CharacterBody3D" groups=["Player"]]
 collision_mask = 15
 script = ExtResource("1_lj3x0")
 max_beam_range = 1.0
-hasMeleeAbility = null
-hasRangedAbility = null
-hasShieldAbility = null
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 unique_name_in_owner = true
@@ -136,7 +138,7 @@ health = 100.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.398186, 1.72847, 1.29903)
 top_level = true
-environment = SubResource("Environment_l7lrn")
+environment = SubResource("Environment_ulg8u")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
@@ -322,6 +324,16 @@ material = SubResource("StandardMaterial3D_nhqva")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.016196, 0.999869, 0, -0.999869, 0.016196, 0, 244.568, 0)
 top_level = true
+
+[node name="TerrainDetector" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("16_qbskk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.168169, 0)
+shape = SubResource("SphereShape3D_w5cff")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="hurt" from="HurtBoxComponent3D" to="." method="_on_hurt_box_component_3d_hurt"]
