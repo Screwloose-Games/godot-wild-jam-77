@@ -1,7 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://lr7e0228li7o"]
+[gd_scene load_steps=3 format=3 uid="uid://lr7e0228li7o"]
 
-[ext_resource type="PackedScene" uid="uid://cy5lpl5j8n011" path="res://game/levels/level_01/lvl_01_greybox.tscn" id="1_xebvl"]
+[ext_resource type="PackedScene" uid="uid://dpo74jgegjm4j" path="res://game/levels/sm_meda_terrain.tscn" id="1_e7x1t"]
+[ext_resource type="PackedScene" uid="uid://br8mk8iny13l4" path="res://game/gateway/game_gateway.tscn" id="2_tbpkv"]
 
 [node name="Level01Environment" type="Node3D"]
 
-[node name="Level01Greybox" parent="." instance=ExtResource("1_xebvl")]
+[node name="sm_meda_terrain" parent="." instance=ExtResource("1_e7x1t")]
+
+[node name="sm_meda_terrain2" parent="." instance=ExtResource("1_e7x1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.7745, 0, 0)
+
+[node name="LocationDoorway" parent="." node_paths=PackedStringArray("destination_mark") instance=ExtResource("2_tbpkv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1917, 0.831817, 4.2338)
+destination_mark = NodePath("../Marker3D")
+
+[node name="LocationDoorway2" parent="." node_paths=PackedStringArray("destination_mark") instance=ExtResource("2_tbpkv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.4874, 0.102823, -2.91653)
+destination_mark = NodePath("../Marker3D2")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.6203, 0, -2.47196)
+
+[node name="Marker3D2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.99835, 0, 1.33745)

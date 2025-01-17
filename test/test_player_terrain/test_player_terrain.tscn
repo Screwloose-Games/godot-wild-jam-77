@@ -1,0 +1,107 @@
+[gd_scene load_steps=12 format=3 uid="uid://diyfwi6mrbknv"]
+
+[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="1_evte2"]
+[ext_resource type="Script" path="res://game/actors/player_controller/terrain_area.gd" id="2_h4shw"]
+[ext_resource type="Texture2D" uid="uid://e2mxlaqd8oti" path="res://common/art/textures/tex_dark_grass_64.png" id="2_mfheg"]
+[ext_resource type="Texture2D" uid="uid://mximnxiwi46y" path="res://common/art/textures/tex_frothy_water.png" id="3_027f2"]
+[ext_resource type="Texture2D" uid="uid://dcg45ddd2qwrq" path="res://common/art/textures/tex_stone_wall.png" id="3_bqxdk"]
+[ext_resource type="Texture2D" uid="uid://bs7b48slas2oc" path="res://common/art/textures/tex_dirt_floor.png" id="3_tpqb1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ynw0p"]
+albedo_texture = ExtResource("2_mfheg")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0bwgu"]
+size = Vector3(10.6128, 1, 7.56958)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8jh7b"]
+albedo_texture = ExtResource("3_bqxdk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lb3qu"]
+albedo_texture = ExtResource("3_027f2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcdg0"]
+albedo_texture = ExtResource("3_tpqb1")
+
+[node name="TestPlayerTerrain" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("1_evte2")]
+
+[node name="Grass" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75415, 0, 8.37781)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(10.5083, 1, 7.55228)
+material = SubResource("StandardMaterial3D_ynw0p")
+
+[node name="TerrainArea" type="Area3D" parent="Grass"]
+script = ExtResource("2_h4shw")
+type = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass/TerrainArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0225983, 0, 0.0203857)
+shape = SubResource("BoxShape3D_0bwgu")
+
+[node name="Stone" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79555, 0, 8.54701)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(12.709, 1, 8.40802)
+material = SubResource("StandardMaterial3D_8jh7b")
+
+[node name="TerrainArea" type="Area3D" parent="Stone"]
+script = ExtResource("2_h4shw")
+type = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stone/TerrainArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0225983, 0, 0.0203857)
+shape = SubResource("BoxShape3D_0bwgu")
+
+[node name="Water" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.265147, 0, 16.4106)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(12.709, 1, 8.40802)
+material = SubResource("StandardMaterial3D_lb3qu")
+
+[node name="TerrainArea" type="Area3D" parent="Water"]
+script = ExtResource("2_h4shw")
+type = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water/TerrainArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0225983, 0, 0.0203857)
+shape = SubResource("BoxShape3D_0bwgu")
+
+[node name="None" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.82961, 0, 0.172378)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(12.709, 1, 8.40802)
+
+[node name="TerrainArea" type="Area3D" parent="None"]
+script = ExtResource("2_h4shw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="None/TerrainArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0225983, 0, 0.0203857)
+shape = SubResource("BoxShape3D_0bwgu")
+
+[node name="Dirt" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.85449, 0, 0.426693)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(12.709, 1, 8.40802)
+material = SubResource("StandardMaterial3D_kcdg0")
+
+[node name="TerrainArea" type="Area3D" parent="Dirt"]
+script = ExtResource("2_h4shw")
+type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dirt/TerrainArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0225983, 0, 0.0203857)
+shape = SubResource("BoxShape3D_0bwgu")
