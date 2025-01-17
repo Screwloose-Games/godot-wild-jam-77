@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbkvroagayyyc"]
+[gd_scene load_steps=8 format=3 uid="uid://cbkvroagayyyc"]
 
 [ext_resource type="Script" path="res://game/altar/altar.gd" id="1_5n8dj"]
 [ext_resource type="Script" path="res://common/components/3d/interactable_area_3d.gd" id="2_gxdt4"]
@@ -12,6 +12,8 @@ radius = 1.06451
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5eipw"]
 emission_enabled = true
 emission = Color(0.241156, 0.241156, 0.241156, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8qrv6"]
 
 [node name="Altar" type="Node3D"]
 script = ExtResource("1_5n8dj")
@@ -41,5 +43,10 @@ text = "Use"
 script = ExtResource("3_s8mb3")
 
 [node name="sm_altar" parent="." instance=ExtResource("4_cml51")]
+
+[node name="ImpactUnpureEnvironmentArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ImpactUnpureEnvironmentArea"]
+shape = SubResource("SphereShape3D_8qrv6")
 
 [connection signal="interacted" from="InteractableArea3D" to="." method="_on_interactable_area_3d_interacted"]

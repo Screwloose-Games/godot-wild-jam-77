@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://br11gnmivkoqf"]
+
+[ext_resource type="PackedScene" uid="uid://xx3xi1ntubyt" path="res://game/fleshballs/sm_fleshsac_3.glb" id="1_oh6gl"]
+[ext_resource type="PackedScene" uid="uid://oejbyibob03k" path="res://common/components/purification_system.tscn" id="2_8c1jr"]
+
+[node name="sm_fleshsac_32" instance=ExtResource("1_oh6gl")]
+
+[node name="PurificationSystem" parent="." index="1" instance=ExtResource("2_8c1jr")]

@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://c0ohcfe3bgh5e"
+path.s3tc="res://.godot/imported/sm_fleshsac_4_veiny_flesh.jpg-de7fc295bc2984341a392333a62963f9.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "8aeac3b4f70aa8dc779a72cf167f8ed4"
+}
+
+[deps]
+
+source_file="res://game/fleshballs/sm_fleshsac_4_veiny_flesh.jpg"
+dest_files=["res://.godot/imported/sm_fleshsac_4_veiny_flesh.jpg-de7fc295bc2984341a392333a62963f9.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
