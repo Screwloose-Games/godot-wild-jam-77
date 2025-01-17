@@ -226,6 +226,7 @@ hasShieldAbility = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3306, 0, -13.8597)
 assigned_enemies = Array[PackedScene]([ExtResource("8_qi36d"), ExtResource("8_qi36d"), ExtResource("8_qi36d")])
 altar_power = "test_altar"
+max_altar_impact_scale = 150.0
 
 [node name="FleshballPufication" type="Node3D" parent="."]
 
