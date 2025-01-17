@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://lr7e0228li7o"]
 
-[ext_resource type="PackedScene" uid="uid://dpo74jgegjm4j" path="res://game/levels/sm_meda_terrain.tscn" id="1_e7x1t"]
+[ext_resource type="PackedScene" path="res://game/levels/sm_meda_terrain.tscn" id="1_e7x1t"]
 
 [node name="Level01Environment" type="Node3D"]
 

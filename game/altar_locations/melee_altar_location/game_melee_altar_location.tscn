@@ -15,24 +15,24 @@ script = ExtResource("2_ss6ho")
 altar = NodePath("../Altar")
 
 [node name="MeleeEnemy" parent="Enemies" instance=ExtResource("2_t0d8b")]
-transform = Transform3D(0.631245, 0, -0.775584, 0, 1, 0, 0.775584, 0, 0.631245, -14.9012, 0, 6.63766)
+transform = Transform3D(0.0427653, 0, -0.999086, 0, 1, 0, 0.999086, 0, 0.0427653, -6.72085, 0, 0.206273)
 
 [node name="MeleeEnemy2" parent="Enemies" instance=ExtResource("2_t0d8b")]
-transform = Transform3D(0.976878, 0, -0.213798, 0, 1, 0, 0.213798, 0, 0.976878, -9.29076, 1.90735e-06, 17.0242)
+transform = Transform3D(0.976878, 0, -0.213798, 0, 1, 0, 0.213798, 0, 0.976878, -4.3711, 1.90735e-06, 6.82313)
 delay_after_spawning_secs = 20.0
 
 [node name="MeleeEnemy3" parent="Enemies" instance=ExtResource("2_t0d8b")]
-transform = Transform3D(-0.244258, 0, 0.96971, 0, 1, 0, -0.96971, 0, -0.244258, 16.2996, 0, -6.27647)
+transform = Transform3D(-0.666975, 0, 0.74508, 0, 1, 0, -0.74508, 0, -0.666975, 3.97024, 0, -5.36506)
 delay_after_spawning_secs = 40.0
 
 [node name="MeleeEnemy4" parent="Enemies" instance=ExtResource("2_t0d8b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0781, 0, 13.4732)
+transform = Transform3D(0.644898, 0, 0.764269, 0, 1, 0, -0.764269, 0, 0.644898, 6.39273, 0, 4.57691)
 delay_after_spawning_secs = 60.0
 
 [node name="MeleeEnemy5" parent="Enemies" instance=ExtResource("2_t0d8b")]
-transform = Transform3D(-0.870115, 0, -0.492849, 0, 1, 0, 0.492849, 0, -0.870115, -5.22614, 0, -15.3807)
+transform = Transform3D(-0.672896, 0, -0.739737, 0, 1, 0, 0.739737, 0, -0.672896, -5.22614, 0, -6.12781)
 delay_after_spawning_secs = 80.0
 
 [node name="MeleeEnemy6" parent="Enemies" instance=ExtResource("2_t0d8b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11855, 0, 15.5691)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23538, 0, 8.84772)
 delay_after_spawning_secs = 100.0
