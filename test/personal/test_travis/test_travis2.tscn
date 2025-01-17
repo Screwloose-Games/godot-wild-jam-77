@@ -226,7 +226,7 @@ speed = 10
 
 [node name="Altar" parent="." node_paths=PackedStringArray("assigned_enemies") instance=ExtResource("5_yox7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3306, 0, -13.8597)
-assigned_enemies = [ExtResource("8_qi36d"), ExtResource("8_qi36d"), ExtResource("8_qi36d")]
+assigned_enemies = [null, null, null]
 altar_power = "test_altar"
 max_altar_impact_scale = 150.0
 
