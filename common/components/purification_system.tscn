@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://oejbyibob03k"]
+
+[ext_resource type="Script" path="res://common/components/purification_system.gd" id="1_o3j4h"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yriv7"]
+
+[node name="PurificationSystem" type="Area3D"]
+script = ExtResource("1_o3j4h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_yriv7")

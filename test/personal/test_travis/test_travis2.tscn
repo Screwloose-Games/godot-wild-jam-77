@@ -1,11 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://bvjmr48xurpu1"]
+[gd_scene load_steps=28 format=3 uid="uid://bvjmr48xurpu1"]
 
 [ext_resource type="Shader" path="res://common/art/shaders/black_hole.gdshader" id="1_tmclc"]
 [ext_resource type="Material" uid="uid://ipm1muq3hbrf" path="res://common/art/materials/cyclic_slash.material" id="2_2k4yw"]
 [ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="3_ebsap"]
 [ext_resource type="Script" path="res://test/personal/test_travis/activate_area.gd" id="4_42und"]
 [ext_resource type="PackedScene" uid="uid://cbkvroagayyyc" path="res://game/altar/game_altar.tscn" id="5_yox7k"]
-[ext_resource type="Script" path="res://test/personal/test_travis/altar_connections.gd" id="6_hp83p"]
+[ext_resource type="Script" path="res://game/altar_locations/melee_altar_location/altar_enemy_group.gd" id="7_77g3v"]
+[ext_resource type="PackedScene" uid="uid://mx2hsdwfupuf" path="res://game/fleshballs/game_fleshsac_1.tscn" id="7_dhrpq"]
+[ext_resource type="PackedScene" uid="uid://crco2b1srkhyo" path="res://game/actors/enemies/melee_enemy/game_melee_enemy.tscn" id="8_qi36d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nslve"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -92,6 +94,57 @@ size = Vector3(50, 1, 50)
 size = Vector3(50, 1, 50)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ffr1c"]
+
+[sub_resource type="Animation" id="Animation_j8n6v"]
+resource_name = "kill_enemies_test"
+length = 20.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AltarEnemies/MeleeEnemy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.966667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_health_component_died"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AltarEnemies/MeleeEnemy2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_health_component_died"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AltarEnemies/MeleeEnemy3")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(12.4667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_health_component_died"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oo7ci"]
+_data = {
+"kill_enemies_test": SubResource("Animation_j8n6v")
+}
 
 [node name="TestTravis" type="Node3D"]
 
@@ -193,8 +246,20 @@ mesh = SubResource("BoxMesh_ikjxw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_apl3n")
 
+[node name="Floor2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor2"]
+mesh = SubResource("BoxMesh_ikjxw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2"]
+shape = SubResource("BoxShape3D_apl3n")
+
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_ebsap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4514, 9.53674e-07, 15.3828)
+hasMeleeAbility = false
+hasRangedAbility = false
+hasShieldAbility = false
 
 [node name="ActivateAltar" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2736, 9.53674e-07, 8.71839)
@@ -221,8 +286,44 @@ font_size = 64
 shape = SubResource("BoxShape3D_ffr1c")
 
 [node name="Altar" parent="." instance=ExtResource("5_yox7k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2203, 0, 4.96753)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3306, 0, -13.8597)
 altar_power = "test_altar"
 
-[node name="AltarConnections" type="Node" parent="Altar"]
-script = ExtResource("6_hp83p")
+[node name="FleshballPufication" type="Node3D" parent="."]
+
+[node name="game_fleshsac_1" parent="FleshballPufication" instance=ExtResource("7_dhrpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.69, 0, -17.1356)
+
+[node name="game_fleshsac_2" parent="FleshballPufication" instance=ExtResource("7_dhrpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8071, 0, -17.1356)
+
+[node name="game_fleshsac_3" parent="FleshballPufication" instance=ExtResource("7_dhrpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77558, 0, -17.1356)
+
+[node name="game_fleshsac_4" parent="FleshballPufication" instance=ExtResource("7_dhrpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.12579, 0, -17.1356)
+
+[node name="game_fleshsac_5" parent="FleshballPufication" instance=ExtResource("7_dhrpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6523, 0, -17.1356)
+
+[node name="game_fleshsac_6" parent="FleshballPufication" instance=ExtResource("7_dhrpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.6647, 0, -17.1356)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FleshballPufication"]
+libraries = {
+"": SubResource("AnimationLibrary_oo7ci")
+}
+autoplay = "kill_enemies_test"
+
+[node name="AltarEnemies" type="Node3D" parent="." node_paths=PackedStringArray("altar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.0095, 0, -18.2335)
+script = ExtResource("7_77g3v")
+altar = NodePath("../Altar")
+
+[node name="MeleeEnemy" parent="AltarEnemies" instance=ExtResource("8_qi36d")]
+
+[node name="MeleeEnemy2" parent="AltarEnemies" instance=ExtResource("8_qi36d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.22284, 0, 1.25741)
+
+[node name="MeleeEnemy3" parent="AltarEnemies" instance=ExtResource("8_qi36d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4337, 0, -2.52882)
