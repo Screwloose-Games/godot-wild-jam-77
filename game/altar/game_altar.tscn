@@ -56,7 +56,9 @@ script = ExtResource("5_hwfe1")
 
 [node name="audio" type="AudioStreamPlayer3D" parent="AltarSFX"]
 stream = ExtResource("6_jfosa")
-volume_db = -3.0
+volume_db = -4.0
+max_db = 0.0
 max_distance = 71.44
+bus = &"SFX"
 
 [connection signal="interacted" from="InteractableArea3D" to="." method="_on_interactable_area_3d_interacted"]

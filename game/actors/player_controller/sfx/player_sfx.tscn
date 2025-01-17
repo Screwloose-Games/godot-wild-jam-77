@@ -50,3 +50,6 @@ stone_footsteps = SubResource("AudioStreamRandomizer_tchi1")
 water_footsteps = SubResource("AudioStreamRandomizer_sttng")
 
 [node name="footstep_player" type="AudioStreamPlayer3D" parent="."]
+volume_db = -16.0
+max_db = 0.0
+bus = &"SFX"
