@@ -38,7 +38,6 @@ filter_enabled = true
 filters = ["Armature/Skeleton3D:mixamorig_Head", "Armature/Skeleton3D:mixamorig_HeadTop_End", "Armature/Skeleton3D:mixamorig_LeftArm", "Armature/Skeleton3D:mixamorig_LeftForeArm", "Armature/Skeleton3D:mixamorig_LeftHand", "Armature/Skeleton3D:mixamorig_LeftShoulder", "Armature/Skeleton3D:mixamorig_Neck", "Armature/Skeleton3D:mixamorig_RightArm", "Armature/Skeleton3D:mixamorig_RightForeArm", "Armature/Skeleton3D:mixamorig_RightHand", "Armature/Skeleton3D:mixamorig_RightShoulder", "Armature/Skeleton3D:mixamorig_Spine", "Armature/Skeleton3D:mixamorig_Spine1", "Armature/Skeleton3D:mixamorig_Spine2"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jauuu"]
-graph_offset = Vector2(-479.861, -139.114)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_3pcoc")
 nodes/Animation/position = Vector2(-320, 180)
 nodes/movement_speed/node = SubResource("AnimationNodeBlendSpace1D_ymxey")
@@ -53,7 +52,7 @@ node_connections = [&"output", 0, &"staff_attack_01", &"staff_attack_01", 0, &"m
 [sub_resource type="Sky" id="Sky_wx8tt"]
 sky_material = SubResource("PhysicalSkyMaterial_kxiip")
 
-[sub_resource type="Environment" id="Environment_l3ygh"]
+[sub_resource type="Environment" id="Environment_173vj"]
 background_mode = 2
 sky = SubResource("Sky_wx8tt")
 
@@ -108,7 +107,9 @@ radius = 0.178431
 [node name="PlayerCharacter" type="CharacterBody3D" groups=["Player"]]
 collision_mask = 15
 script = ExtResource("1_lj3x0")
+dash_distance = 2.5
 max_beam_range = 1.0
+speed = 4
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 unique_name_in_owner = true
@@ -138,7 +139,7 @@ health = 100.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.398186, 1.72847, 1.29903)
 top_level = true
-environment = SubResource("Environment_l3ygh")
+environment = SubResource("Environment_173vj")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
