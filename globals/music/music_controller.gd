@@ -7,7 +7,7 @@ enum MUSIC_STATE { Title, Pause, Level, AltarFight, AltarCorruption,  }
 @export var pause_music: AudioStream
 @export var battle_music: AudioStream
 @export var altar_success_music: Array[AudioStream]
-
+@export var altar_failed_music: AudioStream
 @export var max_time_before_corruption_transition: float
 
 var current_state = MUSIC_STATE.Title
@@ -27,6 +27,7 @@ func _ready() -> void:
     GlobalSignalBus.level_started.connect(_on_start_level)
     GlobalSignalBus.altar_activated.connect(_on_altar_begin)
     GlobalSignalBus.altar_succeeded.connect(_on_altar_success)
+    GlobalSignalBus.altar_failed.connect(_on_altar_fail)
     GlobalSignalBus.game_paused.connect(_on_start_pause)
     GlobalSignalBus.game_unpaused.connect(_on_stop_pause)
   

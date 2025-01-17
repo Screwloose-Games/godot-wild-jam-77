@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4heslgl37c23"]
+[gd_scene load_steps=7 format=3 uid="uid://b4heslgl37c23"]
 
 [ext_resource type="Script" path="res://globals/sfx/sfx_controller.gd" id="1_blxng"]
 [ext_resource type="AudioStream" uid="uid://dyh7j57vc3cgc" path="res://common/audio/sfx/ui/aud_ui_pause.wav" id="2_e2wi4"]
 [ext_resource type="AudioStream" uid="uid://df36ymkpbgy6p" path="res://common/audio/sfx/ui/aud_ui_unpause.wav" id="3_opy6g"]
+[ext_resource type="AudioStream" uid="uid://cmvuml7etey2n" path="res://game/altar/sfx/aud_altar_failed.wav" id="4_ceqb7"]
+[ext_resource type="AudioStream" uid="uid://b2cxtdbjjua5c" path="res://game/altar/sfx/aud_altar_purified.wav" id="5_bnm0p"]
+[ext_resource type="AudioStream" uid="uid://cvmqw6shv3vgm" path="res://game/altar/sfx/aud_altar_purifying.wav" id="6_rndcg"]
 
 [node name="sfx_controller" type="Node"]
 script = ExtResource("1_blxng")
 pause_sound = ExtResource("2_e2wi4")
 unpause_sound = ExtResource("3_opy6g")
+altar_failed_sound = ExtResource("4_ceqb7")
+altar_purified_sound = ExtResource("5_bnm0p")
+altar_purifying_sound = ExtResource("6_rndcg")

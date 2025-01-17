@@ -29,6 +29,7 @@ func activate(player: PlayerController):
         return
     is_active = true
     emit_signal("activated")
+    GlobalSignalBus.altar_activated.emit()
 
     # Save that player has reached this checkpoint
     CheckpointMgr.arrived_at_altar(altar_power)
@@ -69,4 +70,5 @@ func _on_interactable_area_3d_interacted(player: PlayerController) -> void:
 ## Call this function after the player purifies the altar and kills all the baddies
 func purify_altar():
     purified.emit()
+    GlobalSignalBus.altar_succeeded.emit()
     CheckpointMgr.altar_completed(altar_power)
