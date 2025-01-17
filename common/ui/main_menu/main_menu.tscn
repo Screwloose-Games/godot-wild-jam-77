@@ -30,6 +30,7 @@ enum Menu { MAIN_MENU, SETTINGS_MENU }
 @onready var settings_button: Button = %SettingsButton
 @onready var exit_button: Button = %ExitButton
 @onready var options_menu : OptionsMenu = %OptionsMenu
+@onready var credits_button: Button = %CreditsButton
 
 var current_menu : Menu = Menu.MAIN_MENU
 
@@ -37,6 +38,7 @@ func _ready() -> void:
     start_button.pressed.connect(_on_start_button_pressed)
     settings_button.pressed.connect(_on_settings_pressed)
     exit_button.pressed.connect(_on_exit_pressed)
+    credits_button.pressed.connect(_on_credits_pressed)
     await options_menu.ready
     options_menu.back_button.pressed.connect(_on_return_main_menu_button_pressed)
     
@@ -49,6 +51,12 @@ func _on_start_button_pressed():
     MusicController._on_stop_title()
     SceneTransitionManager.change_scene_with_transition(
         start_scene_path,
+        transition_path
+    )
+
+func _on_credits_pressed():
+    SceneTransitionManager.change_scene_with_transition(
+        SceneManager.CREDITS,
         transition_path
     )
 
@@ -801,7 +809,6 @@ text = "Settings"
 
 [node name="CreditsButton" type="Button" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 text = "Credits"
 

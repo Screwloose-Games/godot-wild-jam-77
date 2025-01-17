@@ -15,6 +15,14 @@ signal end_reached
 var _current_scroll_position : float = 0.0
 var scroll_paused : bool = false
 
+func _ready():
+  set_file_path(attribution_file_path)
+  set_header_and_footer()
+
+func _input(event: InputEvent) -> void:
+    if (event is InputEventKey and event.pressed) or (event is InputEventMouseButton and event.pressed):
+        SceneTransitionManager.change_scene_with_transition(SceneManager.MAIN_MENU, SceneManager.FADE_TRANSITION)
+
 func load_file(file_path) -> String:
   var file_string = FileAccess.get_file_as_string(file_path)
   if file_string == null:
@@ -64,10 +72,6 @@ func set_header_and_footer():
 func reset():
   scroll_paused = false
   $ScrollContainer.scroll_vertical = 0
-  set_header_and_footer()
-
-func _ready():
-  set_file_path(attribution_file_path)
   set_header_and_footer()
 
 func _end_reached():
