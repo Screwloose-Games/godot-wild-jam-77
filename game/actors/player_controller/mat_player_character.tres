@@ -4,7 +4,10 @@
 
 [resource]
 cull_mode = 2
-shading_mode = 0
 diffuse_mode = 3
 specular_mode = 1
 albedo_texture = ExtResource("1_iietk")
+roughness = 0.0
+emission_enabled = true
+emission_energy_multiplier = 0.2
+emission_texture = ExtResource("1_iietk")
