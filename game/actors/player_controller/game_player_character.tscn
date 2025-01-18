@@ -55,9 +55,10 @@ node_connections = [&"output", 0, &"staff_attack_01", &"staff_attack_01", 0, &"m
 [sub_resource type="Sky" id="Sky_wx8tt"]
 sky_material = SubResource("PhysicalSkyMaterial_kxiip")
 
-[sub_resource type="Environment" id="Environment_wfrvg"]
+[sub_resource type="Environment" id="Environment_ufb6i"]
 background_mode = 2
 sky = SubResource("Sky_wx8tt")
+fog_enabled = true
 
 [sub_resource type="Resource" id="Resource_w1058"]
 script = ExtResource("5_ye3g6")
@@ -80,6 +81,7 @@ far = 4000.0
 [sub_resource type="Environment" id="Environment_h5sse"]
 background_mode = 2
 sky = SubResource("Sky_wx8tt")
+fog_enabled = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3wcgw"]
 radius = 0.2
@@ -116,7 +118,6 @@ script = ExtResource("1_lj3x0")
 dash_distance = 2.5
 max_beam_range = 1.0
 speed = 4
-max_health = 100
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 unique_name_in_owner = true
@@ -146,7 +147,7 @@ health = 100.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.398186, 1.72847, 1.29903)
 top_level = true
-environment = SubResource("Environment_wfrvg")
+environment = SubResource("Environment_ufb6i")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
