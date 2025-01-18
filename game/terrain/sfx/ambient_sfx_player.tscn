@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwff80enhdfec"]
+
+[ext_resource type="Script" path="res://game/terrain/sfx/ambient_sfx_player.gd" id="1_rm40b"]
+
+[node name="AmbientSFXPlayer" type="Node3D"]
+script = ExtResource("1_rm40b")
