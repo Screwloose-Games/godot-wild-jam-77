@@ -1,6 +1,7 @@
 extends Node
 
 @onready var vocal_player: AudioStreamPlayer3D = $vocal_player
+@onready var ability_player: AudioStreamPlayer3D = $ability_player
 
 ##Attacks
 @export var attacks: AudioStreamRandomizer
@@ -55,3 +56,7 @@ func land_footstep() -> void:
 func _on_jump() -> void:
     vocal_player.stream = jumps
     vocal_player.play(0.0)
+
+func _on_dash() -> void:
+    ability_player.stream = dodges
+    ability_player.play(0.0)

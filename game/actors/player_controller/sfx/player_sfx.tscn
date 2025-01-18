@@ -100,3 +100,8 @@ bus = &"SFX"
 volume_db = -14.0
 max_db = 0.0
 bus = &"SFX"
+
+[node name="ability_player" type="AudioStreamPlayer3D" parent="."]
+volume_db = -14.0
+max_db = 0.0
+bus = &"SFX"
