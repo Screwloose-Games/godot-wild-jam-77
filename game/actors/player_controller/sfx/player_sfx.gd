@@ -1,7 +1,21 @@
 extends Node
 
-@onready var terrain: TerrainDetector = %TerrainDetector
+@onready var vocal_player: AudioStreamPlayer3D = $vocal_player
 
+##Attacks
+@export var attacks: AudioStreamRandomizer
+
+##Dodges
+@export var dodges: AudioStreamRandomizer
+
+##Jumps
+@export var jumps: AudioStreamRandomizer
+
+##Hits
+@export var death: AudioStream
+
+##Footsteps
+@onready var terrain: TerrainDetector = %TerrainDetector
 @onready var footstep_player = $footstep_player
 
 @export var dirt_footsteps: AudioStreamRandomizer
@@ -37,3 +51,7 @@ func _on_footstep():
 func land_footstep() -> void:
     print("landed")
     _on_footstep()
+
+func _on_jump() -> void:
+    vocal_player.stream = jumps
+    vocal_player.play(0.0)

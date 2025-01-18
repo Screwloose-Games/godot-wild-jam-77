@@ -1,42 +1,80 @@
-[gd_scene load_steps=18 format=3 uid="uid://d3qdk5gsm0n7"]
+[gd_scene load_steps=32 format=3 uid="uid://d3qdk5gsm0n7"]
 
 [ext_resource type="Script" path="res://game/actors/player_controller/sfx/player_sfx.gd" id="1_d04mv"]
 [ext_resource type="AudioStream" uid="uid://cek7swpvctmp5" path="res://game/actors/player_controller/sfx/aud_player_footsteps_dirt_1.wav" id="2_2r5g8"]
+[ext_resource type="AudioStream" uid="uid://cdio6lja1s2i" path="res://game/actors/player_controller/sfx/aud_player_attack_1.wav" id="2_wsqr8"]
 [ext_resource type="AudioStream" uid="uid://c7h32jajvgcww" path="res://game/actors/player_controller/sfx/aud_player_footsteps_dirt_2.wav" id="3_04nvy"]
+[ext_resource type="AudioStream" uid="uid://csiyywb8o4for" path="res://game/actors/player_controller/sfx/aud_player_attack_2.wav" id="3_suw5f"]
 [ext_resource type="AudioStream" uid="uid://ba1x67b0vwivb" path="res://game/actors/player_controller/sfx/aud_player_footsteps_dirt_3.wav" id="4_fhuxy"]
+[ext_resource type="AudioStream" uid="uid://b2o0qrsggt654" path="res://game/actors/player_controller/sfx/aud_player_attack_3.wav" id="4_h8vb2"]
+[ext_resource type="AudioStream" uid="uid://cd5fl441dfe3l" path="res://game/actors/player_controller/sfx/aud_player_attack_4.wav" id="5_8xd0e"]
 [ext_resource type="AudioStream" uid="uid://edl23xij2cmf" path="res://game/actors/player_controller/sfx/aud_player_footsteps_grass_1.wav" id="5_h6wox"]
+[ext_resource type="AudioStream" uid="uid://drltknorqb8ba" path="res://game/actors/player_controller/sfx/aud_player_dodge_1.wav" id="6_3treh"]
 [ext_resource type="AudioStream" uid="uid://bjox6ruqogrjj" path="res://game/actors/player_controller/sfx/aud_player_footsteps_grass_2.wav" id="6_k4a5f"]
+[ext_resource type="AudioStream" uid="uid://cq8gggjte2ao0" path="res://game/actors/player_controller/sfx/aud_player_dodge_2.wav" id="7_2iajw"]
 [ext_resource type="AudioStream" uid="uid://dlmik6v7pe81t" path="res://game/actors/player_controller/sfx/aud_player_footsteps_grass_3.wav" id="7_pvgmp"]
+[ext_resource type="AudioStream" uid="uid://dc0xrgq73gs4u" path="res://game/actors/player_controller/sfx/aud_player_dodge_3.wav" id="8_mqmke"]
 [ext_resource type="AudioStream" uid="uid://cpqwgilo5bcx2" path="res://game/actors/player_controller/sfx/aud_player_footsteps_stone_1.wav" id="8_x6xok"]
+[ext_resource type="AudioStream" uid="uid://vxptf0cbvixl" path="res://game/actors/player_controller/sfx/aud_player_jump_1.wav" id="9_jpax1"]
 [ext_resource type="AudioStream" uid="uid://ci43u885qcmoe" path="res://game/actors/player_controller/sfx/aud_player_footsteps_stone_2.wav" id="9_nt7nq"]
 [ext_resource type="AudioStream" uid="uid://c3ul72dm58fm5" path="res://game/actors/player_controller/sfx/aud_player_footsteps_stone_3.wav" id="10_2mtcl"]
+[ext_resource type="AudioStream" uid="uid://bvauoxlwl34l8" path="res://game/actors/player_controller/sfx/aud_player_jump_2.wav" id="10_83xjb"]
 [ext_resource type="AudioStream" uid="uid://dd2temx8a2s36" path="res://game/actors/player_controller/sfx/aud_player_footsteps_water_1.wav" id="11_873oy"]
+[ext_resource type="AudioStream" uid="uid://bhw5vxky4n1q3" path="res://game/actors/player_controller/sfx/aud_player_jump_3.wav" id="11_qxm3v"]
 [ext_resource type="AudioStream" uid="uid://ce6d0gh01np2n" path="res://game/actors/player_controller/sfx/aud_player_footsteps_water_2.wav" id="12_1b8v2"]
+[ext_resource type="AudioStream" uid="uid://beivfnf4fof6x" path="res://game/actors/player_controller/sfx/aud_player_death.wav" id="12_k1apg"]
 [ext_resource type="AudioStream" uid="uid://cb1uvh3ps841b" path="res://game/actors/player_controller/sfx/aud_player_footsteps_water_3.wav" id="13_bouc2"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_woowd"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1tsja"]
+random_pitch = 1.25
+streams_count = 4
+stream_0/stream = ExtResource("2_wsqr8")
+stream_1/stream = ExtResource("3_suw5f")
+stream_2/stream = ExtResource("4_h8vb2")
+stream_3/stream = ExtResource("5_8xd0e")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mjdtq"]
+random_pitch = 1.25
+streams_count = 3
+stream_0/stream = ExtResource("6_3treh")
+stream_1/stream = ExtResource("7_2iajw")
+stream_2/stream = ExtResource("8_mqmke")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mlpxf"]
+random_pitch = 1.05
 random_volume_offset_db = 1.0
+streams_count = 3
+stream_0/stream = ExtResource("9_jpax1")
+stream_1/stream = ExtResource("10_83xjb")
+stream_2/stream = ExtResource("11_qxm3v")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_woowd"]
+random_pitch = 1.25
+random_volume_offset_db = 3.0
 streams_count = 3
 stream_0/stream = ExtResource("2_2r5g8")
 stream_1/stream = ExtResource("3_04nvy")
 stream_2/stream = ExtResource("4_fhuxy")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_00u2q"]
-random_volume_offset_db = 1.0
+random_pitch = 1.25
+random_volume_offset_db = 3.0
 streams_count = 3
 stream_0/stream = ExtResource("5_h6wox")
 stream_1/stream = ExtResource("6_k4a5f")
 stream_2/stream = ExtResource("7_pvgmp")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tchi1"]
-random_volume_offset_db = 1.0
+random_pitch = 1.25
+random_volume_offset_db = 3.0
 streams_count = 3
 stream_0/stream = ExtResource("8_x6xok")
 stream_1/stream = ExtResource("9_nt7nq")
 stream_2/stream = ExtResource("10_2mtcl")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sttng"]
-random_volume_offset_db = 1.0
+random_pitch = 1.25
+random_volume_offset_db = 3.0
 streams_count = 3
 stream_0/stream = ExtResource("11_873oy")
 stream_1/stream = ExtResource("12_1b8v2")
@@ -44,6 +82,10 @@ stream_2/stream = ExtResource("13_bouc2")
 
 [node name="player_sfx" type="Node3D"]
 script = ExtResource("1_d04mv")
+attacks = SubResource("AudioStreamRandomizer_1tsja")
+dodges = SubResource("AudioStreamRandomizer_mjdtq")
+jumps = SubResource("AudioStreamRandomizer_mlpxf")
+death = ExtResource("12_k1apg")
 dirt_footsteps = SubResource("AudioStreamRandomizer_woowd")
 grass_footsteps = SubResource("AudioStreamRandomizer_00u2q")
 stone_footsteps = SubResource("AudioStreamRandomizer_tchi1")
@@ -51,5 +93,10 @@ water_footsteps = SubResource("AudioStreamRandomizer_sttng")
 
 [node name="footstep_player" type="AudioStreamPlayer3D" parent="."]
 volume_db = -16.0
+max_db = 0.0
+bus = &"SFX"
+
+[node name="vocal_player" type="AudioStreamPlayer3D" parent="."]
+volume_db = -14.0
 max_db = 0.0
 bus = &"SFX"

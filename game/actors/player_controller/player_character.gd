@@ -104,6 +104,7 @@ func can_jump():
 
 func _handle_jump():
     velocity.y = jump_velocity
+    player_sfx._on_jump()
     if not is_on_floor():
         jumps_remaining -= 1
 
