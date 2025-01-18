@@ -29,7 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://c0whakgymbnre" path="res://game/actors/player_controller/sfx/aud_player_jump_double_3.wav" id="14_djqtp"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1tsja"]
-random_pitch = 1.25
+random_pitch = 1.1
 streams_count = 4
 stream_0/stream = ExtResource("2_wsqr8")
 stream_1/stream = ExtResource("3_suw5f")
