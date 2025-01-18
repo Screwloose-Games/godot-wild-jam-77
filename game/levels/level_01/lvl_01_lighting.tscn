@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdtqhi2bvjnt6"]
+[gd_scene load_steps=5 format=3 uid="uid://bdtqhi2bvjnt6"]
+
+[ext_resource type="Script" path="res://game/levels/level_01/lighting_controller.gd" id="1_1qscc"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kxiip"]
 
@@ -7,39 +9,78 @@ sky_material = SubResource("PhysicalSkyMaterial_kxiip")
 
 [sub_resource type="Environment" id="Environment_fi506"]
 background_mode = 2
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 1.49
 sky = SubResource("Sky_wx8tt")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.02
+glow_enabled = true
+glow_intensity = 1.34
+glow_bloom = 0.1
 fog_enabled = true
-fog_light_color = Color(0.258504, 0.283256, 0.322166, 1)
+fog_light_color = Color(0.2135, 0.29995, 0.35, 1)
+fog_light_energy = 0.19
+fog_density = 0.0651
 
 [node name="Level01Lighting" type="Node3D"]
+script = ExtResource("1_1qscc")
+init_directional_energy = 0.224
+init_directional_color = Color(0.565262, 0.769571, 0.933594, 1)
+init_directional_rotation = Vector3(-65.1, 0, 0)
+cleansed_directional_rotation = Vector3(-65.1, 0, 0)
+init_sky_energy = 1.49
+init_ambient_light_energy = 0.02
+init_fog_color = Color(0.2135, 0.29995, 0.35, 1)
+init_fog_light_energy = 0.19
+init_fog_density = 0.0651
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.420687, 0.907206, 0, -0.907206, 0.420687, 0, 4.59363, 0)
-light_color = Color(0.78125, 1, 0.784668, 1)
-light_energy = 0.1
+light_color = Color(0.565262, 0.769571, 0.933594, 1)
+light_energy = 0.224
 shadow_enabled = true
 shadow_blur = 10.0
 metadata/use_color_temperature = true
 metadata/color_temperature = 1800
-metadata/color_filter = Color(0.78125, 1, 0.784668, 1)
+metadata/color_filter = Color(0.565262, 0.769571, 0.933594, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fi506")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33165, 6.03364, 5.24108)
-light_color = Color(0.72386, 0.866443, 0.742791, 1)
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80593, 2.73169, -9.16525)
+light_color = Color(0.423431, 0.976563, 0.756174, 1)
 light_energy = 0.37
-omni_range = 7.86283
+omni_range = 2.78
 metadata/use_color_temperature = true
 metadata/color_temperature = 6500
-metadata/color_filter = Color(0, 1, 0.227451, 0.52549)
+metadata/color_filter = Color(0.423431, 0.976563, 0.756174, 1)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.06981, 6.22528, 4.61002)
+light_color = Color(0.445313, 0.890625, 0.546599, 1)
+light_energy = 0.37
+omni_range = 5.059
+metadata/use_color_temperature = true
+metadata/color_temperature = 6500
+metadata/color_filter = Color(0.445313, 0.890625, 0.546599, 1)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51009, 5.50982, 6.13489)
+light_color = Color(0.327103, 0.863281, 0.624514, 1)
+light_energy = 0.37
+omni_range = 5.059
+metadata/use_color_temperature = true
+metadata/color_temperature = 6500
+metadata/color_filter = Color(0.327103, 0.863281, 0.624514, 1)
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.32605, 6.52496, -6.77903)
-light_color = Color(0.72386, 0.866443, 0.742791, 1)
-light_energy = 0.5
-omni_range = 8.7077
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.06223, 6.15026, -6.77903)
+light_color = Color(0.453629, 0.847656, 0.48749, 1)
+light_energy = 0.47
+omni_range = 7.677
+omni_attenuation = 0.401
 metadata/use_color_temperature = true
 metadata/color_temperature = 6500
-metadata/color_filter = Color(0, 1, 0.227451, 0.52549)
+metadata/color_filter = Color(0.453629, 0.847656, 0.48749, 1)
