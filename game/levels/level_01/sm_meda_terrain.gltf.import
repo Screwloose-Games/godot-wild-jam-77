@@ -53,16 +53,19 @@ _subresources={
 },
 "PATH:Walls_1": {
 "generate/physics": true,
+"physics/layer": 2,
 "physics/mask": 0,
 "physics/shape_type": 2
 },
 "PATH:Walls_2": {
 "generate/physics": true,
+"physics/layer": 2,
 "physics/mask": 0,
 "physics/shape_type": 2
 },
 "PATH:Walls_3": {
 "generate/physics": true,
+"physics/layer": 2,
 "physics/mask": 0,
 "physics/shape_type": 2
 }
