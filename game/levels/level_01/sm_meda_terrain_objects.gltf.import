@@ -31,6 +31,90 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Tree_1": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0,
+"physics/shape_type": 2
+},
+"PATH:Tree_10": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0
+},
+"PATH:Tree_11": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0
+},
+"PATH:Tree_12": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0
+},
+"PATH:Tree_13": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0
+},
+"PATH:Tree_14": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0
+},
+"PATH:Tree_15": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0
+},
+"PATH:Tree_16": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0
+},
+"PATH:Tree_2": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0
+},
+"PATH:Tree_3": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0
+},
+"PATH:Tree_4": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0
+},
+"PATH:Tree_5": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0
+},
+"PATH:Tree_6": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0
+},
+"PATH:Tree_7": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0
+},
+"PATH:Tree_8": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0
+},
+"PATH:Tree_9": {
+"generate/physics": true,
+"physics/layer": 4,
+"physics/mask": 0
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
