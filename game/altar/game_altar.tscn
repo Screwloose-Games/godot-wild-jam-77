@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://game/altar/altar_label_3d.gd" id="3_s8mb3"]
 [ext_resource type="PackedScene" uid="uid://bceduv3fwkw8v" path="res://game/altar/sm_altar.tscn" id="4_cml51"]
 [ext_resource type="Script" path="res://game/altar/altar_sfx.gd" id="5_hwfe1"]
-[ext_resource type="AudioStream" uid="uid://ccwiyuy5l7xyw" path="res://game/altar/sfx/aud_altar_active_hum-loop.wav" id="6_jfosa"]
+[ext_resource type="AudioStream" uid="uid://cu530hg5k82ue" path="res://game/altar/sfx/aud_altar_active_hum-loop.wav" id="6_jfosa"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8mytx"]
 height = 1.27566

@@ -1,9 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhf1470cmjley"]
+[gd_scene load_steps=2 format=3 uid="uid://bhf1470cmjley"]
 
 [ext_resource type="PackedScene" uid="uid://jvxon4jurr2t" path="res://game/levels/level_01/sm_meda_terrain.gltf" id="1_6str5"]
-[ext_resource type="ArrayMesh" uid="uid://bq2kevkop60kl" path="res://game/levels/level_01/meshes/level1_ground_mesh.tres" id="2_n4fyp"]
 
 [node name="sm_meda_terrain" instance=ExtResource("1_6str5")]
-
-[node name="MyLowPolyTerrain2" parent="." index="1"]
-mesh = ExtResource("2_n4fyp")

@@ -33,13 +33,11 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "nodes": {
-"PATH:Cylinder": {
+"PATH:Terrain": {
 "generate/physics": true
 },
-"PATH:MyLowPolyTerrain2": {
-"generate/physics": true,
-"physics/layer": 2,
-"physics/mask": 0
+"PATH:Walls": {
+"generate/physics": true
 }
 }
 }

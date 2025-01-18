@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkk8um5b67xxf"]
+
+[ext_resource type="PackedScene" uid="uid://cx0kyl8xq0oln" path="res://game/levels/level_01/sm_meda_terrain_objects.gltf" id="1_nk6yn"]
+
+[node name="sm_meda_terrain_objects" instance=ExtResource("1_nk6yn")]

@@ -21,4 +21,4 @@ max_health = 100.0
 [node name="Level01Lighting" parent="." index="2" instance=ExtResource("5_m27if")]
 
 [node name="MeleeAltarLocation" parent="." index="3" instance=ExtResource("6_45gun")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.490673, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.77052, 0.5938, -1.98736)
