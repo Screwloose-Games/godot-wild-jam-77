@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdtqhi2bvjnt6"]
+[gd_scene load_steps=5 format=3 uid="uid://bdtqhi2bvjnt6"]
 
 [ext_resource type="Script" path="res://game/levels/level_01/lighting_controller.gd" id="1_1qscc"]
-[ext_resource type="PackedScene" uid="uid://lr7e0228li7o" path="res://game/levels/level_01/lvl_01_environment.tscn" id="1_qgvj3"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kxiip"]
 
@@ -42,6 +41,7 @@ cleansed_ambient_light_energy = 0.07
 cleansed_fog_color = Color(0.536644, 0.5302, 0.499279, 1)
 cleansed_fog_light_energy = 0.13
 cleansed_fog_density = 0.0336
+transition_time = 2.5
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.421036, 0.907044, 0, -0.907044, 0.421036, 0, 4.59363, 0)
@@ -92,5 +92,3 @@ omni_attenuation = 0.401
 metadata/use_color_temperature = true
 metadata/color_temperature = 6500
 metadata/color_filter = Color(0.453629, 0.847656, 0.48749, 1)
-
-[node name="Level01Environment" parent="." instance=ExtResource("1_qgvj3")]
