@@ -106,6 +106,9 @@ func _handle_jump():
     velocity.y = jump_velocity
     if not is_on_floor():
         jumps_remaining -= 1
+        player_sfx._on_double_jump()
+    else:
+        player_sfx._on_jump()
 
 func _physics_process(delta: float) -> void:
     _handle_movement_animation()
