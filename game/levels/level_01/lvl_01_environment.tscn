@@ -123,7 +123,6 @@ size = Vector3(40, 0.5, 40)
 [node name="Level01Environment" type="Node3D"]
 
 [node name="sm_meda_terrain" parent="." instance=ExtResource("1_e7x1t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015799, 0.026227, -0.0144258)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="sm_meda_terrain"]
 navigation_mesh = SubResource("NavigationMesh_2i46x")
