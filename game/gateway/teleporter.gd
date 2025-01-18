@@ -21,6 +21,7 @@ func _unhandled_input(event):
         SceneTransitionManager.change_position_with_transition(player, destination_mark, SceneManager.FADE_TRANSITION)
         get_viewport().set_input_as_handled()
         interacted.emit()
+        GlobalSignalBus.changed_level.emit()
 
 func _on_area_entered(area: Area3D) -> void:
     area_active = true
