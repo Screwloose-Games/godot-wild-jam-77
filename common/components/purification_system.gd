@@ -5,6 +5,9 @@ signal purification_updated(purification_progress: float)
 
 @export var purification_progress: float = 0.0 : set = set_purification
 
+@onready var collision_shape_3d = $"../StaticBody3D/CollisionShape3D"
+
+
 var meshes_to_impact: Array[MeshInstance3D]
 
 
@@ -22,6 +25,7 @@ func _physics_process(delta):
     for mesh in meshes_to_impact:
         var previous_level: float = mesh.get_blend_shape_value(mesh.find_blend_shape_by_name("PurificationProgress"))
         mesh.set_blend_shape_value(mesh.find_blend_shape_by_name("PurificationProgress"), lerp(previous_level, purification_progress, delta))
+        collision_shape_3d.scale = lerp(collision_shape_3d.scale, Vector3.ONE * (1 - purification_progress), delta)
 
 
 func set_purification(new_amount: float):

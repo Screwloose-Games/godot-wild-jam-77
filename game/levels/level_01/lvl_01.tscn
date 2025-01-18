@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ruwllv6ttnh6"]
+[gd_scene load_steps=13 format=3 uid="uid://ruwllv6ttnh6"]
 
 [ext_resource type="PackedScene" uid="uid://qopd3mnhek6b" path="res://game/levels/base_level.tscn" id="1_41ni7"]
 [ext_resource type="Script" path="res://game/levels/level_01/lvl_01.gd" id="2_i6dyw"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://cjydkdh825wo0" path="res://game/altar_locations/melee_altar_location/game_melee_altar_location.tscn" id="6_45gun"]
 [ext_resource type="PackedScene" uid="uid://dshedf38cdfte" path="res://game/gateway/sk_treegate.tscn" id="7_mrfu8"]
 [ext_resource type="PackedScene" uid="uid://djhav113s8ak5" path="res://game/rocks/sm_rock_1.tscn" id="8_jlln5"]
+[ext_resource type="PackedScene" uid="uid://mx2hsdwfupuf" path="res://game/fleshballs/game_fleshsac_1.tscn" id="9_hnk3a"]
+[ext_resource type="PackedScene" uid="uid://dcdoollytt5be" path="res://game/fleshballs/game_fleshsac_2.tscn" id="10_ugs4m"]
+[ext_resource type="PackedScene" uid="uid://br11gnmivkoqf" path="res://game/fleshballs/game_fleshsac_3.tscn" id="11_dq53c"]
+[ext_resource type="PackedScene" uid="uid://dwddf0vpe0isd" path="res://game/fleshballs/game_fleshsac_5.tscn" id="12_x2aoe"]
 
 [node name="Level01" instance=ExtResource("1_41ni7")]
 script = ExtResource("2_i6dyw")
@@ -32,5 +36,43 @@ altar = NodePath("../../MeleeAltarLocation/Altar")
 
 [node name="sm_rock_1" parent="TreeGateway" index="1" instance=ExtResource("8_jlln5")]
 transform = Transform3D(-0.978513, 0, -0.206187, 0, 1, 0, 0.206187, 0, -0.978513, -0.170973, 0, -0.418726)
+
+[node name="CorruptedEnvironment" type="Node3D" parent="." index="5"]
+
+[node name="game_fleshsac_1" parent="CorruptedEnvironment" index="0" instance=ExtResource("9_hnk3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4651, 0.671902, -4.34757)
+
+[node name="game_fleshsac_2" parent="CorruptedEnvironment" index="1" instance=ExtResource("9_hnk3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.73205, 0.671902, -13.788)
+
+[node name="game_fleshsac_3" parent="CorruptedEnvironment" index="2" instance=ExtResource("9_hnk3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48844, -0.318839, 9.53892)
+
+[node name="sm_fleshsac_22" parent="CorruptedEnvironment" index="3" instance=ExtResource("10_ugs4m")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 3.73179, 11.1286, 5.0342)
+
+[node name="sm_fleshsac_23" parent="CorruptedEnvironment" index="4" instance=ExtResource("10_ugs4m")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 3.73179, 8.10587, 8.47487)
+
+[node name="sm_fleshsac_24" parent="CorruptedEnvironment" index="5" instance=ExtResource("10_ugs4m")]
+transform = Transform3D(0.0483788, 0, -0.245274, 0, 0.25, 0, 0.245274, 0, 0.0483788, 0.907951, 7.33219, 3.61564)
+
+[node name="sm_fleshsac_27" parent="CorruptedEnvironment" index="6" instance=ExtResource("10_ugs4m")]
+transform = Transform3D(0.0483788, 0, -0.245274, 0, 0.25, 0, 0.245274, 0, 0.0483788, -8.9851, 6.68396, -9.46987)
+
+[node name="sm_fleshsac_25" parent="CorruptedEnvironment" index="7" instance=ExtResource("10_ugs4m")]
+transform = Transform3D(0.0677303, 0, -0.343384, 0, 0.35, 0, 0.343384, 0, 0.0677303, 5.91666, 7.54402, -6.28275)
+
+[node name="sm_fleshsac_26" parent="CorruptedEnvironment" index="8" instance=ExtResource("10_ugs4m")]
+transform = Transform3D(0.0483788, 0, -0.245274, 0, 0.25, 0, 0.245274, 0, 0.0483788, 7.34311, 6.16244, 5.97346)
+
+[node name="sm_fleshsac_32" parent="CorruptedEnvironment" index="9" instance=ExtResource("11_dq53c")]
+transform = Transform3D(0.266515, 0, 0.963831, 0, 1, 0, -0.963831, 0, 0.266515, -14.1686, 9.53674e-07, 0.35248)
+
+[node name="sm_fleshsac_52" parent="CorruptedEnvironment" index="10" instance=ExtResource("12_x2aoe")]
+transform = Transform3D(0.794203, 0, 0.607653, 0, 1, 0, -0.607653, 0, 0.794203, 3.73339, -0.540052, -1.1022)
+
+[node name="sm_fleshsac_53" parent="CorruptedEnvironment" index="11" instance=ExtResource("12_x2aoe")]
+transform = Transform3D(0.794203, 0, 0.607653, 0, 1, 0, -0.607653, 0, 0.794203, -4.54453, -0.138176, -2.29828)
 
 [editable path="MeleeAltarLocation"]
