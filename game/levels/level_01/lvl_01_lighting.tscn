@@ -1,3 +1,53 @@
-[gd_scene format=3 uid="uid://bdtqhi2bvjnt6"]
+[gd_scene load_steps=6 format=3 uid="uid://bdtqhi2bvjnt6"]
+
+[ext_resource type="PackedScene" uid="uid://lr7e0228li7o" path="res://game/levels/level_01/lvl_01_environment.tscn" id="1_2elb7"]
+[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="2_77cx2"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kxiip"]
+
+[sub_resource type="Sky" id="Sky_wx8tt"]
+sky_material = SubResource("PhysicalSkyMaterial_kxiip")
+
+[sub_resource type="Environment" id="Environment_fi506"]
+background_mode = 2
+sky = SubResource("Sky_wx8tt")
+fog_enabled = true
+fog_light_color = Color(0.258504, 0.283256, 0.322166, 1)
 
 [node name="Level01Lighting" type="Node3D"]
+
+[node name="Level01Environment" parent="." instance=ExtResource("1_2elb7")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.420687, 0.907206, 0, -0.907206, 0.420687, 0, 4.59363, 0)
+light_color = Color(0.78125, 1, 0.784668, 1)
+light_energy = 0.1
+shadow_enabled = true
+shadow_blur = 10.0
+metadata/use_color_temperature = true
+metadata/color_temperature = 1800
+metadata/color_filter = Color(0.78125, 1, 0.784668, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fi506")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_77cx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22734, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33165, 6.03364, 5.24108)
+light_color = Color(0.72386, 0.866443, 0.742791, 1)
+light_energy = 0.37
+omni_range = 7.86283
+metadata/use_color_temperature = true
+metadata/color_temperature = 6500
+metadata/color_filter = Color(0, 1, 0.227451, 0.52549)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.32605, 6.52496, -6.77903)
+light_color = Color(0.72386, 0.866443, 0.742791, 1)
+light_energy = 0.5
+omni_range = 8.7077
+metadata/use_color_temperature = true
+metadata/color_temperature = 6500
+metadata/color_filter = Color(0, 1, 0.227451, 0.52549)
