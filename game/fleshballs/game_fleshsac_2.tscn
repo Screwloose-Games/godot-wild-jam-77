@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://oejbyibob03k" path="res://common/components/purification_system.tscn" id="2_0lduq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ly1lg"]
-size = Vector3(5.955, 17.399, 5.375)
+size = Vector3(5.955, 14.9764, 5.375)
 
 [node name="sm_fleshsac_22" instance=ExtResource("1_ujo41")]
 
@@ -13,5 +13,5 @@ size = Vector3(5.955, 17.399, 5.375)
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.19971, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.98839, 0)
 shape = SubResource("BoxShape3D_ly1lg")
