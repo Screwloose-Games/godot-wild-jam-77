@@ -11,6 +11,7 @@ extends Node
 
 ##Jumps
 @export var jumps: AudioStreamRandomizer
+@export var double_jumps: AudioStreamRandomizer
 
 ##Hits
 @export var death: AudioStream
@@ -56,6 +57,10 @@ func land_footstep() -> void:
 func _on_jump() -> void:
     vocal_player.stream = jumps
     vocal_player.play(0.0)
+    
+func _on_double_jump() -> void:
+    ability_player.stream = double_jumps
+    ability_player.play(0.0)
 
 func _on_dash() -> void:
     ability_player.stream = dodges
