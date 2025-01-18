@@ -54,6 +54,10 @@ func land_footstep() -> void:
     print("landed")
     _on_footstep()
 
+func _on_swing() -> void:
+    ability_player.stream = attacks
+    ability_player.play(0.0)
+
 func _on_jump() -> void:
     vocal_player.stream = jumps
     vocal_player.play(0.0)
