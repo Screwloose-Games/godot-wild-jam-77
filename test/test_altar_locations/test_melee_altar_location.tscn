@@ -9,8 +9,7 @@
 [node name="MeleeAltarLocation" parent="." instance=ExtResource("1_607v6")]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_87s17")]
-transform = Transform3D(0.93495, 0, 0.35478, 0, 1, 0, -0.35478, 0, 0.93495, 0, 0, 0)
+transform = Transform3D(0.236754, 0, 0.97157, 0, 1, 0, -0.97157, 0, 0.236754, 7.07198, 0.593104, 0)
 melee_attack_cooldown = 1.0
-max_health = 100.0
 
 [node name="Level01Environment" parent="." instance=ExtResource("3_rt8gv")]
