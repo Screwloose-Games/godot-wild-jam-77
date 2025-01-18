@@ -27,7 +27,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    pass # Replace with function body.
+    GlobalSignalBus.player_died.connect(_on_death)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -69,3 +69,6 @@ func _on_double_jump() -> void:
 func _on_dash() -> void:
     ability_player.stream = dodges
     ability_player.play(0.0)
+
+func _on_death() -> void:
+    SoundManager.play_sound(death)
