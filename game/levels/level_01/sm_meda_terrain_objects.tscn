@@ -1,5 +1,168 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkk8um5b67xxf"]
+[gd_scene load_steps=18 format=3 uid="uid://dkk8um5b67xxf"]
 
 [ext_resource type="PackedScene" uid="uid://cx0kyl8xq0oln" path="res://game/levels/level_01/sm_meda_terrain_objects.gltf" id="1_nk6yn"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e6bqv"]
+height = 6.09939
+radius = 0.965105
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vbnb3"]
+height = 9.49249
+radius = 0.717024
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_knnr1"]
+height = 7.62988
+radius = 1.0113
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_knks8"]
+height = 8.17073
+radius = 0.748267
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6tplp"]
+height = 10.8852
+radius = 0.910429
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_eont0"]
+height = 9.21922
+radius = 0.91219
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dbik3"]
+height = 9.23129
+radius = 0.949072
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_n7wnr"]
+height = 9.08632
+radius = 0.703569
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g1u7p"]
+height = 9.22446
+radius = 1.13832
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_j82rv"]
+height = 8.73975
+radius = 0.81353
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dya07"]
+height = 9.32381
+radius = 0.688275
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_y486b"]
+height = 10.6963
+radius = 0.960851
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hrm47"]
+height = 8.73666
+radius = 0.666214
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s83bu"]
+height = 7.87515
+radius = 0.714201
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_a1xxg"]
+height = 10.0732
+radius = 0.923683
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7lujp"]
+height = 8.87664
+radius = 0.931395
+
 [node name="sm_meda_terrain_objects" instance=ExtResource("1_nk6yn")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_1" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_1/StaticBody3D" index="0"]
+transform = Transform3D(0.9918, -0.0901807, 0.0905527, -0.0901808, 0.00819974, 0.995892, -0.0905525, -0.995892, -4.37114e-08, -0.0984311, -0.207897, -2.79399)
+shape = SubResource("CylinderShape3D_e6bqv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_2/StaticBody3D" index="0"]
+transform = Transform3D(0.879454, 0.0248564, 0.475334, -0.475143, -0.0134292, 0.879806, 0.028252, -0.999601, 2.26382e-08, -0.0445309, -0.330729, -3.71776)
+shape = SubResource("CylinderShape3D_vbnb3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_3" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_3/StaticBody3D" index="0"]
+transform = Transform3D(0.340741, -0.017011, -0.940003, -0.94004, -0.0219499, -0.340357, -0.0148433, 0.999614, -0.0234703, -0.291879, -0.424002, -3.21363)
+shape = SubResource("CylinderShape3D_knnr1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_4" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_4/StaticBody3D" index="0"]
+transform = Transform3D(-0.958212, 0.0259564, 0.28488, 0.284776, -0.0077141, 0.958563, 0.0270785, 0.999633, -2.51172e-08, -0.0919127, -0.309268, -3.91637)
+shape = SubResource("CylinderShape3D_knks8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_5" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_5/StaticBody3D" index="0"]
+transform = Transform3D(0.786579, -0.0166648, 0.617266, -0.617127, 0.0130747, 0.786755, -0.0211817, -0.999776, -8.12033e-08, 0.0976324, -0.0766001, -5.19236)
+shape = SubResource("CylinderShape3D_6tplp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_6" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_6/StaticBody3D" index="0"]
+transform = Transform3D(0.451827, 0.0445286, 0.890994, -0.88861, -0.0658627, 0.45391, 0.0788952, -0.996835, 0.00981001, 0.340309, -0.155188, -4.61845)
+shape = SubResource("CylinderShape3D_eont0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_7" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_7/StaticBody3D" index="0"]
+transform = Transform3D(0.563889, 0.0130653, 0.825747, -0.825434, -0.0228087, 0.564037, 0.0262035, -0.999654, -0.002077, 9.53674e-07, 1.43051e-06, -4.85765)
+shape = SubResource("CylinderShape3D_dbik3")
+
+[node name="Tree_8" parent="." index="28"]
+transform = Transform3D(0.825749, 0.564038, 5.96046e-08, 0, 1.78814e-07, -1, -0.564038, 0.825749, 1.19209e-07, 5.96091, 0.262855, -11.2426)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_8" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_8/StaticBody3D" index="0"]
+transform = Transform3D(0.559975, -0.0010726, 0.828509, -0.828402, 0.0153428, 0.559922, -0.0133123, -0.999882, 0.00770304, 0.0377474, 0.0257864, -4.62772)
+shape = SubResource("CylinderShape3D_n7wnr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_9" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_9/StaticBody3D" index="0"]
+transform = Transform3D(0.826423, -0.00442125, 0.563032, 0.562798, -0.0233869, -0.826264, 0.0168208, 0.999717, -0.0168392, 0, 4.76837e-07, -4.83198)
+shape = SubResource("CylinderShape3D_g1u7p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_10" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_10/StaticBody3D" index="0"]
+transform = Transform3D(0.110725, 0.00786639, 0.99382, -0.993851, 0.00161801, 0.110716, -0.000737046, -0.999968, 0.00799715, -0.0588722, -0.301448, -4.12262)
+shape = SubResource("CylinderShape3D_j82rv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_11" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_11/StaticBody3D" index="0"]
+transform = Transform3D(0.804559, 0.0128874, 0.593733, -0.593562, -0.0148693, 0.80465, 0.0191981, -0.999806, -0.00431374, -0.000398636, -0.338743, -3.12501)
+shape = SubResource("CylinderShape3D_dya07")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_12" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_12/StaticBody3D" index="0"]
+transform = Transform3D(0.774765, -0.0325749, -0.63141, 0.631998, 0.011734, 0.774881, -0.0178327, -0.9994, 0.0296784, -0.20187, -0.387745, -4.806)
+shape = SubResource("CylinderShape3D_y486b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_13" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_13/StaticBody3D" index="0"]
+transform = Transform3D(0.317146, 0.00154842, -0.948376, 0.947808, 0.0341475, 0.317011, 0.0328755, -0.999416, 0.00936202, -0.0113797, -0.243044, -4.00846)
+shape = SubResource("CylinderShape3D_hrm47")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_14" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_14/StaticBody3D" index="0"]
+transform = Transform3D(0.988564, -0.014373, -0.150114, 0.150034, -0.00648431, 0.988658, -0.0151833, -0.999874, -0.00425371, -0.141907, -0.294324, -3.50269)
+shape = SubResource("CylinderShape3D_s83bu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_15" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_15/StaticBody3D" index="0"]
+transform = Transform3D(0.575475, 0.0117134, -0.817734, 0.817503, 0.0195026, 0.575593, 0.02269, -0.999741, 0.00164766, 0.335865, 0.000602722, -4.48457)
+shape = SubResource("CylinderShape3D_a1xxg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree_16" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree_16/StaticBody3D" index="0"]
+transform = Transform3D(0.727993, 0.00113956, 0.685583, -0.685406, 0.0239767, 0.727766, -0.0156087, -0.999712, 0.0182359, 0.024765, 0.00983047, -3.80959)
+shape = SubResource("CylinderShape3D_7lujp")
