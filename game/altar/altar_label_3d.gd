@@ -1,4 +1,4 @@
-extends Label3D
+extends Sprite3D
 
 @onready var interactable_area_3d: InteractableArea3D = %InteractableArea3D
 

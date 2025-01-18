@@ -58,6 +58,7 @@ var jumps_remaining := jumps_allowed
 @onready var melee_ability: MeleeAbilty = %MeleeAbility
 @onready var beam_ability: BeamAbility = %BeamAbility
 @onready var animation_tree: AnimationTree = %AnimationTree
+@onready var health_bar: ProgressBar = %HealthBar
 
 @onready var player_sfx: Node3D = $player_sfx
 var was_on_ground: bool = true
@@ -194,11 +195,11 @@ func _set_pcam_rotation(pcam: PhantomCamera3D, event: InputEvent) -> void:
 
 func setAbility(abilityType: Altar.AbilityType, toSet: bool):
     match abilityType:
-        Altar.AbilityType.Melee:
+        Altar.AbilityType.MELEE:
             hasMeleeAbility = toSet
-        Altar.AbilityType.Ranged:
+        Altar.AbilityType.RANGED:
             hasRangedAbility = toSet
-        Altar.AbilityType.Shield:
+        Altar.AbilityType.SHIELD:
             hasShieldAbility = toSet
 
 func die():
@@ -212,3 +213,11 @@ func _on_hurt_box_component_3d_hurt(hit_box: Variant, amount: Variant) -> void:
 
 func _on_health_component_died() -> void:
     die()
+
+func _on_health_component_health_changed(health: Variant) -> void:
+    health_bar.value = health
+
+func _on_max_health_updated(value: float) -> void:
+    if not health_bar:
+        await ready
+    health_bar.max_value = value

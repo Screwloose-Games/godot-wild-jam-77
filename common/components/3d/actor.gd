@@ -2,10 +2,14 @@ class_name Actor3D
 extends CharacterBody3D
 
 signal died
+signal max_health_updated(value: float)
 
 @export var speed: int = 10
 @export var faction: Factions = Factions.FACTION_ENEMY
-@export var max_health: int = 100
+@export var max_health: float = 100:
+    set(val):
+        max_health = val
+        max_health_updated.emit(max_health)
 @export_range(0.5, 5) var turning_speed: float = 1
 
 @onready var health_component: HealthComponent = %HealthComponent

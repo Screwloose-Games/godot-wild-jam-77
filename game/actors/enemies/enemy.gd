@@ -23,6 +23,9 @@ signal deactivated
         trigger_active = false
 
 @export var attack_rotation_tolerance_degrees: float = 10
+@onready var damage_label: FloatUpLabel3D = %DamageLabel
+@onready var damage_label_emitter: Node3D = %DamageLabelEmitter
+
 
 func _ready():
     
@@ -79,3 +82,7 @@ func _on_hurt_box_component_3d_hurt(hit_box: Variant, amount: Variant) -> void:
 
 func _on_health_component_died() -> void:
     die()
+
+func _on_health_component_damaged(amount: Variant) -> void:
+    damage_label_emitter.display(amount)
+    

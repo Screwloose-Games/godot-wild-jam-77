@@ -6,10 +6,12 @@ signal activated
 signal purified
 signal purified_amount(amount_purified: float)
 
-enum AbilityType { Melee, Ranged, Shield }
+enum AbilityType { MELEE, RANGED, SHIELD }
 
 @export var assigned_enemies: Array[Enemy] = []
-@export var altar_power: String = ""
+var altar_power: String = "":
+    get:
+        return str(altar_ability)
 @export var max_altar_impact_scale: float = 50
 @export var altar_ability: AbilityType
 
@@ -43,11 +45,10 @@ func _physics_process(delta: float):
 
 ## Used for assigning already spawned enemies to altar
 func assign_enemy(enemy: Enemy):
+    if enemy in assigned_enemies:
+        return
     print("Altar: Assigning enemy to altar: ", enemy)
     assigned_enemies.append(enemy)
-    enemy.died.connect(on_enemy_died)
-    total_spawned_enemies += 1
-
 
 ## Activate the altar
 func activate(player: PlayerController):
@@ -57,7 +58,7 @@ func activate(player: PlayerController):
     GlobalSignalBus.altar_activated.emit()
     altar_sfx.start_hum()
     activated.emit()
-
+    
     # Save that player has reached this checkpoint
     CheckpointMgr.arrived_at_altar(altar_power)
     
@@ -75,17 +76,17 @@ func activate(player: PlayerController):
 
 ## Spawn enemies associated with the altar
 func spawn_enemies():
-    #for enemy in assigned_enemies:
-        ##var enemy: Node3D = load(enemy_scene.resource_path).instantiate()
-        ##get_tree().root.add_child(enemy)
-        ##enemy.global_position = global_position + Vector3.UP * 3
-        #if enemy is Enemy:
-            #enemy.activate()
-            #enemy.died.connect(on_enemy_died)
-            #total_spawned_enemies += 1
-    #enemies_alive = total_spawned_enemies
-    #print("Altar: Enemies alive: ", enemies_alive, " / total enemies: ", total_spawned_enemies)
-    pass
+    for enemy in assigned_enemies:
+        #var enemy: Node3D = load(enemy_scene.resource_path).instantiate()
+        #get_tree().root.add_child(enemy)
+        #enemy.global_position = global_position + Vector3.UP * 3
+        if enemy is Enemy:
+            enemy.activate()
+            print("num")
+            enemy.died.connect(on_enemy_died)
+            total_spawned_enemies += 1
+    enemies_alive = total_spawned_enemies
+    print("Altar: Enemies alive: ", enemies_alive, " / total enemies: ", total_spawned_enemies)
         
 
 ## Reset enemies
