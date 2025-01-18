@@ -27,7 +27,7 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    ##_on_new_area()
+    _on_new_area()
     GlobalSignalBus.changed_level.connect(_on_new_area)
     GlobalSignalBus.altar_succeeded.connect(_on_cleanse)
 
