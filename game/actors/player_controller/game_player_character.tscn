@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c37xc7ws27epc"]
+[gd_scene load_steps=42 format=3 uid="uid://c37xc7ws27epc"]
 
 [ext_resource type="Script" path="res://game/actors/player_controller/player_character.gd" id="1_lj3x0"]
 [ext_resource type="Script" path="res://common/components/templates/HealthComponent.gd" id="2_xiykj"]
@@ -17,7 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://0xkxfha6amht" path="res://game/actors/player_controller/sm_gem_staff.fbx" id="15_3kbqo"]
 [ext_resource type="AnimationLibrary" uid="uid://cm5i4ljjbgj07" path="res://game/actors/player_controller/Animations/anim_player.res" id="16_0kpji"]
 [ext_resource type="Script" path="res://game/actors/player_controller/terrain_detector.gd" id="16_qbskk"]
-[ext_resource type="PackedScene" uid="uid://d3qdk5gsm0n7" path="res://game/actors/player_controller/sfx/player_sfx.tscn" id="17_ckcbq"]
+
+[ext_resource type="PackedScene" path="res://game/actors/player_controller/sfx/player_sfx.tscn" id="17_ckcbq"]
+[ext_resource type="Script" path="res://game/actors/player_controller/water_splash_maker.gd" id="19_4sigd"]
+[ext_resource type="Script" path="res://game/actors/player_controller/footstep_mgr.gd" id="20_s05xe"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3pcoc"]
 animation = &"Staff Swing Attack"
@@ -55,7 +58,8 @@ node_connections = [&"output", 0, &"staff_attack_01", &"staff_attack_01", 0, &"m
 [sub_resource type="Sky" id="Sky_wx8tt"]
 sky_material = SubResource("PhysicalSkyMaterial_kxiip")
 
-[sub_resource type="Environment" id="Environment_ufb6i"]
+[sub_resource type="Environment" id="Environment_if37j"]
+
 background_mode = 2
 sky = SubResource("Sky_wx8tt")
 fog_enabled = true
@@ -145,10 +149,7 @@ health = 100.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.398186, 1.72847, 1.29903)
-top_level = true
-environment = SubResource("Environment_ufb6i")
-
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
 process_physics_priority = 300
@@ -273,63 +274,63 @@ collision_mask = 65278
 [node name="Model" parent="Visual" instance=ExtResource("13_jocpb")]
 
 [node name="Skeleton3D" parent="Visual/Model/Armature" index="0"]
-bones/0/position = Vector3(16.3065, 0.396188, -222.864)
-bones/0/rotation = Quaternion(-0.492874, -0.527762, 0.511948, 0.465243)
+bones/0/position = Vector3(16.3101, 0.391958, -222.865)
+bones/0/rotation = Quaternion(-0.492855, -0.527806, 0.511982, 0.465176)
 bones/1/position = Vector3(1.92672, 17.0663, 2.23517e-07)
-bones/1/rotation = Quaternion(0.0111756, 0.00674158, -0.0667842, 0.997682)
+bones/1/rotation = Quaternion(0.0111849, 0.0067015, -0.0667071, 0.997687)
 bones/2/position = Vector3(1.93715e-06, 20.0372, -9.90038e-14)
-bones/2/rotation = Quaternion(0.0241569, 0.0152252, -0.021234, 0.999367)
+bones/2/rotation = Quaternion(0.024172, 0.015199, -0.0211183, 0.999369)
 bones/3/position = Vector3(5.78165e-06, 22.8996, -1.2815e-06)
-bones/3/rotation = Quaternion(0.0241569, 0.0152252, -0.021234, 0.999367)
+bones/3/rotation = Quaternion(0.024172, 0.0151989, -0.0211183, 0.999369)
 bones/4/position = Vector3(-2.17787e-06, 25.7621, -1.19209e-06)
-bones/4/rotation = Quaternion(-0.00258825, 0.00147313, 0.146146, 0.989259)
+bones/4/rotation = Quaternion(-0.00314648, 0.00147672, 0.146247, 0.989242)
 bones/5/position = Vector3(1.39197, 20.9981, -1.57952e-06)
-bones/5/rotation = Quaternion(-0.0401712, 0.00638356, -0.0373617, 0.998474)
+bones/5/rotation = Quaternion(-0.0402935, 0.00643646, -0.0373105, 0.99847)
 bones/6/position = Vector3(4.83449, 72.929, 7.15256e-07)
 bones/6/rotation = Quaternion(-1.39674e-15, 0.707107, -2.75829e-15, 0.707107)
 bones/7/position = Vector3(0.710745, 19.9574, -22.3179)
-bones/7/rotation = Quaternion(-0.0701202, -0.528194, 0.845132, -0.0429736)
+bones/7/rotation = Quaternion(-0.0701921, -0.528155, 0.845148, -0.0430185)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(3.21105e-06, 46.0908, 1.74319e-05)
-bones/8/rotation = Quaternion(0.422699, 0.146784, 0.159668, 0.879935)
+bones/8/rotation = Quaternion(0.422938, 0.146933, 0.159538, 0.879819)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/position = Vector3(7.822e-06, 47.1105, -3.40686e-06)
-bones/9/rotation = Quaternion(-0.00506798, -0.00459015, 0.0740273, 0.997233)
+bones/9/rotation = Quaternion(-0.00506843, -0.00456824, 0.0740123, 0.997234)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/position = Vector3(9.5367e-07, 65.9636, 4.76837e-07)
 bones/11/position = Vector3(0.601318, 19.945, 22.3179)
-bones/11/rotation = Quaternion(0.835366, 0.0249623, -0.046174, 0.547183)
+bones/11/rotation = Quaternion(0.83536, 0.0249124, -0.0460975, 0.5472)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/position = Vector3(3.61464e-06, 46.0908, -6.97377e-07)
-bones/12/rotation = Quaternion(0.42021, -0.220436, -0.141624, 0.868777)
+bones/12/rotation = Quaternion(0.419973, -0.220571, -0.141146, 0.868935)
 bones/13/position = Vector3(-2.36834e-06, 47.0711, 5.28891e-06)
-bones/13/rotation = Quaternion(-0.00569625, 0.00763512, -0.0864364, 0.996212)
+bones/13/rotation = Quaternion(-0.00573201, 0.00761322, -0.0869534, 0.996167)
 bones/14/position = Vector3(-4.76845e-07, 66.1297, 9.53681e-07)
 bones/15/position = Vector3(0.253189, -9.48128, -33.7431)
-bones/15/rotation = Quaternion(0.0236522, -0.0597148, 0.98906, -0.1328)
+bones/15/rotation = Quaternion(0.0236591, -0.059772, 0.989052, -0.132831)
 bones/16/position = Vector3(1.70063e-07, 101.357, -4.20039e-06)
-bones/16/rotation = Quaternion(-0.00649594, -0.000558854, -0.174986, 0.984549)
+bones/16/rotation = Quaternion(-0.00649131, -0.000558878, -0.175113, 0.984527)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/position = Vector3(-5.58908e-06, 110.907, 4.25713e-06)
-bones/17/rotation = Quaternion(0.221778, -0.711857, 0.205537, 0.6339)
+bones/17/rotation = Quaternion(0.22179, -0.711822, 0.205637, 0.633902)
 bones/18/position = Vector3(5.1403e-06, 4.30472, 2.41812e-08)
-bones/18/rotation = Quaternion(0.838752, -0.0427498, 0.0564458, 0.53989)
+bones/18/rotation = Quaternion(0.838526, -0.0426943, 0.0562151, 0.540269)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/position = Vector3(8.80659e-06, 3.98022, 8.58308e-06)
 bones/20/position = Vector3(0.107768, -9.48128, 33.7431)
-bones/20/rotation = Quaternion(-0.0581021, -0.055829, 0.996742, 0.00352884)
+bones/20/rotation = Quaternion(-0.0581618, -0.055757, 0.996744, 0.0032645)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/position = Vector3(-5.74111e-07, 101.356, -1.21741e-07)
-bones/21/rotation = Quaternion(0.00907138, 9.14328e-05, -0.0735986, 0.997247)
+bones/21/rotation = Quaternion(0.00905913, 9.1298e-05, -0.0739335, 0.997222)
 bones/22/position = Vector3(-1.04304e-06, 110.883, 1.21047e-06)
-bones/22/rotation = Quaternion(-0.0295433, 0.09347, 0.195049, 0.975882)
+bones/22/rotation = Quaternion(-0.0296189, 0.0933363, 0.19519, 0.975865)
 bones/23/position = Vector3(1.5871e-06, 3.74572, 2.72274e-07)
 bones/23/rotation = Quaternion(0.571152, -0.259863, 0.756588, 0.183931)
 bones/23/scale = Vector3(0.999999, 1, 1)
 bones/24/position = Vector3(-7.44699e-08, 3.70389, 2.08626e-07)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Visual/Model/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.593406, 0.162681, -0.788292, -0.804893, 0.115005, -0.582169, -0.00405021, 0.979953, 0.199185, 101.222, 24.1884, -175.689)
+transform = Transform3D(0.593827, 0.162155, -0.788083, -0.804584, 0.115126, -0.582572, -0.00373833, 0.980026, 0.198833, 101.164, 24.213, -175.68)
 bone_name = "mixamorig_LeftHand"
 bone_idx = 10
 
@@ -373,6 +374,17 @@ size_flags_horizontal = 3
 theme_override_styles/fill = SubResource("StyleBoxFlat_ipl1g")
 value = 100.0
 show_percentage = false
+
+[node name="WaterSplashMaker" type="Node3D" parent="."]
+script = ExtResource("19_4sigd")
+
+[node name="DetectWaterRaycast" type="RayCast3D" parent="WaterSplashMaker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.178337, 0)
+target_position = Vector3(0, -0.25, 0)
+collide_with_areas = true
+
+[node name="FootstepMgr" type="Node3D" parent="."]
+script = ExtResource("20_s05xe")
 
 [connection signal="max_health_updated" from="." to="." method="_on_max_health_updated"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

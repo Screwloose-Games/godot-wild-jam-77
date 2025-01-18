@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxbkpou8fdoqo"]
+[gd_scene load_steps=5 format=3 uid="uid://bxbkpou8fdoqo"]
 
 [ext_resource type="Script" path="res://game/actors/enemies/enemy.gd" id="1_iuqop"]
 [ext_resource type="Script" path="res://common/components/templates/HealthComponent.gd" id="2_8p006"]
-[ext_resource type="Script" path="res://common/components/templates/HurtBoxComponent3D.gd" id="3_yiv1k"]
 [ext_resource type="Script" path="res://common/components/3d/float_up_label.gd" id="4_0q8l1"]
 [ext_resource type="Script" path="res://game/actors/enemies/damage_label_emitter.gd" id="5_6ivhk"]
 
@@ -14,10 +13,6 @@ script = ExtResource("1_iuqop")
 unique_name_in_owner = true
 script = ExtResource("2_8p006")
 health = 100.0
-
-[node name="HurtBoxComponent3D" type="Area3D" parent="."]
-unique_name_in_owner = true
-script = ExtResource("3_yiv1k")
 
 [node name="DamageLabel" type="Label3D" parent="."]
 unique_name_in_owner = true
@@ -35,4 +30,3 @@ script = ExtResource("5_6ivhk")
 
 [connection signal="damaged" from="HealthComponent" to="." method="_on_health_component_damaged"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
-[connection signal="hurt" from="HurtBoxComponent3D" to="." method="_on_hurt_box_component_3d_hurt"]

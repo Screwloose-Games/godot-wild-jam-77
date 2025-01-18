@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://crco2b1srkhyo"]
+[gd_scene load_steps=30 format=3 uid="uid://crco2b1srkhyo"]
 
 [ext_resource type="PackedScene" uid="uid://bxbkpou8fdoqo" path="res://game/actors/enemies/enemy.tscn" id="1_0mf37"]
 [ext_resource type="BehaviorTree" uid="uid://m60n8oplxst6" path="res://game/actors/behavior/melee_behavior_tree.tres" id="2_kc48n"]
@@ -96,16 +96,15 @@ node_connections = [&"attack", 0, &"bottom_state", &"attack", 1, &"top_state"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_uaspe"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8enx"]
+size = Vector3(0.25, 0.25, 0.25)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mtyox"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_shc20"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_f8enx"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bn64c"]
 albedo_color = Color(0, 0, 0, 0.478431)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mh05o"]
 
 [node name="MeleeEnemy" groups=["Enemy"] instance=ExtResource("1_0mf37")]
 collision_layer = 8
@@ -182,6 +181,48 @@ transform = Transform3D(1, -3.73035e-14, -4.54747e-13, 2.93099e-14, 1, -3.83705e
 [node name="Cube_018" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D" index="2"]
 transform = Transform3D(1.03054, -1.91847e-13, -1.62004e-12, -5.59552e-14, 1.01942, -0.15101, 1.67688e-12, 0.15101, 1.01942, 1.7808e-13, 1.64392, -0.255608)
 
+[node name="RightHandAttachment" type="BoneAttachment3D" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D" index="6"]
+transform = Transform3D(0.247617, -0.968646, -0.0202755, 0.965415, 0.248446, -0.0790542, 0.081613, 1.07172e-06, 0.996664, -1.98836, 1.96036, -0.00824895)
+bone_name = "hand.R"
+bone_idx = 19
+
+[node name="RightHandHitbox" type="Area3D" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D/RightHandAttachment" index="0" node_paths=PackedStringArray("sender")]
+unique_name_in_owner = true
+transform = Transform3D(2.6676, 0, 0, 0, 2.6676, 0, 0, 0, 2.6676, 0, 0, 0)
+collision_layer = 0
+collision_mask = 256
+monitoring = false
+script = ExtResource("4_1xqfq")
+sender = NodePath("../../../../../..")
+amount = 20.0
+deactivate_on_hit = true
+is_one_shot = true
+active = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D/RightHandAttachment/RightHandHitbox" index="0"]
+shape = SubResource("BoxShape3D_f8enx")
+
+[node name="LeftHandAttachment" type="BoneAttachment3D" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D" index="7"]
+transform = Transform3D(0.247616, 0.968647, 0.0202749, -0.965415, 0.248444, -0.0790536, -0.0816122, 1.41165e-06, 0.996664, 1.98836, 1.96035, -0.00824791)
+bone_name = "hand.L"
+bone_idx = 12
+
+[node name="LeftHandHitbox" type="Area3D" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D/LeftHandAttachment" index="0" node_paths=PackedStringArray("sender")]
+unique_name_in_owner = true
+transform = Transform3D(2.6676, 0, 0, 0, 2.6676, 0, 0, 0, 2.6676, 0, 0, 0)
+collision_layer = 0
+collision_mask = 256
+monitoring = false
+script = ExtResource("4_1xqfq")
+sender = NodePath("../../../../../..")
+amount = 20.0
+deactivate_on_hit = true
+is_one_shot = true
+active = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D/LeftHandAttachment/LeftHandHitbox" index="0"]
+shape = SubResource("BoxShape3D_f8enx")
+
 [node name="AnimationPlayer" parent="Visual/sk_melee_enemy" index="1"]
 autoplay = "MeleeEnemyIdle"
 
@@ -203,33 +244,9 @@ script = ExtResource("3_uffac")
 hitting_color = Color(1, 0, 0, 1)
 default_color = Color(0, 0, 0, 0.478431)
 
-[node name="HitBoxComponent3D" type="Area3D" parent="MeleeAbility" index="0" node_paths=PackedStringArray("sender")]
-unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 256
-monitoring = false
-script = ExtResource("4_1xqfq")
-sender = NodePath("../..")
-amount = 20.0
-deactivate_on_hit = true
-is_one_shot = true
-active = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeleeAbility/HitBoxComponent3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.781436, -1.1948)
-shape = SubResource("BoxShape3D_f8enx")
-
-[node name="Visual" type="CSGBox3D" parent="MeleeAbility" index="1"]
+[node name="Visual" type="CSGBox3D" parent="MeleeAbility" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.779865, -1.17424)
 visible = false
 material = SubResource("StandardMaterial3D_bn64c")
-
-[node name="HurtBoxComponent3D" parent="." index="7" groups=["Enemy"]]
-collision_layer = 512
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent3D" index="0" groups=["Enemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958669, 0)
-shape = SubResource("CapsuleShape3D_mh05o")
 
 [editable path="Visual/sk_melee_enemy"]
