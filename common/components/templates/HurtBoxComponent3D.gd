@@ -2,6 +2,9 @@
 extends ComponentArea3D
 class_name HurtBoxComponent3D
 
+## This Hurtbox is the Area3D that a hitbox hits and applies damage to
+## "I have taken damage through my hurtbox, and was hit by a hitbox"
+
 signal hurt(hit_box, amount)
 
 ## the owner of the hurt box

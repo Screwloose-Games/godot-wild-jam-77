@@ -2,6 +2,9 @@
 extends ComponentArea3D
 class_name HitBoxComponent3D
 
+## Area3d that is used for hitting and dealing damage to hurtboxes
+## "I swung my hitbox and when it touched your hurtbox, I dealt damage to you"
+
 signal hit(hurt_box: HurtBoxComponent3D)
 
 ## the owner of the hit box
@@ -14,75 +17,75 @@ signal hit(hurt_box: HurtBoxComponent3D)
 @export var deactivate_on_hit: bool
 ## if true the hit box will activate and then deactivate immediately
 @export var is_one_shot: bool:
-    set(b):
-        is_one_shot = b
-        if is_one_shot: active = false
-        else: active = true
-        prints("one shot", b)
+	set(b):
+		is_one_shot = b
+		if is_one_shot: active = false
+		else: active = true
+		prints("one shot", b)
 ## when true the hitbox is monitoring, when false the hitbox is not monitoring
 @export var active: bool = monitoring:
-    set(b):
-        if b == true:
-            activate()
-        else:
-            deactivate()
-    get:
-        return monitoring
+	set(b):
+		if b == true:
+			activate()
+		else:
+			deactivate()
+	get:
+		return monitoring
 
 ## {<hurtbox: Node2D> : <cooldown: float>}
 var hits_on_cooldown: Dictionary = {}
 
 func activate() -> void:
-    if not area_entered.is_connected(_on_area_entered):
-        area_entered.connect(_on_area_entered)
-    monitoring = true
-    if is_one_shot:
-        var overlapping = get_overlapping_areas()
-        for area in overlapping:
-            if area is HurtBoxComponent3D:
-                apply_hit(area)
-                
+	if not area_entered.is_connected(_on_area_entered):
+		area_entered.connect(_on_area_entered)
+	monitoring = true
+	if is_one_shot:
+		var overlapping = get_overlapping_areas()
+		for area in overlapping:
+			if area is HurtBoxComponent3D:
+				apply_hit(area)
+				
 
 func deactivate() -> void:
-    if area_entered.is_connected(_on_area_entered):
-        area_entered.disconnect(_on_area_entered)
-    set_deferred("monitoring", false)
+	if area_entered.is_connected(_on_area_entered):
+		area_entered.disconnect(_on_area_entered)
+	set_deferred("monitoring", false)
 
 func one_shot() -> void:
-    if not is_one_shot:
-        is_one_shot = true
-        activate()
-    else: 
-        is_one_shot = false
-        deactivate()
+	if not is_one_shot:
+		is_one_shot = true
+		activate()
+	else: 
+		is_one_shot = false
+		deactivate()
 
 func is_hit_on_cooldown(hurt_box: HurtBoxComponent3D):
-    if hits_on_cooldown.has(hurt_box): return true
-    return false
+	if hits_on_cooldown.has(hurt_box): return true
+	return false
 
 # possibly refactor to use Array.map
 func decrement_hits_on_cooldown(delta):
-    if hits_on_cooldown.is_empty(): return;
-    for key in hits_on_cooldown.keys():
-        if hits_on_cooldown[key] <= 0: 
-            hits_on_cooldown.erase(key)
-            continue
-        hits_on_cooldown[key] -= delta
+	if hits_on_cooldown.is_empty(): return;
+	for key in hits_on_cooldown.keys():
+		if hits_on_cooldown[key] <= 0: 
+			hits_on_cooldown.erase(key)
+			continue
+		hits_on_cooldown[key] -= delta
 
 func apply_hit(hurt_box: HurtBoxComponent3D) -> void:
-    if is_hit_on_cooldown(hurt_box): return;
-    hits_on_cooldown.merge({hurt_box: cooldown})
-    hurt_box.apply_hurt(sender, amount)
-    hit.emit(hurt_box)
-    if deactivate_on_hit == false: return;
-    deactivate()
+	if is_hit_on_cooldown(hurt_box): return;
+	hits_on_cooldown.merge({hurt_box: cooldown})
+	hurt_box.apply_hurt(sender, amount)
+	hit.emit(hurt_box)
+	if deactivate_on_hit == false: return;
+	deactivate()
 
 func _process(delta: float) -> void:
-    decrement_hits_on_cooldown(delta)
+	decrement_hits_on_cooldown(delta)
 
 func _on_area_entered(area) -> void:
-    if not (area as HurtBoxComponent3D): return;
-    apply_hit(area)
+	if not (area as HurtBoxComponent3D): return;
+	apply_hit(area)
 
 func _physics_process(delta: float) -> void:
-    decrement_hits_on_cooldown(delta)
+	decrement_hits_on_cooldown(delta)
