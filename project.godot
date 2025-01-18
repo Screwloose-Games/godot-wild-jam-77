@@ -28,6 +28,10 @@ config/features=PackedStringArray("4.3")
 boot_splash/image="res://splash_screen.png"
 config/icon="res://icon.svg"
 
+[audio]
+
+general/default_playback_type.web=0
+
 [autoload]
 
 Components="*res://addons/Component/Components.gd"
