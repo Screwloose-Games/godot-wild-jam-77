@@ -13,7 +13,8 @@ var can_attack: bool = true
 
 @onready var root: Actor3D = $".."
 
-@onready var hit_box_component_3d: HitBoxComponent3D = %HitBoxComponent3D
+@onready var right_hand_hitbox: HitBoxComponent3D = %RightHandHitbox
+@onready var left_hand_hitbox: HitBoxComponent3D = %LeftHandHitbox
 
 enum AttackType {
     NONE,
@@ -23,9 +24,11 @@ enum AttackType {
 
 var attack_type: AttackType = AttackType.NONE
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     visual.material.albedo_color = default_color
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -33,9 +36,11 @@ func _process(delta: float) -> void:
     if can_attack:
         attack()
 
+
 func start_cooldown():
     await get_tree().create_timer(attack_cooldown).timeout
     can_attack = true
+
 
 func attack():
     if not can_attack:
@@ -46,11 +51,18 @@ func attack():
     await get_tree().create_timer(0.1).timeout
     _end_attack()
 
+
 func _start_attack():
     visual.material.albedo_color = hitting_color
     visual.material.emission = hitting_color
-    hit_box_component_3d.activate()
+    
+    # Activating both hitboxes because I can't tell what anim is playing
+    # Its probably controlled by limboAI
+    right_hand_hitbox.activate()
+    left_hand_hitbox.activate()
+    
     start_cooldown()
+    
     
 func _end_attack():
     visual.material.albedo_color = default_color

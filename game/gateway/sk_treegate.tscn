@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dshedf38cdfte"]
+
+[ext_resource type="PackedScene" uid="uid://dk8clwmr6nk1c" path="res://game/gateway/sk_treegate_1.glb" id="1_4bwo3"]
+[ext_resource type="Texture2D" uid="uid://cx6yiaqtgus5i" path="res://game/gateway/textures/tex_tree_2.png" id="2_mijyf"]
+[ext_resource type="Script" path="res://game/gateway/tree_gate.gd" id="2_n1rvt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dof1h"]
+albedo_texture = ExtResource("2_mijyf")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_34sye"]
+size = Vector3(1, 5.79895, 10.0978)
+
+[node name="sk_treegate_1" instance=ExtResource("1_4bwo3")]
+script = ExtResource("2_n1rvt")
+
+[node name="Skeleton3D" parent="Gate1Rig" index="0"]
+bones/0/rotation = Quaternion(-0.631982, -9.46148e-18, -9.46147e-18, 0.774983)
+bones/1/rotation = Quaternion(-0.0749277, 9.41994e-19, 1.91832e-17, 0.997189)
+bones/2/rotation = Quaternion(-0.170397, 8.80881e-25, -3.78356e-17, 0.985376)
+bones/3/rotation = Quaternion(0.677931, 3.50539e-07, 3.23266e-07, 0.735125)
+bones/4/rotation = Quaternion(0.061574, -4.98268e-12, 5.87224e-08, 0.998103)
+bones/5/rotation = Quaternion(-0.0359426, 1.66763e-10, -2.8991e-08, 0.999354)
+bones/6/rotation = Quaternion(-0.0516406, 3.57147e-07, -6.77167e-08, 0.998666)
+bones/7/rotation = Quaternion(-0.760185, -5.95348e-17, -5.95348e-17, 0.649706)
+bones/8/rotation = Quaternion(0.0412189, -2.4708e-18, 7.59555e-17, 0.99915)
+bones/9/rotation = Quaternion(0.266577, 8.58237e-25, 5.91919e-17, 0.963814)
+bones/10/rotation = Quaternion(-0.230771, -3.39653e-24, -5.12414e-17, 0.973008)
+bones/11/rotation = Quaternion(-0.0772573, 1.29634e-24, -1.71546e-17, 0.997011)
+bones/12/rotation = Quaternion(0.639555, 6.41485e-07, 5.33681e-07, 0.768746)
+bones/13/rotation = Quaternion(0.0990565, 7.81726e-12, 1.65316e-07, 0.995082)
+bones/14/rotation = Quaternion(0.101421, 6.40614e-13, 1.69264e-07, 0.994844)
+bones/15/rotation = Quaternion(-0.188164, 5.8539e-07, -4.26183e-07, 0.982138)
+
+[node name="Cube_021" parent="Gate1Rig/Skeleton3D" index="0"]
+material_override = SubResource("StandardMaterial3D_dof1h")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39948, 4.54889)
+shape = SubResource("BoxShape3D_34sye")

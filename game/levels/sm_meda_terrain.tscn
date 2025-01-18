@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpo74jgegjm4j"]
+[gd_scene load_steps=2 format=3 uid="uid://cpdpr40p4u8ej"]
 
 [ext_resource type="PackedScene" uid="uid://jvxon4jurr2t" path="res://game/levels/level_01/sm_meda_terrain.gltf" id="1_kf1fh"]
 

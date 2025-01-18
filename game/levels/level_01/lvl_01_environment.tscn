@@ -1,14 +1,16 @@
-[gd_scene load_steps=20 format=4 uid="uid://lr7e0228li7o"]
+[gd_scene load_steps=25 format=4 uid="uid://lr7e0228li7o"]
 
-[ext_resource type="PackedScene" uid="uid://dpo74jgegjm4j" path="res://game/levels/sm_meda_terrain.tscn" id="1_e7x1t"]
+[ext_resource type="PackedScene" uid="uid://cpdpr40p4u8ej" path="res://game/levels/sm_meda_terrain.tscn" id="1_e7x1t"]
 [ext_resource type="ArrayMesh" uid="uid://bq2kevkop60kl" path="res://game/levels/level_01/meshes/level1_ground_mesh.tres" id="2_fqbd2"]
 [ext_resource type="PackedScene" uid="uid://br8mk8iny13l4" path="res://game/gateway/game_gateway.tscn" id="2_tbpkv"]
 [ext_resource type="PackedScene" uid="uid://dkk8um5b67xxf" path="res://game/levels/level_01/sm_meda_terrain_objects.tscn" id="4_wgjep"]
 [ext_resource type="Shader" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="5_v5tce"]
 [ext_resource type="Texture2D" uid="uid://biuu2l4chep1r" path="res://game/levels/level_01/textures/tex_grass_billboard.png" id="6_bg37a"]
 [ext_resource type="Script" path="res://addons/simplegrasstextured/grass.gd" id="7_je0a0"]
-[ext_resource type="Texture2D" uid="uid://mximnxiwi46y" path="res://common/art/textures/tex_frothy_water.png" id="8_pf2jp"]
+[ext_resource type="Shader" path="res://common/art/shaders/pixelated_stylized_depthfade_water.gdshader" id="9_gnn66"]
 [ext_resource type="Script" path="res://game/actors/player_controller/terrain_area.gd" id="9_k1let"]
+[ext_resource type="Texture2D" uid="uid://bsr4ulm78yne6" path="res://common/art/textures/tex_lillypads_64.png" id="10_bxm17"]
+[ext_resource type="Script" path="res://game/levels/level_01/water_splash_area.gd" id="11_21rtw"]
 [ext_resource type="PackedScene" uid="uid://bwff80enhdfec" path="res://game/terrain/sfx/ambient_sfx_player.tscn" id="10_fjcxs"]
 [ext_resource type="AudioStream" uid="uid://d3i47w1pumvv4" path="res://common/audio/sfx/aud_healed_lake_ambient-loop.ogg" id="11_yohxn"]
 [ext_resource type="AudioStream" uid="uid://fosl4fx4r5oi" path="res://common/audio/sfx/aud_healed_cliffs_ambient-loop.ogg" id="12_ig7ka"]
@@ -71,9 +73,49 @@ buffer = PackedFloat32Array(0.705321, 0, 0.708888, 6.35669, 0, 1, 0, 0.169835, -
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5vqk"]
 size = Vector3(17.0123, 0.976685, 20.5148)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fegvc"]
-transparency = 1
-albedo_texture = ExtResource("8_pf2jp")
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ctnps"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ux8c3"]
+seamless = true
+noise = SubResource("FastNoiseLite_ctnps")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f80p5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_13p34"]
+seamless = true
+noise = SubResource("FastNoiseLite_f80p5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wsllb"]
+render_priority = 0
+shader = ExtResource("9_gnn66")
+shader_parameter/speed = 0.00200005
+shader_parameter/color = Color(0, 0.628849, 0.628848, 1)
+shader_parameter/deep_water = Color(0.00436592, 0.0708247, 0.0106831, 1)
+shader_parameter/beer_law_factor = 2.0
+shader_parameter/_distance = 0.0
+shader_parameter/edge_color = Color(0.211765, 0.364706, 0.211765, 1)
+shader_parameter/edge_scale = -4.0
+shader_parameter/near = 0.1
+shader_parameter/far = 100.0
+shader_parameter/wave_strength = Vector2(0.013, 0.013)
+shader_parameter/wave_frequ = Vector2(6, 6)
+shader_parameter/time_factor = Vector2(0, 1)
+shader_parameter/uv_scale = 20.0
+shader_parameter/noise1 = SubResource("NoiseTexture2D_ux8c3")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_13p34")
+shader_parameter/PIXELATED_IMAGE = ExtResource("10_bxm17")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_suu4d"]
+material = SubResource("ShaderMaterial_wsllb")
+size = Vector2(40, 40)
+subdivide_width = 20
+subdivide_depth = 20
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vbnv5"]
+size = Vector3(40, 0.5, 40)
+
+[sub_resource type="BoxMesh" id="BoxMesh_183wn"]
+size = Vector3(40, 0.5, 40)
 
 [node name="Level01Environment" type="Node3D"]
 
@@ -130,6 +172,21 @@ type = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.225403, -0.0116577, -1.88519)
 shape = SubResource("BoxShape3D_i5vqk")
 
+[node name="DirtyStinkyWater" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125073, 0)
+mesh = SubResource("PlaneMesh_suu4d")
+
+[node name="WaterSplashArea" type="Area3D" parent="DirtyStinkyWater"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.320356, 0)
+script = ExtResource("11_21rtw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DirtyStinkyWater/WaterSplashArea"]
+shape = SubResource("BoxShape3D_vbnv5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DirtyStinkyWater/WaterSplashArea"]
+visible = false
+mesh = SubResource("BoxMesh_183wn")
+
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.69738, -0.341686, -1.13177)
 size = Vector3(18.9907, 1, 23.5894)
@@ -150,3 +207,4 @@ volume = 0.65
 [node name="wildlife_sfx" parent="." instance=ExtResource("10_fjcxs")]
 ambient_sound = ExtResource("13_vvrgv")
 volume = 0.75
+

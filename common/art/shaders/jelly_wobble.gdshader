@@ -1,6 +1,6 @@
 shader_type spatial;
 
-// A sludgy wobbly jiggly jello shader 
+// A sludgy wobbly jiggly jello shader
 
 uniform sampler2D MY_TEXTURE;
 
@@ -22,5 +22,3 @@ void fragment() {
     ALBEDO = texture(MY_TEXTURE, UV).xyz;
     ALPHA = texture(MY_TEXTURE, UV).a;
 }
-
-

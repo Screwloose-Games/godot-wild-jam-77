@@ -1,8 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://mx2hsdwfupuf"]
+[gd_scene load_steps=4 format=3 uid="uid://mx2hsdwfupuf"]
 
 [ext_resource type="PackedScene" uid="uid://bc1fiiwcqaudt" path="res://game/fleshballs/sm_fleshsac_1.glb" id="1_gwi0h"]
 [ext_resource type="PackedScene" uid="uid://oejbyibob03k" path="res://common/components/purification_system.tscn" id="2_betxy"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_dsxhs"]
+radius = 4.00205
+
 [node name="game_fleshsac_1" instance=ExtResource("1_gwi0h")]
 
 [node name="PurificationSystem" parent="." index="1" instance=ExtResource("2_betxy")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("SphereShape3D_dsxhs")
