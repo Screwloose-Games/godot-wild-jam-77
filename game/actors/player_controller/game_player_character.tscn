@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c37xc7ws27epc"]
+[gd_scene load_steps=42 format=3 uid="uid://c37xc7ws27epc"]
 
 [ext_resource type="Script" path="res://game/actors/player_controller/player_character.gd" id="1_lj3x0"]
 [ext_resource type="Script" path="res://common/components/templates/HealthComponent.gd" id="2_xiykj"]
@@ -18,6 +18,8 @@
 [ext_resource type="AnimationLibrary" uid="uid://cm5i4ljjbgj07" path="res://game/actors/player_controller/Animations/anim_player.res" id="16_0kpji"]
 [ext_resource type="Script" path="res://game/actors/player_controller/terrain_detector.gd" id="16_qbskk"]
 [ext_resource type="PackedScene" path="res://game/actors/player_controller/sfx/player_sfx.tscn" id="17_ckcbq"]
+[ext_resource type="Script" path="res://game/actors/player_controller/water_splash_maker.gd" id="19_4sigd"]
+[ext_resource type="Script" path="res://game/actors/player_controller/footstep_mgr.gd" id="20_s05xe"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3pcoc"]
 animation = &"Staff Swing Attack"
@@ -55,7 +57,7 @@ node_connections = [&"output", 0, &"staff_attack_01", &"staff_attack_01", 0, &"m
 [sub_resource type="Sky" id="Sky_wx8tt"]
 sky_material = SubResource("PhysicalSkyMaterial_kxiip")
 
-[sub_resource type="Environment" id="Environment_ufb6i"]
+[sub_resource type="Environment" id="Environment_if37j"]
 background_mode = 2
 sky = SubResource("Sky_wx8tt")
 fog_enabled = true
@@ -147,7 +149,7 @@ health = 100.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.398186, 1.72847, 1.29903)
 top_level = true
-environment = SubResource("Environment_ufb6i")
+environment = SubResource("Environment_if37j")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
@@ -373,6 +375,17 @@ size_flags_horizontal = 3
 theme_override_styles/fill = SubResource("StyleBoxFlat_ipl1g")
 value = 100.0
 show_percentage = false
+
+[node name="WaterSplashMaker" type="Node3D" parent="."]
+script = ExtResource("19_4sigd")
+
+[node name="DetectWaterRaycast" type="RayCast3D" parent="WaterSplashMaker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.178337, 0)
+target_position = Vector3(0, -0.25, 0)
+collide_with_areas = true
+
+[node name="FootstepMgr" type="Node3D" parent="."]
+script = ExtResource("20_s05xe")
 
 [connection signal="max_health_updated" from="." to="." method="_on_max_health_updated"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
