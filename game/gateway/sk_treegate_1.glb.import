@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c4any36xpj6lv"
-path="res://.godot/imported/sm_tree_gate.gltf-eff9e9391fa1456e0a448329a90f1e5d.scn"
+uid="uid://dk8clwmr6nk1c"
+path="res://.godot/imported/sk_treegate_1.glb-dad0ee4ad127e6f4140f18b8b51ce40f.scn"
 
 [deps]
 
-source_file="res://game/gateway/sm_tree_gate.gltf"
-dest_files=["res://.godot/imported/sm_tree_gate.gltf-eff9e9391fa1456e0a448329a90f1e5d.scn"]
+source_file="res://game/gateway/sk_treegate_1.glb"
+dest_files=["res://.godot/imported/sk_treegate_1.glb-dad0ee4ad127e6f4140f18b8b51ce40f.scn"]
 
 [params]
 
