@@ -23,7 +23,7 @@ var is_purified: bool = false
 var spawned_enemies: Array[Node] = []
 var total_spawned_enemies: int
 var enemies_alive: int
-var purity_ratio: float = 0
+var purity_ratio: float = 0.0
 var scan_to_purify_timer: Timer = Timer.new()
 
 @onready var altar_sfx: Node3D = $AltarSFX
@@ -69,14 +69,15 @@ func activate(player: PlayerController):
     spawn_enemies()
     
     enemies_alive = total_spawned_enemies
-    print("Altar: Altar activated")
-    print("Altar: Enemies alive: ", enemies_alive, " / total enemies: ", total_spawned_enemies)
     
 
 
 ## Spawn enemies associated with the altar
 func spawn_enemies():
     for enemy in assigned_enemies:
+        # Handle if enemy dies before altar is activated
+        if enemy == null:
+            continue
         #var enemy: Node3D = load(enemy_scene.resource_path).instantiate()
         #get_tree().root.add_child(enemy)
         #enemy.global_position = global_position + Vector3.UP * 3
@@ -86,7 +87,6 @@ func spawn_enemies():
             enemy.died.connect(on_enemy_died)
             total_spawned_enemies += 1
     enemies_alive = total_spawned_enemies
-    print("Altar: Enemies alive: ", enemies_alive, " / total enemies: ", total_spawned_enemies)
         
 
 ## Reset enemies
@@ -124,9 +124,16 @@ func purify_altar():
 
 
 func on_enemy_died():
-    purity_ratio = (total_spawned_enemies - enemies_alive) / clamp(total_spawned_enemies, 1, 100)
-    print("Altar: purity amount: ", purity_ratio)
+    enemies_alive -= 1
+    if total_spawned_enemies == 0:
+        return
+    #var upper: float = total_spawned_enemies - enemies_alive
+    purity_ratio = (total_spawned_enemies - enemies_alive) / total_spawned_enemies
+    #print("Altar: sees enemy died, updating purity amount: ", str("%.2f" % purity_ratio), " from alive enemies: ", enemies_alive, " / ", total_spawned_enemies, " - upper: ", upper)
     purified_amount.emit(purity_ratio)
+    
+    if enemies_alive <= 0:
+        purify_altar()
 
 
 func apply_purification():

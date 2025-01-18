@@ -113,8 +113,11 @@ func _physics_process(delta: float) -> void:
         return
     if dash_ability.is_dashing:
         return
-    if Input.is_action_just_pressed("attack-melee") and hasMeleeAbility:
-        melee_ability.attack()
+    if Input.is_action_just_pressed("attack-melee"):
+        if hasMeleeAbility:
+            melee_ability.attack()
+        # Relock the mouse after using any menus
+        Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     if Input.is_action_just_pressed("attack-ranged") and hasRangedAbility:
         beam_ability.attack()
     if Input.is_action_just_released("attack-ranged") and hasRangedAbility:

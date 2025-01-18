@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://mx2hsdwfupuf"]
+[gd_scene load_steps=5 format=3 uid="uid://mx2hsdwfupuf"]
 
 [ext_resource type="PackedScene" uid="uid://bc1fiiwcqaudt" path="res://game/fleshballs/sm_fleshsac_1.glb" id="1_gwi0h"]
 [ext_resource type="PackedScene" uid="uid://oejbyibob03k" path="res://common/components/purification_system.tscn" id="2_betxy"]
+[ext_resource type="Material" uid="uid://de24d4ly10xrd" path="res://common/art/materials/emissive_flesh_mat.material" id="2_fnlak"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dsxhs"]
 radius = 4.00205
 
 [node name="game_fleshsac_1" instance=ExtResource("1_gwi0h")]
+
+[node name="sm_fleshsac_1" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_fnlak")
 
 [node name="PurificationSystem" parent="." index="1" instance=ExtResource("2_betxy")]
 
