@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cbkvroagayyyc"]
+[gd_scene load_steps=17 format=3 uid="uid://cbkvroagayyyc"]
 
 [ext_resource type="Script" path="res://game/altar/altar.gd" id="1_5n8dj"]
 [ext_resource type="Script" path="res://common/components/3d/interactable_area_3d.gd" id="2_gxdt4"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bceduv3fwkw8v" path="res://game/altar/sm_altar.tscn" id="4_cml51"]
 [ext_resource type="Script" path="res://game/altar/altar_sfx.gd" id="5_hwfe1"]
 [ext_resource type="AudioStream" uid="uid://cu530hg5k82ue" path="res://game/altar/sfx/aud_altar_active_hum-loop.wav" id="6_jfosa"]
+[ext_resource type="Shader" path="res://game/altar/altar_power.gdshader" id="8_ugm31"]
+[ext_resource type="Script" path="res://game/altar/energy_field.gd" id="9_wrdcx"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8mytx"]
 height = 1.27566
@@ -17,6 +19,25 @@ emission_enabled = true
 emission = Color(0.241156, 0.241156, 0.241156, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8qrv6"]
+
+[sub_resource type="Gradient" id="Gradient_hnrwx"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u0ajf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qw227"]
+color_ramp = SubResource("Gradient_hnrwx")
+noise = SubResource("FastNoiseLite_u0ajf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_333ar"]
+render_priority = 0
+shader = ExtResource("8_ugm31")
+shader_parameter/albedo = Color(0, 0, 1, 1)
+shader_parameter/emission_color = Color(0, 0.231373, 0.937255, 1)
+shader_parameter/emission_amount = 5.686
+shader_parameter/rim_steepness = 1.476
+shader_parameter/uv_scale = null
+shader_parameter/uv_offset = null
+shader_parameter/texture_albedo = SubResource("NoiseTexture2D_qw227")
 
 [node name="Altar" type="Node3D"]
 script = ExtResource("1_5n8dj")
@@ -63,4 +84,14 @@ max_db = 0.0
 max_distance = 71.44
 bus = &"SFX"
 
+[node name="EnergyField" type="CSGCylinder3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.503186, 0, 0.864178, 0, 1, 0, -0.864178, 0, 0.503186, 0, 2, 0)
+radius = 1.0
+height = 4.0
+sides = 13
+material = SubResource("ShaderMaterial_333ar")
+script = ExtResource("9_wrdcx")
+
+[connection signal="activated" from="." to="EnergyField" method="_on_altar_activated"]
 [connection signal="interacted" from="InteractableArea3D" to="." method="_on_interactable_area_3d_interacted"]

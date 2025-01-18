@@ -33,11 +33,8 @@ func pause():
         GlobalSignalBus.game_unpaused.emit()
 
 func on_continue_pressed():
-    get_tree().paused = false
-    visible = false
+    pause()
     GlobalSignalBus.game_unpaused.emit()
-    #queue_free()
-
 
 func on_main_menu_pressed():
     get_tree().paused = false

@@ -7,7 +7,7 @@
 [node name="MeleeAltarLocation" type="Node3D"]
 
 [node name="Altar" parent="." node_paths=PackedStringArray("assigned_enemies") instance=ExtResource("1_1ufvv")]
-assigned_enemies = [NodePath("../Enemies/MeleeEnemy"), NodePath("../Enemies/MeleeEnemy2"), NodePath("../Enemies/MeleeEnemy3"), NodePath("../Enemies/MeleeEnemy4"), NodePath("../Enemies/MeleeEnemy5"), NodePath("../Enemies/MeleeEnemy6")]
+assigned_enemies = [NodePath("../Enemies/MeleeEnemy"), null, NodePath("../Enemies/MeleeEnemy3"), NodePath("../Enemies/MeleeEnemy4"), NodePath("../Enemies/MeleeEnemy5"), NodePath("../Enemies/MeleeEnemy6")]
 
 [node name="Enemies" type="Node3D" parent="." node_paths=PackedStringArray("altar")]
 unique_name_in_owner = true
@@ -17,23 +17,24 @@ altar = NodePath("../Altar")
 
 [node name="MeleeEnemy" parent="Enemies" instance=ExtResource("2_t0d8b")]
 transform = Transform3D(0.0427653, 0, -0.999086, 0, 1, 0, 0.999086, 0, 0.0427653, -6.72085, 0, 0.206273)
-
-[node name="MeleeEnemy2" parent="Enemies" instance=ExtResource("2_t0d8b")]
-transform = Transform3D(0.976878, 0, -0.213798, 0, 1, 0, 0.213798, 0, 0.976878, -4.3711, 1.90735e-06, 6.82313)
-delay_after_spawning_secs = 20.0
+speed = 1.0
 
 [node name="MeleeEnemy3" parent="Enemies" instance=ExtResource("2_t0d8b")]
 transform = Transform3D(-0.666975, 0, 0.74508, 0, 1, 0, -0.74508, 0, -0.666975, 3.97024, 0, -5.36506)
 delay_after_spawning_secs = 40.0
+speed = 1.0
 
 [node name="MeleeEnemy4" parent="Enemies" instance=ExtResource("2_t0d8b")]
 transform = Transform3D(0.644898, 0, 0.764269, 0, 1, 0, -0.764269, 0, 0.644898, 6.39273, 0, 4.57691)
 delay_after_spawning_secs = 60.0
+speed = 1.0
 
 [node name="MeleeEnemy5" parent="Enemies" instance=ExtResource("2_t0d8b")]
 transform = Transform3D(-0.672896, 0, -0.739737, 0, 1, 0, 0.739737, 0, -0.672896, -5.22614, 0, -6.12781)
 delay_after_spawning_secs = 80.0
+speed = 1.0
 
 [node name="MeleeEnemy6" parent="Enemies" instance=ExtResource("2_t0d8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23538, 0, 8.84772)
 delay_after_spawning_secs = 100.0
+speed = 1.0

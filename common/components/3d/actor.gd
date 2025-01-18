@@ -4,7 +4,7 @@ extends CharacterBody3D
 signal died
 signal max_health_updated(value: float)
 
-@export var speed: int = 10
+@export_range(0, 10) var speed: float = 10
 @export var faction: Factions = Factions.FACTION_ENEMY
 @export var max_health: float = 100:
     set(val):
@@ -20,7 +20,6 @@ enum Factions {
     FACTION_ENEMY,
     FACTION_PLAYER
 }
-
 
 func face_toward(target_positon: Vector3):
     # Calculate the direction to the target

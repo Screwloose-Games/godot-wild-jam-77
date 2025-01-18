@@ -47,6 +47,7 @@ func attack():
     _end_attack()
 
 func _start_attack():
+    await get_tree().create_timer(0.1).timeout
     visual.material.albedo_color = hitting_color
     visual.material.emission = hitting_color
     hit_box_component_3d.activate()
