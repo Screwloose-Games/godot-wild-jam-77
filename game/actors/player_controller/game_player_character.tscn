@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://0xkxfha6amht" path="res://game/actors/player_controller/sm_gem_staff.fbx" id="15_3kbqo"]
 [ext_resource type="AnimationLibrary" uid="uid://cm5i4ljjbgj07" path="res://game/actors/player_controller/Animations/anim_player.res" id="16_0kpji"]
 [ext_resource type="Script" path="res://game/actors/player_controller/terrain_detector.gd" id="16_qbskk"]
-[ext_resource type="PackedScene" path="res://game/actors/player_controller/sfx/player_sfx.tscn" id="17_ckcbq"]
+[ext_resource type="PackedScene" uid="uid://d3qdk5gsm0n7" path="res://game/actors/player_controller/sfx/player_sfx.tscn" id="17_ckcbq"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3pcoc"]
 animation = &"Staff Swing Attack"
@@ -55,7 +55,7 @@ node_connections = [&"output", 0, &"staff_attack_01", &"staff_attack_01", 0, &"m
 [sub_resource type="Sky" id="Sky_wx8tt"]
 sky_material = SubResource("PhysicalSkyMaterial_kxiip")
 
-[sub_resource type="Environment" id="Environment_ufb6i"]
+[sub_resource type="Environment" id="Environment_sh7t8"]
 background_mode = 2
 sky = SubResource("Sky_wx8tt")
 fog_enabled = true
@@ -147,7 +147,7 @@ health = 100.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.398186, 1.72847, 1.29903)
 top_level = true
-environment = SubResource("Environment_ufb6i")
+environment = SubResource("Environment_sh7t8")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
