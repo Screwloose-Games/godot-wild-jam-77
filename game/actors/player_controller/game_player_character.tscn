@@ -415,12 +415,8 @@ bones/23/scale = Vector3(0.999999, 1, 1)
 bones/24/position = Vector3(-7.44699e-08, 3.70389, 2.08626e-07)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Visual/Model/Armature/Skeleton3D" index="1"]
-<<<<<<< HEAD
 transform = Transform3D(0.640301, 0.139376, -0.755373, -0.767667, 0.150018, -0.623042, 0.0264829, 0.978809, 0.203051, 101.05, 27.8997, -175.715)
-=======
 unique_name_in_owner = true
-transform = Transform3D(0.593406, 0.162681, -0.788292, -0.804893, 0.115005, -0.582169, -0.00405021, 0.979953, 0.199185, 101.222, 24.1884, -175.689)
->>>>>>> 2afe764 (add beam attack visual)
 bone_name = "mixamorig_LeftHand"
 bone_idx = 10
 
