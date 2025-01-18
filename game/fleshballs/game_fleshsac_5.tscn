@@ -4,13 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://oejbyibob03k" path="res://common/components/purification_system.tscn" id="2_pnihh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5moqu"]
-radius = 1.43804
+radius = 1.58561
 
 [node name="sm_fleshsac_52" instance=ExtResource("1_3ojyx")]
 
 [node name="PurificationSystem" parent="." index="1" instance=ExtResource("2_pnihh")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.373621, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 shape = SubResource("SphereShape3D_5moqu")
