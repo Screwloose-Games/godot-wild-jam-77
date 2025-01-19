@@ -39,3 +39,5 @@ signal start_level_requested(level_num: int)
 # Signals for game state events
 signal game_paused
 signal game_unpaused
+
+signal win_game_requirements_met
