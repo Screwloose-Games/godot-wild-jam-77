@@ -17,8 +17,6 @@ class_name PlayerController
 @export_range(0, 10) var dash_distance: float = 5
 @export_range(0, 0.5) var dash_duration: float = 0.25
 @export_range(1, 2) var jumps_allowed: int = 2
-@export_range(1, 200) var max_beam_range: float = 100
-@export_range(0, 10) var beam_speed_slowdown: float = 3
 @export_range(0, 6) var melee_attack_cooldown: float = 2:
     set(val):
         melee_attack_cooldown = val
@@ -26,6 +24,23 @@ class_name PlayerController
         melee_ability.attack_cooldown = val
     get:
         return melee_attack_cooldown
+@export_group("Beam")
+#@export_range(0, 10) var beam_tick_rate: float = 1:
+    #set(val):
+        #beam_tick_rate = val
+        #if not beam_ability: return
+        #beam_ability.beam_tick_rate = val
+    #get:
+        #return beam_tick_rate
+@export_range(1, 50) var beam_damage: float = 5:
+    set(val):
+        beam_damage = val
+        if not beam_hit_box_3d:
+            await ready
+        beam_hit_box_3d.amount = val
+@export_range(1, 200) var max_beam_range: float = 100
+@export_range(0, 10) var beam_speed_slowdown: float = 3
+
         
 @export_range(0, 10) var beam_attack_start_delay: float = 1:
     set(val):
@@ -42,13 +57,21 @@ class_name PlayerController
         beam_ability.beam_attack_stop_delay = val
     get:
         return beam_attack_stop_delay
-        
-@export var hasMeleeAbility: bool
+
+@export_group("Abilities")
+@export var hasMeleeAbility: bool:
+    set(val):
+        hasMeleeAbility = val
+        if not bone_attachment_3d:
+            await ready
+        bone_attachment_3d.visible = hasMeleeAbility
 @export var hasRangedAbility: bool
 @export var hasShieldAbility: bool
 
 var input_direction: Vector3 = Vector3.FORWARD
 var jumps_remaining := jumps_allowed
+
+@onready var beam_hit_box_3d: HitBoxComponent3D = %BeamHitBox3D
 
 @onready var _camera: Camera3D = %Camera3D
 @onready var center_mass: Marker3D = %CenterMass
@@ -59,6 +82,7 @@ var jumps_remaining := jumps_allowed
 @onready var beam_ability: BeamAbility = %BeamAbility
 @onready var animation_tree: AnimationTree = %AnimationTree
 @onready var health_bar: ProgressBar = %HealthBar
+@onready var bone_attachment_3d: BoneAttachment3D = %BoneAttachment3D
 
 @onready var player_sfx: Node3D = $player_sfx
 var was_on_ground: bool = true
@@ -69,6 +93,11 @@ func _ready():
         return
     if _player_pcam.get_follow_mode() == _player_pcam.FollowMode.THIRD_PERSON:
         Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    initialize()
+
+func initialize():
+    hasMeleeAbility = hasMeleeAbility
+    beam_ability = beam_ability
 
 func _init_child_values():
     melee_ability.attack_cooldown = melee_attack_cooldown
@@ -91,13 +120,40 @@ func get_global_input_direction():
         return move_dir
     return Vector3.ZERO
 
-func gauge_movement_speed():
-    var current_speed = velocity.length()
-    var speed_ratio = current_speed / speed
-    return speed_ratio
-    
+func gauge_movement_speed() -> Vector2:
+    if velocity.length() == 0 or speed == 0:
+        return Vector2.ZERO
+
+    # Get the forward direction in the x-z plane
+    var forward_direction = transform.basis.z
+    var relative_velocity = get_relative_velocity()
+    #print(transform.basis.z)
+    #print(relative_velocity)
+    var normalized_forward = Vector2(forward_direction.x, forward_direction.z).normalized()
+
+    # Calculate the speed ratio
+    var speed_ratio = velocity.length() / speed
+
+    # Get the movement direction relative to the character's facing direction
+    var movement_direction = Vector2(velocity.x, velocity.z).normalized()
+    var relative_movement = movement_direction.rotated(-normalized_forward.angle())
+
+    return relative_movement * speed_ratio
+
+func get_relative_velocity() -> Vector3:
+    var forward_direction = transform.basis.z.normalized()
+    var relative_velocity = velocity.project(forward_direction)
+    return relative_velocity
+
 func _handle_movement_animation():
-    animation_tree.set("parameters/movement_speed/blend_position", gauge_movement_speed())
+    var mov = get_relative_velocity()
+    var mov2 = Vector2(mov.z, mov.x)
+    var forward_velocity = -velocity.dot(global_transform.basis.z)
+    var side_velocity = velocity.dot(global_transform.basis.x)
+    var char_velocity = Vector2(side_velocity, forward_velocity)
+    char_velocity = char_velocity / speed
+    #print(mov)
+    animation_tree.set("parameters/run_direction/blend_position", char_velocity)
 
 func can_jump():
     return jumps_remaining > 0
@@ -106,6 +162,9 @@ func _handle_jump():
     velocity.y = jump_velocity
     if not is_on_floor():
         jumps_remaining -= 1
+        player_sfx._on_double_jump()
+    else:
+        player_sfx._on_jump()
 
 func _physics_process(delta: float) -> void:
     _handle_movement_animation()
@@ -113,11 +172,8 @@ func _physics_process(delta: float) -> void:
         return
     if dash_ability.is_dashing:
         return
-    if Input.is_action_just_pressed("attack-melee"):
-        if hasMeleeAbility:
-            melee_ability.attack()
-        # Relock the mouse after using any menus
-        Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    if Input.is_action_just_pressed("attack-melee") and hasMeleeAbility:
+        melee_ability.attack()
     if Input.is_action_just_pressed("attack-ranged") and hasRangedAbility:
         beam_ability.attack()
     if Input.is_action_just_released("attack-ranged") and hasRangedAbility:

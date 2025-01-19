@@ -1,5 +1,6 @@
-[gd_scene load_steps=36 format=4 uid="uid://daabskcdhrpea"]
+[gd_scene load_steps=42 format=4 uid="uid://daabskcdhrpea"]
 
+[ext_resource type="Texture2D" uid="uid://rgbyf0gmqk1k" path="res://common/ui/components/buttons/Button_normal.png" id="1_aclgx"]
 [ext_resource type="Script" path="res://common/ui/viewport_container.gd" id="2_d26fo"]
 [ext_resource type="PackedScene" uid="uid://ruwllv6ttnh6" path="res://game/levels/level_01/lvl_01.tscn" id="3_ui554"]
 [ext_resource type="AudioStream" uid="uid://paarswvb3wbx" path="res://common/audio/sfx/ui/aud_ui_navigate.wav" id="4_84s81"]
@@ -8,6 +9,22 @@
 [ext_resource type="AudioStream" uid="uid://6wopc146wm1w" path="res://common/audio/sfx/ui/aud_ui_close.wav" id="6_mqj1f"]
 [ext_resource type="PackedScene" uid="uid://bvuixmv4n68a6" path="res://common/ui/options_menu/options_menu.tscn" id="6_ntl50"]
 [ext_resource type="Script" path="res://common/ui/main_menu/SFX/main_menu_audio.gd" id="7_oty5u"]
+[ext_resource type="Texture2D" uid="uid://dtmo7g75htk0c" path="res://common/ui/components/cards/card_window.png" id="8_df2cy"]
+[ext_resource type="Texture2D" uid="uid://b7cymcvnhkcla" path="res://common/ui/art/Logo.png" id="9_3uuww"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8hn0r"]
+content_margin_left = 10.0
+content_margin_top = 20.0
+content_margin_right = 10.0
+content_margin_bottom = 20.0
+texture = ExtResource("1_aclgx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5f702"]
+texture = ExtResource("8_df2cy")
+
+[sub_resource type="Theme" id="Theme_sbew7"]
+Button/styles/normal = SubResource("StyleBoxTexture_8hn0r")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_5f702")
 
 [sub_resource type="Gradient" id="Gradient_hijim"]
 offsets = PackedFloat32Array(0.284768, 0.878587)
@@ -625,6 +642,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1152, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(150, 216)]
+}
 
 [sub_resource type="Animation" id="Animation_u1ere"]
 resource_name = "main_menu"
@@ -723,13 +752,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_sbew7")
 
 [node name="Audio Control" type="Control" parent="."]
 layout_mode = 2
 anchors_preset = 0
 offset_left = 1404.0
-offset_right = 2052.0
-offset_bottom = 648.0
+offset_right = 3324.0
+offset_bottom = 1080.0
 script = ExtResource("7_oty5u")
 navigate_sound = ExtResource("4_84s81")
 open_sound = ExtResource("5_ctl25")
@@ -768,6 +798,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="Main Menu/PanelContainer"]
+texture_filter = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -780,49 +811,70 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 alignment = 1
 
-[node name="title" type="Label" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"HeaderLabel"
-text = "Title"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="CardWindow" type="Sprite2D" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+position = Vector2(70, 110)
+texture = ExtResource("8_df2cy")
 
 [node name="MarginContainer" type="MarginContainer" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 40
+theme_override_constants/margin_top = 78
 theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_bottom = 38
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 38
 
-[node name="StartButton" type="Button" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+texture_filter = 2
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("9_3uuww")
+stretch_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 38
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 38
+
+[node name="StartButton" type="Button" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Start"
 
-[node name="SettingsButton" type="Button" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Settings"
 
-[node name="CreditsButton" type="Button" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Credits"
 
-[node name="ExitButton" type="Button" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Exit"
 
 [node name="Settings Menu" type="AspectRatioContainer" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1152.0
 offset_right = 1152.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_d26fo")
 
 [node name="PanelContainer" type="PanelContainer" parent="Settings Menu"]
@@ -927,14 +979,14 @@ tree_root = SubResource("AnimationNodeStateMachine_11wmy")
 advance_expression_base_node = NodePath("../Main Menu/Menu Control")
 anim_player = NodePath("../AnimationPlayer")
 
-[connection signal="mouse_entered" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StartButton" to="Audio Control" method="_on_hover"]
-[connection signal="pressed" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StartButton" to="Audio Control" method="_on_open"]
-[connection signal="mouse_entered" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SettingsButton" to="Audio Control" method="_on_hover"]
-[connection signal="pressed" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SettingsButton" to="Audio Control" method="_on_open"]
-[connection signal="mouse_entered" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CreditsButton" to="Audio Control" method="_on_hover"]
-[connection signal="pressed" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CreditsButton" to="Audio Control" method="_on_open"]
-[connection signal="mouse_entered" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ExitButton" to="Audio Control" method="_on_hover"]
-[connection signal="pressed" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ExitButton" to="Audio Control" method="_on_close"]
+[connection signal="mouse_entered" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/StartButton" to="Audio Control" method="_on_hover"]
+[connection signal="pressed" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/StartButton" to="Audio Control" method="_on_open"]
+[connection signal="mouse_entered" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/SettingsButton" to="Audio Control" method="_on_hover"]
+[connection signal="pressed" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/SettingsButton" to="Audio Control" method="_on_open"]
+[connection signal="mouse_entered" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/CreditsButton" to="Audio Control" method="_on_hover"]
+[connection signal="pressed" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/CreditsButton" to="Audio Control" method="_on_open"]
+[connection signal="mouse_entered" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/ExitButton" to="Audio Control" method="_on_hover"]
+[connection signal="pressed" from="Main Menu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/ExitButton" to="Audio Control" method="_on_close"]
 [connection signal="mouse_entered" from="Settings Menu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider" to="Audio Control" method="_on_hover"]
 [connection signal="value_changed" from="Settings Menu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider" to="Audio Control" method="_on_slider_hover"]
 [connection signal="mouse_entered" from="Settings Menu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider2" to="Audio Control" method="_on_hover"]

@@ -50,6 +50,7 @@ func dash(direction: Vector3):
 
     # Emit signal and start dash timer
     emit_signal("started_dashing")
+    get_parent().get_node("player_sfx")._on_dash()
     is_dashing = true
     _dash_timer.start(duration)
 

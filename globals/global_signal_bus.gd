@@ -15,6 +15,7 @@ signal player_stopped_moving
 signal player_started_idling
 signal player_used_ability(ability)
 signal player_landed(surface) # Needs SurfaceType enum
+signal changed_level
 
 # Signals for enemy-related events
 signal enemy_died(enemy: Enemy)
