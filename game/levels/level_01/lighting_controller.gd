@@ -51,24 +51,23 @@ func _on_new_area():
     environment.environment.fog_light_energy = init_fog_light_energy
     environment.environment.fog_density = init_fog_density
     
-func _on_cleanse(wave_number: int, final_wave: bool):
-    if final_wave:
-        var tween = get_tree().create_tween()
-        tween.set_trans(Tween.TRANS_CUBIC)
-        tween.set_parallel(true)
-        tween.tween_property(light, "light_energy", cleansed_directional_energy, transition_time)
-        tween.tween_property(light, "light_energy", cleansed_directional_color, transition_time)
-        tween.tween_property(light, "rotation_degrees", cleansed_directional_rotation, transition_time)
-        ##light.light_energy = cleansed_directional_energy
-        ##light.light_color = cleansed_directional_color
-        ##light.rotation = cleansed_directional_rotation
-        tween.tween_property(environment.environment, "background_energy_multiplier", cleansed_sky_energy, transition_time)
-        tween.tween_property(environment.environment, "ambient_light_energy", cleansed_ambient_light_energy, transition_time)
-        tween.tween_property(environment.environment, "fog_light_color", cleansed_fog_color, transition_time)
-        tween.tween_property(environment.environment, "fog_light_energy", cleansed_fog_color, transition_time)
-        tween.tween_property(environment.environment, "fog_density", cleansed_fog_density, transition_time)
-        ##environment.environment.background_energy_multiplier = cleansed_sky_energy
-        ##environment.environment.ambient_light_energy = cleansed_ambient_light_energy
-        ##environment.environment.fog_light_color = cleansed_fog_color
-        ##environment.environment.fog_light_energy = cleansed_fog_light_energy
-        ##environment.environment.fog_density = cleansed_fog_density
+func _on_cleanse():
+    var tween = get_tree().create_tween()
+    tween.set_trans(Tween.TRANS_CUBIC)
+    tween.set_parallel(true)
+    tween.tween_property(light, "light_energy", cleansed_directional_energy, transition_time)
+    tween.tween_property(light, "light_energy", cleansed_directional_color, transition_time)
+    tween.tween_property(light, "rotation_degrees", cleansed_directional_rotation, transition_time)
+    ##light.light_energy = cleansed_directional_energy
+    ##light.light_color = cleansed_directional_color
+    ##light.rotation = cleansed_directional_rotation
+    tween.tween_property(environment.environment, "background_energy_multiplier", cleansed_sky_energy, transition_time)
+    tween.tween_property(environment.environment, "ambient_light_energy", cleansed_ambient_light_energy, transition_time)
+    tween.tween_property(environment.environment, "fog_light_color", cleansed_fog_color, transition_time)
+    tween.tween_property(environment.environment, "fog_light_energy", cleansed_fog_color, transition_time)
+    tween.tween_property(environment.environment, "fog_density", cleansed_fog_density, transition_time)
+    ##environment.environment.background_energy_multiplier = cleansed_sky_energy
+    ##environment.environment.ambient_light_energy = cleansed_ambient_light_energy
+    ##environment.environment.fog_light_color = cleansed_fog_color
+    ##environment.environment.fog_light_energy = cleansed_fog_light_energy
+    ##environment.environment.fog_density = cleansed_fog_density
