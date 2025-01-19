@@ -1,23 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cy5lpl5j8n011"]
+[gd_scene load_steps=2 format=3 uid="uid://cy5lpl5j8n011"]
 
 [ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="2_6y4ts"]
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_qr7pd"]
-
-[sub_resource type="Sky" id="Sky_bkd7u"]
-sky_material = SubResource("PhysicalSkyMaterial_qr7pd")
-
-[sub_resource type="Environment" id="Environment_6pnre"]
-background_mode = 2
-sky = SubResource("Sky_bkd7u")
-
 [node name="Level01Greybox" type="Node3D" groups=["Greybox"]]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_6pnre")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.533054, 0.846082, 0, -0.846082, -0.533054, 0, 10.6144, 0)
 
 [node name="Ground" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.06824, -1.11563, -10.3915)

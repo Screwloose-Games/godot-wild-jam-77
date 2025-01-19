@@ -7,7 +7,7 @@
 [node name="MeleeAltarLocation" type="Node3D"]
 
 [node name="Altar" parent="." node_paths=PackedStringArray("assigned_enemies") instance=ExtResource("1_1ufvv")]
-assigned_enemies = [NodePath("../Enemies/MeleeEnemy"), NodePath("../Enemies/MeleeEnemy2"), NodePath("../Enemies/MeleeEnemy3"), NodePath("../Enemies/MeleeEnemy4"), NodePath("../Enemies/MeleeEnemy5"), NodePath("../Enemies/MeleeEnemy6")]
+assigned_enemies = [NodePath("../Enemies/MeleeEnemy"), NodePath("../Enemies/MeleeEnemy2"), NodePath("../Enemies/MeleeEnemy3"), NodePath("../Enemies/MeleeEnemy4"), null, null]
 
 [node name="Enemies" type="Node3D" parent="." node_paths=PackedStringArray("altar")]
 unique_name_in_owner = true
@@ -29,11 +29,3 @@ delay_after_spawning_secs = 40.0
 [node name="MeleeEnemy4" parent="Enemies" instance=ExtResource("2_t0d8b")]
 transform = Transform3D(0.644898, 0, 0.764269, 0, 1, 0, -0.764269, 0, 0.644898, 6.39273, 0, 4.57691)
 delay_after_spawning_secs = 60.0
-
-[node name="MeleeEnemy5" parent="Enemies" instance=ExtResource("2_t0d8b")]
-transform = Transform3D(-0.672896, 0, -0.739737, 0, 1, 0, 0.739737, 0, -0.672896, -5.22614, 0, -6.12781)
-delay_after_spawning_secs = 80.0
-
-[node name="MeleeEnemy6" parent="Enemies" instance=ExtResource("2_t0d8b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23538, 0, 8.84772)
-delay_after_spawning_secs = 100.0

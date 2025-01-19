@@ -132,18 +132,18 @@ visible = false
 mesh = ExtResource("2_fqbd2")
 
 [node name="LocationDoorway" parent="." node_paths=PackedStringArray("destination_mark") instance=ExtResource("2_tbpkv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1917, 0.831817, 4.2338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.587, 0.831817, 3.48148)
 destination_mark = NodePath("../Marker3D")
 
 [node name="LocationDoorway2" parent="." node_paths=PackedStringArray("destination_mark") instance=ExtResource("2_tbpkv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.4874, 0.102823, -2.91653)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.6879, 1.86426, 0.170107)
 destination_mark = NodePath("../Marker3D2")
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.6203, 0, -2.47196)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.3038, 1.4531, -1.27138)
 
 [node name="Marker3D2" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.99835, 0, 1.33745)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.9178, 2.34682, -1.91221)
 
 [node name="sm_meda_terrain_objects" parent="." instance=ExtResource("4_wgjep")]
 
