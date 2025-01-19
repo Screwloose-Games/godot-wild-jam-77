@@ -61,5 +61,5 @@ func die() -> void:
     vocal_player.stream = death
     vocal_player.play(0.0)
 
-func _on_death() -> void:
+func on_death() -> void:
     SoundManager.play_sound(death)
