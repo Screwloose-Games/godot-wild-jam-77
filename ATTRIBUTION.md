@@ -1,71 +1,89 @@
 # Attribution
 ## Collaborators
 ### Production Team
-Name: Jonny
-<br>
+
+Name: Jonathan David Lewis
+
 Role: Production Manager
 
 Name: Sarah
-<br>
+
 Role: Game Design, Gameplay Director
 
 Name: Bryan B (UnagiLogic)
-<br>
+
 Role: Production Manager, Organization
 
 ---
-### Art Team
+### Game Art
 Name: Dillan
-<br>
+
 Role: 2D & 3D Artist
 
 Name: Sean
-<br>
+
 Role: 3D Artist
 
 Name: Trav
-<br>
+
 Role: 3D Artist
 
 Name: Alex
-<br>
+
+Role: 3D Artist
+
+Name: Chris
+
 Role: 3D Artist
 
 Name: Daniel
-<br>
-Role: Lighting Artist
+
+Role: Lighting Designer
 
 ---
-### Audio Team
-Name: Olemonade
-<br>
-Role: Environmental Sound
+
+### UI
+
+Role: UI Designer
+
+Name: Ciaocolatto
+
+---
+### Music
 
 Name: Matt
-<br>
-Role: Composition
+
+Role: Music Composition
+
+---
+### Sound Design
+Name: Olemonade
+
+Role: Sound Designer
 
 Name: McKinley
-<br>
+
 Role: Flex Designer
 
 ---
 ### Programming Team
+
 Name: Jonny
-<br>
+
+Role: Programming
+
+Name: GhostGoats
+
 Role: Programming
 
 Name: Loopy
-<br>
+
 Role: Programming
 
 ---
-### Flex Team
-Name: Chris
-<br>
-Role: Techincal Sound Designer
-
 ---
+---
+
 ## Sourced  
 #### Godot Engine Logo
 Author: Andrea Calabró  
@@ -109,4 +127,3 @@ License: [MIT License](https://github.com/microsoft/vscode/blob/main/LICENSE.txt
 Author: [Linus Torvalds](https://github.com/torvalds)  
 Source: [git-scm.com](https://git-scm.com/downloads)  
 License: [GNU General Public License version 2](https://opensource.org/licenses/GPL-2.0)
-
