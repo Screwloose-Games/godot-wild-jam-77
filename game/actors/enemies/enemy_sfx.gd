@@ -79,6 +79,7 @@ func _on_dash() -> void:
     ability_player.play(0.0)
 
 func die() -> void:
+    GlobalSignalBus.enemy_died.emit()
     vocal_player.stream = death
     vocal_player.play(0.0)
 

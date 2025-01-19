@@ -29,7 +29,7 @@ signal power_granted(ability: Altar.AbilityType)
 # Signals for altar-specific events
 signal altar_activated
 signal altar_failed
-signal altar_succeeded(wave_number: int, final_wave: bool)
+signal altar_succeeded()
 
 # Signals for menu-related events
 signal main_menu_started
