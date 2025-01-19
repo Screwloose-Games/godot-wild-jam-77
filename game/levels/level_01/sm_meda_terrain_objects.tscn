@@ -162,6 +162,9 @@ shape = SubResource("CylinderShape3D_ikcc1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rock_17_003/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_uxfee")
 
+[node name="Rock_14_001" parent="." index="5"]
+transform = Transform3D(0.489925, 0, 0, 0, 0.489925, 0, 0, 0, 0.489925, -97.9086, -0.278524, -8.39284)
+
 [node name="StaticBody3D" type="StaticBody3D" parent="Rock_14_001" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rock_14_001/StaticBody3D" index="0"]
