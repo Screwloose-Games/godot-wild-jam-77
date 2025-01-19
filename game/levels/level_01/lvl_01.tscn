@@ -46,7 +46,7 @@ far = 4000.0
 [sub_resource type="Sky" id="Sky_wx8tt"]
 sky_material = SubResource("PhysicalSkyMaterial_kxiip")
 
-[sub_resource type="Environment" id="Environment_bhu2v"]
+[sub_resource type="Environment" id="Environment_8fxy8"]
 background_mode = 2
 sky = SubResource("Sky_wx8tt")
 fog_enabled = true
@@ -465,7 +465,7 @@ melee_attack_cooldown = 1.0
 
 [node name="Camera3D" parent="PlayerCharacter" index="4"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 7.3584, 1.9435, 4.57863)
-environment = SubResource("Environment_bhu2v")
+environment = SubResource("Environment_8fxy8")
 
 [node name="PlayerPhantomCamera3D" parent="PlayerCharacter" index="5"]
 transform = Transform3D(1, 0, 0, 0, 0.866023, 0.499997, 0, -0.499999, 0.866021, 0.398186, 1.72847, 1.29903)
@@ -720,7 +720,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69723, 2, -6.5323)
 transform = Transform3D(-0.628574, 0, 0.77775, 0, 1, 0, -0.77775, 0, -0.628574, 13.7671, 2.85823, -7.259)
 
 [node name="RangedEnemy2" parent="BossAltarLocation/Enemies" index="4"]
-transform = Transform3D(0.77855, 0, -0.627583, 0, 1, 0, 0.627583, 0, 0.77855, -8.61218, 1.94371, 6.92901)
+transform = Transform3D(0.77855, 0, -0.627583, 0, 1, 0, 0.627583, 0, 0.77855, -8.62134, 1.94371, 6.92901)
 
 [editable path="PlayerCharacter"]
 [editable path="PlayerCharacter/Visual/Model"]
