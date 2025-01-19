@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ruwllv6ttnh6"]
+[gd_scene load_steps=38 format=3 uid="uid://ruwllv6ttnh6"]
 
 [ext_resource type="PackedScene" uid="uid://qopd3mnhek6b" path="res://game/levels/base_level.tscn" id="1_41ni7"]
 [ext_resource type="Script" path="res://game/levels/level_01/lvl_01.gd" id="2_i6dyw"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://game/tutorial/tutorial_canvas_layer.gd" id="18_epvh4"]
 [ext_resource type="Texture2D" uid="uid://b4kqta3fsdhb1" path="res://common/ui/components/deco_right.png" id="19_weamu"]
 [ext_resource type="PackedScene" uid="uid://br8mk8iny13l4" path="res://game/gateway/game_gateway.tscn" id="21_2b4i7"]
+[ext_resource type="PackedScene" uid="uid://dxccqnubw4n3a" path="res://game/altar_locations/boss_altar_location/boss_altar_location.tscn" id="22_4nwcf"]
 
 [sub_resource type="Resource" id="Resource_3xr8n"]
 script = ExtResource("5_txgpx")
@@ -447,7 +448,7 @@ camera_3d_resource = SubResource("Resource_5bvn8")
 
 [node name="EnemiesCamera" type="Node3D" parent="." index="3" node_paths=PackedStringArray("follow_target")]
 unique_name_in_owner = true
-transform = Transform3D(0.136102, -0.214664, -0.967156, -0.00103841, 0.97621, -0.21682, 0.990689, 0.0305142, 0.132642, -0.767436, 0.771988, -7.21978)
+transform = Transform3D(0.136102, -0.214665, -0.967156, -0.00103841, 0.97621, -0.21682, 0.990689, 0.0305142, 0.132642, -0.767436, 0.771988, -7.21978)
 top_level = true
 script = ExtResource("4_igwf6")
 follow_mode = 5
@@ -465,9 +466,6 @@ melee_attack_cooldown = 1.0
 [node name="Camera3D" parent="PlayerCharacter" index="4"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 7.3584, 1.9435, 4.57863)
 environment = SubResource("Environment_211bl")
-
-[node name="PlayerPhantomCamera3D" parent="PlayerCharacter" index="5"]
-transform = Transform3D(1, 0, 0, 0, 0.866023, 0.499997, 0, -0.499999, 0.866021, 0.398186, 1.72847, 1.29903)
 
 [node name="MeleeAbility" parent="PlayerCharacter" index="11"]
 attack_cooldown = 1.0
@@ -753,7 +751,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.3038, 1.4531, -1.27138)
 [node name="Marker3D2" type="Marker3D" parent="." index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.9178, 2.34682, -1.91221)
 
+[node name="BossAltarLocation" parent="." index="18" instance=ExtResource("22_4nwcf")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -104.17, 1.09582, 0)
+
+[node name="ShieldEnemy" parent="BossAltarLocation/Enemies" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08827, 0.657177, 0)
+
+[node name="ShieldEnemy2" parent="BossAltarLocation/Enemies" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.42973, 0, 2.05385)
+
+[node name="ShieldEnemy3" parent="BossAltarLocation/Enemies" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69723, 2, -6.5323)
+
+[node name="RangedEnemy" parent="BossAltarLocation/Enemies" index="3"]
+transform = Transform3D(-0.628574, 0, 0.77775, 0, 1, 0, -0.77775, 0, -0.628574, 13.7671, 2.85823, -7.259)
+
+[node name="RangedEnemy2" parent="BossAltarLocation/Enemies" index="4"]
+transform = Transform3D(0.77855, 0, -0.627583, 0, 1, 0, 0.627583, 0, 0.77855, -8.59427, 1.94371, 6.92901)
+
 [editable path="PlayerCharacter"]
 [editable path="PlayerCharacter/Visual/Model"]
 [editable path="MeleeAltarLocation"]
 [editable path="RangedAltarLocation"]
+[editable path="BossAltarLocation"]

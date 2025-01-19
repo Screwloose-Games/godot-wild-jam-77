@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://c37xc7ws27epc"]
+[gd_scene load_steps=53 format=3 uid="uid://c37xc7ws27epc"]
 
 [ext_resource type="Script" path="res://game/actors/player_controller/player_character.gd" id="1_lj3x0"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://c4hxde0ynncn4" path="res://game/actors/player_controller/Animations/game_player_character_animation_tree.tres" id="2_vy64c"]
@@ -19,17 +19,18 @@
 [ext_resource type="PackedScene" uid="uid://0xkxfha6amht" path="res://game/actors/player_controller/sm_gem_staff.fbx" id="15_3kbqo"]
 [ext_resource type="AnimationLibrary" uid="uid://cm5i4ljjbgj07" path="res://game/actors/player_controller/Animations/anim_player.res" id="16_0kpji"]
 [ext_resource type="Script" path="res://game/actors/player_controller/terrain_detector.gd" id="16_qbskk"]
-[ext_resource type="PackedScene" uid="uid://d3qdk5gsm0n7" path="res://game/actors/player_controller/sfx/player_sfx.tscn" id="17_ckcbq"]
+[ext_resource type="PackedScene" path="res://game/actors/player_controller/sfx/player_sfx.tscn" id="17_ckcbq"]
 [ext_resource type="Script" path="res://game/actors/player_controller/water_splash_maker.gd" id="19_4sigd"]
 [ext_resource type="Script" path="res://game/actors/player_controller/footstep_mgr.gd" id="20_s05xe"]
 [ext_resource type="Script" path="res://game/actors/player_controller/debug_kill_laser.gd" id="21_wul0x"]
+[ext_resource type="Script" path="res://common/components/noclip.gd" id="24_u2wa6"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kxiip"]
 
 [sub_resource type="Sky" id="Sky_wx8tt"]
 sky_material = SubResource("PhysicalSkyMaterial_kxiip")
 
-[sub_resource type="Environment" id="Environment_g4tkq"]
+[sub_resource type="Environment" id="Environment_n1w0o"]
 background_mode = 2
 sky = SubResource("Sky_wx8tt")
 fog_enabled = true
@@ -196,7 +197,7 @@ health = 100.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.398186, 1.72847, 1.29903)
 top_level = true
-environment = SubResource("Environment_g4tkq")
+environment = SubResource("Environment_n1w0o")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
@@ -458,6 +459,9 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.552614)
 target_position = Vector3(0, -50, 0)
 collision_mask = 9
+
+[node name="Noclip" type="Node" parent="."]
+script = ExtResource("24_u2wa6")
 
 [connection signal="max_health_updated" from="." to="." method="_on_max_health_updated"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
