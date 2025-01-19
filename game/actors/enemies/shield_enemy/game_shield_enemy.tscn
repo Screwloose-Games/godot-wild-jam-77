@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://hks8m0oh1pdw"]
+
+[ext_resource type="PackedScene" uid="uid://bxbkpou8fdoqo" path="res://game/actors/enemies/enemy.tscn" id="1_pulls"]
+[ext_resource type="PackedScene" uid="uid://dg5v3158sj5e3" path="res://game/actors/enemies/shield_enemy/sk_shield_enemy.tscn" id="2_00emp"]
+[ext_resource type="Script" path="res://common/components/templates/HitBoxComponent3D.gd" id="3_8ipek"]
+[ext_resource type="Script" path="res://game/actors/enemies/shield_enemy/shield_enemy_controller.gd" id="3_h78be"]
+[ext_resource type="Script" path="res://common/components/gravity.gd" id="4_21lja"]
+[ext_resource type="Script" path="res://common/components/rotate_towards_motion.gd" id="5_bkrha"]
+[ext_resource type="Script" path="res://common/components/rotate_towards_target.gd" id="6_8vusw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i3cd7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_43og7"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5rvqd"]
+radius = 20.0
+
+[node name="ShieldEnemy" instance=ExtResource("1_pulls")]
+collision_layer = 9
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555779, 0)
+shape = SubResource("SphereShape3D_i3cd7")
+
+[node name="sk_shield_enemy" parent="." index="4" instance=ExtResource("2_00emp")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="sk_shield_enemy/FurballRig" index="0"]
+bones/0/position = Vector3(4.61575e-09, 1.31079, -0.0784599)
+bones/0/rotation = Quaternion(0.125841, 1.18262e-07, 1.50014e-08, 0.99205)
+bones/1/rotation = Quaternion(0.961624, 0.0541778, 0.00177224, 0.268964)
+bones/2/rotation = Quaternion(0.399414, 0.00643354, 0.0578766, 0.914919)
+bones/3/rotation = Quaternion(-0.812216, 0.0014432, -0.00377496, 0.583343)
+bones/4/rotation = Quaternion(9.00319e-08, 0.994749, -0.102345, 7.86601e-07)
+bones/6/rotation = Quaternion(0.961624, -0.0541778, -0.00177209, 0.268964)
+bones/7/rotation = Quaternion(0.399414, -0.00643357, -0.0578766, 0.914919)
+bones/8/rotation = Quaternion(-0.812216, -0.0014432, 0.00377496, 0.583342)
+bones/9/rotation = Quaternion(-8.96835e-08, 0.994749, -0.102345, -7.86601e-07)
+
+[node name="FurballBody" parent="sk_shield_enemy/FurballRig/Skeleton3D" index="0"]
+transform = Transform3D(1, 7.10543e-14, -9.37916e-13, -7.81597e-14, 1, 5.96046e-07, 9.23706e-13, -5.96046e-07, 1, 7.10543e-15, 0, 1.56462e-07)
+
+[node name="sm_lowpoly_skull4" parent="sk_shield_enemy/SkullsOrbiting" index="2"]
+transform = Transform3D(-0.229646, 0, -0.973274, 0, 1, 0, 0.973274, 0, -0.229646, -0.29273, 0.552841, -0.199975)
+
+[node name="sm_lowpoly_skull2" parent="sk_shield_enemy/SkullsOrbiting" index="4"]
+transform = Transform3D(0.970699, 0, -0.240296, 0, 1, 0, 0.240296, 0, 0.9707, -0.222641, 0.816996, 0.204424)
+
+[node name="ShieldEnemyController" type="Node" parent="." index="5"]
+script = ExtResource("3_h78be")
+
+[node name="Gravity" type="Node" parent="ShieldEnemyController" index="0"]
+script = ExtResource("4_21lja")
+gravity_multiplier = 2.0
+
+[node name="RotateTowardsMotion" type="Node" parent="ShieldEnemyController" index="1"]
+script = ExtResource("5_bkrha")
+
+[node name="RotateTowardsTarget" type="Node" parent="ShieldEnemyController" index="2"]
+script = ExtResource("6_8vusw")
+
+[node name="ChargeTimeout" type="Timer" parent="ShieldEnemyController" index="3"]
+wait_time = 5.0
+
+[node name="HitBoxComponent3D" type="Area3D" parent="." index="6" node_paths=PackedStringArray("sender")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.653551, -0.741859)
+collision_mask = 257
+script = ExtResource("3_8ipek")
+sender = NodePath("..")
+amount = 20.0
+active = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxComponent3D" index="0"]
+shape = SubResource("BoxShape3D_43og7")
+
+[node name="DetectionArea" type="Area3D" parent="." index="7"]
+collision_mask = 259
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" index="0"]
+shape = SubResource("SphereShape3D_5rvqd")
+
+[node name="StopChargingCast" type="RayCast3D" parent="." index="8"]
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 0, 0.666382, -0.521114)
+
+[editable path="sk_shield_enemy"]

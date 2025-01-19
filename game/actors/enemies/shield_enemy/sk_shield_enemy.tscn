@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dg5v3158sj5e3"]
+[gd_scene load_steps=10 format=3 uid="uid://dg5v3158sj5e3"]
 
 [ext_resource type="PackedScene" uid="uid://b1rybch4s0m48" path="res://game/actors/enemies/shield_enemy/sk_shield_enemy.glb" id="1_81t7e"]
 [ext_resource type="Shader" path="res://common/art/shaders/jelly_wobble.gdshader" id="2_4fpgq"]
@@ -261,9 +261,74 @@ tracks/9/keys = {
 "values": [Vector3(0, 0.478953, 0), Vector3(0.317997, -0.531314, -0.181721), Vector3(0.244056, -0.110053, 0.430889), Vector3(0.398436, 0.478823, -0.450257), Vector3(0.185845, 0.110235, -0.0802753), Vector3(0, 0.478953, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_svvok"]
+resource_name = "on_death"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkullsOrbiting/sm_lowpoly_skull:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1.46667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.651811, 0.315479), Vector3(0, 4.53325, 2.07574), Vector3(0.29452, -3.28049, 3.75142)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkullsOrbiting/sm_lowpoly_skull3:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1.46667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.262671, 0.816996, 0.186588), Vector3(2.26267, 2.817, 1.18659), Vector3(3.42366, -3.19883, 4.08133)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkullsOrbiting/sm_lowpoly_skull2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.222641, 0.816996, 0.204424), Vector3(-0.929811, 2.66109, 0.204424), Vector3(-1.4931, -4.33045, -0.15998)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkullsOrbiting/sm_lowpoly_skull4:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.29273, 0.552841, -0.199975), Vector3(-1.34757, 3.77364, -0.904267), Vector3(-1.34757, -1.68906, -2.44884)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkullsOrbiting/sm_lowpoly_skull5:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.264634, 0.632839, -0.199975), Vector3(1.3987, 2.99459, -1.43425), Vector3(2.34951, -1.50903, -1.99506)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i4355"]
 _data = {
 "RESET": SubResource("Animation_goal4"),
+"on_death": SubResource("Animation_svvok"),
 "orbit_skulls": SubResource("Animation_q3awh")
 }
 
@@ -290,14 +355,14 @@ bones/11/rotation = Quaternion(-0.125841, -1.18262e-07, -1.50014e-08, 0.99205)
 bones/11/scale = Vector3(1, 1, 1)
 
 [node name="FurballBody" parent="FurballRig/Skeleton3D" index="0"]
-transform = Transform3D(1, 4.26326e-14, -2.84217e-14, -1.77636e-14, 1, 1.49012e-08, -9.9476e-14, 1.49012e-08, 1, -7.10543e-15, 3.57628e-07, 2.98023e-08)
+transform = Transform3D(1, -7.10543e-15, 0, -7.10543e-15, 1, 0, 0, 0, 1, 1.98952e-13, 0, -5.96046e-07)
 
 [node name="FurballBody" parent="FurballRig/Skeleton3D/FurballBody" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_7v6ml")
 
 [node name="SkullsOrbiting" type="Node3D" parent="." index="2"]
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="SkullsOrbiting" index="0"]
+[node name="SkullsAnimPlayer" type="AnimationPlayer" parent="SkullsOrbiting" index="0"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_i4355")

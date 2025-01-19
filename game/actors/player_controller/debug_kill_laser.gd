@@ -21,6 +21,6 @@ func _physics_process(delta):
         print("Shooting laser")
         if ray_cast_3d.is_colliding():
             var hit_obj = ray_cast_3d.get_collider()
-            if hit_obj is Enemy:
-                hit_obj.die()
+            if hit_obj is Actor3D:
+                hit_obj.health_component.die()
                 print("Killed enemy: ", hit_obj)

@@ -51,6 +51,7 @@ func set_health_to_max():
 
 func die():
     is_alive = false
+    print("Health componend die")
     died.emit()
     
 func damage(amount: float):

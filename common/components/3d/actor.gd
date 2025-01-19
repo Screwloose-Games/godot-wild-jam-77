@@ -15,6 +15,7 @@ signal max_health_updated(value: float)
 @onready var health_component: HealthComponent = %HealthComponent
 
 var last_direction := Vector3.MODEL_FRONT
+var queue_free_on_death: bool = true
 
 enum Factions {
     FACTION_ENEMY,
@@ -59,4 +60,5 @@ func face_dir_lerp(direction: Vector3, delta: float) -> void:
 
 func die():
     died.emit()
-    queue_free.call_deferred()
+    if queue_free_on_death:
+        queue_free.call_deferred()
