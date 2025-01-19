@@ -94,6 +94,11 @@ https://freesound.org/people/cyanidecup45/sounds/732076/
 https://freesound.org/people/nicotep/sounds/761356/
 https://freesound.org/people/stormpetrel/sounds/179587/
 
+Altar Hum
+https://freesound.org/people/Zeraora/sounds/702631/
+https://freesound.org/people/knova/sounds/170276/
+https://freesound.org/people/felix.blume/sounds/152706/
+
 ## Tools
 #### Godot
 Author: [Juan Linietsky, Ariel Manzur, and contributors](https://godotengine.org/contact)  
