@@ -127,7 +127,7 @@ color_ramp = SubResource("Gradient_8f484")
 noise = SubResource("FastNoiseLite_6a4tl")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aatpo"]
-render_priority = 6
+render_priority = 21
 shader = ExtResource("14_5j36r")
 shader_parameter/tint = Color(0, 1, 1, 1)
 shader_parameter/distortionVertex = 0.045
@@ -163,6 +163,7 @@ height = 20.0
 collision_mask = 15
 script = ExtResource("1_lj3x0")
 dash_distance = 2.5
+hasRangedAbility = true
 healing_rate = 0.5
 speed = 4
 
@@ -303,6 +304,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0162068, 0.633975, -0.3586
 target_position = Vector3(0, 0, -100)
 collision_mask = 65278
 
+[node name="BeamChargeBall" type="CSGSphere3D" parent="BeamAbility"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.662052, -0.153867)
+visible = false
+radius = 0.147209
+material = SubResource("ShaderMaterial_aatpo")
+
 [node name="BeamVisual" type="Node3D" parent="BeamAbility"]
 unique_name_in_owner = true
 visible = false
@@ -315,7 +323,9 @@ height = 100.0
 material = SubResource("ShaderMaterial_aatpo")
 
 [node name="BeamBall" type="CSGSphere3D" parent="BeamAbility/BeamVisual"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.662052, -0.153867)
+visible = false
 radius = 0.147209
 material = SubResource("ShaderMaterial_aatpo")
 

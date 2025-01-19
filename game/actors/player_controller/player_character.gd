@@ -103,7 +103,6 @@ var remainig_to_heal: float = 0
 func batch_heal(amount_to_heal: float):
     remainig_to_heal += amount_to_heal
     if remainig_to_heal >= 1:
-        print("batch heal")
         health_component.heal(remainig_to_heal)
         remainig_to_heal = 0.0
         

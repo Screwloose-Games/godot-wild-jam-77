@@ -16,6 +16,7 @@ var max_beam_range: float
 
 @onready var _camera: Camera3D = %Camera3D
 @onready var beam_ability: BeamAbility = %BeamAbility
+@onready var beam_charge_ball: CSGSphere3D = %BeamChargeBall
 
 var is_holding_beam_attack: bool
 
@@ -67,9 +68,14 @@ func set_beam_size(size: float):
     raycast.target_position = Vector3(0, 0, -max_beam_range)
 
 func attack():
+    print("attack")
     if is_holding_beam_attack:
         return
-    
+    beam_charge_ball.visible = true
+    #(beam_charge_ball.material as ShaderMaterial).set_shader_parameter("transparency", 1)
+    #var tween_charge = get_tree().create_tween()
+    #tween_charge.tween_method(beam_charge_ball.material.set_shader_parameter, 1.0, 0.0, beam_start_delay)
+    #(beam_charge_ball.material as ShaderMaterial).set_shader_parameter("transparency", 0)
     await get_tree().create_timer(beam_start_delay).timeout
     raycast.enabled = true
     is_holding_beam_attack = true
@@ -88,5 +94,6 @@ func stopAttack():
     raycast.enabled = false
     is_holding_beam_attack = false
     visual.visible = false
+    beam_charge_ball.visible = false
     hit_box_component_3d.deactivate()
     get_parent().get_node("player_sfx")._on_beam_end()
