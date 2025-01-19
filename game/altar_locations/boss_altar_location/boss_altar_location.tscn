@@ -7,7 +7,8 @@
 
 [node name="BossAltarLocation" type="Node3D"]
 
-[node name="Altar" parent="." instance=ExtResource("1_nk7ob")]
+[node name="Altar" parent="." node_paths=PackedStringArray("assigned_enemies") instance=ExtResource("1_nk7ob")]
+assigned_enemies = [NodePath("../Enemies/ShieldEnemy"), NodePath("../Enemies/ShieldEnemy2"), NodePath("../Enemies/ShieldEnemy3"), NodePath("../Enemies/RangedEnemy"), NodePath("../Enemies/RangedEnemy2")]
 altar_ability = 3
 
 [node name="Enemies" type="Node3D" parent="." node_paths=PackedStringArray("altar")]
