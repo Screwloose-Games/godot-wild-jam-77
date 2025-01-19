@@ -1,10 +1,65 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxbkpou8fdoqo"]
+[gd_scene load_steps=31 format=3 uid="uid://bxbkpou8fdoqo"]
 
 [ext_resource type="Script" path="res://game/actors/enemies/enemy.gd" id="1_iuqop"]
 [ext_resource type="Script" path="res://common/components/templates/HealthComponent.gd" id="2_8p006"]
 [ext_resource type="Script" path="res://common/components/3d/float_up_label.gd" id="4_0q8l1"]
 [ext_resource type="Script" path="res://game/actors/enemies/damage_label_emitter.gd" id="5_6ivhk"]
 [ext_resource type="Script" path="res://common/components/templates/HurtBoxComponent3D.gd" id="5_jp871"]
+[ext_resource type="PackedScene" uid="uid://ttuq4evedqf7" path="res://game/actors/enemies/enemy_sfx.tscn" id="6_n22xl"]
+[ext_resource type="AudioStream" uid="uid://b7ehg45c6pokp" path="res://game/actors/enemies/sfx/aud_enemy_melee_hurt_1.wav" id="7_4eoj8"]
+[ext_resource type="AudioStream" uid="uid://dvne2j8c77fx3" path="res://game/actors/enemies/sfx/aud_enemy_footstep_dirt_1.wav" id="7_rxen8"]
+[ext_resource type="AudioStream" uid="uid://bvylgrht624xv" path="res://game/actors/enemies/sfx/aud_enemy_death_1.wav" id="7_wi6or"]
+[ext_resource type="AudioStream" uid="uid://lrh6aaplbntp" path="res://game/actors/enemies/sfx/aud_enemy_death_2.wav" id="8_0ibxb"]
+[ext_resource type="AudioStream" uid="uid://c1tdfeg5be6eb" path="res://game/actors/enemies/sfx/aud_enemy_melee_hurt_2.wav" id="8_bk7c7"]
+[ext_resource type="AudioStream" uid="uid://dhf8a5ilpo0j1" path="res://game/actors/enemies/sfx/aud_enemy_footstep_dirt_2.wav" id="8_edlph"]
+[ext_resource type="AudioStream" uid="uid://b7l7lx8ph8fxa" path="res://game/actors/enemies/sfx/aud_enemy_footstep_dirt_3.wav" id="9_3gji4"]
+[ext_resource type="AudioStream" uid="uid://cgqqut8fto4ac" path="res://game/actors/enemies/sfx/aud_enemy_death_3.wav" id="9_8grqw"]
+[ext_resource type="AudioStream" uid="uid://hh1et0dc81wq" path="res://game/actors/enemies/sfx/aud_enemy_melee_hurt_3.wav" id="9_kuae0"]
+[ext_resource type="AudioStream" uid="uid://bis20w6wqgn7o" path="res://game/actors/enemies/sfx/aud_enemy_footstep_grass_1.wav" id="10_eshm1"]
+[ext_resource type="AudioStream" uid="uid://bl23nk43gpxvc" path="res://game/actors/enemies/sfx/aud_enemy_footstep_grass_2.wav" id="11_gohci"]
+[ext_resource type="AudioStream" uid="uid://clewsb7ntq3qh" path="res://game/actors/enemies/sfx/aud_enemy_footstep_grass_3.wav" id="12_l0ex5"]
+[ext_resource type="AudioStream" uid="uid://y5mwrm6vmqgs" path="res://game/actors/enemies/sfx/aud_enemy_footstep_stone_1.wav" id="13_0wnah"]
+[ext_resource type="AudioStream" uid="uid://dkj11qpuim5lt" path="res://game/actors/enemies/sfx/aud_enemy_footstep_stone_2.wav" id="14_2qx0w"]
+[ext_resource type="AudioStream" uid="uid://cnmjpu4ljeri7" path="res://game/actors/enemies/sfx/aud_enemy_footstep_stone_3.wav" id="15_rvyo2"]
+[ext_resource type="AudioStream" uid="uid://doqflnekeuvo6" path="res://game/actors/enemies/sfx/aud_enemy_footstep_water_1.wav" id="16_6ml2u"]
+[ext_resource type="AudioStream" uid="uid://tkifgw3h8ff1" path="res://game/actors/enemies/sfx/aud_enemy_footstep_water_2.wav" id="17_j7axt"]
+[ext_resource type="AudioStream" uid="uid://dua50gmftxnoy" path="res://game/actors/enemies/sfx/aud_enemy_footstep_water_3.wav" id="18_03vvs"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mbreq"]
+streams_count = 3
+stream_0/stream = ExtResource("7_4eoj8")
+stream_1/stream = ExtResource("8_bk7c7")
+stream_2/stream = ExtResource("9_kuae0")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q1e88"]
+streams_count = 3
+stream_0/stream = ExtResource("7_wi6or")
+stream_1/stream = ExtResource("8_0ibxb")
+stream_2/stream = ExtResource("9_8grqw")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ol88l"]
+streams_count = 3
+stream_0/stream = ExtResource("7_rxen8")
+stream_1/stream = ExtResource("8_edlph")
+stream_2/stream = ExtResource("9_3gji4")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cjm2x"]
+streams_count = 3
+stream_0/stream = ExtResource("10_eshm1")
+stream_1/stream = ExtResource("11_gohci")
+stream_2/stream = ExtResource("12_l0ex5")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hmt1v"]
+streams_count = 3
+stream_0/stream = ExtResource("13_0wnah")
+stream_1/stream = ExtResource("14_2qx0w")
+stream_2/stream = ExtResource("15_rvyo2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3ky8x"]
+streams_count = 3
+stream_0/stream = ExtResource("16_6ml2u")
+stream_1/stream = ExtResource("17_j7axt")
+stream_2/stream = ExtResource("18_03vvs")
 
 [node name="Enemy" type="CharacterBody3D"]
 disable_mode = 1
@@ -33,6 +88,15 @@ script = ExtResource("5_6ivhk")
 collision_layer = 512
 collision_mask = 0
 script = ExtResource("5_jp871")
+
+[node name="enemy_sfx" parent="." instance=ExtResource("6_n22xl")]
+unique_name_in_owner = true
+hurts = SubResource("AudioStreamRandomizer_mbreq")
+death = SubResource("AudioStreamRandomizer_q1e88")
+dirt_footsteps = SubResource("AudioStreamRandomizer_ol88l")
+grass_footsteps = SubResource("AudioStreamRandomizer_cjm2x")
+stone_footsteps = SubResource("AudioStreamRandomizer_hmt1v")
+water_footsteps = SubResource("AudioStreamRandomizer_3ky8x")
 
 [connection signal="damaged" from="HealthComponent" to="." method="_on_health_component_damaged"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

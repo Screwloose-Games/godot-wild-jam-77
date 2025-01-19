@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://ttuq4evedqf7"]
+
+[ext_resource type="Script" path="res://game/actors/enemies/enemy_sfx.gd" id="1_hwpd6"]
+
+[node name="enemy_sfx" type="Node3D"]
+script = ExtResource("1_hwpd6")
+
+[node name="footstep_player" type="AudioStreamPlayer3D" parent="."]
+volume_db = -16.0
+max_db = 0.0
+bus = &"SFX"
+
+[node name="vocal_player" type="AudioStreamPlayer3D" parent="."]
+volume_db = -8.0
+max_db = 0.0
+bus = &"SFX"
+
+[node name="ability_player" type="AudioStreamPlayer3D" parent="."]
+volume_db = -14.0
+max_db = 0.0
+bus = &"SFX"

@@ -26,6 +26,7 @@ signal deactivated
 @onready var damage_label: FloatUpLabel3D = %DamageLabel
 @onready var damage_label_emitter: Node3D = %DamageLabelEmitter
 var dont_do_phys_process: bool = false
+@onready var enemy_sfx: EnemySfxPlayer3D = %enemy_sfx
 
 
 func _ready():
@@ -85,8 +86,17 @@ func _on_hurt_box_component_3d_hurt(hit_box: Variant, amount: Variant) -> void:
     health_component.damage(amount)
 
 func _on_health_component_died() -> void:
+    enemy_sfx.die()
+    
     die()
 
 func _on_health_component_damaged(amount: Variant) -> void:
+    enemy_sfx.hurt()
     damage_label_emitter.display(amount)
     
+func die():
+    died.emit()
+    process_mode = PROCESS_MODE_DISABLED
+    var time = enemy_sfx.vocal_player.stream.get_length()
+    await get_tree().create_timer(time).timeout
+    queue_free.call_deferred()
