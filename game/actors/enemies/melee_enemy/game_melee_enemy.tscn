@@ -5567,39 +5567,20 @@ skeleton = NodePath("../..")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Visual/sk_melee_enemy/MeleeEnemyRig" index="0"]
-bones/0/position = Vector3(2.58299e-09, 1.06587, -0.0913907)
-bones/0/rotation = Quaternion(0.125841, 0, 0, 0.99205)
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(-0.0647026, 2.37919e-07, -1.54263e-08, 0.997905)
-bones/2/rotation = Quaternion(-0.0772799, -1.18853e-07, -2.76374e-08, 0.997009)
-bones/3/rotation = Quaternion(0.238896, 1.15758e-07, 8.54358e-08, 0.971045)
 bones/4/rotation = Quaternion(-0.116958, -7.13187e-14, -5.57699e-08, 0.993137)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/rotation = Quaternion(0.283443, -1.1432e-07, 1.01367e-07, 0.958989)
-bones/6/rotation = Quaternion(0.346923, 1.11806e-07, 1.2407e-07, 0.937893)
 bones/7/rotation = Quaternion(-0.684061, -5.6757e-13, -3.26186e-07, 0.729425)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/rotation = Quaternion(0.00357137, -2.38417e-07, 8.51471e-10, 0.999994)
-bones/9/rotation = Quaternion(0.735619, 0.4204, 0.263833, -0.461)
-bones/10/rotation = Quaternion(0.185862, 0.682011, -0.185603, 0.682545)
-bones/11/rotation = Quaternion(-0.00581394, 0.0162544, -0.00237748, 0.999848)
-bones/12/rotation = Quaternion(-0.00117775, 0.0240741, 0.127613, 0.991531)
 bones/12/scale = Vector3(1, 1, 1)
-bones/13/rotation = Quaternion(0.144767, 0.664381, -0.133397, 0.721003)
 bones/14/rotation = Quaternion(0.436156, 0.899749, 0.00423516, 0.0141928)
 bones/14/scale = Vector3(1, 1, 1)
-bones/15/rotation = Quaternion(0.00571172, -0.00186957, -0.197344, 0.980316)
-bones/16/rotation = Quaternion(0.735619, -0.4204, -0.263832, -0.461001)
-bones/17/rotation = Quaternion(0.185862, -0.682011, 0.185603, 0.682545)
 bones/17/scale = Vector3(1, 1, 1)
-bones/18/rotation = Quaternion(-0.00581393, -0.0162544, 0.00237747, 0.999848)
 bones/18/scale = Vector3(1, 1, 1)
-bones/19/rotation = Quaternion(-0.00117776, -0.0240741, -0.127613, 0.991531)
 bones/19/scale = Vector3(1, 1, 1)
-bones/20/rotation = Quaternion(0.144767, -0.664381, 0.133397, 0.721003)
-bones/21/rotation = Quaternion(-0.436156, 0.899749, 0.00423517, -0.0141929)
 bones/21/scale = Vector3(1, 1, 1)
-bones/22/rotation = Quaternion(0.00571172, 0.00186948, 0.197344, 0.980316)
 bones/22/scale = Vector3(1, 1, 1)
 bones/23/rotation = Quaternion(0.0159288, -1.19194e-07, 1.89886e-09, 0.999873)
 bones/23/scale = Vector3(1, 1, 1)
@@ -5616,19 +5597,18 @@ bones/31/rotation = Quaternion(0.101076, 0.00432512, -0.0677586, 0.992559)
 bones/31/scale = Vector3(1, 1, 1)
 bones/32/rotation = Quaternion(-0.623808, -6.50159e-07, 6.71197e-07, 0.781577)
 bones/33/rotation = Quaternion(1.66105e-07, 0.993899, -0.110295, -3.39253e-06)
-bones/34/rotation = Quaternion(-0.697682, 0.697682, -0.115064, -0.115066)
 
 [node name="Cube_017" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D" index="0"]
-transform = Transform3D(1, 3.33067e-13, 2.27374e-13, 5.37348e-14, 1, -5.12227e-08, -4.54747e-13, 1.78348e-07, 1, -6.73461e-13, 2.38419e-07, -2.38419e-07)
+transform = Transform3D(1, -1.54543e-13, -3.97904e-13, 5.75984e-13, 1, -2.67755e-07, 1.13687e-13, 4.76837e-07, 1, 8.59091e-13, 1.66893e-06, -5.36442e-07)
 
 [node name="Cube_013" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D" index="1"]
-transform = Transform3D(1, 7.10543e-15, 2.84217e-13, -1.68754e-14, 1, -8.9407e-08, -3.2685e-13, 8.9407e-08, 1, 1.55431e-15, 1.19209e-07, 6.14673e-08)
+transform = Transform3D(1, -3.73035e-14, -4.54747e-13, 2.93099e-14, 1, -3.83705e-07, 4.68958e-13, 3.83705e-07, 1, 6.30607e-14, 1.3113e-06, -2.45869e-07)
 
 [node name="Cube_018" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D" index="2"]
-transform = Transform3D(1.03054, -3.55271e-14, -8.81073e-13, -1.03917e-13, 1.01942, -0.15101, 8.2423e-13, 0.15101, 1.01942, 1.9984e-15, 1.64392, -0.255609)
+transform = Transform3D(1.03054, -1.91847e-13, -1.62004e-12, -5.59552e-14, 1.01942, -0.15101, 1.67688e-12, 0.15101, 1.01942, 1.7808e-13, 1.64392, -0.255608)
 
 [node name="RightHandAttachment" type="BoneAttachment3D" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D" index="6"]
-transform = Transform3D(0.247616, -0.968647, -0.0202762, 0.965415, 0.248445, -0.0790535, 0.0816126, 1.22935e-07, 0.996664, -1.98836, 1.96035, -0.00825061)
+transform = Transform3D(0.247617, -0.968646, -0.0202755, 0.965415, 0.248446, -0.0790542, 0.081613, 1.07172e-06, 0.996664, -1.98836, 1.96036, -0.00824895)
 bone_name = "hand.R"
 bone_idx = 19
 
@@ -5649,7 +5629,7 @@ active = false
 shape = SubResource("BoxShape3D_f8enx")
 
 [node name="LeftHandAttachment" type="BoneAttachment3D" parent="Visual/sk_melee_enemy/MeleeEnemyRig/Skeleton3D" index="7"]
-transform = Transform3D(0.247616, 0.968647, 0.0202763, -0.965415, 0.248445, -0.0790538, -0.0816129, -6.56582e-08, 0.996664, 1.98836, 1.96035, -0.00825113)
+transform = Transform3D(0.247616, 0.968647, 0.0202749, -0.965415, 0.248444, -0.0790536, -0.0816122, 1.41165e-06, 0.996664, 1.98836, 1.96035, -0.00824791)
 bone_name = "hand.L"
 bone_idx = 12
 

@@ -448,7 +448,7 @@ camera_3d_resource = SubResource("Resource_5bvn8")
 
 [node name="EnemiesCamera" type="Node3D" parent="." index="3" node_paths=PackedStringArray("follow_target")]
 unique_name_in_owner = true
-transform = Transform3D(0.136102, -0.214665, -0.967156, -0.00103841, 0.97621, -0.21682, 0.990689, 0.0305142, 0.132642, -0.767436, 0.771987, -7.21978)
+transform = Transform3D(0.136102, -0.214665, -0.967156, -0.00103841, 0.97621, -0.21682, 0.990689, 0.0305142, 0.132642, -0.767435, 0.771987, -7.21978)
 top_level = true
 script = ExtResource("4_igwf6")
 follow_mode = 5
@@ -473,31 +473,6 @@ transform = Transform3D(1, 0, 0, 0, 0.866023, 0.499997, 0, -0.499999, 0.866021, 
 [node name="MeleeAbility" parent="PlayerCharacter" index="11"]
 attack_cooldown = 1.0
 
-[node name="Skeleton3D" parent="PlayerCharacter/Visual/Model/Armature" index="0"]
-bones/0/position = Vector3(17.1281, -0.540193, -222.797)
-bones/0/rotation = Quaternion(-0.492408, -0.532332, 0.515074, 0.457007)
-bones/1/rotation = Quaternion(0.0116766, 0.00419729, -0.06651, 0.997709)
-bones/2/rotation = Quaternion(0.0259674, 0.0099963, -0.0210738, 0.999391)
-bones/3/rotation = Quaternion(0.0259674, 0.0099963, -0.0210738, 0.999391)
-bones/4/rotation = Quaternion(0.00641298, 0.000762714, 0.146902, 0.98913)
-bones/5/rotation = Quaternion(-0.0478742, 0.00964589, -0.0355457, 0.998174)
-bones/7/rotation = Quaternion(-0.0709181, -0.528402, 0.844909, -0.043482)
-bones/8/rotation = Quaternion(0.422166, 0.149021, 0.160247, 0.87971)
-bones/9/rotation = Quaternion(-0.00512579, -0.00392515, 0.0741482, 0.997226)
-bones/11/rotation = Quaternion(0.838045, 0.0215848, -0.0410358, 0.543627)
-bones/12/rotation = Quaternion(0.415421, -0.231019, -0.132611, 0.869753)
-bones/13/rotation = Quaternion(-0.00733585, 0.00518778, -0.107316, 0.994184)
-bones/15/rotation = Quaternion(0.0223547, -0.0634337, 0.988741, -0.13367)
-bones/16/rotation = Quaternion(-0.00628467, -0.000643196, -0.182297, 0.983223)
-bones/17/rotation = Quaternion(0.222639, -0.716244, 0.210156, 0.627105)
-bones/18/rotation = Quaternion(0.840396, -0.040991, 0.0554881, 0.537564)
-bones/20/rotation = Quaternion(-0.0587873, -0.0580592, 0.996553, 0.00747049)
-bones/21/rotation = Quaternion(0.00925902, 5.90185e-05, -0.068452, 0.997612)
-bones/22/rotation = Quaternion(-0.0320977, 0.0846323, 0.191751, 0.977261)
-
-[node name="BoneAttachment3D" parent="PlayerCharacter/Visual/Model/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.633631, 0.152637, -0.758428, -0.77363, 0.128443, -0.620482, 0.00270682, 0.9799, 0.19947, 101.062, 27.2865, -175.409)
-
 [node name="Level01Environment" parent="." index="5" instance=ExtResource("4_e757c")]
 
 [node name="Level01Lighting" parent="." index="6" instance=ExtResource("5_m27if")]
@@ -510,9 +485,6 @@ assigned_enemies = [NodePath("../Enemies/MeleeEnemy"), NodePath("../Enemies/Mele
 
 [node name="MeleeEnemy2" parent="MeleeAltarLocation/Enemies" index="1"]
 transform = Transform3D(0.976878, 0, -0.213798, 0, 1, 0, 0.213798, 0, 0.976878, -3.72125, 1.66893e-06, 5.92253)
-
-[node name="MeleeEnemy3" parent="MeleeAltarLocation/Enemies" index="2"]
-delay_after_spawning_secs = 30.0
 
 [node name="MeleeEnemy4" parent="MeleeAltarLocation/Enemies" index="3"]
 delay_after_spawning_secs = 40.0
@@ -730,7 +702,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.3038, 1.4531, -1.27138)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.9178, 2.34682, -1.91221)
 
 [node name="BossAltarLocation" parent="." index="18" instance=ExtResource("22_4nwcf")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -104.17, 1.09582, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -103.605, 1.09582, 0)
 
 [node name="ShieldEnemy" parent="BossAltarLocation/Enemies" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08827, 0.657177, 0)

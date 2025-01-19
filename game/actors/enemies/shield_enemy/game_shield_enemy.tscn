@@ -1867,7 +1867,7 @@ _data = {
 size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5rvqd"]
-radius = 20.0
+radius = 57.6429
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_riddk"]
 radius = 0.45
@@ -1942,7 +1942,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.653551, -0.741859)
 collision_mask = 257
 script = ExtResource("3_8ipek")
 sender = NodePath("..")
-amount = 20.0
+amount = 10.0
 active = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxComponent3D" index="0"]

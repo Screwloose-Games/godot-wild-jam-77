@@ -17,15 +17,16 @@ altar = NodePath("../Altar")
 
 [node name="MeleeEnemy" parent="Enemies" instance=ExtResource("2_t0d8b")]
 transform = Transform3D(0.0427653, 0, -0.999086, 0, 1, 0, 0.999086, 0, 0.0427653, -6.72085, 0, 0.206273)
+delay_after_spawning_secs = 1.0
 
 [node name="MeleeEnemy2" parent="Enemies" instance=ExtResource("2_t0d8b")]
 transform = Transform3D(0.976878, 0, -0.213798, 0, 1, 0, 0.213798, 0, 0.976878, -4.3711, 1.90735e-06, 6.82313)
-delay_after_spawning_secs = 20.0
+delay_after_spawning_secs = 15.0
 
 [node name="MeleeEnemy3" parent="Enemies" instance=ExtResource("2_t0d8b")]
 transform = Transform3D(-0.666975, 0, 0.74508, 0, 1, 0, -0.74508, 0, -0.666975, 3.97024, 0, -5.36506)
-delay_after_spawning_secs = 40.0
+delay_after_spawning_secs = 30.0
 
 [node name="MeleeEnemy4" parent="Enemies" instance=ExtResource("2_t0d8b")]
 transform = Transform3D(0.644898, 0, 0.764269, 0, 1, 0, -0.764269, 0, 0.644898, 6.39273, 0, 4.57691)
-delay_after_spawning_secs = 60.0
+delay_after_spawning_secs = 45.0
