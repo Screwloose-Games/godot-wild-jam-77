@@ -1,9 +1,11 @@
 shader_type spatial;
+render_mode unshaded;
 
 uniform vec3 base_col;
 uniform vec3 noise_col;
 uniform float noise_strength;
 uniform float noise_freq;
+uniform float alpha_strength;
 
 uniform vec2 velocity;
 uniform sampler2D noise_sampler;
@@ -23,9 +25,5 @@ void fragment()
     noise_sec = noise_sec - (sin(TIME * noise_freq) * noise_strength);
     col = mix(noise_col, col, noise * noise_sec);
     ALBEDO = col;
-}
-
-void light() {
-	// Called for every pixel for every light affecting the material.
-	// Uncomment to replace the default light processing function with this one.
+    ALPHA = (1.0 - (distance(vec2(0.5), UV)) * 3.0);
 }
