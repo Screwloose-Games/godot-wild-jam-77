@@ -10,4 +10,3 @@ func die():
     bt_player.active = false
     animation_player.play("MeleeEnemyDeath")
     super.die()
-    

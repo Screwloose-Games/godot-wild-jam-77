@@ -1,16 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://dshedf38cdfte"]
+[gd_scene load_steps=10 format=3 uid="uid://dshedf38cdfte"]
 
 [ext_resource type="PackedScene" uid="uid://dk8clwmr6nk1c" path="res://game/gateway/sk_treegate_1.glb" id="1_4bwo3"]
 [ext_resource type="Texture2D" uid="uid://cx6yiaqtgus5i" path="res://game/gateway/textures/tex_tree_2.png" id="2_mijyf"]
 [ext_resource type="Script" path="res://game/gateway/tree_gate.gd" id="2_n1rvt"]
 [ext_resource type="AudioStream" uid="uid://c2yaisptxe8g3" path="res://game/gateway/sfx/aud_gate_open.wav" id="4_hhnjx"]
 [ext_resource type="Script" path="res://game/gateway/sfx/gate_sfx.gd" id="5_i3h3t"]
+[ext_resource type="Shader" path="res://game/gateway/gate_portal.gdshader" id="6_7aojv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dof1h"]
 albedo_texture = ExtResource("2_mijyf")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_34sye"]
 size = Vector3(1, 5.79895, 10.0978)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3jyc"]
+render_priority = 0
+shader = ExtResource("6_7aojv")
 
 [node name="sk_treegate_1" instance=ExtResource("1_4bwo3")]
 script = ExtResource("2_n1rvt")
@@ -46,3 +51,8 @@ shape = SubResource("BoxShape3D_34sye")
 stream = ExtResource("4_hhnjx")
 bus = &"SFX"
 script = ExtResource("5_i3h3t")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64838, 4.85524)
+size = Vector3(1, 4.29675, 8.7225)
+material = SubResource("ShaderMaterial_n3jyc")
