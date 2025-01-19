@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d3qdk5gsm0n7"]
+[gd_scene load_steps=42 format=3 uid="uid://d3qdk5gsm0n7"]
 
 [ext_resource type="Script" path="res://game/actors/player_controller/sfx/player_sfx.gd" id="1_d04mv"]
 [ext_resource type="AudioStream" uid="uid://cek7swpvctmp5" path="res://game/actors/player_controller/sfx/aud_player_footsteps_dirt_1.wav" id="2_2r5g8"]
@@ -10,15 +10,20 @@
 [ext_resource type="AudioStream" uid="uid://cd5fl441dfe3l" path="res://game/actors/player_controller/sfx/aud_player_attack_4.wav" id="5_8xd0e"]
 [ext_resource type="AudioStream" uid="uid://edl23xij2cmf" path="res://game/actors/player_controller/sfx/aud_player_footsteps_grass_1.wav" id="5_h6wox"]
 [ext_resource type="AudioStream" uid="uid://drltknorqb8ba" path="res://game/actors/player_controller/sfx/aud_player_dodge_1.wav" id="6_3treh"]
+[ext_resource type="AudioStream" uid="uid://dbkssweguo1k5" path="res://game/actors/player_controller/sfx/aud_player_beam_activation.wav" id="6_8jmow"]
 [ext_resource type="AudioStream" uid="uid://bjox6ruqogrjj" path="res://game/actors/player_controller/sfx/aud_player_footsteps_grass_2.wav" id="6_k4a5f"]
 [ext_resource type="AudioStream" uid="uid://cq8gggjte2ao0" path="res://game/actors/player_controller/sfx/aud_player_dodge_2.wav" id="7_2iajw"]
+[ext_resource type="AudioStream" uid="uid://n4rdnqcxhivc" path="res://game/actors/player_controller/sfx/aud_player_beam_active_loop.wav" id="7_jyf17"]
 [ext_resource type="AudioStream" uid="uid://dlmik6v7pe81t" path="res://game/actors/player_controller/sfx/aud_player_footsteps_grass_3.wav" id="7_pvgmp"]
+[ext_resource type="AudioStream" uid="uid://dnlx7m73by45v" path="res://game/actors/player_controller/sfx/aud_player_beam_hit_1.wav" id="8_8fja1"]
 [ext_resource type="AudioStream" uid="uid://dc0xrgq73gs4u" path="res://game/actors/player_controller/sfx/aud_player_dodge_3.wav" id="8_mqmke"]
 [ext_resource type="AudioStream" uid="uid://cpqwgilo5bcx2" path="res://game/actors/player_controller/sfx/aud_player_footsteps_stone_1.wav" id="8_x6xok"]
 [ext_resource type="AudioStream" uid="uid://vxptf0cbvixl" path="res://game/actors/player_controller/sfx/aud_player_jump_1.wav" id="9_jpax1"]
+[ext_resource type="AudioStream" uid="uid://cfw8rnuq44itq" path="res://game/actors/player_controller/sfx/aud_player_beam_hit_2.wav" id="9_k5pyj"]
 [ext_resource type="AudioStream" uid="uid://ci43u885qcmoe" path="res://game/actors/player_controller/sfx/aud_player_footsteps_stone_2.wav" id="9_nt7nq"]
 [ext_resource type="AudioStream" uid="uid://c3ul72dm58fm5" path="res://game/actors/player_controller/sfx/aud_player_footsteps_stone_3.wav" id="10_2mtcl"]
 [ext_resource type="AudioStream" uid="uid://bvauoxlwl34l8" path="res://game/actors/player_controller/sfx/aud_player_jump_2.wav" id="10_83xjb"]
+[ext_resource type="AudioStream" uid="uid://dtcjj1d54jvrn" path="res://game/actors/player_controller/sfx/aud_player_beam_hit_3.wav" id="10_p0ikw"]
 [ext_resource type="AudioStream" uid="uid://dd2temx8a2s36" path="res://game/actors/player_controller/sfx/aud_player_footsteps_water_1.wav" id="11_873oy"]
 [ext_resource type="AudioStream" uid="uid://bhw5vxky4n1q3" path="res://game/actors/player_controller/sfx/aud_player_jump_3.wav" id="11_qxm3v"]
 [ext_resource type="AudioStream" uid="uid://ce6d0gh01np2n" path="res://game/actors/player_controller/sfx/aud_player_footsteps_water_2.wav" id="12_1b8v2"]
@@ -35,6 +40,12 @@ stream_0/stream = ExtResource("2_wsqr8")
 stream_1/stream = ExtResource("3_suw5f")
 stream_2/stream = ExtResource("4_h8vb2")
 stream_3/stream = ExtResource("5_8xd0e")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yfbtx"]
+streams_count = 3
+stream_0/stream = ExtResource("8_8fja1")
+stream_1/stream = ExtResource("9_k5pyj")
+stream_2/stream = ExtResource("10_p0ikw")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mjdtq"]
 random_pitch = 1.25
@@ -93,6 +104,9 @@ stream_2/stream = ExtResource("13_bouc2")
 [node name="player_sfx" type="Node3D"]
 script = ExtResource("1_d04mv")
 attacks = SubResource("AudioStreamRandomizer_1tsja")
+beam_start = ExtResource("6_8jmow")
+beam_loop = ExtResource("7_jyf17")
+beam_hit = SubResource("AudioStreamRandomizer_yfbtx")
 dodges = SubResource("AudioStreamRandomizer_mjdtq")
 jumps = SubResource("AudioStreamRandomizer_mlpxf")
 double_jumps = SubResource("AudioStreamRandomizer_tvpfk")
@@ -113,6 +127,14 @@ max_db = 0.0
 bus = &"SFX"
 
 [node name="ability_player" type="AudioStreamPlayer3D" parent="."]
-volume_db = -14.0
+volume_db = -12.0
 max_db = 0.0
 bus = &"SFX"
+
+[node name="beam_player" type="AudioStreamPlayer3D" parent="."]
+volume_db = -18.0
+max_db = 0.0
+bus = &"SFX"
+
+[node name="beam_hit_player" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0

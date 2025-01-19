@@ -46,6 +46,7 @@ func attack():
     if not can_attack:
         return
     can_attack = false
+    get_parent().get_node("enemy_sfx").on_swing()
     _start_attack()
     #_handle_attack_animation()
     await get_tree().create_timer(0.1).timeout
@@ -60,7 +61,6 @@ func _start_attack():
     # Its probably controlled by limboAI
     right_hand_hitbox.activate()
     left_hand_hitbox.activate()
-    
     start_cooldown()
     
     

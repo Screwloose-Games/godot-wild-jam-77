@@ -2,6 +2,7 @@ extends Node
 
 # Signals for general game events
 signal title_screen_started
+signal credits_screen_started
 signal level_started(level_num: int)
 
 # Signals for player-related events
@@ -29,7 +30,7 @@ signal power_granted(ability: Altar.AbilityType)
 # Signals for altar-specific events
 signal altar_activated
 signal altar_failed
-signal altar_succeeded(wave_number: int, final_wave: bool)
+signal altar_succeeded()
 
 # Signals for menu-related events
 signal main_menu_started
@@ -38,3 +39,5 @@ signal start_level_requested(level_num: int)
 # Signals for game state events
 signal game_paused
 signal game_unpaused
+
+signal win_game_requirements_met

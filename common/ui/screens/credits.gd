@@ -22,6 +22,7 @@ func _ready():
 func _input(event: InputEvent) -> void:
     if (event is InputEventKey and event.pressed) or (event is InputEventMouseButton and event.pressed):
         SceneTransitionManager.change_scene_with_transition(SceneManager.MAIN_MENU, SceneManager.FADE_TRANSITION)
+        GlobalSignalBus.title_screen_started.emit()
 
 func load_file(file_path) -> String:
   var file_string = FileAccess.get_file_as_string(file_path)

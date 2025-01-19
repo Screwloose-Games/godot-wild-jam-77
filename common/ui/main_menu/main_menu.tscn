@@ -62,6 +62,7 @@ func _on_credits_pressed():
         SceneManager.CREDITS,
         transition_path
     )
+    GlobalSignalBus.credits_screen_started.emit()
 
 func _on_exit_pressed():
     get_tree().quit()
@@ -70,8 +71,11 @@ func _on_settings_pressed():
     #return
     current_menu = Menu.SETTINGS_MENU
 
-func _on_return_main_menu_button_pressed():
+func _on_return_main_menu_button_pressed():      
     current_menu = Menu.MAIN_MENU
+
+func _return_from_credits():
+    pass
 "
 
 [sub_resource type="Image" id="Image_kwvdp"]

@@ -126,6 +126,7 @@ func _on_interactable_area_3d_interacted(player: PlayerController) -> void:
 func purify_altar():
     purified.emit()
     GlobalSignalBus.altar_succeeded.emit()
+    altar_sfx.stop_hum()
     CheckpointMgr.altar_completed(altar_power)
 
 

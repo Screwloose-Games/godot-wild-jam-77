@@ -31,9 +31,9 @@ var scan_target_timer: Timer = Timer.new()
 func _ready():
     mob.dont_do_phys_process = true
     mob.activated.connect(on_activated)
-    mob.is_active = true
+    #mob.is_active = true
     mob.queue_free_on_death = false
-    mob.activate()
+    #mob.activate()
     #on_activated()
     
     add_child(charge_timer)
@@ -43,7 +43,7 @@ func _ready():
     charge_timer.start()
     
     add_child(scan_target_timer)
-    scan_target_timer.wait_time = 2
+    scan_target_timer.wait_time = .25
     scan_target_timer.one_shot = true
     scan_target_timer.start()
     
@@ -120,10 +120,10 @@ func on_charge_timeout():
 
 
 func on_activated():
-    #print("Shield enemy activated")
+    print("Shield enemy activated")
     # Start by charging
     detect_targets()
-    await get_tree().create_timer(1).timeout
+    #await get_tree().create_timer(1).timeout
     on_charge_time()
     charge_timer.start()
 

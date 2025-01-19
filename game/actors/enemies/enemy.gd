@@ -37,8 +37,7 @@ func _ready():
         _deactivate()
 
 func _physics_process(delta: float) -> void:
-    if dont_do_phys_process:
-        return
+
     
     if not is_on_floor():
         velocity += get_gravity()

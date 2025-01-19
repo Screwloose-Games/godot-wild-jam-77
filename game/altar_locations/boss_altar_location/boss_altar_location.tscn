@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxccqnubw4n3a"]
+
+[ext_resource type="PackedScene" uid="uid://cbkvroagayyyc" path="res://game/altar/game_altar.tscn" id="1_nk7ob"]
+[ext_resource type="Script" path="res://game/altar_locations/melee_altar_location/altar_enemy_group.gd" id="2_5hswe"]
+[ext_resource type="PackedScene" uid="uid://hks8m0oh1pdw" path="res://game/actors/enemies/shield_enemy/game_shield_enemy.tscn" id="3_17voj"]
+[ext_resource type="PackedScene" uid="uid://bygv60003uc5w" path="res://game/actors/enemies/ranged_enemy/game_ranged_enemy.tscn" id="4_j33ht"]
+[ext_resource type="PackedScene" uid="uid://crco2b1srkhyo" path="res://game/actors/enemies/melee_enemy/game_melee_enemy.tscn" id="5_26485"]
+[ext_resource type="Script" path="res://game/altar_locations/boss_altar_location/you_win.gd" id="6_3vlb8"]
+
+[node name="BossAltarLocation" type="Node3D"]
+
+[node name="Altar" parent="." node_paths=PackedStringArray("assigned_enemies") instance=ExtResource("1_nk7ob")]
+unique_name_in_owner = true
+assigned_enemies = [NodePath("../Enemies/ShieldEnemy"), NodePath("../Enemies/ShieldEnemy2"), NodePath("../Enemies/ShieldEnemy3"), NodePath("../Enemies/RangedEnemy"), NodePath("../Enemies/RangedEnemy2")]
+altar_ability = 3
+
+[node name="Enemies" type="Node3D" parent="." node_paths=PackedStringArray("altar")]
+script = ExtResource("2_5hswe")
+altar = NodePath("../Altar")
+
+[node name="ShieldEnemy" parent="Enemies" instance=ExtResource("3_17voj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77834, 0, 0)
+damage_amount = 15
+
+[node name="ShieldEnemy2" parent="Enemies" instance=ExtResource("3_17voj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.16755, 0, 0)
+delay_after_spawning_secs = 5.0
+
+[node name="ShieldEnemy3" parent="Enemies" instance=ExtResource("3_17voj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.277806, 0, -9.5323)
+delay_after_spawning_secs = 20.0
+
+[node name="RangedEnemy" parent="Enemies" instance=ExtResource("4_j33ht")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7674, 0.139488, 1.18854)
+is_active = false
+
+[node name="RangedEnemy2" parent="Enemies" instance=ExtResource("4_j33ht")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.28014, 0.0634074, 1.18854)
+delay_after_spawning_secs = 15.0
+is_active = false
+
+[node name="MeleeEnemy" parent="Enemies" instance=ExtResource("5_26485")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.68823, 0, 4.95018)
+delay_after_spawning_secs = 15.0
+
+[node name="MeleeEnemy2" parent="Enemies" instance=ExtResource("5_26485")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9892, 0, -5.48249)
+delay_after_spawning_secs = 25.0
+
+[node name="YouWin" type="Node" parent="."]
+script = ExtResource("6_3vlb8")

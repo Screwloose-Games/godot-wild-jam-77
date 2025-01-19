@@ -1,19 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://dht5lwkmw57nu"]
+[gd_scene load_steps=11 format=3 uid="uid://dht5lwkmw57nu"]
 
 [ext_resource type="Script" path="res://globals/music/music_controller.gd" id="1_ui40s"]
 [ext_resource type="AudioStream" uid="uid://c4c8h2dmqvvc7" path="res://common/audio/music/aud_title_screen_music-loop.ogg" id="2_2pd8k"]
 [ext_resource type="AudioStream" uid="uid://hdl7oruhom64" path="res://common/audio/music/aud_walking_around_music_no_kick-loop.ogg" id="3_6iwke"]
+[ext_resource type="AudioStream" uid="uid://hasnfy2hqfds" path="res://common/audio/music/aud_end_credits-loop.ogg" id="3_ql6d2"]
 [ext_resource type="AudioStream" uid="uid://gnf3ncw6yayv" path="res://common/audio/music/aud_pause_menu_final-loop.ogg" id="4_edlqh"]
 [ext_resource type="AudioStream" uid="uid://dhgiodd20s7ik" path="res://common/audio/music/aud_battle_music-loop.ogg" id="5_6v4pq"]
 [ext_resource type="AudioStream" uid="uid://bbct3lspx7e61" path="res://common/audio/music/aud_altar_corruption_removal_1.ogg" id="6_81s4s"]
 [ext_resource type="AudioStream" uid="uid://4mrqow7pdo5p" path="res://common/audio/music/aud_altar_corruption_removal_2.ogg" id="7_uv6kx"]
 [ext_resource type="AudioStream" uid="uid://xfwye8bv4srk" path="res://common/audio/music/aud_altar_corruption_removal_3.ogg" id="8_dffua"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dn7nl"]
+streams_count = 3
+stream_0/stream = ExtResource("6_81s4s")
+stream_1/stream = ExtResource("7_uv6kx")
+stream_2/stream = ExtResource("8_dffua")
+
 [node name="music_controller" type="Node"]
 script = ExtResource("1_ui40s")
 title_music = ExtResource("2_2pd8k")
+credits_music = ExtResource("3_ql6d2")
 level_music = ExtResource("3_6iwke")
 pause_music = ExtResource("4_edlqh")
 battle_music = ExtResource("5_6v4pq")
-altar_success_music = Array[AudioStream]([ExtResource("6_81s4s"), ExtResource("7_uv6kx"), ExtResource("8_dffua")])
-max_time_before_corruption_transition = 4.0
+altar_success_music = SubResource("AudioStreamRandomizer_dn7nl")
+max_time_before_corruption_transition = 2.5

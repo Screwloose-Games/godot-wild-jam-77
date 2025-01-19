@@ -75,11 +75,13 @@ func attack():
     is_holding_beam_attack = true
     visual.visible = true
     hit_box_component_3d.activate()
+    get_parent().get_node("player_sfx")._on_beam_start()
 
 func _tick_hit():
     print('tick hit"')
     hit_box_component_3d.activate()
     beam_cooldown_remaining = tick_delay
+    get_parent().get_node("player_sfx")._on_beam_hit()
 
 func stopAttack():
     await get_tree().create_timer(beam_stop_delay).timeout
@@ -87,3 +89,4 @@ func stopAttack():
     is_holding_beam_attack = false
     visual.visible = false
     hit_box_component_3d.deactivate()
+    get_parent().get_node("player_sfx")._on_beam_end()
