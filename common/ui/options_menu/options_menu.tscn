@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvuixmv4n68a6"]
+[gd_scene load_steps=9 format=3 uid="uid://bvuixmv4n68a6"]
 
 [ext_resource type="Script" path="res://common/ui/options_menu/options_menu.gd" id="1_8l6bt"]
 [ext_resource type="Texture2D" uid="uid://d1saoawy2e1te" path="res://common/images/square.png" id="2_cpl0d"]
@@ -6,6 +6,12 @@
 [ext_resource type="AudioStream" uid="uid://paarswvb3wbx" path="res://common/audio/sfx/ui/aud_ui_navigate.wav" id="4_n82tp"]
 [ext_resource type="AudioStream" uid="uid://dglvkkhro2oqb" path="res://common/audio/sfx/ui/aud_ui_open.wav" id="5_tj23r"]
 [ext_resource type="AudioStream" uid="uid://6wopc146wm1w" path="res://common/audio/sfx/ui/aud_ui_close.wav" id="6_fx1av"]
+[ext_resource type="FontFile" uid="uid://3shpabhvljto" path="res://common/ui/fonts/bridgnorth/Bridgnorth-Bold.ttf" id="7_rxiuc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jqfgi"]
+line_spacing = 0.0
+font = ExtResource("7_rxiuc")
+font_size = 38
 
 [node name="MarginContainer" type="MarginContainer"]
 anchors_preset = 15
@@ -35,10 +41,10 @@ size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 36
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 custom_minimum_size = Vector2(200, 0)
@@ -49,10 +55,13 @@ theme_override_constants/separation = 24
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "Options"
+label_settings = SubResource("LabelSettings_jqfgi")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 20
 
 [node name="MasterOptionsContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -60,6 +69,8 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MasterOptionsContainer"]
 layout_mode = 2
 text = "Master"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MasterSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MasterOptionsContainer"]
 unique_name_in_owner = true
@@ -73,6 +84,8 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SFXOptionsContainer"]
 layout_mode = 2
 text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SFXSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SFXOptionsContainer"]
 unique_name_in_owner = true
@@ -86,6 +99,8 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicOptionsContainer"]
 layout_mode = 2
 text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MusicSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicOptionsContainer"]
 unique_name_in_owner = true
@@ -99,6 +114,8 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/WindowOptionsContainer"]
 layout_mode = 2
 text = "Display"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="WindowButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/WindowOptionsContainer"]
 unique_name_in_owner = true
