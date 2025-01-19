@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dshedf38cdfte"]
+[gd_scene load_steps=15 format=3 uid="uid://dshedf38cdfte"]
 
 [ext_resource type="PackedScene" uid="uid://dk8clwmr6nk1c" path="res://game/gateway/sk_treegate_1.glb" id="1_4bwo3"]
 [ext_resource type="Texture2D" uid="uid://cx6yiaqtgus5i" path="res://game/gateway/textures/tex_tree_2.png" id="2_mijyf"]
@@ -12,6 +12,8 @@ albedo_texture = ExtResource("2_mijyf")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_34sye"]
 size = Vector3(1, 5.79895, 10.0978)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rbx5j"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3oxlj"]
 seed = 52
@@ -42,6 +44,7 @@ shader_parameter/base_col = Vector3(0.585, 0.47, 0.585)
 shader_parameter/noise_col = Vector3(0.095, 0.19, 0.21)
 shader_parameter/noise_strength = 0.255
 shader_parameter/noise_freq = 0.25
+shader_parameter/alpha_strength = 1.76
 shader_parameter/velocity = Vector2(-0.25, 0)
 shader_parameter/noise_sampler = SubResource("NoiseTexture2D_uljyj")
 shader_parameter/second_noise_sampler = SubResource("NoiseTexture2D_sgvau")
@@ -81,8 +84,7 @@ stream = ExtResource("4_hhnjx")
 bus = &"SFX"
 script = ExtResource("5_i3h3t")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." index="4"]
-transform = Transform3D(0.0914783, 0, 0, 0, 2.45319, 0, 0, 0, 1, 1.18269, -1.11621, 4.85524)
-cast_shadow = 0
-size = Vector3(1, 4.29675, 8.7225)
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." index="4"]
+transform = Transform3D(-2.09048e-07, -4.78246, 0, 4.78246, -2.09048e-07, 0, 0, 0, 4.78246, 0.482099, 2.12426, 4.62674)
+mesh = SubResource("PlaneMesh_rbx5j")
 material = SubResource("ShaderMaterial_tpwmn")
