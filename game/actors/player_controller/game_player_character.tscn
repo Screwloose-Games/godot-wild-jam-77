@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://c37xc7ws27epc"]
+[gd_scene load_steps=56 format=3 uid="uid://c37xc7ws27epc"]
 
 [ext_resource type="Script" path="res://game/actors/player_controller/player_character.gd" id="1_lj3x0"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://c4hxde0ynncn4" path="res://game/actors/player_controller/Animations/game_player_character_animation_tree.tres" id="2_vy64c"]
@@ -19,10 +19,14 @@
 [ext_resource type="PackedScene" uid="uid://0xkxfha6amht" path="res://game/actors/player_controller/sm_gem_staff.fbx" id="15_3kbqo"]
 [ext_resource type="AnimationLibrary" uid="uid://cm5i4ljjbgj07" path="res://game/actors/player_controller/Animations/anim_player.res" id="16_0kpji"]
 [ext_resource type="Script" path="res://game/actors/player_controller/terrain_detector.gd" id="16_qbskk"]
-[ext_resource type="PackedScene" path="res://game/actors/player_controller/sfx/player_sfx.tscn" id="17_ckcbq"]
+[ext_resource type="PackedScene" uid="uid://d3qdk5gsm0n7" path="res://game/actors/player_controller/sfx/player_sfx.tscn" id="17_ckcbq"]
 [ext_resource type="Script" path="res://game/actors/player_controller/water_splash_maker.gd" id="19_4sigd"]
 [ext_resource type="Script" path="res://game/actors/player_controller/footstep_mgr.gd" id="20_s05xe"]
+[ext_resource type="Theme" uid="uid://cn6e3tbx7j58j" path="res://common/themes/meda_theme.tres" id="21_31p6u"]
 [ext_resource type="Script" path="res://game/actors/player_controller/debug_kill_laser.gd" id="21_wul0x"]
+[ext_resource type="Texture2D" uid="uid://ckkdutqktlsml" path="res://common/ui/components/hp_bar2.png" id="22_ju4ya"]
+[ext_resource type="Texture2D" uid="uid://l66wci5oq56" path="res://common/ui/components/hp_bar2-export.png" id="22_oayqn"]
+[ext_resource type="Texture2D" uid="uid://blkqf3snm0fss" path="res://common/ui/components/HP_tracker2.png" id="23_d2r6t"]
 [ext_resource type="Script" path="res://common/components/noclip.gd" id="24_u2wa6"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kxiip"]
@@ -30,8 +34,7 @@
 [sub_resource type="Sky" id="Sky_wx8tt"]
 sky_material = SubResource("PhysicalSkyMaterial_kxiip")
 
-[sub_resource type="Environment" id="Environment_d8jcf"]
-
+[sub_resource type="Environment" id="Environment_4itn0"]
 background_mode = 2
 sky = SubResource("Sky_wx8tt")
 fog_enabled = true
@@ -142,9 +145,6 @@ shader_parameter/noiseVertex = SubResource("NoiseTexture2D_00w61")
 [sub_resource type="SphereShape3D" id="SphereShape3D_w5cff"]
 radius = 0.178431
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ipl1g"]
-bg_color = Color(1, 0, 0, 1)
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_vh7et"]
 top_radius = 0.1
 bottom_radius = 0.1
@@ -198,8 +198,7 @@ health = 100.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.398186, 1.72847, 1.29903)
 top_level = true
-
-environment = SubResource("Environment_d8jcf")
+environment = SubResource("Environment_4itn0")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
@@ -418,18 +417,41 @@ shape = SubResource("SphereShape3D_w5cff")
 [node name="player_sfx" parent="." instance=ExtResource("17_ckcbq")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 5
+layer = 20
 
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 40)
-offset_left = 12.3202
-offset_top = 13.3469
-offset_right = 16.3202
-offset_bottom = 40.3469
+layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_ipl1g")
+theme = ExtResource("21_31p6u")
+theme_type_variation = &"TextureHealthBar"
 value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 116
+stretch_margin_top = 15
+stretch_margin_right = 116
+stretch_margin_bottom = 15
+texture_under = ExtResource("22_ju4ya")
+texture_over = ExtResource("22_oayqn")
+texture_progress = ExtResource("23_d2r6t")
+
+[node name="HealthBar2" type="ProgressBar" parent="CanvasLayer/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("21_31p6u")
+theme_type_variation = &"HealthBar"
+value = 50.0
 show_percentage = false
 
 [node name="WaterSplashMaker" type="Node3D" parent="."]
