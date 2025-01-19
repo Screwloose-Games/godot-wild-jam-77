@@ -21,3 +21,7 @@ func _on_altar_purified_amount(amount_purified: float) -> void:
     amount_purified = clamp(amount_purified, 0.0, 1.0)
     
     radius = lerp(min_radius, max_radius, amount_purified)
+    
+    # Hide this if fully purified
+    if amount_purified >= 1.0:
+        visible = false
