@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dshedf38cdfte"]
+[gd_scene load_steps=14 format=3 uid="uid://dshedf38cdfte"]
 
 [ext_resource type="PackedScene" uid="uid://dk8clwmr6nk1c" path="res://game/gateway/sk_treegate_1.glb" id="1_4bwo3"]
 [ext_resource type="Texture2D" uid="uid://cx6yiaqtgus5i" path="res://game/gateway/textures/tex_tree_2.png" id="2_mijyf"]
@@ -12,8 +12,6 @@ albedo_texture = ExtResource("2_mijyf")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_34sye"]
 size = Vector3(1, 5.79895, 10.0978)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_rbx5j"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3oxlj"]
 seed = 52
@@ -84,7 +82,8 @@ stream = ExtResource("4_hhnjx")
 bus = &"SFX"
 script = ExtResource("5_i3h3t")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="." index="4"]
-transform = Transform3D(-2.09048e-07, -4.78246, 0, 4.78246, -2.09048e-07, 0, 0, 0, 4.78246, 0.482099, 2.12426, 4.62674)
-mesh = SubResource("PlaneMesh_rbx5j")
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="4"]
+transform = Transform3D(0.0914783, 0, 0, 0, 2.45319, 0, 0, 0, 1, 1.18269, 1.76453, 4.85524)
+cast_shadow = 0
+size = Vector3(1, 1.94818, 8.7225)
 material = SubResource("ShaderMaterial_tpwmn")
