@@ -10,13 +10,6 @@ class_name EnemySfxPlayer3D
 ##Hurt
 @export var hurts: AudioStreamRandomizer
 
-##Dodges
-@export var dodges: AudioStreamRandomizer
-
-##Jumps
-@export var jumps: AudioStreamRandomizer
-@export var double_jumps: AudioStreamRandomizer
-
 ##Hits
 @export var death: AudioStream
 
@@ -54,29 +47,14 @@ func _on_footstep():
             
         footstep_player.play(0.0)
 
-func land_footstep() -> void:
-    print("landed")
-    _on_footstep()
-
-func _on_swing() -> void:
+func on_swing() -> void:
+    await get_tree().create_timer(0.5).timeout
     ability_player.stream = attacks
     ability_player.play(0.0)
-
-func _on_jump() -> void:
-    vocal_player.stream = jumps
-    vocal_player.play(0.0)
 
 func hurt() -> void:
     vocal_player.stream = hurts
     vocal_player.play(0.0)
-    
-func _on_double_jump() -> void:
-    ability_player.stream = double_jumps
-    ability_player.play(0.0)
-
-func _on_dash() -> void:
-    ability_player.stream = dodges
-    ability_player.play(0.0)
 
 func die() -> void:
     GlobalSignalBus.enemy_died.emit()
