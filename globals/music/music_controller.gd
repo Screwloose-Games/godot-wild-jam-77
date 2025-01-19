@@ -3,11 +3,11 @@ extends Node
 enum MUSIC_STATE { Title, Pause, Level, AltarFight, AltarCorruption,  }
 
 @export var title_music: AudioStream
+@export var credits_music: AudioStream
 @export var level_music: AudioStream
 @export var pause_music: AudioStream
 @export var battle_music: AudioStream
-@export var altar_success_music: Array[AudioStream]
-@export var altar_failed_music: AudioStream
+@export var altar_success_music: AudioStreamRandomizer
 @export var max_time_before_corruption_transition: float
 
 var current_state = MUSIC_STATE.Title
@@ -18,12 +18,12 @@ var track_before_pause: AudioStreamPlayer
 
 ##Corruption timer
 var corruption_music_timer = 0.0
-var is_final_wave = false
 var should_resume_corruption_timer = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     GlobalSignalBus.title_screen_started.connect(_on_start_title)
+    GlobalSignalBus.credits_screen_started.connect(_on_start_credis)
     GlobalSignalBus.level_started.connect(_on_start_level)
     GlobalSignalBus.altar_activated.connect(_on_altar_begin)
     GlobalSignalBus.altar_succeeded.connect(_on_altar_success)
@@ -99,23 +99,20 @@ func _on_altar_begin() -> void:
         set_music_state(MUSIC_STATE.AltarFight)
         track_before_pause = SoundManager.music.play(battle_music, 0.0, 0.8, 0.5, "")
         
-func _on_altar_success(wave_number: int, final_wave: bool) -> void:
-    is_final_wave = final_wave
+func _on_altar_success() -> void:
     if (current_state != MUSIC_STATE.AltarCorruption):
         set_music_state(MUSIC_STATE.AltarCorruption)
-        if wave_number > 1:
-            track_before_pause = SoundManager.music.play(altar_success_music[2], 0.0, 0.8, 0.1, "")
-        else:
-            track_before_pause = SoundManager.music.play(altar_success_music[wave_number], 0.0, 0.8, 0.1, "")
+        track_before_pause = SoundManager.music.play(altar_success_music, 0.0, 0.8, 1.0, "")
+        should_resume_corruption_timer = true
         
 func stop_altar_music() -> void:
     should_resume_corruption_timer = false
     corruption_music_timer = 0.0
     ##Do level music
-    if is_final_wave:
-        _on_start_level()
-    else:
-        _on_altar_begin()
+    _on_start_level()
         
 func _on_altar_fail() -> void:
-    pass
+    _on_start_level()
+    
+func _on_start_credis() -> void:
+    SoundManager.music.play(credits_music, 0.0, 0.8, 1.0, "")

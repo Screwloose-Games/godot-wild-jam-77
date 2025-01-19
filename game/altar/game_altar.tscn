@@ -76,12 +76,12 @@ shape = SubResource("SphereShape3D_8qrv6")
 
 [node name="AltarSFX" type="Node3D" parent="."]
 script = ExtResource("5_hwfe1")
+hum_loop = ExtResource("6_jfosa")
 
 [node name="audio" type="AudioStreamPlayer3D" parent="AltarSFX"]
 stream = ExtResource("6_jfosa")
-volume_db = -4.0
+volume_db = -8.0
 max_db = 0.0
-max_distance = 71.44
 bus = &"SFX"
 
 [node name="EnergyField" type="CSGCylinder3D" parent="."]

@@ -2,9 +2,14 @@ extends Node
 
 @onready var vocal_player: AudioStreamPlayer3D = $vocal_player
 @onready var ability_player: AudioStreamPlayer3D = $ability_player
+@onready var beam_player: AudioStreamPlayer3D = $beam_player
+@onready var beam_hit_player: AudioStreamPlayer = $beam_hit_player
 
 ##Attacks
 @export var attacks: AudioStreamRandomizer
+@export var beam_start: AudioStream
+@export var beam_loop: AudioStream
+@export var beam_hit: AudioStreamRandomizer
 
 ##Dodges
 @export var dodges: AudioStreamRandomizer
@@ -28,6 +33,7 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     GlobalSignalBus.player_died.connect(_on_death)
+    beam_player.stream = beam_loop
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,6 +62,7 @@ func land_footstep() -> void:
 
 func _on_swing() -> void:
     ability_player.stream = attacks
+    await get_tree().create_timer(0.2).timeout
     ability_player.play(0.0)
 
 func _on_jump() -> void:
@@ -72,3 +79,17 @@ func _on_dash() -> void:
 
 func _on_death() -> void:
     SoundManager.play_sound(death)
+
+func _on_beam_start() -> void:
+    ability_player.stream = beam_start
+    ability_player.play(0.0)
+    
+    get_tree().create_timer(0.25).timeout
+    beam_player.play(0.0)
+    
+func _on_beam_end() -> void:
+    beam_player.stop()
+    
+func _on_beam_hit() -> void:
+    beam_hit_player.stream = beam_hit
+    beam_hit_player.play(0.0)
