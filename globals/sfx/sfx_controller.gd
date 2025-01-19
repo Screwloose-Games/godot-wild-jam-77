@@ -36,5 +36,5 @@ func _on_start_altar():
     SoundManager.play_ui_sound(altar_purifying_sound)
     
 func _on_enemy_death():
-    await get_tree().create_timer(0.5)
+    await get_tree().create_timer(0.5).timeout
     SoundManager.play_ui_sound(altar_purifying_sound)

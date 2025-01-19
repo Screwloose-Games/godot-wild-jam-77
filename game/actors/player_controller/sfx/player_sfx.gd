@@ -56,6 +56,7 @@ func land_footstep() -> void:
 
 func _on_swing() -> void:
     ability_player.stream = attacks
+    await get_tree().create_timer(0.2).timeout
     ability_player.play(0.0)
 
 func _on_jump() -> void:

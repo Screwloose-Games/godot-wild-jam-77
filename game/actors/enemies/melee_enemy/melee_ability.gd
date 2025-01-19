@@ -38,6 +38,7 @@ func _start_attack():
     visual.material.emission = hitting_color
     hit_box_component_3d.activate()
     start_cooldown()
+    get_parent().get_node("player_sfx")._on_swing()
     
 func _end_attack():
     visual.material.albedo_color = default_color
