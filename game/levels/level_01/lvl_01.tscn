@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ruwllv6ttnh6"]
+[gd_scene load_steps=13 format=3 uid="uid://ruwllv6ttnh6"]
 
 [ext_resource type="PackedScene" uid="uid://qopd3mnhek6b" path="res://game/levels/base_level.tscn" id="1_41ni7"]
 [ext_resource type="Script" path="res://game/levels/level_01/lvl_01.gd" id="2_i6dyw"]
@@ -12,23 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dcdoollytt5be" path="res://game/fleshballs/game_fleshsac_2.tscn" id="10_ugs4m"]
 [ext_resource type="PackedScene" uid="uid://br11gnmivkoqf" path="res://game/fleshballs/game_fleshsac_3.tscn" id="11_dq53c"]
 [ext_resource type="PackedScene" uid="uid://dwddf0vpe0isd" path="res://game/fleshballs/game_fleshsac_5.tscn" id="12_x2aoe"]
-[ext_resource type="Shader" path="res://common/art/shaders/n64_skybox.gdshader" id="13_5eu7g"]
-[ext_resource type="Texture2D" uid="uid://nxyqxjfx7yer" path="res://common/art/textures/tex_skybox.png" id="14_0aye6"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_agybs"]
-render_priority = 0
-shader = ExtResource("13_5eu7g")
-shader_parameter/lock_aspect = false
-shader_parameter/aspect_ratio = 1.33333
-shader_parameter/fov = Vector2(180, 90)
-shader_parameter/tiling = Vector2i(1, 1)
-shader_parameter/offset = Vector2(0, 0)
-shader_parameter/sky_texture = ExtResource("14_0aye6")
-
-[sub_resource type="BoxMesh" id="BoxMesh_04ey5"]
-material = SubResource("ShaderMaterial_agybs")
-flip_faces = true
-size = Vector3(1000, 1000, 1000)
 
 [node name="Level01" instance=ExtResource("1_41ni7")]
 script = ExtResource("2_i6dyw")
@@ -91,10 +74,5 @@ transform = Transform3D(0.794203, 0, 0.607653, 0, 1, 0, -0.607653, 0, 0.794203, 
 
 [node name="sm_fleshsac_53" parent="CorruptedEnvironment" index="11" instance=ExtResource("12_x2aoe")]
 transform = Transform3D(0.794203, 0, 0.607653, 0, 1, 0, -0.607653, 0, 0.794203, -4.54453, -0.138176, -2.29828)
-
-[node name="Skybox" type="Node3D" parent="." index="6"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Skybox" index="0"]
-mesh = SubResource("BoxMesh_04ey5")
 
 [editable path="MeleeAltarLocation"]
