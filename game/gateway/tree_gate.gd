@@ -15,6 +15,6 @@ func _ready():
 
 
 func on_altar_purified():
-    collision_shape_3d.disabled = true
+    collision_shape_3d.set_deferred("disabled", true)
     animation_player.play("Gate1Open")
     
