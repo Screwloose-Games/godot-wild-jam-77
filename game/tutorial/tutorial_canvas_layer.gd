@@ -6,7 +6,6 @@ signal continued
 
 @export var cards: Array[String] = []
 
-
 @onready var tutorial_continue_button: Button = %TutorialContinueButton
 @onready var tut_text_container: RichTextLabel = %TutTextContainer
 
@@ -14,6 +13,7 @@ var text_index = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+    GlobalSignalBus.win_game_requirements_met.connect(_on_win_game_requirements_met)
     GlobalSignalBus.power_granted.connect(_on_power_granted)
     tutorial_continue_button.pressed.connect(_on_tut_continue_pressed)
 
@@ -63,4 +63,11 @@ func show_power_help(ability: Altar.AbilityType):
     get_tree().paused = true
     await continued
     get_tree().paused = false
-    
+
+func _on_win_game_requirements_met():
+    win_game()
+  
+func win_game():
+    show_text("[u]Congratulations![/u] You have cleansed the land and completed the metamorphosis! You win!")
+    await continued
+    get_tree().reload_current_scene.call_deferred()

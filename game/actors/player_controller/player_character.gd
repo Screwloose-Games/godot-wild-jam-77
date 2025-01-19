@@ -81,7 +81,7 @@ var jumps_remaining := jumps_allowed
 @onready var melee_ability: MeleeAbilty = %MeleeAbility
 @onready var beam_ability: BeamAbility = %BeamAbility
 @onready var animation_tree: AnimationTree = %AnimationTree
-@onready var health_bar: ProgressBar = %HealthBar
+@onready var health_bar: TextureProgressBar = %HealthBar
 @onready var bone_attachment_3d: BoneAttachment3D = %BoneAttachment3D
 @onready var noclip: Noclip = $Noclip
 

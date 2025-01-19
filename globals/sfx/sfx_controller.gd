@@ -14,6 +14,7 @@ func _ready() -> void:
     GlobalSignalBus.altar_activated.connect(_on_start_altar)
     GlobalSignalBus.altar_failed.connect(_on_altar_fail)
     GlobalSignalBus.altar_succeeded.connect(_on_altar_purified)
+    GlobalSignalBus.enemy_died.connect(_on_enemy_death)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -32,4 +33,8 @@ func _on_altar_purified():
     SoundManager.play_ui_sound(altar_purified_sound)
 
 func _on_start_altar():
+    SoundManager.play_ui_sound(altar_purifying_sound)
+    
+func _on_enemy_death():
+    await get_tree().create_timer(0.5).timeout
     SoundManager.play_ui_sound(altar_purifying_sound)
