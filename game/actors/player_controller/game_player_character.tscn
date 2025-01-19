@@ -58,7 +58,7 @@ node_connections = [&"output", 0, &"staff_attack_01", &"staff_attack_01", 0, &"m
 [sub_resource type="Sky" id="Sky_wx8tt"]
 sky_material = SubResource("PhysicalSkyMaterial_kxiip")
 
-[sub_resource type="Environment" id="Environment_cdyes"]
+[sub_resource type="Environment" id="Environment_6bf2l"]
 background_mode = 2
 sky = SubResource("Sky_wx8tt")
 fog_enabled = true
@@ -168,7 +168,7 @@ health = 100.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.398186, 1.72847, 1.29903)
 top_level = true
-environment = SubResource("Environment_cdyes")
+environment = SubResource("Environment_6bf2l")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
@@ -424,7 +424,7 @@ skeleton = NodePath("../..")
 [node name="RayCast3D" type="RayCast3D" parent="DebugKillLaser"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.552614)
 target_position = Vector3(0, -50, 0)
-collision_mask = 9
+collision_mask = 523
 
 [connection signal="max_health_updated" from="." to="." method="_on_max_health_updated"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

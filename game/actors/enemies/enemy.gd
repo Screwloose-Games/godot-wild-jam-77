@@ -25,6 +25,7 @@ signal deactivated
 @export var attack_rotation_tolerance_degrees: float = 10
 @onready var damage_label: FloatUpLabel3D = %DamageLabel
 @onready var damage_label_emitter: Node3D = %DamageLabelEmitter
+var dont_do_phys_process: bool = false
 
 
 func _ready():
@@ -35,6 +36,9 @@ func _ready():
         _deactivate()
 
 func _physics_process(delta: float) -> void:
+    if dont_do_phys_process:
+        return
+    
     if not is_on_floor():
         velocity += get_gravity()
     move_and_slide()
