@@ -1,11 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://ruwllv6ttnh6"]
+[gd_scene load_steps=37 format=3 uid="uid://ruwllv6ttnh6"]
 
 [ext_resource type="PackedScene" uid="uid://qopd3mnhek6b" path="res://game/levels/base_level.tscn" id="1_41ni7"]
 [ext_resource type="Script" path="res://game/levels/level_01/lvl_01.gd" id="2_i6dyw"]
 [ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="2_s2628"]
+[ext_resource type="Script" path="res://game/levels/level_01/level_01_script.gd" id="3_c67ty"]
 [ext_resource type="PackedScene" uid="uid://lr7e0228li7o" path="res://game/levels/level_01/lvl_01_environment.tscn" id="4_e757c"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_igwf6"]
 [ext_resource type="PackedScene" uid="uid://bdtqhi2bvjnt6" path="res://game/levels/level_01/lvl_01_lighting.tscn" id="5_m27if"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_txgpx"]
 [ext_resource type="PackedScene" uid="uid://cjydkdh825wo0" path="res://game/altar_locations/melee_altar_location/game_melee_altar_location.tscn" id="6_45gun"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_eiso7"]
 [ext_resource type="PackedScene" uid="uid://dshedf38cdfte" path="res://game/gateway/sk_treegate.tscn" id="7_mrfu8"]
 [ext_resource type="PackedScene" uid="uid://djhav113s8ak5" path="res://game/rocks/sm_rock_1.tscn" id="8_jlln5"]
 [ext_resource type="PackedScene" uid="uid://mx2hsdwfupuf" path="res://game/fleshballs/game_fleshsac_1.tscn" id="9_hnk3a"]
@@ -13,35 +17,547 @@
 [ext_resource type="PackedScene" uid="uid://br11gnmivkoqf" path="res://game/fleshballs/game_fleshsac_3.tscn" id="11_dq53c"]
 [ext_resource type="PackedScene" uid="uid://dwddf0vpe0isd" path="res://game/fleshballs/game_fleshsac_5.tscn" id="12_x2aoe"]
 [ext_resource type="PackedScene" uid="uid://d35sw6rakr15l" path="res://game/altar_locations/ranged_altar_location/game_ranged_altar_location.tscn" id="13_1ee77"]
+[ext_resource type="Texture2D" uid="uid://beylmg3ncgyv4" path="res://common/ui/components/deco_left.png" id="18_2cvxu"]
+[ext_resource type="Script" path="res://game/tutorial/tutorial_canvas_layer.gd" id="18_epvh4"]
+[ext_resource type="Texture2D" uid="uid://b4kqta3fsdhb1" path="res://common/ui/components/deco_right.png" id="19_weamu"]
+[ext_resource type="PackedScene" uid="uid://br8mk8iny13l4" path="res://game/gateway/game_gateway.tscn" id="21_2b4i7"]
+
+[sub_resource type="Resource" id="Resource_3xr8n"]
+script = ExtResource("5_txgpx")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_5bvn8"]
+script = ExtResource("6_eiso7")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kxiip"]
+
+[sub_resource type="Sky" id="Sky_wx8tt"]
+sky_material = SubResource("PhysicalSkyMaterial_kxiip")
+
+[sub_resource type="Environment" id="Environment_0km2x"]
+background_mode = 2
+sky = SubResource("Sky_wx8tt")
+fog_enabled = true
+
+[sub_resource type="Resource" id="Resource_3hccc"]
+script = ExtResource("5_txgpx")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_y4mev"]
+script = ExtResource("6_eiso7")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Animation" id="Animation_yeq1k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WideCamera:priority")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GateCamera:priority")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WideCamera:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.22897, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AltarCamera:priority")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AltarCamera:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.61964, 1.18054, 0.292397)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AltarCamera:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.101749, -0.0205262, 0.0020852)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("EnemiesCamera:priority")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("EnemiesCamera:follow_offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("EnemiesCamera:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.218556, -1.4345, -0.00106372)]
+}
+
+[sub_resource type="Animation" id="Animation_03x3y"]
+resource_name = "dark magic corrupted the land"
+length = 4.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WideCamera:priority")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GateCamera:priority")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WideCamera:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.03333),
+"transitions": PackedFloat32Array(1.8025, 0.287175),
+"update": 0,
+"values": [Vector3(-0.563741, 0, 0), Vector3(0.22897, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l61i1"]
+resource_name = "destroy source of corruption"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AltarCamera:priority")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemiesCamera:priority")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemiesCamera:follow_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0), Vector3(0, 0.5, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemiesCamera:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.546288, -1.71042, -0.00174533), Vector3(0.218556, -1.4345, -0.00106372)]
+}
+
+[sub_resource type="Animation" id="Animation_brnt8"]
+resource_name = "gateway is locked"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WideCamera:priority")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GateCamera:priority")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("WideCamera:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.8025),
+"update": 0,
+"values": [Vector3(-0.563741, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_au2ai"]
+resource_name = "opening"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WideCamera:priority")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GateCamera:priority")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5.56667),
+"transitions": PackedFloat32Array(1, 2),
+"update": 1,
+"values": [0, 21]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WideCamera:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.03333),
+"transitions": PackedFloat32Array(1.8025, 0.287175),
+"update": 0,
+"values": [Vector3(-0.563741, 0, 0), Vector3(0.22897, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lxxls"]
+resource_name = "use sacred altars"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AltarCamera:priority")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AltarCamera:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 0.378929),
+"update": 0,
+"values": [Vector3(-3.61964, 1.18054, 0.292397), Vector3(-3.61964, 5.32491, 0.292397)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AltarCamera:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 0.420448),
+"update": 0,
+"values": [Vector3(0.0872665, -0.020944, 0.00174533), Vector3(-0.863519, -0.0314296, 0.0238941)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GateCamera:priority")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wynjm"]
+_data = {
+"RESET": SubResource("Animation_yeq1k"),
+"dark magic corrupted the land": SubResource("Animation_03x3y"),
+"destroy source of corruption": SubResource("Animation_l61i1"),
+"gateway is locked": SubResource("Animation_brnt8"),
+"opening": SubResource("Animation_au2ai"),
+"use sacred altars": SubResource("Animation_lxxls")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vo8ad"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
 [node name="Level01" instance=ExtResource("1_41ni7")]
 script = ExtResource("2_i6dyw")
 
-[node name="PlayerCharacter" parent="." index="0" instance=ExtResource("2_s2628")]
+[node name="Script" type="Node" parent="." index="0"]
+script = ExtResource("3_c67ty")
+
+[node name="GateCamera" type="Node3D" parent="." index="1"]
+unique_name_in_owner = true
+transform = Transform3D(-0.372291, 0, -0.928116, 0, 1, 0, 0.928116, 0, -0.372291, 4.97966, 1.58054, 3.26168)
+script = ExtResource("4_igwf6")
+tween_resource = SubResource("Resource_3xr8n")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_5bvn8")
+
+[node name="AltarCamera" type="Node3D" parent="." index="2"]
+unique_name_in_owner = true
+transform = Transform3D(0.999792, 8.14907e-09, -0.0204186, 0.00207442, 0.994826, 0.101574, 0.020313, -0.101595, 0.994619, -3.61964, 1.18054, 0.292397)
+script = ExtResource("4_igwf6")
+tween_resource = SubResource("Resource_3xr8n")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_5bvn8")
+
+[node name="EnemiesCamera" type="Node3D" parent="." index="3" node_paths=PackedStringArray("follow_target")]
+unique_name_in_owner = true
+transform = Transform3D(0.136102, -0.214664, -0.967156, -0.00103841, 0.97621, -0.21682, 0.990689, 0.0305142, 0.132642, -0.767436, 0.771988, -7.21978)
+top_level = true
+script = ExtResource("4_igwf6")
+follow_mode = 5
+follow_target = NodePath("../MeleeAltarLocation/Enemies/MeleeEnemy3")
+tween_resource = SubResource("Resource_3xr8n")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_5bvn8")
+
+[node name="PlayerCharacter" parent="." index="4" instance=ExtResource("2_s2628")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.96021, 0.215031, 3.2796)
 dash_duration = 0.5
 melee_attack_cooldown = 1.0
 
-[node name="Level01Environment" parent="." index="1" instance=ExtResource("4_e757c")]
+[node name="Camera3D" parent="PlayerCharacter" index="4"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 7.3584, 1.9435, 4.57863)
+environment = SubResource("Environment_0km2x")
 
-[node name="Level01Lighting" parent="." index="2" instance=ExtResource("5_m27if")]
+[node name="PlayerPhantomCamera3D" parent="PlayerCharacter" index="5"]
+transform = Transform3D(1, 0, 0, 0, 0.866023, 0.499997, 0, -0.499999, 0.866021, 0.398186, 1.72847, 1.29903)
 
-[node name="MeleeAltarLocation" parent="." index="3" instance=ExtResource("6_45gun")]
+[node name="MeleeAbility" parent="PlayerCharacter" index="11"]
+attack_cooldown = 1.0
+
+[node name="Skeleton3D" parent="PlayerCharacter/Visual/Model/Armature" index="0"]
+bones/0/position = Vector3(16.3065, 0.396188, -222.864)
+bones/0/rotation = Quaternion(-0.492874, -0.527762, 0.511948, 0.465243)
+bones/1/position = Vector3(1.92672, 17.0663, 2.23517e-07)
+bones/1/rotation = Quaternion(0.0111756, 0.00674158, -0.0667842, 0.997682)
+bones/2/position = Vector3(1.93715e-06, 20.0372, -9.90038e-14)
+bones/2/rotation = Quaternion(0.0241569, 0.0152252, -0.021234, 0.999367)
+bones/3/position = Vector3(5.78165e-06, 22.8996, -1.2815e-06)
+bones/3/rotation = Quaternion(0.0241569, 0.0152252, -0.021234, 0.999367)
+bones/4/position = Vector3(-2.17787e-06, 25.7621, -1.19209e-06)
+bones/4/rotation = Quaternion(-0.00258825, 0.00147313, 0.146146, 0.989259)
+bones/5/position = Vector3(1.39197, 20.9981, -1.57952e-06)
+bones/5/rotation = Quaternion(-0.0401712, 0.00638356, -0.0373617, 0.998474)
+bones/6/position = Vector3(4.83449, 72.929, 7.15256e-07)
+bones/7/position = Vector3(0.710745, 19.9574, -22.3179)
+bones/7/rotation = Quaternion(-0.0701202, -0.528194, 0.845132, -0.0429736)
+bones/8/position = Vector3(3.21105e-06, 46.0908, 1.74319e-05)
+bones/8/rotation = Quaternion(0.422699, 0.146784, 0.159668, 0.879935)
+bones/9/position = Vector3(7.822e-06, 47.1105, -3.40686e-06)
+bones/9/rotation = Quaternion(-0.00506798, -0.00459015, 0.0740273, 0.997233)
+bones/10/position = Vector3(9.5367e-07, 65.9636, 4.76837e-07)
+bones/11/position = Vector3(0.601318, 19.945, 22.3179)
+bones/11/rotation = Quaternion(0.835366, 0.0249623, -0.046174, 0.547183)
+bones/12/position = Vector3(3.61464e-06, 46.0908, -6.97377e-07)
+bones/12/rotation = Quaternion(0.42021, -0.220436, -0.141624, 0.868777)
+bones/13/position = Vector3(-2.36834e-06, 47.0711, 5.28891e-06)
+bones/13/rotation = Quaternion(-0.00569625, 0.00763512, -0.0864364, 0.996212)
+bones/14/position = Vector3(-4.76845e-07, 66.1297, 9.53681e-07)
+bones/15/position = Vector3(0.253189, -9.48128, -33.7431)
+bones/15/rotation = Quaternion(0.0236522, -0.0597148, 0.98906, -0.1328)
+bones/16/position = Vector3(1.70063e-07, 101.357, -4.20039e-06)
+bones/16/rotation = Quaternion(-0.00649594, -0.000558854, -0.174986, 0.984549)
+bones/17/position = Vector3(-5.58908e-06, 110.907, 4.25713e-06)
+bones/17/rotation = Quaternion(0.221778, -0.711857, 0.205537, 0.6339)
+bones/18/position = Vector3(5.1403e-06, 4.30472, 2.41812e-08)
+bones/18/rotation = Quaternion(0.838752, -0.0427498, 0.0564458, 0.53989)
+bones/19/position = Vector3(8.80659e-06, 3.98022, 8.58308e-06)
+bones/20/position = Vector3(0.107768, -9.48128, 33.7431)
+bones/20/rotation = Quaternion(-0.0581021, -0.055829, 0.996742, 0.00352884)
+bones/21/position = Vector3(-5.74111e-07, 101.356, -1.21741e-07)
+bones/21/rotation = Quaternion(0.00907138, 9.14328e-05, -0.0735986, 0.997247)
+bones/22/position = Vector3(-1.04304e-06, 110.883, 1.21047e-06)
+bones/22/rotation = Quaternion(-0.0295433, 0.09347, 0.195049, 0.975882)
+bones/23/position = Vector3(1.5871e-06, 3.74572, 2.72274e-07)
+bones/23/rotation = Quaternion(0.571152, -0.259863, 0.756588, 0.183931)
+bones/24/position = Vector3(-7.44699e-08, 3.70389, 2.08626e-07)
+
+[node name="BoneAttachment3D" parent="PlayerCharacter/Visual/Model/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.593406, 0.162681, -0.788292, -0.804893, 0.115005, -0.582169, -0.00405021, 0.979953, 0.199185, 101.222, 24.1884, -175.689)
+
+[node name="Level01Environment" parent="." index="5" instance=ExtResource("4_e757c")]
+
+[node name="Level01Lighting" parent="." index="6" instance=ExtResource("5_m27if")]
+
+[node name="MeleeAltarLocation" parent="." index="7" instance=ExtResource("6_45gun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.77052, 0.5938, -1.98736)
 
 [node name="Altar" parent="MeleeAltarLocation" index="0" node_paths=PackedStringArray("assigned_enemies")]
 assigned_enemies = [NodePath("../Enemies/MeleeEnemy"), NodePath("../Enemies/MeleeEnemy2"), NodePath("../Enemies/MeleeEnemy3"), NodePath("../Enemies/MeleeEnemy4"), null, null]
 
-[node name="TreeGateway" type="Node3D" parent="." index="4"]
+[node name="TreeGateway" type="Node3D" parent="." index="8"]
 transform = Transform3D(0.925798, 0, -0.378019, 0, 1, 0, 0.378019, 0, 0.925798, 10.7727, 0, -0.343357)
 
-[node name="sk_treegate_1" parent="TreeGateway" index="0" node_paths=PackedStringArray("altar") instance=ExtResource("7_mrfu8")]
+[node name="LocationDoorway" parent="TreeGateway" index="0" node_paths=PackedStringArray("destination_mark", "altar") instance=ExtResource("21_2b4i7")]
+transform = Transform3D(0.925798, 0, 0.378019, 0, 1, 0, -0.378019, 0, 0.925798, 0.348141, 0.831817, 3.98924)
+destination_mark = NodePath("../../Marker3D")
 altar = NodePath("../../MeleeAltarLocation/Altar")
 
-[node name="sm_rock_1" parent="TreeGateway" index="1" instance=ExtResource("8_jlln5")]
+[node name="sk_treegate_1" parent="TreeGateway" index="1" node_paths=PackedStringArray("altar") instance=ExtResource("7_mrfu8")]
+altar = NodePath("../../MeleeAltarLocation/Altar")
+
+[node name="sm_rock_1" parent="TreeGateway" index="2" instance=ExtResource("8_jlln5")]
 transform = Transform3D(-0.978513, 0, -0.206187, 0, 1, 0, 0.206187, 0, -0.978513, -0.170973, 0, -0.418726)
 
-[node name="CorruptedEnvironment" type="Node3D" parent="." index="5"]
+[node name="TreeGateway2" type="Node3D" parent="." index="9"]
+transform = Transform3D(0.986683, 0, -0.162655, 0, 1, 0, 0.162655, 0, 0.986683, -60.9034, 1.92223, -5.68421)
+
+[node name="LocationDoorway2" parent="TreeGateway2" index="0" node_paths=PackedStringArray("destination_mark", "altar") instance=ExtResource("21_2b4i7")]
+transform = Transform3D(0.986683, 0, 0.162655, 0, 1, 0, -0.162655, 0, 0.986683, -1.79514, -0.0579665, 6.22926)
+destination_mark = NodePath("../../Marker3D2")
+altar = NodePath("../../RangedAltarLocation/Altar")
+
+[node name="sk_treegate_1" parent="TreeGateway2" index="1" node_paths=PackedStringArray("altar") instance=ExtResource("7_mrfu8")]
+altar = NodePath("../../RangedAltarLocation/Altar")
+
+[node name="CorruptedEnvironment" type="Node3D" parent="." index="10"]
 
 [node name="game_fleshsac_1" parent="CorruptedEnvironment" index="0" instance=ExtResource("9_hnk3a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4651, 0.671902, -4.34757)
@@ -79,20 +595,145 @@ transform = Transform3D(0.794203, 0, 0.607653, 0, 1, 0, -0.607653, 0, 0.794203, 
 [node name="sm_fleshsac_53" parent="CorruptedEnvironment" index="11" instance=ExtResource("12_x2aoe")]
 transform = Transform3D(0.794203, 0, 0.607653, 0, 1, 0, -0.607653, 0, 0.794203, -4.54453, -0.138176, -2.29828)
 
-[node name="MeleeAltarLocation2" parent="." index="6" instance=ExtResource("13_1ee77")]
+[node name="CorruptedEnvironment2" type="Node3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.5537, 0, 1.1898)
+
+[node name="game_fleshsac_1" parent="CorruptedEnvironment2" index="0" instance=ExtResource("9_hnk3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4651, 0.671902, -4.34757)
+
+[node name="game_fleshsac_2" parent="CorruptedEnvironment2" index="1" instance=ExtResource("9_hnk3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.73205, 0.671902, -13.788)
+
+[node name="game_fleshsac_3" parent="CorruptedEnvironment2" index="2" instance=ExtResource("9_hnk3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48844, -0.318839, 9.53892)
+
+[node name="sm_fleshsac_22" parent="CorruptedEnvironment2" index="3" instance=ExtResource("10_ugs4m")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 3.73179, 11.1286, 5.0342)
+
+[node name="sm_fleshsac_23" parent="CorruptedEnvironment2" index="4" instance=ExtResource("10_ugs4m")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 3.73179, 8.10587, 8.47487)
+
+[node name="sm_fleshsac_24" parent="CorruptedEnvironment2" index="5" instance=ExtResource("10_ugs4m")]
+transform = Transform3D(0.0483788, 0, -0.245274, 0, 0.25, 0, 0.245274, 0, 0.0483788, 0.907951, 7.33219, 3.61564)
+
+[node name="sm_fleshsac_27" parent="CorruptedEnvironment2" index="6" instance=ExtResource("10_ugs4m")]
+transform = Transform3D(0.0483788, 0, -0.245274, 0, 0.25, 0, 0.245274, 0, 0.0483788, -8.9851, 6.68396, -9.46987)
+
+[node name="sm_fleshsac_25" parent="CorruptedEnvironment2" index="7" instance=ExtResource("10_ugs4m")]
+transform = Transform3D(0.0677303, 0, -0.343384, 0, 0.35, 0, 0.343384, 0, 0.0677303, 5.91666, 7.54402, -6.28275)
+
+[node name="sm_fleshsac_26" parent="CorruptedEnvironment2" index="8" instance=ExtResource("10_ugs4m")]
+transform = Transform3D(0.0483788, 0, -0.245274, 0, 0.25, 0, 0.245274, 0, 0.0483788, 7.34311, 6.16244, 5.97346)
+
+[node name="sm_fleshsac_32" parent="CorruptedEnvironment2" index="9" instance=ExtResource("11_dq53c")]
+transform = Transform3D(0.266515, 0, 0.963831, 0, 1, 0, -0.963831, 0, 0.266515, -14.1686, 9.53674e-07, 0.35248)
+
+[node name="sm_fleshsac_52" parent="CorruptedEnvironment2" index="10" instance=ExtResource("12_x2aoe")]
+transform = Transform3D(0.794203, 0, 0.607653, 0, 1, 0, -0.607653, 0, 0.794203, 3.73339, -0.540052, -1.1022)
+
+[node name="sm_fleshsac_53" parent="CorruptedEnvironment2" index="11" instance=ExtResource("12_x2aoe")]
+transform = Transform3D(0.794203, 0, 0.607653, 0, 1, 0, -0.607653, 0, 0.794203, -4.54453, -0.138176, -2.29828)
+
+[node name="RangedAltarLocation" parent="." index="12" instance=ExtResource("13_1ee77")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -56.5619, 2.05456, -0.737272)
 
-[node name="RangedEnemy" parent="MeleeAltarLocation2/Enemies" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1637, 0.3, 4.99656)
+[node name="RangedEnemy" parent="RangedAltarLocation/Enemies" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3841, 1.52865, 5.0125)
 
-[node name="RangedEnemy2" parent="MeleeAltarLocation2/Enemies" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3222, 0.3, 10.5946)
+[node name="RangedEnemy2" parent="RangedAltarLocation/Enemies" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79868, 3.04041, 12.1292)
 
-[node name="RangedEnemy3" parent="MeleeAltarLocation2/Enemies" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9777, 0.301689, 2.91909)
+[node name="RangedEnemy3" parent="RangedAltarLocation/Enemies" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6818, 1.81227, 3.07822)
 
-[node name="RangedEnemy4" parent="MeleeAltarLocation2/Enemies" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115272, 0.3, -11.1502)
+[node name="RangedEnemy4" parent="RangedAltarLocation/Enemies" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0872354, 0.385824, -11.6299)
 
+[node name="WideCamera" type="Node3D" parent="." index="13"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.973901, -0.226975, 0, 0.226975, 0.973901, -0.70033, 1.98365, 2.12014)
+script = ExtResource("4_igwf6")
+tween_resource = SubResource("Resource_3hccc")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_y4mev")
+
+[node name="WorldAnimationPlayer" type="AnimationPlayer" parent="." index="14"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_wynjm")
+}
+
+[node name="TutorialCanvasLayer" type="CanvasLayer" parent="." index="15"]
+unique_name_in_owner = true
+layer = 4
+script = ExtResource("18_epvh4")
+cards = Array[String](["[font_size=24][color=purple][b]Dark magic[/b][/color] has [i]corrupted[/i] the land.[/font_size]", "[font_size=20]The gateways between realms are [color=darkred][u]sealed[/u][/color].[/font_size]", "[font_size=22]Use the [color=green][b]sacred altars[/b][/color] to [color=green][i]purify the land[/i][/color].[/font_size]", "[font_size=22][b][color=orange]Destroy[/color][/b] the sources of corruption and [u][color=orange]begin the Metamorphosis![/color][/u][/font_size]"])
+
+[node name="TutorialContainer" type="PanelContainer" parent="TutorialCanvasLayer" index="0"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -90.0
+offset_right = 152.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vo8ad")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TutorialCanvasLayer/TutorialContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 53
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TutorialCanvasLayer/TutorialContainer/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("18_2cvxu")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="TutorialCanvasLayer/TutorialContainer/HBoxContainer" index="1"]
+layout_mode = 2
+texture = ExtResource("19_weamu")
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialCanvasLayer/TutorialContainer" index="1"]
+layout_mode = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 40
+
+[node name="TutTextContainer" type="RichTextLabel" parent="TutorialCanvasLayer/TutorialContainer/MarginContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=24][color=purple][b]Dark magic[/b][/color] has [i]corrupted[/i] the land.[/font_size]
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialCanvasLayer/TutorialContainer" index="2"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialCanvasLayer/TutorialContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TutorialContinueButton" type="Button" parent="TutorialCanvasLayer/TutorialContainer/VBoxContainer/MarginContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Skip"
+
+[node name="Marker3D" type="Marker3D" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.3038, 1.4531, -1.27138)
+
+[node name="Marker3D2" type="Marker3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.9178, 2.34682, -1.91221)
+
+[editable path="PlayerCharacter"]
+[editable path="PlayerCharacter/Visual/Model"]
 [editable path="MeleeAltarLocation"]
-[editable path="MeleeAltarLocation2"]
+[editable path="RangedAltarLocation"]

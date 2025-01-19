@@ -1,6 +1,6 @@
-[gd_scene load_steps=42 format=4 uid="uid://daabskcdhrpea"]
+[gd_scene load_steps=39 format=4 uid="uid://daabskcdhrpea"]
 
-[ext_resource type="Texture2D" uid="uid://rgbyf0gmqk1k" path="res://common/ui/components/buttons/Button_normal.png" id="1_aclgx"]
+[ext_resource type="Theme" uid="uid://cn6e3tbx7j58j" path="res://common/themes/meda_theme.tres" id="1_njx3d"]
 [ext_resource type="Script" path="res://common/ui/viewport_container.gd" id="2_d26fo"]
 [ext_resource type="PackedScene" uid="uid://ruwllv6ttnh6" path="res://game/levels/level_01/lvl_01.tscn" id="3_ui554"]
 [ext_resource type="AudioStream" uid="uid://paarswvb3wbx" path="res://common/audio/sfx/ui/aud_ui_navigate.wav" id="4_84s81"]
@@ -11,20 +11,6 @@
 [ext_resource type="Script" path="res://common/ui/main_menu/SFX/main_menu_audio.gd" id="7_oty5u"]
 [ext_resource type="Texture2D" uid="uid://dtmo7g75htk0c" path="res://common/ui/components/cards/card_window.png" id="8_df2cy"]
 [ext_resource type="Texture2D" uid="uid://b7cymcvnhkcla" path="res://common/ui/art/Logo.png" id="9_3uuww"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8hn0r"]
-content_margin_left = 10.0
-content_margin_top = 20.0
-content_margin_right = 10.0
-content_margin_bottom = 20.0
-texture = ExtResource("1_aclgx")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5f702"]
-texture = ExtResource("8_df2cy")
-
-[sub_resource type="Theme" id="Theme_sbew7"]
-Button/styles/normal = SubResource("StyleBoxTexture_8hn0r")
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_5f702")
 
 [sub_resource type="Gradient" id="Gradient_hijim"]
 offsets = PackedFloat32Array(0.284768, 0.878587)
@@ -752,7 +738,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_sbew7")
+theme = ExtResource("1_njx3d")
 
 [node name="Audio Control" type="Control" parent="."]
 layout_mode = 2

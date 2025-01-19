@@ -5,6 +5,7 @@ signal interacted
 @export var destination_mark: Marker3D
 @export var static_image: Texture2D
 @export var pressed_image: Texture2D
+@export var altar: Altar
 
 @onready var sprite_3d: Sprite3D = %Sprite3D
 
@@ -14,6 +15,12 @@ func _ready():
     sprite_3d.visible = false
     area_entered.connect(_on_area_entered)
     area_exited.connect(_on_area_exited)
+    if altar:
+        altar.purified.connect(_on_altar_purified)
+        monitoring = false
+    
+func _on_altar_purified():
+    monitoring = true
 
 func _unhandled_input(event):
     if area_active and event.is_action_pressed("interact"):

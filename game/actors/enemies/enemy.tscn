@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bxbkpou8fdoqo"]
+[gd_scene load_steps=33 format=3 uid="uid://bxbkpou8fdoqo"]
 
 [ext_resource type="Script" path="res://game/actors/enemies/enemy.gd" id="1_iuqop"]
 [ext_resource type="Script" path="res://common/components/templates/HealthComponent.gd" id="2_8p006"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://doqflnekeuvo6" path="res://game/actors/enemies/sfx/aud_enemy_footstep_water_1.wav" id="16_6ml2u"]
 [ext_resource type="AudioStream" uid="uid://tkifgw3h8ff1" path="res://game/actors/enemies/sfx/aud_enemy_footstep_water_2.wav" id="17_j7axt"]
 [ext_resource type="AudioStream" uid="uid://dua50gmftxnoy" path="res://game/actors/enemies/sfx/aud_enemy_footstep_water_3.wav" id="18_03vvs"]
+[ext_resource type="Script" path="res://game/actors/player_controller/terrain_detector.gd" id="25_dqe5e"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mbreq"]
 streams_count = 3
@@ -61,6 +62,9 @@ stream_0/stream = ExtResource("16_6ml2u")
 stream_1/stream = ExtResource("17_j7axt")
 stream_2/stream = ExtResource("18_03vvs")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_yfuo1"]
+radius = 0.0909171
+
 [node name="Enemy" type="CharacterBody3D"]
 disable_mode = 1
 script = ExtResource("1_iuqop")
@@ -97,6 +101,14 @@ dirt_footsteps = SubResource("AudioStreamRandomizer_ol88l")
 grass_footsteps = SubResource("AudioStreamRandomizer_cjm2x")
 stone_footsteps = SubResource("AudioStreamRandomizer_hmt1v")
 water_footsteps = SubResource("AudioStreamRandomizer_3ky8x")
+
+[node name="TerrainDetector" type="Area3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("25_dqe5e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.041502, 0)
+shape = SubResource("SphereShape3D_yfuo1")
 
 [connection signal="damaged" from="HealthComponent" to="." method="_on_health_component_damaged"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

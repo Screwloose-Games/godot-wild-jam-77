@@ -29,6 +29,7 @@ class_name RangedAbilty
 @onready var beam_ray: RayCast3D = %BeamRay
 @onready var path_3d: Path3D = %Path3D
 @onready var path_follow_3d: PathFollow3D = %PathFollow3D
+@onready var collision_shape_3d: CollisionShape3D = %CollisionShape3D
 
 
 
@@ -84,9 +85,9 @@ func _physics_process(delta: float) -> void:
         path_3d.curve.remove_point(1)
         path_3d.curve.add_point(beam_ray.target_position)
         
-        telegraph_shape.height = beam_ray.target_position.length()
+        telegraph_shape.height = beam_ray.target_position.length() * 2
         #return
-        path_follow_3d.progress_ratio = 0.5
+        path_follow_3d.progress_ratio = 1
         #path_end.positon = direction_to_target
 
 func extend_ray(start_point: Vector3, end_point: Vector3, extension_distance: float) -> Vector3:
@@ -142,7 +143,12 @@ func attack() -> void:
     can_attack = false
     telegraph_shape.material.albedo_color = hitting_color
     telegraph_shape.material.emission = hitting_color
+    (collision_shape_3d.shape as CylinderShape3D).height = telegraph_shape.height
+    (collision_shape_3d.shape as CylinderShape3D).radius = telegraph_shape.radius
+    hit_box_component_3d.global_transform = telegraph_shape.global_transform
     hit_box_component_3d.activate()
+    await get_tree().create_timer(0.05).timeout
+    hit_box_component_3d.deactivate()
     start_cooldown()
     await get_tree().create_timer(0.1).timeout
     

@@ -22,9 +22,6 @@ size = Vector3(225.271, 1.55518, 180.45)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_vwcdx")]
 melee_attack_cooldown = 0.252
-hasMeleeAbility = false
-hasRangedAbility = false
-hasShieldAbility = false
 
 [node name="RangedEnemy" parent="." instance=ExtResource("2_6nvmc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0605, 0.0931644, 5.29899)

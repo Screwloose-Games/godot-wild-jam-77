@@ -8,6 +8,14 @@ var is_interacting: bool = false
 var selected = false:
     set = set_selected
 
+var disabled := false:
+    set(val):
+        disabled = val
+        monitoring = !val
+        monitorable = !val
+        #if disabled:
+            #selected = false
+
 func _ready():
     stopped_interacting.connect(_on_stopped_interacting)
 

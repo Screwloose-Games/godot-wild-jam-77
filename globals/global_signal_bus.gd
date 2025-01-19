@@ -24,6 +24,8 @@ signal enemy_queued_for_activation(enemy: Enemy)
 signal enemy_hurt(enemy: Enemy, damage: float)
 signal enemy_targeted_player(enemy: Enemy)
 
+signal power_granted(ability: Altar.AbilityType)
+
 # Signals for altar-specific events
 signal altar_activated
 signal altar_failed

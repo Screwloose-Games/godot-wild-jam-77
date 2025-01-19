@@ -49,6 +49,8 @@ gdscript/warnings/unused_signal=0
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 
 [dotnet]
@@ -71,7 +73,8 @@ Enemy=""
 
 [gui]
 
-theme/custom="res://common/themes/global_theme.tres"
+theme/custom="res://common/themes/meda_theme.tres"
+theme/custom_font="res://common/fonts/body_font.tres"
 
 [input]
 

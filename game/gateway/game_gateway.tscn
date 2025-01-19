@@ -27,6 +27,9 @@ shape = SubResource("CylinderShape3D_ae2wr")
 
 [node name="CSGMesh3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.512679, 0)
-use_collision = true
+visible = false
 collision_layer = 4
 collision_mask = 0
+
+[node name="GateGizmo" type="Marker3D" parent="."]
+gizmo_extents = 4.01

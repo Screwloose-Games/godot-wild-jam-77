@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7qvc2mvoy0gc"]
+
+[ext_resource type="PackedScene" uid="uid://d35sw6rakr15l" path="res://game/altar_locations/ranged_altar_location/game_ranged_altar_location.tscn" id="1_nn7s6"]
+[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="2_e4n5q"]
+
+[node name="TestRangesAltar" type="Node3D"]
+
+[node name="RangedAltarLocation" parent="." instance=ExtResource("1_nn7s6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_e4n5q")]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.583996, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(100, 1, 100)
+
+[editable path="RangedAltarLocation"]

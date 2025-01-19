@@ -4,9 +4,10 @@
 [ext_resource type="Script" path="res://game/altar_locations/melee_altar_location/altar_enemy_group.gd" id="2_sl5dn"]
 [ext_resource type="PackedScene" uid="uid://bygv60003uc5w" path="res://game/actors/enemies/ranged_enemy/game_ranged_enemy.tscn" id="3_a3tdb"]
 
-[node name="MeleeAltarLocation" type="Node3D"]
+[node name="RangedAltarLocation" type="Node3D"]
 
-[node name="Altar" parent="." instance=ExtResource("1_egufd")]
+[node name="Altar" parent="." node_paths=PackedStringArray("assigned_enemies") instance=ExtResource("1_egufd")]
+assigned_enemies = [NodePath("../Enemies/RangedEnemy"), NodePath("../Enemies/RangedEnemy2"), NodePath("../Enemies/RangedEnemy3"), NodePath("../Enemies/RangedEnemy4")]
 altar_ability = 1
 
 [node name="Enemies" type="Node3D" parent="." node_paths=PackedStringArray("altar")]
@@ -15,16 +16,24 @@ script = ExtResource("2_sl5dn")
 altar = NodePath("../Altar")
 
 [node name="RangedEnemy" parent="Enemies" instance=ExtResource("3_a3tdb")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.142, 0.3, 4.99655)
+is_active = false
 
 [node name="RangedEnemy2" parent="Enemies" instance=ExtResource("3_a3tdb")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3222, 0.3, 10.5946)
 delay_after_spawning_secs = 15.0
+is_active = false
 
 [node name="RangedEnemy3" parent="Enemies" instance=ExtResource("3_a3tdb")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8284, 0.3, 2.69168)
 delay_after_spawning_secs = 30.0
+is_active = false
 
 [node name="RangedEnemy4" parent="Enemies" instance=ExtResource("3_a3tdb")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.116884, 0.3, -11.1502)
 delay_after_spawning_secs = 45.0
+is_active = false

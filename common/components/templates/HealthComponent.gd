@@ -17,7 +17,7 @@ class_name HealthComponent
             return
         if invincible == true and f < health:
             return
-        health = f
+        health = clampf(f, 0, max_health)
         health_changed.emit(health)
 
 @export var invincible: bool = false:
@@ -55,6 +55,8 @@ func die():
     died.emit()
     
 func damage(amount: float):
+    if not is_alive:
+        return
     health -= amount
     damaged.emit(amount)
     if is_alive and health <= 0:

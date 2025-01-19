@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cn6e3tbx7j58j"]
+
+[ext_resource type="Texture2D" uid="uid://rgbyf0gmqk1k" path="res://common/ui/components/buttons/Button_normal.png" id="1_kbjom"]
+[ext_resource type="Texture2D" uid="uid://dtmo7g75htk0c" path="res://common/ui/components/cards/card_window.png" id="2_8quq3"]
+[ext_resource type="FontVariation" uid="uid://homwe1sqri4x" path="res://common/fonts/body_font.tres" id="3_mgdl5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8hn0r"]
+content_margin_left = 30.0
+content_margin_top = 20.0
+content_margin_right = 30.0
+content_margin_bottom = 20.0
+texture = ExtResource("1_kbjom")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5f702"]
+texture = ExtResource("2_8quq3")
+
+[resource]
+default_font = ExtResource("3_mgdl5")
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/styles/normal = SubResource("StyleBoxTexture_8hn0r")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_5f702")

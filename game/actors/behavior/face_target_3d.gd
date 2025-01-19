@@ -26,23 +26,11 @@ func _tick(_delta: float) -> Status:
     if not is_instance_valid(target):
         return FAILURE
     var dir: Vector3 = target.global_position.direction_to(agent.global_position)
-    #agent.velocity = Vector3.ZERO
-    (agent as Actor3D).face_dir_lerp(dir, _delta)
-    var rotation_to_dir = agent.rotation_to_direction(dir)
+    var current_rotation = agent.global_transform.basis.get_rotation_quaternion()
+    var target_direction = (target.global_position - agent.global_transform.origin).normalized()
+    var target_rotation = Basis.looking_at(target_direction).get_rotation_quaternion()
+    var new_rotation = current_rotation.slerp(target_rotation, agent.turning_speed * _delta)
+    agent.global_transform.basis = Basis(new_rotation)
     if agent.rotation_to_direction(dir) < agent.attack_rotation_tolerance_degrees:
         return SUCCESS
     return RUNNING
-
-func get_y_angle_difference(vec1: Vector3, vec2: Vector3) -> float:
-    # Get the yaw angles of both vectors
-    var angle1 = atan2(vec1.z, vec1.x)
-    var angle2 = atan2(vec2.z, vec2.x)
-    
-    # Calculate the difference
-    var angle_difference = angle2 - angle1
-    
-    # Normalize to the range [-PI, PI]
-    angle_difference = wrapf(angle_difference, -PI, PI)
-    
-    # Convert to degrees if needed
-    return rad_to_deg(angle_difference)

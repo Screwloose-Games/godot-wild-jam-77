@@ -6,7 +6,7 @@ signal activated
 signal purified
 signal purified_amount(amount_purified: float)
 
-enum AbilityType { MELEE, RANGED, SHIELD }
+enum AbilityType { MELEE, RANGED, SHIELD, NONE }
 
 @export var assigned_enemies: Array[Enemy] = []
 var altar_power: String = "":
@@ -16,6 +16,7 @@ var altar_power: String = "":
 @export var altar_ability: AbilityType
 
 @onready var impact_unpure_environment_area: Area3D = $ImpactUnpureEnvironmentArea
+@onready var interactable_area_3d: InteractableArea3D = %InteractableArea3D
 
 var is_active: bool = false
 var is_purified: bool = false
@@ -23,8 +24,12 @@ var is_purified: bool = false
 var spawned_enemies: Array[Node] = []
 var total_spawned_enemies: int
 var enemies_alive: int
-var purity_ratio: float = 0.0
+var purity_ratio: float = 0.0:
+    set(val):
+        purity_ratio = val
 var scan_to_purify_timer: Timer = Timer.new()
+
+var player_who_activated: PlayerController
 
 @onready var altar_sfx: Node3D = $AltarSFX
 
@@ -35,8 +40,6 @@ func _ready():
     scan_to_purify_timer.wait_time = 0.5
     scan_to_purify_timer.timeout.connect(apply_purification)
     scan_to_purify_timer.start()
-    pass
-
 
 func _physics_process(delta: float):
     # Lerp the area based on purity ratio
@@ -54,6 +57,7 @@ func assign_enemy(enemy: Enemy):
 func activate(player: PlayerController):
     if is_active or is_purified:
         return
+    player_who_activated = player
     is_active = true
     GlobalSignalBus.altar_activated.emit()
     altar_sfx.start_hum()
@@ -62,16 +66,15 @@ func activate(player: PlayerController):
     # Save that player has reached this checkpoint
     CheckpointMgr.arrived_at_altar(altar_power)
     
-    # Grant power to the player
-    grant_power(player)
+    if altar_ability != AbilityType.NONE:
+        # Grant power to the player
+        grant_power(player)
     
     # Spawn enemies
     spawn_enemies()
     
     enemies_alive = total_spawned_enemies
     
-
-
 ## Spawn enemies associated with the altar
 func spawn_enemies():
     for enemy in assigned_enemies:
@@ -109,11 +112,14 @@ func remove_power(player: PlayerController):
 
 ## Grant power to the player
 func grant_power(player: PlayerController):
+    GlobalSignalBus.power_granted.emit(altar_ability)
     player.setAbility(altar_ability, true)
 
 
 func _on_interactable_area_3d_interacted(player: PlayerController) -> void:
     activate(player)
+    interactable_area_3d.disabled = true
+    
 
 
 ## Call this function after the player purifies the altar and kills all the baddies
@@ -128,13 +134,17 @@ func on_enemy_died():
     if total_spawned_enemies == 0:
         return
     #var upper: float = total_spawned_enemies - enemies_alive
-    purity_ratio = (total_spawned_enemies - enemies_alive) / total_spawned_enemies
-    #print("Altar: sees enemy died, updating purity amount: ", str("%.2f" % purity_ratio), " from alive enemies: ", enemies_alive, " / ", total_spawned_enemies, " - upper: ", upper)
+    print("alive: ", enemies_alive)
+    purity_ratio = (total_spawned_enemies - enemies_alive) / float(total_spawned_enemies)
+    print("Altar: sees enemy died, updating purity amount: ", str("%.2f" % purity_ratio), " from alive enemies: ", enemies_alive, " / ", total_spawned_enemies)
     purified_amount.emit(purity_ratio)
     
     if enemies_alive <= 0:
         purify_altar()
+        heal_player()
 
+func heal_player():
+    player_who_activated.heal(100)
 
 func apply_purification():
     for area in impact_unpure_environment_area.get_overlapping_areas():

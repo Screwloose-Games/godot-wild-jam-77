@@ -261,6 +261,9 @@ func setAbility(abilityType: Altar.AbilityType, toSet: bool):
         Altar.AbilityType.SHIELD:
             hasShieldAbility = toSet
 
+func heal(amount: float):
+    health_component.heal(amount)
+
 func die():
     died.emit()
     GlobalSignalBus.player_died.emit()

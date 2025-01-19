@@ -87,7 +87,6 @@ func _on_hurt_box_component_3d_hurt(hit_box: Variant, amount: Variant) -> void:
 
 func _on_health_component_died() -> void:
     enemy_sfx.die()
-    
     die()
 
 func _on_health_component_damaged(amount: Variant) -> void:
@@ -96,7 +95,8 @@ func _on_health_component_damaged(amount: Variant) -> void:
     
 func die():
     died.emit()
-    process_mode = PROCESS_MODE_DISABLED
+    #process_mode = PROCESS_MODE_DISABLED
+    enemy_sfx.die()
     var time = enemy_sfx.vocal_player.stream.get_length()
-    await get_tree().create_timer(time).timeout
+    await get_tree().create_timer(5).timeout
     queue_free.call_deferred()
