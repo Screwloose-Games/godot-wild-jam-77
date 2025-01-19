@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dshedf38cdfte"]
+[gd_scene load_steps=8 format=3 uid="uid://dshedf38cdfte"]
 
 [ext_resource type="PackedScene" uid="uid://dk8clwmr6nk1c" path="res://game/gateway/sk_treegate_1.glb" id="1_4bwo3"]
 [ext_resource type="Texture2D" uid="uid://cx6yiaqtgus5i" path="res://game/gateway/textures/tex_tree_2.png" id="2_mijyf"]
 [ext_resource type="Script" path="res://game/gateway/tree_gate.gd" id="2_n1rvt"]
+[ext_resource type="AudioStream" uid="uid://c2yaisptxe8g3" path="res://game/gateway/sfx/aud_gate_open.wav" id="4_hhnjx"]
+[ext_resource type="Script" path="res://game/gateway/sfx/gate_sfx.gd" id="5_i3h3t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dof1h"]
 albedo_texture = ExtResource("2_mijyf")
@@ -39,3 +41,8 @@ material_override = SubResource("StandardMaterial3D_dof1h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39948, 4.54889)
 shape = SubResource("BoxShape3D_34sye")
+
+[node name="gate_sfx" type="AudioStreamPlayer3D" parent="." index="3"]
+stream = ExtResource("4_hhnjx")
+bus = &"SFX"
+script = ExtResource("5_i3h3t")
