@@ -45,7 +45,7 @@ far = 4000.0
 [sub_resource type="Sky" id="Sky_wx8tt"]
 sky_material = SubResource("PhysicalSkyMaterial_kxiip")
 
-[sub_resource type="Environment" id="Environment_16hnn"]
+[sub_resource type="Environment" id="Environment_211bl"]
 background_mode = 2
 sky = SubResource("Sky_wx8tt")
 fog_enabled = true
@@ -464,7 +464,7 @@ melee_attack_cooldown = 1.0
 
 [node name="Camera3D" parent="PlayerCharacter" index="4"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 7.3584, 1.9435, 4.57863)
-environment = SubResource("Environment_16hnn")
+environment = SubResource("Environment_211bl")
 
 [node name="PlayerPhantomCamera3D" parent="PlayerCharacter" index="5"]
 transform = Transform3D(1, 0, 0, 0, 0.866023, 0.499997, 0, -0.499999, 0.866021, 0.398186, 1.72847, 1.29903)
@@ -663,9 +663,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79868, 3.04041, 12.1292)
 
 [node name="RangedEnemy3" parent="RangedAltarLocation/Enemies" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6818, 1.81227, 3.07822)
+delay_after_spawning_secs = 20.0
 
 [node name="RangedEnemy4" parent="RangedAltarLocation/Enemies" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35018, 0.506339, -1.97003)
+delay_after_spawning_secs = 30.0
 
 [node name="WideCamera" type="Node3D" parent="." index="13"]
 unique_name_in_owner = true
