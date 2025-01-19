@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8whye7achl63"]
+
+[ext_resource type="PackedScene" uid="uid://hks8m0oh1pdw" path="res://game/actors/enemies/shield_enemy/game_shield_enemy.tscn" id="1_288m8"]
+[ext_resource type="PackedScene" uid="uid://c37xc7ws27epc" path="res://game/actors/player_controller/game_player_character.tscn" id="2_elxvo"]
+
+[node name="TestShieldEnemy" type="Node3D"]
+
+[node name="ShieldEnemy" parent="." instance=ExtResource("1_288m8")]
+collision_layer = 8
+collision_mask = 15
+is_active = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(100, 1, 100)
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_elxvo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5)

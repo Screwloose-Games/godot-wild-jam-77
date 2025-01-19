@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://c37xc7ws27epc"]
+[gd_scene load_steps=55 format=3 uid="uid://c37xc7ws27epc"]
 
 [ext_resource type="Script" path="res://game/actors/player_controller/player_character.gd" id="1_lj3x0"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://c4hxde0ynncn4" path="res://game/actors/player_controller/Animations/game_player_character_animation_tree.tres" id="2_vy64c"]
@@ -34,7 +34,7 @@
 [sub_resource type="Sky" id="Sky_wx8tt"]
 sky_material = SubResource("PhysicalSkyMaterial_kxiip")
 
-[sub_resource type="Environment" id="Environment_4itn0"]
+[sub_resource type="Environment" id="Environment_db43f"]
 background_mode = 2
 sky = SubResource("Sky_wx8tt")
 fog_enabled = true
@@ -56,11 +56,6 @@ size = 1.0
 frustum_offset = Vector2(0, 0)
 near = 0.05
 far = 4000.0
-
-[sub_resource type="Environment" id="Environment_h5sse"]
-background_mode = 2
-sky = SubResource("Sky_wx8tt")
-fog_enabled = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3wcgw"]
 radius = 0.2
@@ -198,7 +193,7 @@ health = 100.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.398186, 1.72847, 1.29903)
 top_level = true
-environment = SubResource("Environment_4itn0")
+environment = SubResource("Environment_db43f")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
@@ -215,7 +210,6 @@ follow_target = NodePath("../CameraTarget")
 tween_resource = SubResource("Resource_w1058")
 tween_on_load = false
 camera_3d_resource = SubResource("Resource_jke2e")
-environment = SubResource("Environment_h5sse")
 follow_damping = true
 follow_distance = 1.5
 spring_length = 1.5

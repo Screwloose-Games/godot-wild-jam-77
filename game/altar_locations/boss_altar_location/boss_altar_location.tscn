@@ -27,8 +27,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.277806, 0, -9.5323)
 delay_after_spawning_secs = 5.0
 
 [node name="RangedEnemy" parent="Enemies" instance=ExtResource("4_j33ht")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7674, 0.139488, 1.18854)
+is_active = false
 
 [node name="RangedEnemy2" parent="Enemies" instance=ExtResource("4_j33ht")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.28014, 0.0634074, 1.18854)
 delay_after_spawning_secs = 10.0
+is_active = false
