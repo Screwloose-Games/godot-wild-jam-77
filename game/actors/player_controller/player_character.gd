@@ -83,6 +83,7 @@ var jumps_remaining := jumps_allowed
 @onready var animation_tree: AnimationTree = %AnimationTree
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var bone_attachment_3d: BoneAttachment3D = %BoneAttachment3D
+@onready var noclip: Noclip = $Noclip
 
 @onready var player_sfx: Node3D = $player_sfx
 var was_on_ground: bool = true
@@ -209,6 +210,11 @@ func _physics_process(delta: float) -> void:
     var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y))
 
     face_direction(_camera.global_transform.basis.z)
+    
+    #if noclip.is_noclip:
+        #noclip.handle_noclip(Vector2(-direction.x, -direction.z))
+        #return
+    
     if direction:
         var move_dir: Vector3 = Vector3.ZERO
         move_dir.x = direction.x

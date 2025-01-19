@@ -3,6 +3,9 @@ extends Node3D
 @export var altar: Altar
 
 func _ready() -> void:
+    if altar == null:
+        push_warning("No altar assigned to altar enemies")
+        return
     for child in get_children():
         if child is Enemy:
             altar.assign_enemy(child)
