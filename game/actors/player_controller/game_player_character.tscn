@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://c37xc7ws27epc"]
+[gd_scene load_steps=56 format=3 uid="uid://c37xc7ws27epc"]
 
 [ext_resource type="Script" path="res://game/actors/player_controller/player_character.gd" id="1_lj3x0"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://c4hxde0ynncn4" path="res://game/actors/player_controller/Animations/game_player_character_animation_tree.tres" id="2_vy64c"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://l66wci5oq56" path="res://common/ui/components/hp_bar2-export.png" id="22_oayqn"]
 [ext_resource type="Texture2D" uid="uid://blkqf3snm0fss" path="res://common/ui/components/HP_tracker2.png" id="23_d2r6t"]
 [ext_resource type="Script" path="res://common/components/noclip.gd" id="24_u2wa6"]
+[ext_resource type="Script" path="res://game/actors/player_controller/environment_destroyer.gd" id="29_pw1nb"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kxiip"]
 
@@ -480,6 +481,9 @@ collision_mask = 9
 
 [node name="Noclip" type="Node" parent="."]
 script = ExtResource("24_u2wa6")
+
+[node name="environment_destroyer" type="Node" parent="."]
+script = ExtResource("29_pw1nb")
 
 [connection signal="max_health_updated" from="." to="." method="_on_max_health_updated"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
