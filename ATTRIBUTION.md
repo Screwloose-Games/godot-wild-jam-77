@@ -1,112 +1,67 @@
-# Attribution
-## Collaborators
-### Production Team
-Name: Jonny
-<br>
-Role: Production Manager
+# Meda: Forest of Rot
 
-Name: Sarah
-<br>
-Role: Game Design, Gameplay Director
+## Credits
 
-Name: Bryan B (UnagiLogic)
-<br>
-Role: Production Manager, Organization
+### Production
+- **Producer:** Jonathan David Lewis  
+- **Game Designer:** Sarah  
+- **Production Manager, Organization:** Bryan B (UnagiLogic)  
 
----
-### Art Team
-Name: Dillan
-<br>
-Role: 2D & 3D Artist
+### Game Art
+- **3D Artist & texture artist:** Dillan  
+- **3D Artist:** Sean  
+- **3D Artist:** Trav  
+- **3D Artist:** Chris  
+- **3D Artist:** Alex  
+- **Lighting Designer:** Daniel Bergher
 
-Name: Sean
-<br>
-Role: 3D Artist
+### UI
+- **UI Designer:** Ciaocolatto  
 
-Name: Trav
-<br>
-Role: 3D Artist
+## Audio
 
-Name: Alex
-<br>
-Role: 3D Artist
+## Technical
+- **Technical artist:** Chris
 
-Name: Daniel
-<br>
-Role: Lighting Artist
+### Music
+- **Music Composition:** Matt  
 
----
-### Audio Team
-Name: Olemonade
-<br>
-Role: Environmental Sound
+### Sound Design
+- **Sound Designer:** Olemonade
 
-Name: Matt
-<br>
-Role: Composition
-
-Name: McKinley
-<br>
-Role: Flex Designer
-
----
 ### Programming Team
-Name: Jonny
-<br>
-Role: Programming
-
-Name: Loopy
-<br>
-Role: Programming
+- **Programming:** Jonathan David Lewis  
+- **Programming:** Trav  
+- **Programming:** GhostGoats  
+- **Programming:** Loopy  
 
 ---
-### Flex Team
-Name: Chris
-<br>
-Role: Techincal Sound Designer
 
----
-## Sourced  
-#### Godot Engine Logo
-Author: Andrea Calabró  
-Source: [godotengine.org : press](https://godotengine.org/press/)  
-License: [CC BY 4.0 International](https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt) 
+## Sourced Assets
 
-#### Sounds sourced form freesounds.org
-Bramble Ambience
-https://freesound.org/people/dobroide/sounds/18964/
-https://freesound.org/people/dobroide/sounds/18963/
+### Godot Engine Logo
+- **Author:** Andrea Calabró  
+- **Source:** [godotengine.org : press](https://godotengine.org/press/)  
+- **License:** [CC BY 4.0 International](https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt)  
 
-Lake Ambience
-https://freesound.org/people/sithjawa/sounds/86625/
-https://freesound.org/people/klankbeeld/sounds/490582/
-https://freesound.org/people/Owl/sounds/156526/
+### Sounds sourced from freesounds.org
+**Bramble Ambience**  
+- https://freesound.org/people/dobroide/sounds/18964/
+- https://freesound.org/people/dobroide/sounds/18963/
 
-Cliff Ambience
-https://freesound.org/people/Philip_Goddard/sounds/689562/
-https://freesound.org/people/felix.blume/sounds/670330/
-https://freesound.org/people/kordoz/sounds/106802/
+**Lake Ambience**  
+- https://freesound.org/people/sithjawa/sounds/86625/
+- https://freesound.org/people/klankbeeld/sounds/490582/
+- https://freesound.org/people/Owl/sounds/156526/
 
-Boss Ambience
-https://freesound.org/people/felix.blume/sounds/152706/
-https://freesound.org/people/ecfike/sounds/137966/
-https://freesound.org/people/cyanidecup45/sounds/732076/
-https://freesound.org/people/nicotep/sounds/761356/
-https://freesound.org/people/stormpetrel/sounds/179587/
+**Cliff Ambience**  
+- https://freesound.org/people/Philip_Goddard/sounds/689562/
+- https://freesound.org/people/felix.blume/sounds/670330/
+- https://freesound.org/people/kordoz/sounds/106802/
 
-## Tools
-#### Godot
-Author: [Juan Linietsky, Ariel Manzur, and contributors](https://godotengine.org/contact)  
-Source: [godotengine.org](https://godotengine.org/)  
-License: [MIT License](https://github.com/godotengine/godot/blob/master/LICENSE.txt) 
-
-#### Visual Studio Code
-Author: [Microsoft](https://opensource.microsoft.com/)  
-Source: [github: vscode](https://github.com/microsoft/vscode)  
-License: [MIT License](https://github.com/microsoft/vscode/blob/main/LICENSE.txt)
-
-#### Git
-Author: [Linus Torvalds](https://github.com/torvalds)  
-Source: [git-scm.com](https://git-scm.com/downloads)  
-License: [GNU General Public License version 2](https://opensource.org/licenses/GPL-2.0)
-
+**Boss Ambience**  
+- https://freesound.org/people/felix.blume/sounds/152706/
+- https://freesound.org/people/ecfike/sounds/137966/
+- https://freesound.org/people/cyanidecup45/sounds/732076/
+- https://freesound.org/people/nicotep/sounds/761356/
+- https://freesound.org/people/stormpetrel/sounds/179587/

@@ -1891,7 +1891,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 
 
 [node name="Skeleton3D" parent="sk_shield_enemy/FurballRig" index="0"]
 bones/0/position = Vector3(1.88802e-08, 1.19334, -0.0784599)
-bones/0/rotation = Quaternion(0.125841, 1.18262e-07, 1.50014e-08, 0.99205)
 bones/1/rotation = Quaternion(0.977258, 0.0539432, 0.00533861, 0.205011)
 bones/2/rotation = Quaternion(0.827756, 0.0321883, 0.0461517, 0.55826)
 bones/3/rotation = Quaternion(-0.574168, 0.000116837, -0.00403943, 0.818728)
@@ -1899,10 +1898,9 @@ bones/4/rotation = Quaternion(9.00319e-08, 0.994749, -0.102345, 7.86601e-07)
 bones/6/rotation = Quaternion(0.947698, -0.0542007, 0.000814468, 0.314532)
 bones/7/rotation = Quaternion(0.508466, -0.0124973, -0.0568219, 0.859114)
 bones/8/rotation = Quaternion(-0.828565, -0.00155056, 0.00373211, 0.559879)
-bones/9/rotation = Quaternion(-8.96835e-08, 0.994749, -0.102345, -7.86601e-07)
 
 [node name="FurballBody" parent="sk_shield_enemy/FurballRig/Skeleton3D" index="0"]
-transform = Transform3D(1, 7.10543e-14, -9.37916e-13, -7.81597e-14, 1, 5.96046e-07, 9.23706e-13, -5.96046e-07, 1, 1.42644e-08, -0.117442, 1.49012e-07)
+transform = Transform3D(1, -7.10543e-15, 0, -7.10543e-15, 1, 0, 0, 0, 1, 1.42646e-08, -0.117445, -6.10948e-07)
 
 [node name="AnimationPlayer" parent="sk_shield_enemy" index="1"]
 libraries = {

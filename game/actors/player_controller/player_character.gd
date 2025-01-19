@@ -68,6 +68,8 @@ class_name PlayerController
 @export var hasRangedAbility: bool
 @export var hasShieldAbility: bool
 
+@export var healing_rate: float = 100
+
 var input_direction: Vector3 = Vector3.FORWARD
 var jumps_remaining := jumps_allowed
 
@@ -95,6 +97,19 @@ func _ready():
     if _player_pcam.get_follow_mode() == _player_pcam.FollowMode.THIRD_PERSON:
         Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     initialize()
+
+var remainig_to_heal: float = 0
+
+func batch_heal(amount_to_heal: float):
+    remainig_to_heal += amount_to_heal
+    if remainig_to_heal >= 1:
+        print("batch heal")
+        health_component.heal(remainig_to_heal)
+        remainig_to_heal = 0.0
+        
+
+func _process(delta):
+    batch_heal(healing_rate * delta)
 
 func initialize():
     hasMeleeAbility = hasMeleeAbility

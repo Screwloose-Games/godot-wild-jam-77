@@ -11,12 +11,12 @@ uniform vec2 velocity;
 uniform sampler2D noise_sampler;
 uniform sampler2D second_noise_sampler;
 
-void vertex() 
+void vertex()
 {
 	// Called for every vertex the material is visible on.
 }
 
-void fragment() 
+void fragment()
 {
 	// Called for every pixel the material is visible on.
     float noise = texture(noise_sampler, UV + (TIME *velocity)).r;

@@ -57,7 +57,7 @@ func show_power_help(ability: Altar.AbilityType):
         Altar.AbilityType.MELEE:
             show_text("You have been granted a weapon. Attack with [color=red][u]LEFT MOUSE BUTTON[/u][/color].")
         Altar.AbilityType.RANGED:
-            show_text("You feel power coursing through you. Hold [color=blue][u]RIGHT MOUSE BUTTON[/u][/color] to fire a beam of energy.")
+            show_text("You feel power coursing through you. Hold [color=red][u]RIGHT MOUSE BUTTON[/u][/color] to fire a beam of energy.")
         Altar.AbilityType.SHIELD:
             show_text("A protective power surrounds you. Hold [color=green][u]TAB[/u][/color] to shield yourself.")
     get_tree().paused = true
