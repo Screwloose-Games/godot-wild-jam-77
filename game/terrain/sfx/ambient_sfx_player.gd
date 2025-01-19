@@ -15,16 +15,21 @@ func _ready() -> void:
         return
         
     GlobalSignalBus.altar_succeeded.connect(_on_cleanse)
+    GlobalSignalBus.changed_level.connect(_reset_cleanse)
         
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     pass
 
-func _on_cleanse(number: int, final_wave: bool):
-    if not should_play_before_cleanse and final_wave:
+func _on_cleanse():
+    if not should_play_before_cleanse:
         spawn_sfx()
         
 func spawn_sfx():
+    if audio_player:
+        audio_player.play(0.0)
+        return
+        
     if is_spatial:
         audio_player = AudioStreamPlayer3D.new()
     else:
@@ -34,3 +39,7 @@ func spawn_sfx():
     audio_player.stream = ambient_sound
     audio_player.volume_db = linear_to_db(volume)
     audio_player.play(0.0)
+
+func _reset_cleanse():
+    if not should_play_before_cleanse:
+        audio_player.stop()
