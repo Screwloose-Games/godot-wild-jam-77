@@ -92,7 +92,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3222, 0.3, 10.5946)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9777, 0.301689, 2.91909)
 
 [node name="RangedEnemy4" parent="MeleeAltarLocation2/Enemies" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115526, 0.3, -11.1502)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115272, 0.3, -11.1502)
 
 [editable path="MeleeAltarLocation"]
 [editable path="MeleeAltarLocation2"]

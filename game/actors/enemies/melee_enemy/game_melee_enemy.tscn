@@ -124,6 +124,7 @@ collision_layer = 8
 collision_mask = 15
 script = ExtResource("2_y6jdy")
 speed = 5
+max_health = 60.0
 turning_speed = 2.0
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="0"]
@@ -261,12 +262,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.779865, -1.17424)
 visible = false
 material = SubResource("StandardMaterial3D_bn64c")
 
+[node name="HealthComponent" parent="." index="6"]
+max_health = 60.0
+health = 60.0
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501235, 0)
 shape = SubResource("CapsuleShape3D_ghcsd")
 
 [node name="enemy_sfx" parent="." index="10"]
-unique_name_in_owner = true
 hurts = SubResource("AudioStreamRandomizer_vyfh6")
 
 [editable path="Visual/sk_melee_enemy"]

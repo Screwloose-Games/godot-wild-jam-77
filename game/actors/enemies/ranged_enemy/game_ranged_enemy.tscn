@@ -15,8 +15,6 @@
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_shc20"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mh05o"]
-
 [sub_resource type="Curve3D" id="Curve3D_x2m00"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.516856, -5.29899),
@@ -31,6 +29,8 @@ emission = Color(0, 0, 1, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g07x1"]
 height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mh05o"]
 
 [node name="RangedEnemy" groups=["Enemy"] instance=ExtResource("1_sp3te")]
 collision_layer = 8
@@ -76,13 +76,9 @@ target_desired_distance = 2.0
 path_max_distance = 1.01
 debug_enabled = true
 
-[node name="HurtBoxComponent3D" parent="." index="5" groups=["Enemy"]]
-collision_layer = 512
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent3D" index="0" groups=["Enemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958669, 0)
-shape = SubResource("CapsuleShape3D_mh05o")
+[node name="HealthComponent" parent="." index="4"]
+max_health = 60.0
+health = 60.0
 
 [node name="RangedAbility" type="Node3D" parent="." index="6"]
 unique_name_in_owner = true
@@ -139,3 +135,9 @@ shape = SubResource("CylinderShape3D_g07x1")
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78052, 1.45874, -8.95744)
 size = Vector3(15.2944, 4.91748, 2)
+
+[node name="HurtBoxComponent3D" parent="." index="9" groups=["Enemy"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent3D" index="0" groups=["Enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958669, 0)
+shape = SubResource("CapsuleShape3D_mh05o")
