@@ -3,6 +3,7 @@ extends Node
 enum MUSIC_STATE { Title, Pause, Level, AltarFight, AltarCorruption,  }
 
 @export var title_music: AudioStream
+@export var credits_music: AudioStream
 @export var level_music: AudioStream
 @export var pause_music: AudioStream
 @export var battle_music: AudioStream
@@ -22,6 +23,7 @@ var should_resume_corruption_timer = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     GlobalSignalBus.title_screen_started.connect(_on_start_title)
+    GlobalSignalBus.credits_screen_started.connect(_on_start_credis)
     GlobalSignalBus.level_started.connect(_on_start_level)
     GlobalSignalBus.altar_activated.connect(_on_altar_begin)
     GlobalSignalBus.altar_succeeded.connect(_on_altar_success)
@@ -111,3 +113,6 @@ func stop_altar_music() -> void:
         
 func _on_altar_fail() -> void:
     _on_start_level()
+    
+func _on_start_credis() -> void:
+    SoundManager.music.play(credits_music, 0.0, 0.8, 1.0, "")

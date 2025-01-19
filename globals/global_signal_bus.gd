@@ -2,6 +2,7 @@ extends Node
 
 # Signals for general game events
 signal title_screen_started
+signal credits_screen_started
 signal level_started(level_num: int)
 
 # Signals for player-related events
