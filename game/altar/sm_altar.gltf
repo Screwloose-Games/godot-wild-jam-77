@@ -3,6 +3,10 @@
 		"generator":"Khronos glTF Blender I/O v4.3.47",
 		"version":"2.0"
 	},
+	"extensionsUsed":[
+		"KHR_materials_specular",
+		"KHR_materials_ior"
+	],
 	"scene":0,
 	"scenes":[
 		{
@@ -59,16 +63,20 @@
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Material",
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0
+				},
+				"KHR_materials_ior":{
+					"ior":1.4500000476837158
+				}
+			},
+			"name":"Stone",
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.800000011920929,
-					0.800000011920929,
-					0.800000011920929,
-					1
-				],
-				"metallicFactor":0,
-				"roughnessFactor":0.4000000059604645
+				"baseColorTexture":{
+					"index":0
+				},
+				"metallicFactor":0
 			}
 		}
 	],
@@ -82,7 +90,8 @@
 						"NORMAL":1,
 						"TEXCOORD_0":2
 					},
-					"indices":3
+					"indices":3,
+					"material":0
 				}
 			]
 		},
@@ -95,7 +104,8 @@
 						"NORMAL":5,
 						"TEXCOORD_0":6
 					},
-					"indices":7
+					"indices":7,
+					"material":0
 				}
 			]
 		},
@@ -112,6 +122,19 @@
 					"material":0
 				}
 			]
+		}
+	],
+	"textures":[
+		{
+			"sampler":0,
+			"source":0
+		}
+	],
+	"images":[
+		{
+			"mimeType":"image/png",
+			"name":"tex_stone_1",
+			"uri":"textures/tex_stone_1.png"
 		}
 	],
 	"accessors":[
@@ -152,7 +175,7 @@
 		{
 			"bufferView":4,
 			"componentType":5126,
-			"count":342,
+			"count":322,
 			"max":[
 				1.5952701568603516,
 				0.7441693544387817,
@@ -168,13 +191,13 @@
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":342,
+			"count":322,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":342,
+			"count":322,
 			"type":"VEC2"
 		},
 		{
@@ -186,7 +209,7 @@
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":259,
+			"count":258,
 			"max":[
 				0.890128493309021,
 				3.933971405029297,
@@ -202,13 +225,13 @@
 		{
 			"bufferView":9,
 			"componentType":5126,
-			"count":259,
+			"count":258,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":10,
 			"componentType":5126,
-			"count":259,
+			"count":258,
 			"type":"VEC2"
 		},
 		{
@@ -245,56 +268,62 @@
 		},
 		{
 			"buffer":0,
-			"byteLength":4104,
+			"byteLength":3864,
 			"byteOffset":14740,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4104,
-			"byteOffset":18844,
+			"byteLength":3864,
+			"byteOffset":18604,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2736,
-			"byteOffset":22948,
+			"byteLength":2576,
+			"byteOffset":22468,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":1152,
-			"byteOffset":25684,
+			"byteOffset":25044,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":3108,
-			"byteOffset":26836,
+			"byteLength":3096,
+			"byteOffset":26196,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3108,
-			"byteOffset":29944,
+			"byteLength":3096,
+			"byteOffset":29292,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2072,
-			"byteOffset":33052,
+			"byteLength":2064,
+			"byteOffset":32388,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":792,
-			"byteOffset":35124,
+			"byteOffset":34452,
 			"target":34963
+		}
+	],
+	"samplers":[
+		{
+			"magFilter":9728,
+			"minFilter":9984
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":35916,
+			"byteLength":35244,
 			"uri":"sm_altar.bin"
 		}
 	]
