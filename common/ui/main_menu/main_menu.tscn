@@ -45,6 +45,9 @@ func _ready() -> void:
     await options_menu.ready
     options_menu.back_button.pressed.connect(_on_return_main_menu_button_pressed)
     
+    if OS.has_feature(\"web\"):
+        exit_button.visible = false
+    
 func _exit_tree():
     start_button.pressed.disconnect(_on_start_button_pressed)
     settings_button.pressed.disconnect(_on_settings_pressed)
