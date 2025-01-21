@@ -29,6 +29,8 @@ func _on_tut_continue_pressed() -> void:
     else:
         Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
         process_mode = PROCESS_MODE_DISABLED
+        var player = get_tree().get_first_node_in_group("Player")
+        player.disabled = false
 
 func cards_left() -> bool:
     return text_index < cards.size() - 1
@@ -37,6 +39,8 @@ func get_text():
     return cards[text_index]
 
 func show_text(text: String):
+    var player = get_tree().get_first_node_in_group("Player")
+    player.disabled = true
     process_mode = PROCESS_MODE_ALWAYS
     Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
     tutorial_continue_button.grab_focus()
@@ -57,7 +61,7 @@ func show_power_help(ability: Altar.AbilityType):
         Altar.AbilityType.MELEE:
             show_text("You have been granted a weapon. Attack with [color=red][u]LEFT MOUSE BUTTON[/u][/color].")
         Altar.AbilityType.RANGED:
-            show_text("You feel power coursing through you. Hold [color=red][u]RIGHT MOUSE BUTTON[/u][/color] to fire a beam of energy.")
+            show_text("You feel power coursing through you. Hold [color=red][u]RIGHT MOUSE BUTTON[/u][/red] to fire a beam of energy.")
         Altar.AbilityType.SHIELD:
             show_text("A protective power surrounds you. Hold [color=green][u]TAB[/u][/color] to shield yourself.")
     get_tree().paused = true

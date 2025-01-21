@@ -10,30 +10,30 @@
 ### Game Art
 - **3D Artist & texture artist:** Dillan  
 - **3D Artist:** Sean  
-- **3D Artist:** Trav  
-- **3D Artist:** Chris  
+- **3D Artist:** Travh98 
+- **3D Artist:** Christoph Gray
 - **3D Artist:** Alex  
 - **Lighting Designer:** Daniel Bergher
 
 ### UI
-- **UI Designer:** Ciaocolatto  
+- **UI Designer:** Melanie Hicks  
 
 ## Audio
 
 ## Technical
-- **Technical artist:** Chris
+- **Technical artist:** Christoph Gray
 
 ### Music
-- **Music Composition:** Matt  
+- **Music Composition:** Matt Linder  
 
 ### Sound Design
 - **Sound Designer:** Olemonade
 
 ### Programming Team
 - **Programming:** Jonathan David Lewis  
-- **Programming:** Trav  
-- **Programming:** GhostGoats  
-- **Programming:** Loopy  
+- **Programming:** Travh98  
+- **Programming:** Ghost Goats  
+- **Programming:** Loopy
 
 ---
 

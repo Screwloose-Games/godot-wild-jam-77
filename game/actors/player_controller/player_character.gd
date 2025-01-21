@@ -2,6 +2,7 @@
 extends Actor3D
 class_name PlayerController
 
+@export var disabled: bool = false
 @export var jump_velocity = 4.5
 @export var mouse_sensitivity: float = 0.05
 
@@ -108,6 +109,8 @@ func batch_heal(amount_to_heal: float):
         
 
 func _process(delta):
+    if disabled:
+        return
     batch_heal(healing_rate * delta)
 
 func initialize():
@@ -182,9 +185,12 @@ func _handle_jump():
         player_sfx._on_jump()
 
 func _physics_process(delta: float) -> void:
-    _handle_movement_animation()
     if Engine.is_editor_hint():
         return
+    if disabled:
+        return
+    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+    _handle_movement_animation()
     if dash_ability.is_dashing:
         return
     if Input.is_action_just_pressed("attack-melee") and hasMeleeAbility:
