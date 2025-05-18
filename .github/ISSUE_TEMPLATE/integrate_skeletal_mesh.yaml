@@ -42,7 +42,7 @@ body:
         - [ ] Verify that the file is in the correct spot.
 
         ## File Path Standards
-        - {prefix}: sk_ || sm_
+        - {prefix}: sk_
         - {folder_name}: Enter your own folder name if no other folder matches.
         - {model_name}: Enter the name of the model.
         - {file_name}: Enter the name of the file.
@@ -86,6 +86,3 @@ body:
         - [ ] Right click on the Inherited Scene > Save Scene As... in {Same Directory} as .gltf file.
         - [ ] File will save as tscn: sk_{file_name}.tscn
         - [ ] GitHub Pull Request Created > Assign Reviewer.
-
-        ### Sound (aud_)
-        - [ ] FIND CHRIS!
