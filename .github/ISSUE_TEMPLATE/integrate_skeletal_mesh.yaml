@@ -1,6 +1,6 @@
 name: Integrate Skeletal Mesh
 description: Template for Integration acceptance criteria for deliverables.
-title: "Integration {file_name}"
+title: "Integrate Skeletal mesh {file_name}"
 labels:
   - Integration
 body:

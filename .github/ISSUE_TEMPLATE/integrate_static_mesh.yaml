@@ -42,7 +42,7 @@ body:
         - [ ] Verify that the file is in the correct spot.
 
         ## File Path Standards
-        - {prefix}: sk_ || sm_
+        - {prefix}: sm_
         - {folder_name}: Enter your own folder name if no other folder matches.
         - {model_name}: Enter the name of the model.
         - {file_name}: Enter the name of the file.
@@ -53,10 +53,7 @@ body:
         - Albedo (Reason: Base color for the material)
         - Roughness (Reason: Affects the way reflection happens)
         - Normal Map (Reason: Finer shapes)
-        
-        ### Skeletal Mesh (sk_)
-        - [ ] .gltf Location: game/{folder_name}/sk_{file_name}.gltf
-        
+               
         #### Configure Inherited Scene
         - [ ] Open location in Godot > Right click gltf file > New Inherited Scene
         - [ ] Under Scene > Click on a MeshInstance3D. (Repeat for each MeshInstance3D)
