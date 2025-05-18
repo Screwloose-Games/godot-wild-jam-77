@@ -32,18 +32,6 @@ body:
       placeholder: "Enter the full file path... model_directory/textures/t_model_name_texture.png"
     validations:
       required: true
-
-  - type: markdown
-    attributes:
-      value: |
-        ## Acceptance Criteria:
-
-        - [ ] The animations file name contains the prefix "anim_", is all lowercase, and is underscore separated, i.e. "anim_{model_name}.blend"
-        - [ ] When adding animations, looping animations should be tagges as "-loop"
-        - [ ] The model is saved in `.blend` file format.
-        - [ ] The model is saved to the specified filepath: `game/{game_object_directory}/anim_{model_name}.blend`.
-        - [ ] The model is exported as gltf to the specified filepath: `game/{game_object_directory}/anim_{model_name}.gltf`.        
-        - [ ] A pull request (PR) is created with the changes.
   
   - type: textarea
     validations:
@@ -52,6 +40,8 @@ body:
       id: subtasks
       label: Subtasks
       value: |
+        Acceptance Criteria
+        
         - [ ] The animations file name contains the prefix "anim_", is all lowercase, and is underscore separated, i.e. "anim_{model_name}.blend"
         - [ ] When adding animations, looping animations should be tagges as "-loop"
         - [ ] The model is saved in `.blend` file format.
